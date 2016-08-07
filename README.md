@@ -1,4 +1,4 @@
-# rikitours-android
+# Rikitours-Android
 Rikitours-android is being developed for RikiTours (PTY)
 this app will allow customer to make their booking based on selected service
 below are services that are currently offered :
