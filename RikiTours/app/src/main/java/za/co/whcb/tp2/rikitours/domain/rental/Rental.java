@@ -3,7 +3,7 @@ package za.co.whcb.tp2.rikitours.domain.rental;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 /**
- * Created by kelly on 9/17/2016.
+ * Created by berka on 9/17/2016.
  */
 public class Rental {
     private String id, status;

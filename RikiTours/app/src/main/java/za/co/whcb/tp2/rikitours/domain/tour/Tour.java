@@ -1,7 +1,7 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
 
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
-import za.co.whcb.tp2.rikitours.domain.guide.Guide;
+import za.co.whcb.tp2.rikitours.domain.tourguide.Guide;
 
 /**
  * Created by kelly on 9/17/2016.

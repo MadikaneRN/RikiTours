@@ -1,7 +1,7 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
 /**
- * Created by kelly on 9/17/2016.
+ * Created by berka on 9/17/2016.
  */
 public class Car {
     private String name, type, color, id;

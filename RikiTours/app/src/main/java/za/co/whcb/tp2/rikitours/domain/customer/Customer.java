@@ -3,7 +3,7 @@ package za.co.whcb.tp2.rikitours.domain.customer;
 import za.co.whcb.tp2.rikitours.domain.Person;
 
 /**
- * Created by kelly on 9/9/2016.
+ * Created by berka on 9/9/2016.
  */
 public class Customer implements Person{
     private  String name, surname, cell, email;

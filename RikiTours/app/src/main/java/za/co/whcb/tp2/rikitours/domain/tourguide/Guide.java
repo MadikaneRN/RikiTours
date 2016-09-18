@@ -1,9 +1,9 @@
-package za.co.whcb.tp2.rikitours.domain.guide;
+package za.co.whcb.tp2.rikitours.domain.tourguide;
 
 import za.co.whcb.tp2.rikitours.domain.Person;
 
 /**
- * Created by kelly on 9/17/2016.
+ * Created by berka on 9/17/2016.
  */
 public class Guide implements Person {
     private  String name, surname, cell, email;

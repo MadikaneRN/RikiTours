@@ -2,7 +2,7 @@
 
     *Naming
         1 @package should be name in lowercase
-        2 @variable are anmed in camelcase ( meaning starting with lower case)
+        2 @variable are named in camelcase ( meaning starting with lower case)
             e.g
                 int number
                 int numberOfEmployees
@@ -11,19 +11,19 @@
         3 @Functions are name should be named in camelcase as well
             @function should not have more 3 parameters
                 * Ideally use an array  in case of more parameters needed
-                * Function defination should not have more thn 20 lines
+                * Function definition should not have more thn 20 lines
                     in case of more line needed create private function and call it in the
                     function
 
                     e.g
                         public personDetails(String name,String surname,int yearBorn) {
-                            String deatils = "Name="+name+"\nSurname="+surname;
+                            String details = "Name="+name+"\nSurname="+surname;
 
-                            return details+"\nAge :"+ageCalculater(yearBorn);
+                            return details+"\nAge :"+ ageCalculator(yearBorn);
 
                         }
 
-                        private int ageCalculater (int year) {
+                        private int ageCalculator (int year) {
                             return getYearfromCalendar - year;
                         }
 
