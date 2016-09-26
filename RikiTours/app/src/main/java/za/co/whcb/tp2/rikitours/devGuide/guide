@@ -21,6 +21,8 @@
 
                             return details+"\nAge :"+ ageCalculator(yearBorn);
 
+                            ;;
+
                         }
 
                         private int ageCalculator (int year) {
