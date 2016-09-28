@@ -1,68 +1,87 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
 
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
 /**
  * Created by kelly on 9/17/2016.
  */
 public class Attraction {
-    private String id, name, country, city, description, image;
+    private Long id, String name,Country country,String city,String description,String image;
 
     public Attraction() {
     }
 
-    public Attraction(String id, String name, String country, String city, String description, String image) {
-        this.name = name;
-        this.country = country;
-        this.city = city;
-        this.description = description;
-        this.image = image;
-        this.id = id;
+    public Attraction(Builder builder) {
+        this.name = builder.name;
+        this.country = builder.country;
+        this.city = builder.city;
+        this.description = builder.description;
+        this.image = builder.image;
+        this.id = builder.id;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCountry() {
+    public Country getCountry() {
         return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getImage() {
         return image;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+    public static class Builder{
+        Long id, String name,Country country,String description,String image;
+        public Builder id(Long id){
+            this.id=id;
+            return this;
+        }
+
+        public Builder name(String name){
+            this.name=name;
+            return this;
+        }
+
+        public Builder country(Country country){
+            this.country=country;
+            return this;
+        }
+
+        public Builder description(String description){
+            this.description=description;
+            return this;
+        }
+
+        public Builder image(String image){
+            this.image=image;
+            return this;
+        }
+
+        public Builder copy(Attraction attraction){
+            this.id=attraction.id;
+            this.name=attraction.name;
+            this.country=attraction.country;
+            this.description=attraction.description;
+            this.image=attraction.image;
+
+            return this;
+        }
+        public Attraction build(){
+            return new Attraction(this);
+
+
+        }
 }
