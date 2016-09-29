@@ -3,12 +3,13 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Encore on 9/17/2016.
  */
 public class City{
-    private Long id, String name,String suburb;
+    private Long id;
+    private String name,suburb;
 
     public City(Builder builder){
-        this.id=builder.id;
-        this.name=builder.name;
-        this.suburb =builder.suburb;
+        this.id = builder.id;
+        this.name = builder.name;
+        this.suburb = builder.suburb;
     }
     public Long getId(){
         return id;
@@ -23,15 +24,16 @@ public class City{
     }
 
     public static class Builder{
-        Long id, String name,String suburb;
+        private Long id;
+        private String name,suburb;
 
         public Builder id(Long id){
-            this.id=id;
+            this.id = id;
             return this;
         }
 
         public Builder name(String name){
-            this.name=name;
+            this.name = name;
             return this;
         }
 

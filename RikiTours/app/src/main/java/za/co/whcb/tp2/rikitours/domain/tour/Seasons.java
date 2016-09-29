@@ -3,13 +3,16 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Encore on 9/17/2016.
  */
 public class Seasons{
-    private Long id, String name,String desription,int numberOfSeason;
+    private Long id;
+    private String name, description;
+    //to be checked
+    private int numberOfSeason;
 
     public Seasons(Builder builder){
-        this.id=builder.id;
-        this.name=builder.name;
-        this.desription=builder.description;
-        this.numberOfSeason=builder.numberOfSeason;
+        this.id = builder.id;
+        this.name = builder.name;
+        this.description = builder.description;
+        this.numberOfSeason = builder.numberOfSeason;
     }
 
     public Long getId(){
@@ -24,20 +27,23 @@ public class Seasons{
         return description
     }
 
-    public String getNumberOfSeason(){
+    public int getNumberOfSeason(){
         return numberOfSeason;
     }
 
     public static class Builder{
-        Long id, String name,String desription,int numberOfSeason;
+        private Long id;
+        private String name, description;
+        //to be checked
+        private int numberOfSeason;
 
         public Builder id(Long id){
-            this.id=id;
+            this.id = id;
             return this;
         }
 
         public Builder name(String streetName){
-            this.streetName=streetName;
+            this.streetName = streetName;
             return this;
         }
 

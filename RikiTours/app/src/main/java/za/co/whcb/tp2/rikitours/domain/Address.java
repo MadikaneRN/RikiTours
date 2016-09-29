@@ -4,7 +4,10 @@ import za.co.whcb.tp2.rikitours.domain.tour.City;
  * Created by Encore on 9/17/2016.
  */
 public class Address{
-    private Long id, String streetNumber,String streetName,City city;
+    private Long id;
+    private String streetNumber;
+    private String streetName;
+    private City city;
 
     public Address(Builder builder){
         this.id=builder.id;
@@ -29,7 +32,10 @@ public class Address{
     }
 
     public static class Builder{
-        Long id, String streetNumber,String streetName,City city;
+        private Long id;
+        private String streetNumber;
+        private String streetName;
+        private City city;
 
         public Builder id(Long id){
             this.id=id;

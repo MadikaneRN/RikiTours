@@ -4,7 +4,10 @@ import za.co.whcb.tp2.rikitours.domain.Address;
  * Created by Encore on 9/17/2016.
  */
 public class Contacts{
-    private Long id, String cellNumber,String workNumber,Address address;
+    private Long id;
+    private String cellNumber;
+    private String workNumber;
+    private Address address;
 
     public Contacts(Builder builder){
         this.id=builder.id;
@@ -14,7 +17,7 @@ public class Contacts{
     }
 
     public String getCellNumber(){
-        return cellNumberl
+        return cellNumber;
     }
 
     public String getWorkNumber(){
@@ -25,9 +28,13 @@ public class Contacts{
         return address;
     }
 
-    public static class Builder{
-        Long id, String cellNumber,String workNumber,Address address;
-        return this;
+    public static class Builder {
+        //Long id, String cellNumber,String workNumber,Address address;
+        private Long id;
+        private String cellNumber;
+        private String workNumber;
+        private Address address;
+
         public Builder id(Long id){
             this.id=id;
             return this;
