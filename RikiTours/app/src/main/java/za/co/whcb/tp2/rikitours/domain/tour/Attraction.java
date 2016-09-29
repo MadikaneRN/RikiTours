@@ -2,7 +2,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
 
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
 /**
- * Created by kelly on 9/17/2016.
+ * Created by Encore on 9/17/2016.
  */
 public class Attraction {
     private Long id;

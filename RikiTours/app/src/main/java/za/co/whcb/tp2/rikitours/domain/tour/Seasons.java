@@ -4,8 +4,8 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  */
 public class Seasons{
     private Long id;
-    private String name, description;
-    //to be checked
+    private String name;
+	private String	description;
     private int numberOfSeason;
 
     public Seasons(Builder builder){

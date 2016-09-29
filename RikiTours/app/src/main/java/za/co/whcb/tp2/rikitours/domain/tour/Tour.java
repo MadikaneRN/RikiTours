@@ -5,7 +5,7 @@ import za.co.whcb.tp2.rikitours.domain.tourguide.Guide;
 import za.co.whcb.tp2.rikitours.domain.tour.Itenary;
 
 /**
- * Created by kelly on 9/17/2016.
+ * Created by Encore on 9/17/2016.
  */
 public class Tour {
     private Long id;

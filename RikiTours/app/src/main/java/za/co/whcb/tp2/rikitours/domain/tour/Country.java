@@ -4,7 +4,11 @@ import za.co.whcb.tp2.rikitours.domain.tour.City;
  * Created by Encore on 9/17/2016.
  */
 public class Country{
-    private Long id, String name,City city,String countryCode,String flagImage;
+    private Long id;
+	private String name;
+	private City city;
+	private String countryCode;
+	private String flagImage;
 
     public Country(Builder builder){
         this.id=builder.id;

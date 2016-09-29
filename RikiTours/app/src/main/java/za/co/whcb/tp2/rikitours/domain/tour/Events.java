@@ -5,7 +5,11 @@ import za.co.whcb.tp2.rikitours.domain.tour.City;
  * Created by Encore on 9/17/2016.
  */
 public class Events{
-    private Long id, String name,String description,String start,String end,City city;
+    private Long id;
+	private String name;
+	private String description;
+	private String start;String end;
+	private City city;
 
     public Events(Builder builder){
         this.id=builder.id;

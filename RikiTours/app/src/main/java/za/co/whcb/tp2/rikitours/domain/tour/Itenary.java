@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
 
 /**
- * Created by kelly on 9/17/2016.
+ * Created by Encore on 9/17/2016.
  */
 public class Itenary {
     private Long id;
