@@ -5,14 +5,12 @@ package za.co.whcb.tp2.rikitours.domain.tour;
 public class Seasons{
     private Long id;
     private String name;
-	private String	description;
-    private int numberOfSeason;
+    private SeasonDescription description;
 
     public Seasons(Builder builder){
         this.id = builder.id;
         this.name = builder.name;
         this.description = builder.description;
-        this.numberOfSeason = builder.numberOfSeason;
     }
 
     public Long getId(){
@@ -23,45 +21,35 @@ public class Seasons{
         return name;
     }
 
-    public String getDescription() {
-        return description
-    }
-
-    public int getNumberOfSeason(){
-        return numberOfSeason;
+    public SeasonDescription getDescription() {
+        return description;
     }
 
     public static class Builder{
         private Long id;
-        private String name, description;
-        //to be checked
-        private int numberOfSeason;
+        private String name;
+        private SeasonDescription description;
 
         public Builder id(Long id){
             this.id = id;
             return this;
         }
 
-        public Builder name(String streetName){
-            this.streetName = streetName;
+        public Builder name(String name){
+            this.name = name;
             return this;
         }
 
-        public Builder description(String numberOfSeason){
-            this.numberOfSeason=numberOfSeason;
+        public Builder description(SeasonDescription description){
+            this.description = description;
             return this;
         }
 
-        public Builder number(int description){
-            this.description=description;
-            return this;
-        }
 
         public Builder copy(Seasons seasons){
             this.id=seasons.id;
-            this.streetName=seasons.streetName;
-            this.numberOfSeason=seasons.numberOfSeason;
-            this.description=seasons.description;
+            this.name=seasons.name;
+            this.description = seasons.description;
 
             return this;
         }
