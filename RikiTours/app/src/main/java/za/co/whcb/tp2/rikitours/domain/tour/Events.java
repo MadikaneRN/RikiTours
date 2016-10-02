@@ -12,9 +12,9 @@ public class Events{
 	private City city;
 
     public Events(Builder builder){
-        this.id=builder.id;
-        this.name=builder.name;
-        this.description=builder.description;
+        this.id = builder.id;
+        this.name = builder.name;
+        this.description = builder.description;
         this.start=builder.start;
         this.end=builder.end;
         this.city=builder.city;
