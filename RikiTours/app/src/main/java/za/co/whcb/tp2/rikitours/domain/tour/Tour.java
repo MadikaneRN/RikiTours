@@ -17,6 +17,7 @@ public class Tour {
         this.id=builder.id;
         this.guide=builder.guide;
         this.customer=builder.customer;
+        this.itenary=builder.itenary;
     }
 
     public Long getId() {
