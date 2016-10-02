@@ -8,13 +8,10 @@ public class Office {
     private String city;
     private String location;
 
-    public Office() {
-    }
-
-    public Office(String id, String location, String city) {
-        this.id = id;
-        this.location = location;
-        this.city = city;
+    public Office(Builder builder){
+        this.id = builder.id;
+        this.city = builder.city;
+        this.location = builder.location;
     }
 
     public String getId() {
@@ -39,5 +36,31 @@ public class Office {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+    public static class Builder{
+        private String id;
+        private String city;
+        private String location;
+
+        public Builder id(String id){
+            this.id = id;
+            return this;
+        }
+
+        public Builder city(String city){
+            this.city = city;
+            return this;
+        }
+        public Builder location(String id){
+            this.location = location;
+            return this;
+        }
+        public Builder copy(Office office){
+            this.id = office.id;
+            this.city = office.city;
+            this.location = office.location;
+
+            return this;
+        }
     }
 }
