@@ -10,7 +10,7 @@ import za.co.whcb.tp2.rikitours.error.setup.general.GeneralError;
  */
 public class ApplicationError {
     //GENERAL ERRORS
-    private static final ArrayList<GeneralError> genErrors = new ArrayList<>();
+    private static  ArrayList<GeneralError> genErrors = new ArrayList<>();
 
     public static GeneralError general(int index){
         load("general");
@@ -20,11 +20,11 @@ public class ApplicationError {
     private static void load(String error) {
         if( error.equals("general")) {
             genErrors.add(new GeneralError("1", "savinggerror", "error , the app could not save " ));
-            genErrors.add(new GeneralError("2", "unknown", "error " ));
+            genErrors.add(new GeneralError("2", "unknown", "error, try again " ));
         }
 
         else if( error.equals("network")) {
-            genErrors.add(new GeneralError("1", "connecting", "error , could not connect to the server" ));
+            genErrors.add(new GeneralError("1", "connection", "error , could not connect to the server" ));
             genErrors.add(new GeneralError("2", "unknown", "connection failed " ));
         }
     }

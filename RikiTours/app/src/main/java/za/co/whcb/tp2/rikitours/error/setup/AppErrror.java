@@ -24,11 +24,12 @@ public abstract class AppErrror implements Error{
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
+    @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 
     public void setName(String name) {

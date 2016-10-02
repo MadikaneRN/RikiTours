@@ -20,6 +20,10 @@ public class AppTest extends TestCase {
     //error tests
 
     public void testGeneralError() throws Exception {
-        Display.console(ApplicationError.general(1).getMessage());
+        //Display.console(ApplicationError.general(0).getMessage());
+        assertNotNull(ApplicationError.general(0));
     }
+
+    //end error tests
+
 }

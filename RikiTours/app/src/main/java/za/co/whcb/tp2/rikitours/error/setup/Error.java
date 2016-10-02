@@ -6,4 +6,5 @@ package za.co.whcb.tp2.rikitours.error.setup;
 public interface Error {
     String getId();
     String getName();
+    String getMessage();
 }

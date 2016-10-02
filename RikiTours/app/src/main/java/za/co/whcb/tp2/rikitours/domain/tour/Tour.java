@@ -36,10 +36,10 @@ public class Tour {
     }
 
     public static class Builder{
-        String id;
-        Guide guide;
-        Customer customer;
-        Itenary itenary;
+        private Long id;
+        private Guide guide;
+        private Customer customer;
+        private Itenary itenary;
 
         public Builder id(Long id) {
             this.id = id;
