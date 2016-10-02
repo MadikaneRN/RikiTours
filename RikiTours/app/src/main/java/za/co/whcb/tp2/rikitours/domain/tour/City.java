@@ -4,12 +4,13 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  */
 public class City{
     private Long id;
-    private String name,suburb;
+    private String name;
+    private CityDescription description;
 
     public City(Builder builder){
         this.id = builder.id;
         this.name = builder.name;
-        this.suburb = builder.suburb;
+        this.description = builder.description;
     }
     public Long getId(){
         return id;
@@ -19,13 +20,14 @@ public class City{
         return name;
     }
 
-    public String getSuburb(){
-        return suburb;
+    public CityDescription getDescription() {
+        return description;
     }
 
     public static class Builder{
         private Long id;
-        private String name,suburb;
+        private String name;
+        private CityDescription description;
 
         public Builder id(Long id){
             this.id = id;
@@ -37,15 +39,16 @@ public class City{
             return this;
         }
 
-        public Builder suburb(String suburb){
-            this.suburb=suburb;
+        public Builder description(CityDescription description){
+            this.description = description;
             return this;
         }
+
 
         public Builder copy(City city){
             this.id=city.id;
             this.name=city.name;
-            this.suburb=city.suburb;
+            this.description = city.description;
 
             return this;
         }
