@@ -23,7 +23,7 @@ public class SeasonDescription {
 
     public static class Builder{
         private Long id;
-        private String name, description;
+        private String description;
         //to be checked
         private int numberOfSeason;
 
@@ -32,10 +32,6 @@ public class SeasonDescription {
             return this;
         }
 
-        public Builder name(String name){
-            this.name = name;
-            return this;
-        }
 
         public Builder description(String description){
             this.description=description;
