@@ -6,17 +6,20 @@ import za.co.whcb.tp2.rikitours.domain.customer.Customer;
  * Created by berka on 9/17/2016.
  */
 public class Rental {
-    private String id, status;
-    private Car car;
-    private Customer customer;
-    private String rentDate, returnDate, actualReturnedDate;
-    private double amountToPay, estimatedAmount;
+    private String id;
+    private String vehicle; //to be changed into a class (embedded)
+    private String rentDate, returnDate;
+    private double amountToPay;
 
-    public Rental(String id, Car car, Customer customer, String rentDate) {
+    public Rental() {
+    }
+
+    public Rental(String id, String vehicle, String rentDate, String returnDate, double amountToPay) {
         this.id = id;
-        this.car = car;
-        this.customer = customer;
+        this.vehicle = vehicle;
         this.rentDate = rentDate;
+        this.returnDate = returnDate;
+        this.amountToPay = amountToPay;
     }
 
     public String getId() {
@@ -27,28 +30,12 @@ public class Rental {
         this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public String getVehicle() {
+        return vehicle;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setVehicle(String vehicle) {
+        this.vehicle = vehicle;
     }
 
     public String getRentDate() {
@@ -67,27 +54,11 @@ public class Rental {
         this.returnDate = returnDate;
     }
 
-    public String getActualReturnedDate() {
-        return actualReturnedDate;
-    }
-
-    public void setActualReturnedDate(String actualReturnedDate) {
-        this.actualReturnedDate = actualReturnedDate;
-    }
-
     public double getAmountToPay() {
         return amountToPay;
     }
 
     public void setAmountToPay(double amountToPay) {
         this.amountToPay = amountToPay;
-    }
-
-    public double getEstimatedAmount() {
-        return estimatedAmount;
-    }
-
-    public void setEstimatedAmount(double estimatedAmount) {
-        this.estimatedAmount = estimatedAmount;
     }
 }
