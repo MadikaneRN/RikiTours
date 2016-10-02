@@ -13,8 +13,7 @@ public class AppTest extends TestCase {
 
 
     //Generated object tests code here
-
-
+    
     //calculation tests code here
 
     //error tests
