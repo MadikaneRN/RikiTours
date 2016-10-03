@@ -30,13 +30,13 @@ public class Itenary {
         this.attractions.add(attraction);
     }
     public static class Builder{
-        Long id;
-        ArrayList<Attraction> attractions;
+        private Long id;
+        private ArrayList<Attraction> attractions;
         public Builder id(Long id){
             this.id=id;
             return this;
         }
-        public Builder attraction(Attraction attractions){
+        public Builder attraction(ArrayList<Attraction> attractions){
             this.attractions = attractions;
             return this;
         }

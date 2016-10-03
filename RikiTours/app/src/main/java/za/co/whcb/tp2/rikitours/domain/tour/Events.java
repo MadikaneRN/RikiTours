@@ -7,17 +7,12 @@ import za.co.whcb.tp2.rikitours.domain.tour.City;
 public class Events{
     private Long id;
 	private String name;
-	private String description;
-	private String start;String end;
-	private City city;
+    private EventsDescription description;
 
     public Events(Builder builder){
         this.id=builder.id;
         this.name=builder.name;
-        this.description=builder.description;
-        this.start=builder.start;
-        this.end=builder.end;
-        this.city=builder.city;
+        this.description = builder.description;
     }
     public Long getId(){
         return id;
@@ -27,23 +22,14 @@ public class Events{
         return name;
     }
 
-    public String getDescription() {
-        return description
+    public EventsDescription getDescription() {
+        return description;
     }
 
-    public String getStart(){
-        return start;
-    }
-
-    public String getEnd(){
-        return end;
-    }
-
-    public City getCity(){
-        return city;
-    }
-    public static Builder{
-        Long id, String name,String description,String start,String end,City city;
+    public static class Builder{
+        private Long id;
+        private String name;
+        private EventsDescription description;
 
         public Builder id (Long id){
            this.id=id;
@@ -52,36 +38,19 @@ public class Events{
 
         public Builder name(String name){
             this.name=name;
-            return this
+            return this;
         }
 
-        public Builder description(String description){
+        public Builder description(EventsDescription description){
             this.description=description;
             return this;
         }
 
-        public Builder start(String start){
-            this.start=start;
-            return  this;
-        }
-
-        public Builder end(String end){
-            this.end=end;
-            return this;
-        }
-
-        public Builder city(City city){
-            this.city=city;
-            return this;
-        }
 
     public Builder copy(Events events){
         this.id=events.id;
-        this.name=name;
-        this.description=events.description;
-        this.start=events.start;
-        this.end=events.end;
-        this.city=events.city;
+        this.name=events.name;
+        this.description = events.description;
 
         return this;
     }
