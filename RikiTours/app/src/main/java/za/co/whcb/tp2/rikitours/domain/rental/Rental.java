@@ -1,12 +1,10 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
-import za.co.whcb.tp2.rikitours.domain.customer.Customer;
-
 /**
  * Created by berka on 9/17/2016.
  */
 public class Rental {
-    private String id;
+    private long id;
     private String vehicle; //to be changed into a class (embedded)
     private String rentDate, returnDate;
     private double amountToPay;
@@ -19,11 +17,11 @@ public class Rental {
         this.amountToPay = builder.amountToPay;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -60,12 +58,12 @@ public class Rental {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private String vehicle; //to be changed into a class (embedded)
         private String rentDate, returnDate;
         private double amountToPay;
 
-        public Builder id(String id) {
+        public Builder id(long id) {
             this.id = id;
             return this;
         }
@@ -94,5 +92,6 @@ public class Rental {
 
             return this;
         }
+        public Rental build(){return new Rental(this);}
     }
 }

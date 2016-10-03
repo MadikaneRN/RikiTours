@@ -4,7 +4,7 @@ package za.co.whcb.tp2.rikitours.domain.rental;
  * Created by kelly on 10/2/2016.
  */
 public class Office {
-    private String id;
+    private long id;
     private String city;
     private String location;
 
@@ -14,7 +14,7 @@ public class Office {
         this.location = builder.location;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -26,7 +26,7 @@ public class Office {
         return location;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -37,12 +37,13 @@ public class Office {
     public void setLocation(String location) {
         this.location = location;
     }
+
     public static class Builder{
-        private String id;
+        private long id;
         private String city;
         private String location;
 
-        public Builder id(String id){
+        public Builder id(long id){
             this.id = id;
             return this;
         }
@@ -62,5 +63,6 @@ public class Office {
 
             return this;
         }
+        public Office build(){return new Office(this);}
     }
 }
