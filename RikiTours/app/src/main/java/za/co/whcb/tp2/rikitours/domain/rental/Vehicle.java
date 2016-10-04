@@ -17,7 +17,7 @@ public class Vehicle implements Serializable{
     public Vehicle() {
     }
 
-    public long getIdNumber() {
+    public long getId() {
         return id;
     }
 
@@ -35,7 +35,7 @@ public class Vehicle implements Serializable{
 
 
     public static class Builder{
-        private Long id;
+        private long id;
         private String vehicleName;
         private String vehicleModel;
         private  String vehicleYear;
