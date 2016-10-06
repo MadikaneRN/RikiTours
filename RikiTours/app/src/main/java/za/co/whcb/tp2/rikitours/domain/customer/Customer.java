@@ -1,11 +1,13 @@
 package za.co.whcb.tp2.rikitours.domain.customer;
 
+import java.io.Serializable;
+
 import za.co.whcb.tp2.rikitours.domain.Person;
 
 /**
  * Created by berka on 9/9/2016.
  */
-public class Customer implements Person{
+public class Customer implements Serializable{
     private  String name, surname, cell, email;
 
     private int id;
@@ -57,12 +59,4 @@ public class Customer implements Person{
         this.cell = cell;
     }
 
-    @Override
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
