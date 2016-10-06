@@ -41,7 +41,7 @@ public class Car implements Serializable{
         }
       
 
-        public Builder copy(SUV value){
+        public Builder copy(Car value){
             this.id = value.id;
             this.regNumber = value.regNumber;
             return this;
