@@ -1,9 +1,11 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
+import java.io.Serializable;
+
 /**
  * Created by berka on 9/17/2016.
  */
-public class Car implements Serializable{
+public class Car implements Serializable {
     
     private long id;
     private String regNumber;
@@ -11,13 +13,13 @@ public class Car implements Serializable{
     public Car() {
     }
     
-    public String getId() {
+    public long getId() {
         return id;
     }
 
     public String getRegistrationNumber()
     {
-        return reGNumber;
+        return regNumber;
     }
     
     public Car(Builder builder) {
