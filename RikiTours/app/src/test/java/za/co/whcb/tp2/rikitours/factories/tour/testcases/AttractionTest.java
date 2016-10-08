@@ -8,7 +8,7 @@ import za.co.whcb.tp2.rikitours.domain.tour.AttractionDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
-import za.co.whcb.tp2.rikitours.domain.tour.CountryDescription;
+import za.co.whcb.tp2.rikitours.domain.tour.String;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
@@ -25,14 +25,14 @@ public class AttractionTest {
         CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
         City city = CityFactory.getCity("name", cityDescription);
 
-        CountryDescription countryDescription = CountryDescriptionFactory.getCountryDescription(city, "code", "image");
-        Country country = CountryFactory.getCountry("name", countryDescription);
+        String string = CountryDescriptionFactory.getCountryDescription(city, "code", "image");
+        Country country = CountryFactory.getCountry("name", string);
 
         AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription("one", "two", "three", "four");
         Attraction attraction = AttractionFactory.getAttracion(country, description);
 
         Assert.assertNotNull(attraction);
-        Assert.assertEquals("image", attraction.getCountry().getCountryDescription().getFlagImage());
+        Assert.assertEquals("image", attraction.getCountry().getString().getFlagImage());
 
     }
 }

@@ -10,7 +10,7 @@ import za.co.whcb.tp2.rikitours.domain.tour.AttractionDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
-import za.co.whcb.tp2.rikitours.domain.tour.CountryDescription;
+import za.co.whcb.tp2.rikitours.domain.tour.String;
 import za.co.whcb.tp2.rikitours.domain.tour.Itenary;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
@@ -31,8 +31,8 @@ public class ItenaryTest {
         CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
         City city = CityFactory.getCity("name", cityDescription);
 
-        CountryDescription countryDescription = CountryDescriptionFactory.getCountryDescription(city, "code", "image");
-        Country country = CountryFactory.getCountry("name", countryDescription);
+        String string = CountryDescriptionFactory.getCountryDescription(city, "code", "image");
+        Country country = CountryFactory.getCountry("name", string);
 
         AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription("one", "two", "three", "four");
         Attraction attraction = AttractionFactory.getAttracion(country, description);
@@ -40,8 +40,8 @@ public class ItenaryTest {
         CityDescription cityDescription2 = CityDescriptionFactory.getCityDescription("suburb", "nation");
         City city2 = CityFactory.getCity("name", cityDescription2);
 
-        CountryDescription countryDescription2 = CountryDescriptionFactory.getCountryDescription(city2, "code", "image");
-        Country country2 = CountryFactory.getCountry("name", countryDescription);
+        String string2 = CountryDescriptionFactory.getCountryDescription(city2, "code", "image");
+        Country country2 = CountryFactory.getCountry("name", string);
 
         AttractionDescription description2 = AttractionDescriptionFactory.getAttracionDescription("shaun", "two", "three", "four");
         Attraction attraction2 = AttractionFactory.getAttracion(country2, description2);
