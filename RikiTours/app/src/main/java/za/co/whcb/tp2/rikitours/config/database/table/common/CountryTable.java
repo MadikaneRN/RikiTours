@@ -10,11 +10,11 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
  */
 public class CountryTable extends Table {
 
-    private final String tableName = "attractions";
-    private final Attribute id = new Attribute("id", "number");
-    private final Attribute name = new Attribute("country_name", "Text");
-    private final Attribute description = new Attribute("description", "Text");
-    private final Attribute image = new Attribute("image", "Text");
+    private final String tableName = "countries";
+    private final Attribute id = new Attribute("id", "INTEGER");
+    private final Attribute name = new Attribute("country_name", "TEXT");
+    private final Attribute description = new Attribute("description", "TEXT");
+    private final Attribute image = new Attribute("image", "TEXT");
 
 
 

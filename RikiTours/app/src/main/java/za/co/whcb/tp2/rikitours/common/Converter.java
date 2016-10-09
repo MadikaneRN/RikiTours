@@ -29,7 +29,7 @@ public class Converter {
                     query = query + attributes.get(i).name + " " + attributes.get(i).type + ", ";
                 }
             }
-            query = query + ");";
+            query = query + ")";
         }
         return query;
     }

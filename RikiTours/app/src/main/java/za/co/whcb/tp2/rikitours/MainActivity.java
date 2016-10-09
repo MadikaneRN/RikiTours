@@ -2,6 +2,7 @@ package za.co.whcb.tp2.rikitours;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
@@ -15,14 +16,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       /* countryRepo = new CountryRepo(this);
-        Country country = CountryFactory.getCountry((long) 10.0,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
-        if (countryRepo.addCountry(country) == true) {
-            Display.toast("country added" , this);
+       countryRepo = new CountryRepo(this);
+        Country country = CountryFactory.getCountry((long) 12.0,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
+        if (countryRepo.addCountry(country)== true) {
+            Display.toast("Country added ", this);
         }
-        else {
+       else {
             Display.toast("failed to  add country" , this);
-        }*/
+        }
+
+
 
 
     }
