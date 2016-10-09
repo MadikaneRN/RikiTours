@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
@@ -35,9 +36,9 @@ public class CountryRepo extends SQLiteOpenHelper {
 
     }
 
-    public boolean addCountry(Country country ,CountryRepo countryRepo) {
+    public boolean addCountry(Country country ) {
         boolean flag = false;
-        localDatabase = countryRepo.getWritableDatabase();
+        localDatabase = this.getWritableDatabase();
         countryTable  = new CountryTable();
         contentValues = new ContentValues();
 
@@ -45,12 +46,13 @@ public class CountryRepo extends SQLiteOpenHelper {
         contentValues.put(countryTable.getAttrubeId().name, country.getId());
         contentValues.put(countryTable.getAttributeName().name, country.getName());
         contentValues.put(countryTable.getAttributeImage().name, "");
-        contentValues.put(countryTable.getAttributeDescription().name, country.getString().getId());
+        contentValues.put(countryTable.getAttributeDescription().name, country.getDescription());
 
         try {
             localDatabase.insert(countryTable.getTableName(), null, contentValues);
             flag = true;
         }catch (Exception ex) {
+            Log.d("exception ::::",ex.getMessage());
 
         }
 

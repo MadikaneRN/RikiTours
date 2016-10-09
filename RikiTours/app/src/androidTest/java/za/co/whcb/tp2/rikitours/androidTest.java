@@ -4,6 +4,7 @@ import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 import za.co.whcb.tp2.rikitours.repository.local.common.CountryRepo;
 
 /**
@@ -12,7 +13,7 @@ import za.co.whcb.tp2.rikitours.repository.local.common.CountryRepo;
 
 public class androidTest extends AndroidTestCase {
 
-    private CountryRepo countryRepo ;
+   /* private CountryRepo countryRepo ;
 
     @Override
     public void setUp() throws Exception {
@@ -29,11 +30,11 @@ public class androidTest extends AndroidTestCase {
 
     public void addCountryTest() {
 
+        Country country = CountryFactory.getCountry((long) 10.0,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
 
-        Country country = new Country();
+        assertEquals(true, countryRepo.addCountry(country));
 
-    }
-
+    }*/
 
 
 
