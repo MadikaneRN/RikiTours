@@ -4,6 +4,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class CityDescription {
+    private Long id;
     private String suburb, nation;
 
     public CityDescription(Builder builder){

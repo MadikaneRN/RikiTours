@@ -4,6 +4,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class AttractionDescription {
+    private Long id;
     private String name, city,description, image;
 
     public AttractionDescription() {
