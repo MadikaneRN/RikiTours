@@ -11,10 +11,15 @@ public class AttractionDescription {
     }
 
     public AttractionDescription(Builder builder) {
+        this.id = builder.id;
         this.name = builder.name;
         this.city = builder.city;
         this.description = builder.description;
         this.image = builder.image;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -34,7 +39,13 @@ public class AttractionDescription {
     }
 
     public static class Builder{
+        private Long id;
         private String name, city,description, image;
+
+        public Builder id( Long id){
+            this.id = id;
+            return this;
+        }
 
         public Builder name(String name){
             this.name = name;
@@ -57,6 +68,7 @@ public class AttractionDescription {
         }
 
         public Builder copy(AttractionDescription attraction){
+            this.id = attraction.id;
             this.name = attraction.name;
             this.city = attraction.city;
             this.description = attraction.description;
