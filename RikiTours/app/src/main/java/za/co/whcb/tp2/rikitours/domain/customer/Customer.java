@@ -7,7 +7,7 @@ import za.co.whcb.tp2.rikitours.domain.Person;
 /**
  * Created by berka on 9/9/2016.
  */
-public class Customer implements Serializable{
+public class Customer implements Person{
     private  String name, surname, cell, email;
 
     private int id;
@@ -45,6 +45,11 @@ public class Customer implements Serializable{
     @Override
     public String getSurname() {
         return surname;
+    }
+
+    @Override
+    public String getEmail() {
+        return null;
     }
 
     public void setSurname(String surname) {
