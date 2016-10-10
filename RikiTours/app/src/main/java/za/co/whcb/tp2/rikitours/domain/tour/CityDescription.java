@@ -8,8 +8,13 @@ public class CityDescription {
     private String suburb, nation;
 
     public CityDescription(Builder builder){
+        this.id = builder.id;
         this.suburb = builder.suburb;
         this.nation = builder.nation;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getSuburb(){
@@ -21,8 +26,13 @@ public class CityDescription {
     }
 
     public static class Builder{
+        private Long id;
         private String suburb, nation;
 
+        public Builder id(Long id){
+            this.id=id;
+            return this;
+        }
 
         public Builder suburb(String suburb){
             this.suburb=suburb;
@@ -35,6 +45,7 @@ public class CityDescription {
         }
 
         public Builder copy(CityDescription city){
+            this.id = city.id;
             this.suburb=city.suburb;
             this.nation = city.nation;
 
