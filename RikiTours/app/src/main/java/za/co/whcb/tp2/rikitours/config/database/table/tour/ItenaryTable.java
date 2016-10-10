@@ -6,16 +6,12 @@ import za.co.whcb.tp2.rikitours.config.database.table.Attribute;
 import za.co.whcb.tp2.rikitours.config.database.table.Table;
 
 /**
- * Created by Encore on 9/26/2016.
+ * Created by berka on 10/10/2016.
  */
-public class TourTable  extends Table{
-
-
-    public final String tableName = "tour";
+public class ItenaryTable extends Table {
+    public final String tableName = "itenary";
     public static Attribute id = new Attribute("id", "INTEGER");
-    public static Attribute customerId = new Attribute("customerId", "INTEGER");
-    public static Attribute guideId = new Attribute("guideId", "INTEGER");
-    public static Attribute itenaryId = new Attribute("itenaryId", "INTEGER");
+    public static Attribute groupAttractionId=new Attribute("groupAttractionId","INTEGER");
 
     @Override
     public String getTableName() {
@@ -31,16 +27,8 @@ public class TourTable  extends Table{
         return id;
     }
 
-    public Attribute getAttributeCustomerId() {
-        return customerId;
-    }
-
-    public Attribute getAttributeGuideId() {
-        return guideId;
-    }
-
-    public Attribute getAttributeItenry() {
-        return itenaryId;
+    public Attribute getAttributeGroupAttractionId() {
+        return groupAttractionId;
     }
 
     @Override
@@ -48,11 +36,8 @@ public class TourTable  extends Table{
 
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(id);
-        attributes.add(customerId);
-        attributes.add(guideId);
-        attributes.add(itenaryId);
+        attributes.add(groupAttractionId);
 
         return  attributes;
     }
-
 }

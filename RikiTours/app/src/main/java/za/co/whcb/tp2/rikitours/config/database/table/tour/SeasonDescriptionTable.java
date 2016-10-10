@@ -6,16 +6,13 @@ import za.co.whcb.tp2.rikitours.config.database.table.Attribute;
 import za.co.whcb.tp2.rikitours.config.database.table.Table;
 
 /**
- * Created by Encore on 9/26/2016.
+ * Created by berka on 10/10/2016.
  */
-public class TourTable  extends Table{
-
-
-    public final String tableName = "tour";
+public class SeasonDescriptionTable extends Table {
+    public final String tableName = "seasonDescription";
     public static Attribute id = new Attribute("id", "INTEGER");
-    public static Attribute customerId = new Attribute("customerId", "INTEGER");
-    public static Attribute guideId = new Attribute("guideId", "INTEGER");
-    public static Attribute itenaryId = new Attribute("itenaryId", "INTEGER");
+    public static Attribute description=new Attribute("description","TEXT");
+    public static Attribute numberOfSeason=new Attribute("start","INTEGER");
 
     @Override
     public String getTableName() {
@@ -31,16 +28,12 @@ public class TourTable  extends Table{
         return id;
     }
 
-    public Attribute getAttributeCustomerId() {
-        return customerId;
+    public Attribute getAttributeDescription() {
+        return description;
     }
 
-    public Attribute getAttributeGuideId() {
-        return guideId;
-    }
-
-    public Attribute getAttributeItenry() {
-        return itenaryId;
+    public Attribute getAttributeNumberOfSeasons() {
+        return numberOfSeason;
     }
 
     @Override
@@ -48,11 +41,9 @@ public class TourTable  extends Table{
 
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(id);
-        attributes.add(customerId);
-        attributes.add(guideId);
-        attributes.add(itenaryId);
+        attributes.add(description);
+        attributes.add(numberOfSeason);
 
         return  attributes;
     }
-
 }

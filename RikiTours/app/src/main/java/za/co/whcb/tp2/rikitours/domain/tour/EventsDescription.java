@@ -4,8 +4,10 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class EventsDescription {
+    private Long id;
     private String description;
-    private String start;String end;
+    private String start;
+    private String end;
     private City city;
 
     public EventsDescription(Builder builder){
@@ -14,7 +16,9 @@ public class EventsDescription {
         this.end=builder.end;
         this.city=builder.city;
     }
-
+    public Long getId() {
+        return id;
+    }
     public String getDescription() {
         return description;
     }
@@ -32,10 +36,14 @@ public class EventsDescription {
     }
 
     public static class Builder{
+        Long id;
         private String description, start, end;
         private City city;
 
-
+        public Builder id(Long id){
+            this.id=id;
+            return this;
+        }
         public Builder description(String description){
             this.description=description;
             return this;
@@ -57,6 +65,7 @@ public class EventsDescription {
         }
 
         public Builder copy(EventsDescription events){
+            this.id=events.id;
             this.description=events.description;
             this.start=events.start;
             this.end=events.end;
