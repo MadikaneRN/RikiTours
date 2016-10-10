@@ -33,9 +33,7 @@ public class Contact implements Serializable {
         return phoneNo;
     }
 	
-    public String getName() {
-        return name;
-    }
+
     public String getLandlineNo() {
         return landlineNo;
     }

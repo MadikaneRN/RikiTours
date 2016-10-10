@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
-import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.common.CountryTable;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
@@ -54,7 +53,7 @@ public class CountryRepo extends SQLiteOpenHelper {
         countryTable  = new CountryTable();
         contentValues = new ContentValues();
 
-        contentValues.put(countryTable.getAttrubeId().name, country.getId());
+        contentValues.put(countryTable.getAttributeId().name, country.getId());
         contentValues.put(countryTable.getAttributeName().name, country.getName());
         contentValues.put(countryTable.getAttributeImage().name, "");
         contentValues.put(countryTable.getAttributeDescription().name, country.getDescription());
@@ -74,7 +73,7 @@ public class CountryRepo extends SQLiteOpenHelper {
         Country countryFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(countryTable.getTableName(),
-                        countryTable.getAttrubeId(), String.valueOf(id));
+                        countryTable.getAttributeId(), String.valueOf(id));
         Cursor data = db.rawQuery(query, null);
 
         if(data.getCount() != 0) {
