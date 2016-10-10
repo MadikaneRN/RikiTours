@@ -13,6 +13,7 @@ public class Country{
         this.id=builder.id;
         this.name=builder.name;
         this.description = builder.description;
+        this.image = builder.image;
     }
 
     public Long getId(){
@@ -61,6 +62,7 @@ public class Country{
             this.id=country.id;
             this.name=country.name;
             this.description = country.description;
+            this.image = country.image;
 
             return this;
         }

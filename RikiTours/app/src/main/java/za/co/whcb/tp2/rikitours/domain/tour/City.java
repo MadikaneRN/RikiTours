@@ -2,7 +2,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
 /**
  * Created by Encore on 9/17/2016.
  */
-public class City{
+public class  City{
     private Long id;
     private String name;
     private CityDescription description;
