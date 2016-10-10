@@ -32,6 +32,8 @@ public class SeasonTable extends Table {
         return descriptionId;
     }
 
+    public Attribute getAttributeName() {return name;}
+
     @Override
     public ArrayList<Attribute> getAllAttributes() {
 

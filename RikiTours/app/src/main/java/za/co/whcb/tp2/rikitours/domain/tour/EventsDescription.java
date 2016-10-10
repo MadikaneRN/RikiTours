@@ -8,13 +8,13 @@ public class EventsDescription {
     private String description;
     private String start;
     private String end;
-    private City city;
+    private Country country;
 
     public EventsDescription(Builder builder){
         this.description=builder.description;
         this.start=builder.start;
         this.end=builder.end;
-        this.city=builder.city;
+        this.country=builder.country;
     }
     public Long getId() {
         return id;
@@ -31,14 +31,14 @@ public class EventsDescription {
         return end;
     }
 
-    public City getCity(){
-        return city;
+    public Country getCountry(){
+        return country;
     }
 
     public static class Builder{
         Long id;
         private String description, start, end;
-        private City city;
+        private Country country;
 
         public Builder id(Long id){
             this.id=id;
@@ -59,8 +59,8 @@ public class EventsDescription {
             return this;
         }
 
-        public Builder city(City city){
-            this.city=city;
+        public Builder country(Country country){
+            this.country=country;
             return this;
         }
 
@@ -69,7 +69,7 @@ public class EventsDescription {
             this.description=events.description;
             this.start=events.start;
             this.end=events.end;
-            this.city=events.city;
+            this.country=events.country;
 
             return this;
         }

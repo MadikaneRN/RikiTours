@@ -7,6 +7,7 @@ import org.junit.Test;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.rental.Rental;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
+import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 
 import static org.junit.Assert.*;
 
@@ -19,7 +20,7 @@ public class RentalFactoryTest {
     public void testGetRental() throws Exception {
 
         Vehicle vehicle = VehicleFactory.getVehicle("BMW","M3","2013");
-        Customer customer = new Customer(12,"Berka","ayowa","082333312","berka@gmail.com");
+        Customer customer = CustomerFactory.getCustomer("Berka","ayowa","082333312");
 
         Rental rental = RentalFactory.getRental(customer,vehicle,"rented","12/12/2016","01/27/2017");
 

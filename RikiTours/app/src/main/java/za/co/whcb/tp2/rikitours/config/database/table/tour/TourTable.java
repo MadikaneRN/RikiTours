@@ -39,7 +39,7 @@ public class TourTable  extends Table{
         return guideId;
     }
 
-    public Attribute getAttributeItenry() {
+    public Attribute getAttributeItenryId() {
         return itenaryId;
     }
 
