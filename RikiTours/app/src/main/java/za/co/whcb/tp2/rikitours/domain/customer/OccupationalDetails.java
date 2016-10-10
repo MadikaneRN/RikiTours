@@ -1,10 +1,12 @@
 package za.co.whcb.tp2.rikitours.domain.customer;
 
+import java.io.Serializable;
+
 /**
  * Created by Tamonne on 2016/04/16.
    Customer Work/Occupation Details.
  */
-public class OccupationDetails implements Serializable {
+public class OccupationalDetails implements Serializable {
 
     private Long id;
     private String customerId;
@@ -12,7 +14,7 @@ public class OccupationDetails implements Serializable {
     private String jobType;
     private String companyName;
 
-    public OccupationDetails(Builder buildObj){
+    public OccupationalDetails(Builder buildObj){
 
         customerId=buildObj.customerId;
         position=buildObj.position;
@@ -28,7 +30,7 @@ public class OccupationDetails implements Serializable {
         return position;
     }
 
- public String getCustomeId() {
+ public String getCustomerId() {
         return customerId;
     }
 
@@ -40,7 +42,7 @@ public class OccupationDetails implements Serializable {
         return jobType;
     }
 
-    private OccupationDetails(){}
+    private OccupationalDetails(){}
 
     public static class Builder {
         private Long id;
@@ -74,17 +76,17 @@ public class OccupationDetails implements Serializable {
             this.jobType=jobType;
             return this;
         }
-    public Builder copyObj(OccupationDetails occupationDetails){
+    public Builder copyObj(OccupationalDetails occupationalDetails){
 
-	    this.customerId=occupationDetails.getcustomerId();
-	    this.position=occupationDetails.position();
-        this.companyName=occupationDetails.getName();
-        this.jobType=occupationDetails.getSurname();
-        this.id=occupationDetails.getId();
+	    this.customerId=occupationalDetails.getCustomerId();
+	    this.position=occupationalDetails.getPosition();
+        this.companyName=occupationalDetails.getCompanyName();
+        this.jobType=occupationalDetails.getJobType();
+        this.id=occupationalDetails.getId();
         return this;
     }
-        public OccupationDetails build (){
-            return new OccupationDetails(this);
+        public OccupationalDetails build (){
+            return new OccupationalDetails(this);
         }
     }
 
