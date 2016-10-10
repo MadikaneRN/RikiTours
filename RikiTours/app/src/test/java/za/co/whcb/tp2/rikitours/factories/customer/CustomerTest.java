@@ -15,7 +15,7 @@ public class CustomerTest {
 
     private Customer cust;
 
-    @Before
+   /* @Before
     public void setUp() throws Exception {
         cust= new CustomerFactory().getCustomer("Tam","cotodie","55");
     }
@@ -34,5 +34,5 @@ public class CustomerTest {
         Assert.assertEquals(upCust.getSurname(),"johns");
         Assert.assertEquals(upCust.getCustomer_no(),"89");
 
-    }
+    }*/
 }
