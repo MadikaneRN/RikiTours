@@ -6,7 +6,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class HotelTable implements Table {
+public class HotelTable {
 
 
     public final String tableName = "hotel";
@@ -15,9 +15,4 @@ public class HotelTable implements Table {
     public static Attribute star = new Attribute("star", "Text");
     public static Attribute description = new Attribute("description", "Text");
 
-
-    @Override
-    public String getName() {
-        return tableName;
-    }
 }
