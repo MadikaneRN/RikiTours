@@ -11,6 +11,7 @@ public class Contact implements Serializable {
 	private String customerId;
     private String phoneNo;
     private String landlineNo;
+    private String name;
 
     public Contact(Builder buildObj){
 	

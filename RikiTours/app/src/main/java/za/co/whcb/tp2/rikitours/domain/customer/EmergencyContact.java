@@ -34,7 +34,7 @@ public class EmergencyContact implements Serializable {
         return name;
     }
 
- public String getCustomeId() {
+ public String getCustomerId() {
         return customerId;
     }
 public String getPhoneNo() {
@@ -100,7 +100,11 @@ public String getPhoneNo() {
         }
     public Builder copyObj(EmergencyContact emergencyContact){
 
+<<<<<<< HEAD
+	    this.customerId=emergencyContact.getCustomerId();
+=======
 	    this.customerId=emergencyContact.getCustomeId();
+>>>>>>> master
 	    this.name=emergencyContact.getName();
         this.relationship=emergencyContact.getRelationship();
         this.phoneNo=emergencyContact.getPhoneNo();
