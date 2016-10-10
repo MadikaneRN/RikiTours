@@ -1,9 +1,10 @@
 
 package za.co.whcb.tp2.rikitours.factories.customer;
-import za.co.whcb.tp2.rikitours.domain.customer.OccupationDetails;
+//import za.co.whcb.tp2.rikitours.domain.customer.OccupationDetails;
 /**
  * Created by Tamonne on 2016/04/17.
  */
+/*
 public class EmergencyContactFactory {
     public static OccupationDetails getContact(String custId, String jobType,String companyName,String position)
     {
@@ -16,4 +17,7 @@ public class EmergencyContactFactory {
         return occupationDetails;
 
     }
+
 }
+
+*/
