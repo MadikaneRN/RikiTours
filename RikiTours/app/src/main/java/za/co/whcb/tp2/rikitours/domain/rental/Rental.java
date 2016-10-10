@@ -5,7 +5,7 @@ package za.co.whcb.tp2.rikitours.domain.rental;
  */
 public class Rental {
     private long id;
-    private String vehicle; //to be changed into a class (embedded)
+    private String vehicle; //to be changed into a class (embedded)[connected to Richard's work]
     private String rentDate, returnDate;
     private double amountToPay;
 
@@ -59,7 +59,7 @@ public class Rental {
 
     public static class Builder {
         private long id;
-        private String vehicle; //to be changed into a class (embedded)
+        private String vehicle;
         private String rentDate, returnDate;
         private double amountToPay;
 
@@ -71,12 +71,12 @@ public class Rental {
             this.vehicle = vehicle;
             return this;
         }
-        public Builder rentDate(String rentaDate) {
+        public Builder rentDate(String rentDate){
             this.rentDate = rentDate;
             return this;
         }
         public Builder returnDate(String returnDate) {
-            this.rentDate = returnDate;
+            this.returnDate = returnDate;
             return this;
         }
         public Builder amountToPay(double amountToPay) {
@@ -87,8 +87,8 @@ public class Rental {
             this.id = rental.id;
             this.vehicle = rental.vehicle;
             this.rentDate = rental.rentDate;
-            this.returnDate = returnDate;
-            this.amountToPay = amountToPay;
+            this.returnDate = rental.returnDate;
+            this.amountToPay = rental.amountToPay;
 
             return this;
         }

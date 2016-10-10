@@ -14,6 +14,9 @@ import za.co.whcb.tp2.rikitours.factories.tour.testcases.EventsTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.TourTest;
+import za.co.whcb.tp2.rikitours.rental.OfficeTest;
+import za.co.whcb.tp2.rikitours.rental.RentalTest;
+import za.co.whcb.tp2.rikitours.rental.ReservationsTest;
 
 /**
  * Created by Shaun Mesias on 2016/10/02.
@@ -31,7 +34,10 @@ import za.co.whcb.tp2.rikitours.factories.tour.testcases.TourTest;
         EventsTest.class,
         SeasonDescriptionTest.class,
         SeasonTest.class,
-        TourTest.class
+        TourTest.class,
+        OfficeTest.class,
+        RentalTest.class,
+        ReservationsTest.class
 })
 
 public class TestSuite {

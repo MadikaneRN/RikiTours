@@ -1,5 +1,7 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+
 /**
  * Created by kelly on 10/2/2016.
  */
@@ -8,8 +10,9 @@ public class Reservations {
     private String pickUpDate;
     private String returnedDate;
     private  String location;
-    private String vehicleType; //to be changed into a class (embedded)
-    private String customer; //to be changed into a class (embedded)
+    private String vehicleType; //to be changed into a class (embedded)[connected to Richard's work]
+    private Customer customer;
+
 
     public Reservations(Builder builder){
         this.id = builder.id;
@@ -60,17 +63,21 @@ public class Reservations {
         this.vehicleType = vehicleType;
     }
 
-    public String getCustomer(){return customer;}
+    public Customer getCustomer() {
+        return customer;
+    }
 
-    public void setCustomer(String customer){this.customer = customer;}
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public static class Builder {
         private long id;
         private String pickUpDate;
         private String returnedDate;
         private  String location;
-        private String vehicleType; //to be changed into a class (embedded)
-        private  String customer;
+        private String vehicleType;
+        private Customer customer;
 
         public Builder id(long id) {
             this.id = id;
@@ -92,10 +99,10 @@ public class Reservations {
             this.vehicleType = vehicleType;
             return this;
         }
-        public Builder customer(String customer){
-            this.customer = customer;
-            return this;
-        }
+       public Builder customer(Customer customer){
+           this.customer = customer;
+           return  this;
+       }
 
         public Builder copy(Reservations reservations){
             this.id = reservations.id;
@@ -103,7 +110,7 @@ public class Reservations {
             this.returnedDate = reservations.returnedDate;
             this.location = reservations.location;
             this.vehicleType = reservations.vehicleType;
-
+            this.customer = reservations.customer;
             return this;
         }
         public Reservations build(){return new Reservations(this);}
