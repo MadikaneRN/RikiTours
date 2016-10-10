@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.common.CountryTable;
@@ -71,10 +73,10 @@ public class CountryRepo extends SQLiteOpenHelper {
 
     public Country findCountryById(long id) {
         Country countryFound = null;
-        SQLiteDatabase db = this.getReadableDatabase();
+        localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(countryTable.getTableName(),
                         countryTable.getAttributeId(), String.valueOf(id));
-        Cursor data = db.rawQuery(query, null);
+        Cursor data = localDatabase.rawQuery(query, null);
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
@@ -83,5 +85,67 @@ public class CountryRepo extends SQLiteOpenHelper {
             }
         }
         return countryFound;
+    }
+
+    public ArrayList<Country> getAllCountries() {
+        ArrayList<Country> countries = new ArrayList<>();
+        Country countryFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(countryTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                countryFound = CountryFactory.getCountry(data.getLong(0), data.getString(1),
+                        data.getString(2), data.getString(3));
+                countries.add(countryFound);
+            }
+        }
+
+        return countries;
+    }
+
+    public boolean updateCountry(Country updatedCountry, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(countryTable.getAttributeName().name,updatedCountry.getName());
+        contentValues.put(countryTable.getAttributeDescription().name,updatedCountry.getDescription());
+        contentValues.put(countryTable.getAttributeImage().name,updatedCountry.getImage());
+
+        try {
+
+            returned =  localDatabase.update(countryTable.getTableName(),
+                    contentValues,countryTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(countryTable.getTableName(),
+                    countryTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
     }
 }

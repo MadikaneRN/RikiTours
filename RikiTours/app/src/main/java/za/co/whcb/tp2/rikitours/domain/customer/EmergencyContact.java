@@ -100,11 +100,8 @@ public String getPhoneNo() {
         }
     public Builder copyObj(EmergencyContact emergencyContact){
 
-<<<<<<< HEAD
 	    this.customerId=emergencyContact.getCustomerId();
-=======
-	    this.customerId=emergencyContact.getCustomeId();
->>>>>>> master
+
 	    this.name=emergencyContact.getName();
         this.relationship=emergencyContact.getRelationship();
         this.phoneNo=emergencyContact.getPhoneNo();

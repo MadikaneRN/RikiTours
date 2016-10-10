@@ -11,12 +11,13 @@ import za.co.whcb.tp2.rikitours.repository.local.common.CountryRepo;
 /**
  * Created by berka on 10/10/2016.
  */
-public class AddCountryService extends Service {
+public class CountryService extends Service {
 
     private final IBinder countryBinder = new LocalBinder();
+    private CountryRepo countryRepo;
 
-    public AddCountryService(){
-
+    public CountryService(){
+        countryRepo = new CountryRepo(this);
     }
 
     @Nullable
@@ -26,13 +27,16 @@ public class AddCountryService extends Service {
     }
 
     public class LocalBinder extends Binder {
-        public AddCountryService getService() {
-            return AddCountryService.this;
+        public CountryService getService() {
+            return CountryService.this;
         }
     }
 
     public boolean add(Country country) {
-        CountryRepo countryRepo = new CountryRepo(this);
         return countryRepo.addCountry(country);
+    }
+
+    public Country findById(long id) {
+        return countryRepo.findCountryById(id);
     }
 }
