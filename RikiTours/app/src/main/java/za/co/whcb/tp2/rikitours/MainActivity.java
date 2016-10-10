@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
@@ -22,23 +24,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         countryRepo = new CountryRepo(this);
-        //Country country = countryRepo.findCountryById(21);
-        //Country country = CountryFactory.getCountry((long) 21,"angola","South Africa is a country on the southernmost", "sa.jpg");
+        Country country = countryRepo.findCountryById(26);
+        //Country country = CountryFactory.getCountry((long) 26,"canada","South Africa is a country on the southernmost", "sa.jpg");
+       // ArrayList<Country> countries = countryRepo.getAllCountries();
 
-        vehicleRepo = new VehicleRepo(this);
+       //vehicleRepo = new VehicleRepo(this);
         //Vehicle vehicle = VehicleFactory.getVehicle(21,"BMW","M3","2013");
 
-        Vehicle vehicle = vehicleRepo.findVehicleById(21);
+        //Vehicle vehicle = vehicleRepo.findVehicleById(26);
 
-        Display.toast(vehicle.getVehicleName(), this);
-        /*
-        if (vehicleRepo.addVehicle(vehicle)== true) {
-            Display.toast("Vehicle added ", this);
+        Display.toast(country.getName() , this);
+
+        /*if (countryRepo.updateCountry(country, country.getId())== true) {
+            Display.toast("Country updated ", this);
         }
         else {
-            Display.toast("failed to  add vehicle" , this);
-        }
+            Display.toast("failed to country" , this);
+        }*/
 
-        */
+
     }
 }
