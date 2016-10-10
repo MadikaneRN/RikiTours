@@ -12,16 +12,15 @@ import za.co.whcb.tp2.rikitours.domain.customer.CustomerAddress;
 public class CustermerAddressTest {
 
     private CustomerAddress address;
-    private AddressFactory dress;
-
 
 
     @Before
     public void setUp()throws Exception {
-        address = AddressFactory.getAddress("Claremont","19","415","7708");
+        address=AddressFactory.getAddress("Claremont","19","415","7708");
 
     }
     @Test
+
     public void testAddress() throws Exception {
         //Address add=address.AddInt("Claremont","19","415","7708");
         Assert.assertNotNull(address);
@@ -30,6 +29,7 @@ public class CustermerAddressTest {
         Assert.assertEquals(address.getSuburb(),"Claremont");
 
     }
+
     @Test
     public void testUpdate()throws Exception{
 
