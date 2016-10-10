@@ -33,4 +33,24 @@ public class Converter {
         }
         return query;
     }
+
+    public static String toSelectAllWhere(String tableName, Attribute targetColumn, String value)  {
+        String query = null;
+        if ( !tableName.equals("") && !targetColumn.equals("") && !value.equals("")) {
+                query = "SELECT * FROM " + tableName + " WHERE " + targetColumn.name + " = " + value;
+        }
+        return query;
+    }
+
+    public static String toSelectAll(String tableName){
+        String query = null;
+        if ( !tableName.equals("")) {
+            query = "SELECT * FROM " + tableName;
+        }
+        return query;
+    }
+
+    public static String toSelectWithJoin() {
+        return "";
+    }
 }

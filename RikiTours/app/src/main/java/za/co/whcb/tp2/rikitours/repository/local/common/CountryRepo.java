@@ -2,6 +2,7 @@ package za.co.whcb.tp2.rikitours.repository.local.common;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -11,6 +12,7 @@ import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.common.CountryTable;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 /**
  * Created by work on 10/8/2016.
@@ -52,7 +54,6 @@ public class CountryRepo extends SQLiteOpenHelper {
         countryTable  = new CountryTable();
         contentValues = new ContentValues();
 
-
         contentValues.put(countryTable.getAttrubeId().name, country.getId());
         contentValues.put(countryTable.getAttributeName().name, country.getName());
         contentValues.put(countryTable.getAttributeImage().name, "");
@@ -69,7 +70,19 @@ public class CountryRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public String test() {
-        return "works";
+    public Country findCountryById(long id) {
+        Country countryFound = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = Converter.toSelectAllWhere(countryTable.getTableName(),
+                        countryTable.getAttrubeId(), String.valueOf(id));
+        Cursor data = db.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                countryFound = CountryFactory.getCountry(data.getLong(0), data.getString(1),
+                                data.getString(2), data.getString(3));
+            }
+        }
+        return countryFound;
     }
 }

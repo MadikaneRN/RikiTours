@@ -33,6 +33,9 @@ public class CountryTest extends AndroidTestCase {
         assertEquals(true, countryRepo.addCountry(country));
     }
 
-
+    public void findCountryById() {
+        Country country = countryRepo.findCountryById((long)16.0);
+        assertEquals("south-africa", country.getName());
+    }
 
 }
