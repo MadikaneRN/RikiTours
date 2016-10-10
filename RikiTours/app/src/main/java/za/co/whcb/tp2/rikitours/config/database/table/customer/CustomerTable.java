@@ -6,7 +6,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class CustomerTable implements Table {
+public class CustomerTable  {
 
 
     private final String tableName = "customer";
@@ -15,8 +15,5 @@ public class CustomerTable implements Table {
     public static Attribute surname = new Attribute("surname", "Text");
 
 
-    @Override
-    public String getName() {
-        return tableName;
-    }
+
 }

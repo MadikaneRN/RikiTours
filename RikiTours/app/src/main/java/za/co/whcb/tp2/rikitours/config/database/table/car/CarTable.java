@@ -6,7 +6,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class CarTable implements Table {
+public class CarTable  {
 
     public final String tableName = "car";
     public static Attribute id = new Attribute("id", "number");
@@ -14,9 +14,5 @@ public class CarTable implements Table {
     public static Attribute year = new Attribute("year", "Text");
     public static Attribute color = new Attribute("color", "Text");
 
-    @Override
-    public String getName() {
-        return tableName;
-    }
 
 }
