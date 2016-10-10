@@ -9,6 +9,7 @@ public class Car implements Serializable {
     
     private long id;
     private String regNumber;
+    private String carType;
 
     public Car() {
     }
@@ -21,17 +22,23 @@ public class Car implements Serializable {
     {
         return regNumber;
     }
+
+    public String getCarType()
+    {
+        return carType;
+    }
     
     public Car(Builder builder) {
 
         this.id = builder.id;
         this.regNumber = builder.regNumber;
-        
+        this.carType = builder.carType;
     }
     
     public static class Builder{
         private long id;
         private String regNumber;
+        private String carType;
 
         public Builder id(long value){
             this.id = value;
@@ -42,10 +49,16 @@ public class Car implements Serializable {
             return this;
         }
       
+        public Builder carType(String value)
+        {
+            this.carType = value;
+            return this;
+        }
 
         public Builder copy(Car value){
             this.id = value.id;
             this.regNumber = value.regNumber;
+            this.carType = value.carType;
             return this;
         }
 
