@@ -1,93 +1,119 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
+import java.io.Serializable;
+
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 /**
  * Created by berka on 9/17/2016.
  */
-public class Rental {
-    private String id, status;
-    private Car car;
+public class Rental implements Serializable{
+    private long id;
     private Customer customer;
-    private String rentDate, returnDate, actualReturnedDate;
-    private double amountToPay, estimatedAmount;
+    private Vehicle vehicle;
 
-    public Rental(String id, Car car, Customer customer, String rentDate) {
-        this.id = id;
-        this.car = car;
-        this.customer = customer;
-        this.rentDate = rentDate;
+    private String  status;
+    private String rentDate;
+    private String returnDate;
+    // private double amountToPay, estimatedAmount;
+
+    public Rental(Builder builder){
+        this.id = builder.id;
+        this.customer = builder.customer;
+        this.vehicle = builder.vehicle;
+        this.rentDate = builder.rentDate;
+        this.returnDate = builder.returnDate;
+        this.status = builder.status;
     }
 
-    public String getId() {
+
+    public long getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
     }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public String getRentDate() {
-        return rentDate;
-    }
-
-    public void setRentDate(String rentDate) {
-        this.rentDate = rentDate;
+    public String getStatus() {
+        return status;
     }
 
     public String getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate) {
-        this.returnDate = returnDate;
+    public String getRentDate() {
+        return rentDate;
     }
 
-    public String getActualReturnedDate() {
-        return actualReturnedDate;
+
+    public static class Builder
+    {
+        private long id;
+        private Customer customer;
+        private Vehicle vehicle;
+
+        private String  status;
+        private String rentDate;
+        private String returnDate;
+
+
+        public Builder id(long value){
+            this.id = value;
+            return this;
+        }
+
+        public Builder customer(Customer value){
+            this.customer = value;
+            return this;
+        }
+
+
+        public Builder vehicle(Vehicle value){
+            this.vehicle = value;
+            return this;
+        }
+
+
+        public Builder status(String value){
+            this.status = value;
+            return this;
+        }
+
+        public Builder rentDate(String value){
+            this.rentDate = value;
+            return this;
+        }
+
+
+        public Builder returnDate(String value){
+            this.returnDate = value;
+            return this;
+        }
+
+
+        public Builder copy(Rental value){
+            this.id = value.id;
+            this.status = value.status;
+            this.vehicle = value.vehicle;
+            this.customer = value.customer;
+            this.returnDate = value.returnDate;
+            this.rentDate = value.rentDate;
+            return this;
+        }
+
+        public Rental build()
+        {
+            return new Rental(this);
+        }
+
     }
 
-    public void setActualReturnedDate(String actualReturnedDate) {
-        this.actualReturnedDate = actualReturnedDate;
-    }
 
-    public double getAmountToPay() {
-        return amountToPay;
-    }
 
-    public void setAmountToPay(double amountToPay) {
-        this.amountToPay = amountToPay;
-    }
-
-    public double getEstimatedAmount() {
-        return estimatedAmount;
-    }
-
-    public void setEstimatedAmount(double estimatedAmount) {
-        this.estimatedAmount = estimatedAmount;
-    }
 }

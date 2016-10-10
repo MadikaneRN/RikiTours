@@ -6,12 +6,13 @@ import za.co.whcb.tp2.rikitours.domain.tour.City;
 public class Country{
     private Long id;
 	private String name;
-    private CountryDescription countryDescription;
+    private String description;
+    private String image;
 
     public Country(Builder builder){
         this.id=builder.id;
         this.name=builder.name;
-        this.countryDescription = builder.countryDescription;
+        this.description = builder.description;
     }
 
     public Long getId(){
@@ -22,14 +23,19 @@ public class Country{
         return name;
     }
 
-    public CountryDescription getCountryDescription() {
-        return countryDescription;
+    public String getImage(){
+        return image;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public static class Builder{
         private Long id;
         private String name;
-        private CountryDescription countryDescription;
+        private String description;
+        private String image;
 
         public Builder id(Long id){
             this.id=id;
@@ -41,15 +47,20 @@ public class Country{
             return  this;
         }
 
-        public Builder countryDescription(CountryDescription countryDescription){
-            this.countryDescription=countryDescription;
+        public Builder image(String image){
+            this.image = image;
+            return  this;
+        }
+
+        public Builder description(String description){
+            this.description=description;
             return  this;
         }
 
         public Builder copy(Country country){
             this.id=country.id;
             this.name=country.name;
-            this.countryDescription = country.countryDescription;
+            this.description = country.description;
 
             return this;
         }

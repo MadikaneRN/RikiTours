@@ -6,7 +6,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class TourGuideTable implements Table {
+public class TourGuideTable {
 
     public final String tableName = "TourGuide";
     public static Attribute id = new Attribute("id", "number");
@@ -14,9 +14,6 @@ public class TourGuideTable implements Table {
     public static Attribute cell = new Attribute("cell", "Text");
     public static Attribute email = new Attribute("email", "Text");
 
-    @Override
-    public String getName() {
-        return tableName;
-    }
+
 
 }
