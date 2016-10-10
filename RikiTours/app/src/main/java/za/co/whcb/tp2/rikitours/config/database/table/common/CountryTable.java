@@ -28,7 +28,7 @@ public class CountryTable extends Table {
         return id;
     }
 
-    public Attribute getAttrubeId() {
+    public Attribute getAttributeId() {
         return id;
     }
 

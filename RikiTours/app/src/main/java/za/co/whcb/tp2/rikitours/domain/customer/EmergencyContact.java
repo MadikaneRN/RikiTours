@@ -1,5 +1,7 @@
 package za.co.whcb.tp2.rikitours.domain.customer;
 
+import java.io.Serializable;
+
 /**
  * Created by Tamonne on 2016/04/16.
    Customer emergency Contact.
@@ -98,11 +100,11 @@ public String getPhoneNo() {
         }
     public Builder copyObj(EmergencyContact emergencyContact){
 
-	    this.customerId=emergencyContact.getcustomerId();
-	    this.name=emergencyContact.name();
+	    this.customerId=emergencyContact.getCustomeId();
+	    this.name=emergencyContact.getName();
         this.relationship=emergencyContact.getRelationship();
-        this.phoneNo=contact.getPhoneNo();
-		this.landlineNo=contact.getLandlineNo();
+        this.phoneNo=emergencyContact.getPhoneNo();
+		this.landlineNo=emergencyContact.getLandlineNo();
 		this.surname=emergencyContact.getSurname();
         this.id=emergencyContact.getId();
         return this;

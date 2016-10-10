@@ -1,5 +1,7 @@
 package za.co.whcb.tp2.rikitours.domain.customer;
 
+import java.io.Serializable;
+
 /**
  * Created by Tamonne on 2016/04/16.
  */
@@ -30,9 +32,7 @@ public class Contact implements Serializable {
         return phoneNo;
     }
 	
-    public String getName() {
-        return name;
-    }
+
     public String getLandlineNo() {
         return landlineNo;
     }
@@ -68,7 +68,7 @@ public class Contact implements Serializable {
     public Builder copyObj(Contact contact){
 
         this.phoneNo=contact.getPhoneNo();
-		 this.customerId=emergencyContact.getcustomerId();
+		 this.customerId=contact.getCustomeId();
         this.landlineNo=contact.getLandlineNo();
         this.id=contact.getId();
         return this;

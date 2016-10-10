@@ -1,19 +1,21 @@
 package za.co.whcb.tp2.rikitours.domain.customer;
 
+import java.io.Serializable;
+
 /**
  * Created by Tamonne on 2016/04/16.
  */
 public class MaritalStatus implements Serializable {
 
     private Long id;
-    private String customerId;
+    private String  customerId;
     private String single;
-    private string married;
+    private String married;
     private String divorced;
 
 
     public MaritalStatus(Builder buildObj){
-	customerId=buildObj.customerId;
+	    customerId=buildObj.customerId;
         single=buildObj.single;
         married=buildObj.married;
         divorced=buildObj.divorced;
@@ -32,7 +34,7 @@ public class MaritalStatus implements Serializable {
         return married;
     }
 	
-	public String getCustomeId() {
+	public String getCustomerId() {
         return customerId;
     }
 
@@ -47,7 +49,7 @@ public class MaritalStatus implements Serializable {
         private Long id;
      private String customerId;
         private String single;
-        private string married;
+        private String married;
         private String divorced;
 
  public Builder customerId (String customerId){
@@ -76,10 +78,10 @@ public class MaritalStatus implements Serializable {
             return this;
         }
     public Builder copyObj(MaritalStatus maritalStatus){
-        this.customerId=emergencyContact.getcustomerId();
+        this.customerId=maritalStatus.getCustomerId();
         this.married=maritalStatus.getIsMarried();
         this.divorced=maritalStatus.getIsDivorced();
-        this.single=maritalStatus.getisSingle();
+        this.single=maritalStatus.getIsSingle();
         this.id=maritalStatus.getId();
         return this;
     }
