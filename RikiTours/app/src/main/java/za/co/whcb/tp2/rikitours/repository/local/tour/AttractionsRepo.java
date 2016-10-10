@@ -53,8 +53,8 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         contentValues = new ContentValues();
 
         contentValues.put(attractionTable.getAttributeId().name, attraction.getId());
-        contentValues.put(attractionTable.getCountryId().name, attraction.getCountry().getId());
-        contentValues.put(attractionTable.getAttractionDescriptionId().name, attraction.getAttractionDescription().getId());
+        contentValues.put(attractionTable.getCountryId().name, attraction.getCountryId());
+        contentValues.put(attractionTable.getAttractionDescriptionId().name, attraction.getAttractionDescriptionId());
 
         try {
             returned = localDatabase.insert(attractionTable.getTableName(), null, contentValues);
@@ -76,7 +76,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-               /* attractionFound = AttractionFactory.getAttracion(data.getLong(0), data.getLong(1), data.getLong(2));*/
+                attractionFound = AttractionFactory.getAttracion(data.getLong(0), data.getLong(1), data.getLong(2));
             }
         }
         return attractionFound;
