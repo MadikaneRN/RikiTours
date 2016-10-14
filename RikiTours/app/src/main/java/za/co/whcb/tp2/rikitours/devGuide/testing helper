@@ -1,0 +1,19 @@
+
+       // countryRepo = new CountryRepo(this);
+       // Country country = countryRepo.findCountryById(26);
+        //Country country = CountryFactory.getCountry((long) 26,"canada","South Africa is a country on the southernmost", "sa.jpg");
+       // ArrayList<Country> countries = countryRepo.getAllCountries();
+
+       //vehicleRepo = new VehicleRepo(this);
+        //Vehicle vehicle = VehicleFactory.getVehicle(21,"BMW","M3","2013");
+
+        //Vehicle vehicle = vehicleRepo.findVehicleById(26);
+
+       // Display.toast(country.getName() , this);
+
+        /*if (countryRepo.updateCountry(country, country.getId())== true) {
+            Display.toast("Country updated ", this);
+        }
+        else {
+            Display.toast("failed to country" , this);
+        }*/

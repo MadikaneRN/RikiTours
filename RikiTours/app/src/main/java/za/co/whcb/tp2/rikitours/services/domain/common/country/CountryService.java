@@ -39,4 +39,12 @@ public class CountryService extends Service {
     public Country findById(long id) {
         return countryRepo.findCountryById(id);
     }
+
+    public boolean update(Country updateCounty, long id) {
+        return countryRepo.updateCountry(updateCounty,id);
+    }
+
+    public boolean deleteById(long id) {
+        return countryRepo.deleteById(id);
+    }
 }
