@@ -17,3 +17,230 @@
         else {
             Display.toast("failed to country" , this);
         }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        package za.co.whcb.tp2.rikitours;
+
+        import android.content.ComponentName;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.content.ServiceConnection;
+        import android.os.IBinder;
+        import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.View;
+
+        import java.util.ArrayList;
+
+        import za.co.whcb.tp2.rikitours.common.Display;
+        import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
+        import za.co.whcb.tp2.rikitours.domain.tour.Country;
+        import za.co.whcb.tp2.rikitours.factories.rental.VehicleFactory;
+        import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
+        import za.co.whcb.tp2.rikitours.repository.local.common.CountryRepo;
+        import za.co.whcb.tp2.rikitours.repository.local.rental.VehicleRepo;
+        import za.co.whcb.tp2.rikitours.services.domain.common.country.CountryService;
+        import za.co.whcb.tp2.rikitours.services.domain.common.country.CountryService.LocalBinder;
+
+        public class MainActivity extends AppCompatActivity {
+            private CountryRepo countryRepo ;
+            private VehicleRepo vehicleRepo;
+
+             CountryService countryService;
+             boolean isBound = false;
+
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                Intent i = new Intent(this.getApplicationContext(), CountryService.class);
+                bindService(i,serviceConnection, Context.BIND_AUTO_CREATE);
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
+
+
+            }
+
+            public ServiceConnection serviceConnection = new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName name, IBinder service) {
+                    LocalBinder binder = (LocalBinder) service;
+                    countryService = binder.getService();
+                    isBound = true;
+
+                }
+
+                @Override
+                public void onServiceDisconnected(ComponentName name) {
+                    isBound = false;
+
+                }
+            };
+
+            @Override
+            protected  void onStop()
+            {
+                super.onStop();
+
+                if(isBound)
+                {
+                    unbindService(serviceConnection);
+                    isBound=false;
+                }
+
+            }
+
+
+
+            public void addCountry(View view) {
+                //Display.toast("clicked ", this);
+
+               // Country country = CountryFactory.getCountry((long) 28,"canada","South Africa is a country on the southernmost", "sa.jpg");
+
+
+              Display.toast(countryService.test(), this);
+
+
+                if(isBound) {
+                    Display.toast(countryService.test(), this);
+                }
+
+                else {
+                    Display.toast("could not bound ", this);
+                }
+
+                //boolean t = countryService.add(country);
+
+               /* if(countryService.add(country) == true){
+
+                    Display.toast("Country added ", this);
+                }
+                else {
+                    Display.toast("failed to add" , this);
+                }*/
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package za.co.whcb.tp2.rikitours.services.domain.common.country;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.IBinder;
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import za.co.whcb.tp2.rikitours.repository.local.common.CountryRepo;
+
+/**
+ * Created by berka on 10/10/2016.
+ */
+public class CountryService extends Service {
+
+    private final IBinder countryBinder = new LocalBinder();
+   // private CountryRepo countryRepo;
+
+    public CountryService(){
+        //countryRepo = new CountryRepo(this);
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return countryBinder;
+    }
+
+    public String test() {
+        return "works";
+    }
+
+    public class LocalBinder extends Binder {
+        public CountryService getService() {
+            return CountryService.this;
+        }
+    }
+
+   /* public boolean add(Country country) {
+        return countryRepo.addCountry(country);
+    }
+
+    public Country findById(long id) {
+        return countryRepo.findCountryById(id);
+    }
+
+    public boolean update(Country updateCounty, long id) {
+        return countryRepo.updateCountry(updateCounty,id);
+    }
+
+    public boolean deleteById(long id) {
+        return countryRepo.deleteById(id);
+    }*/
+
+
+}
