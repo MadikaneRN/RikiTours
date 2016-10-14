@@ -7,6 +7,101 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="za.co.whcb.tp2.rikitours.LoginActivity">
+    tools:context="za.co.whcb.tp2.rikitours.LoginActivity"
+    android:background="@drawable/bg_second">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
+        android:textAlignment="textEnd" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:id="@+id/imageView2"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="370dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" >
+
+            <EditText
+                style="@style/edit_text_default"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/editText8"
+                android:hint="Email Address"
+                android:background="@drawable/text_box_sharp" />
+
+            <EditText
+                style="@style/edit_text_default"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editText9"
+                android:hint="Password"
+                android:background="@drawable/text_box_sharp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Login with your RikiTours account or create one"
+                android:id="@+id/textView4"
+                android:textAlignment="center"
+                android:textColor="@color/bright_foreground_disabled_material_dark"
+                android:paddingBottom="2dp"
+                android:paddingTop="10dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="if you don&apos;t have"
+                android:id="@+id/textView5"
+                android:textAlignment="center"
+                android:textColor="@color/bright_foreground_disabled_material_dark"
+                android:paddingBottom="6dp"
+                android:paddingTop="2dp" />
+
+            <Button
+                style="@style/button_default"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:id="@+id/button2"
+                android:background="@drawable/button_sharp"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="or"
+                android:id="@+id/textView3"
+                android:textAlignment="center"
+                android:textColor="@color/bright_foreground_disabled_material_dark"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp"
+                android:textSize="20dp" />
+
+            <Button
+                style="@style/button_default"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="REGISTER"
+                android:id="@+id/button3"
+                android:background="@drawable/button_sharp"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
