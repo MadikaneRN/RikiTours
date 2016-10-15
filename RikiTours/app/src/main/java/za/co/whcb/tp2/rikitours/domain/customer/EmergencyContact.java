@@ -100,9 +100,12 @@ public String getPhoneNo() {
         }
     public Builder copyObj(EmergencyContact emergencyContact){
 
+<<<<<<< HEAD
 
 	    this.customerId=emergencyContact.getCustomerId();
 
+=======
+>>>>>>> origin/CL-RK-11
 	    this.customerId=emergencyContact.getCustomerId();
 
 	    this.name=emergencyContact.getName();

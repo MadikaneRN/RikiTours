@@ -9,7 +9,7 @@ import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class CustomerFactory {
 
-    public static Customer getCustomer(String name, String surname, String customer_no)
+    /*public static Customer getCustomer(String name, String surname, String customer_no)
     {
         Customer customer = new Customer.Builder()
                 .name(name)
@@ -18,6 +18,6 @@ public class CustomerFactory {
                 .build();
         return customer;
 
-    }
+    }*/
 }
 

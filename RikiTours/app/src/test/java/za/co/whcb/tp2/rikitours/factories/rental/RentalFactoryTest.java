@@ -18,7 +18,11 @@ public class RentalFactoryTest {
     @Test
     public void testGetRental() throws Exception {
 
+<<<<<<< HEAD
         /*Vehicle vehicle = VehicleFactory.getVehicle(2,"BMW","M3","2013");
+=======
+      /*  Vehicle vehicle = VehicleFactory.getVehicle("BMW","M3","2013");
+>>>>>>> origin/CL-RK-11
         Customer customer = new Customer(12,"Berka","ayowa","082333312","berka@gmail.com");
 
         Rental rental = RentalFactory.getRental(customer,vehicle,"rented","12/12/2016","01/27/2017");
@@ -27,5 +31,5 @@ public class RentalFactoryTest {
 
 
 
-    }
+    */}
 }
