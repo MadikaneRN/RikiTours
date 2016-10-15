@@ -4,8 +4,9 @@ package za.co.whcb.tp2.rikitours.factories.customer;
 /**
  * Created by Tamonne on 2016/04/17.
  */
-/*public class EmergencyContactFactory {
-   /* public static OccupationDetails getContact(String custId, String jobType,String companyName,String position)
+/*
+public class EmergencyContactFactory {
+    public static OccupationDetails getContact(String custId, String jobType,String companyName,String position)
     {
         OccupationDetails occupationDetails = new OccupationDetails.Builder()
                 .customerId(custId)
@@ -16,4 +17,7 @@ package za.co.whcb.tp2.rikitours.factories.customer;
         return occupationDetails;
 
     }
-}*/
+
+}
+
+*/

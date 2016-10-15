@@ -19,10 +19,14 @@ public class RentalFactoryTest {
     public void testGetRental() throws Exception {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /*Vehicle vehicle = VehicleFactory.getVehicle(2,"BMW","M3","2013");
 =======
       /*  Vehicle vehicle = VehicleFactory.getVehicle("BMW","M3","2013");
 >>>>>>> origin/CL-RK-11
+=======
+        Vehicle vehicle = VehicleFactory.getVehicle(2,"BMW","M3","2013");
+>>>>>>> c120e1c1ea49ad4f2f34812b40729129910c127a
         Customer customer = new Customer(12,"Berka","ayowa","082333312","berka@gmail.com");
 
         Rental rental = RentalFactory.getRental(customer,vehicle,"rented","12/12/2016","01/27/2017");

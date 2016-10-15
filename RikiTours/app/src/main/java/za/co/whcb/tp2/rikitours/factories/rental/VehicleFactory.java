@@ -8,9 +8,10 @@ import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 public class VehicleFactory {
 
 
-    public static Vehicle getVehicle(String vehicleName, String vehicleModel, String vehicleYear)
+    public static Vehicle getVehicle(long id,String vehicleName, String vehicleModel, String vehicleYear)
     {
         return new Vehicle.Builder()
+                .id(id)
                 .vehicleName(vehicleName)
                 .vehicleModel(vehicleModel)
                 .vehicleYear(vehicleYear)
