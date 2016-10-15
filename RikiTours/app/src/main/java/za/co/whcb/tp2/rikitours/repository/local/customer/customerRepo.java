@@ -49,7 +49,7 @@ public class customerRepo  extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addCountry(Customer customer) {
+    public boolean addCustomer(Customer customer) {
         long returned;
         localDatabase = this.getWritableDatabase();
         customerTable = new CustomerTable();

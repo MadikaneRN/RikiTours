@@ -18,7 +18,7 @@ import za.co.whcb.tp2.rikitours.factories.customer.EmergencyContactFactory;
 /**
  * Created by Game330 on 2016-10-15.
  */
-public class EmegencyContactRepo extends SQLiteOpenHelper {
+public class EmergencyContactRepo extends SQLiteOpenHelper {
 
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
@@ -49,7 +49,7 @@ public class EmegencyContactRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addCustomerAddress(EmergencyContact emergencyContact) {
+    public boolean addEmergencyContact(EmergencyContact emergencyContact) {
         long returned ;
         localDatabase = this.getWritableDatabase();
         emergencyContactTable  = new EmergencyContactTable();
@@ -73,7 +73,7 @@ public class EmegencyContactRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public EmergencyContact findAddressById(long id) {
+    public EmergencyContact findEmergencyContactById(long id) {
         EmergencyContact contactFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(emergencyContactTable.getTableName(),
@@ -89,8 +89,8 @@ public class EmegencyContactRepo extends SQLiteOpenHelper {
         return contactFound;
     }
 
-    public ArrayList<EmergencyContact> getAllCountries() {
-        ArrayList<EmergencyContact> contacts = new ArrayList<>();
+    public ArrayList<EmergencyContact> getAllEmergencyContacts() {
+        ArrayList<EmergencyContact> emergencyContacts = new ArrayList<>();
         EmergencyContact contactFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAll(emergencyContactTable.getTableName());
@@ -101,14 +101,14 @@ public class EmegencyContactRepo extends SQLiteOpenHelper {
             while (data.moveToNext()) {
                 contactFound = EmergencyContactFactory.getContact(data.getString(0), data.getString(1),
                         data.getString(2), data.getString(3),data.getString(3),data.getString(4));
-                contacts.add(contactFound);
+                emergencyContacts.add(contactFound);
             }
         }
 
-        return contacts;
+        return emergencyContacts;
     }
 
-    public boolean updateAddress(EmergencyContact updatedEmergencyContact, long id) {
+    public boolean updateEmergencyContact(EmergencyContact updatedEmergencyContact, long id) {
 
         long returned ;
         localDatabase = this.getWritableDatabase();

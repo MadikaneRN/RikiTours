@@ -49,7 +49,7 @@ public class ContactRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addCountry(Contact contact ) {
+    public boolean addContact(Contact contact ) {
         long returned ;
         localDatabase = this.getWritableDatabase();
         contactTable  = new ContactTable();
@@ -87,7 +87,7 @@ public class ContactRepo extends SQLiteOpenHelper {
         return contactFound;
     }
 
-    public ArrayList<Contact> getAllCountries() {
+    public ArrayList<Contact> getAllContacts() {
         ArrayList<Contact> contacts= new ArrayList<>();
         Contact contactFound = null;
         localDatabase = this.getReadableDatabase();

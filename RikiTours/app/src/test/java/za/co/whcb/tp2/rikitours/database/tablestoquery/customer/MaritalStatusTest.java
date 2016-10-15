@@ -11,8 +11,8 @@ import za.co.whcb.tp2.rikitours.config.database.table.customer.MaritalStatusTabl
 public class MaritalStatusTest {
     @Test
     public void testMariatalStatusTable() throws Exception {
-        MaritalStatusTable meritalStatusTable = new MaritalStatusTable();
-        String query = Converter.toCreateTableQuery(meritalStatusTable.getTableName(),meritalStatusTable.getAllAttributes());
+        MaritalStatusTable maritalStatusTable = new MaritalStatusTable();
+        String query = Converter.toCreateTableQuery(maritalStatusTable.getTableName(),maritalStatusTable.getAllAttributes());
         System.out.println(query);
 
     }
