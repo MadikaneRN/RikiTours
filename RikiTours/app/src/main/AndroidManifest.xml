@@ -25,7 +25,8 @@
 
         <activity android:name=".MainActivity" />
         <activity android:name=".LayoutListingActivity" />
-        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".ViewActivity"></activity>
     </application>
 
 </manifest>
