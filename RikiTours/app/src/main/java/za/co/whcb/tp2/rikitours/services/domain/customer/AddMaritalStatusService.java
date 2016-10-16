@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.services.domain.customer.MaritalStatus;
+ package za.co.whcb.tp2.rikitours.services.domain.customer;
 
 import android.app.Service;
 import android.content.Intent;
@@ -8,7 +8,8 @@ import android.support.annotation.Nullable;
 import za.co.whcb.tp2.rikitours.domain.customer.MaritalStatus;
 import za.co.whcb.tp2.rikitours.repository.local.customer.MaritalStatusRepo;
 
-/**
+
+ /**
  * Created by Tamonne on 10/10/2016.
  */
 public class AddMaritalStatusService extends Service {
@@ -33,7 +34,7 @@ public class AddMaritalStatusService extends Service {
 
     public boolean add(MaritalStatus maritalStatus) {
         MaritalStatusRepo maritalStatusRepo = new MaritalStatusRepo(this);
-        return MaritalStatusRepo.addMaritalStatus(maritalStatus);
+        return maritalStatusRepo.addMaritulStatus(maritalStatus);
     }
 }
 

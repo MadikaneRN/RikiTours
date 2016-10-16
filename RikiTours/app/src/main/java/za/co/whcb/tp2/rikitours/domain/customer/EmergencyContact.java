@@ -103,12 +103,7 @@ public String getPhoneNo() {
 
 
 	    this.customerId=emergencyContact.getCustomerId();
-
-	    this.customerId=emergencyContact.getCustomerId();
-
-	    this.customerId=emergencyContact.getCustomerId();
-
-	    this.name=emergencyContact.getName();
+        this.name=emergencyContact.getName();
         this.relationship=emergencyContact.getRelationship();
         this.phoneNo=emergencyContact.getPhoneNo();
 		this.landlineNo=emergencyContact.getLandlineNo();

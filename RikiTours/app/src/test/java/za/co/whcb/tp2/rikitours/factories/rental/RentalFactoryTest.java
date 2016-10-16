@@ -18,8 +18,7 @@ public class RentalFactoryTest {
     @Test
     public void testGetRental() throws Exception {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         /*Vehicle vehicle = VehicleFactory.getVehicle(2,"BMW","M3","2013");
 =======
       /*  Vehicle vehicle = VehicleFactory.getVehicle("BMW","M3","2013");
@@ -33,7 +32,5 @@ public class RentalFactoryTest {
 
         Assert.assertEquals(rental.getCustomer().getName(),"Berka"); */
 
-
-
-    */}
+    }
 }

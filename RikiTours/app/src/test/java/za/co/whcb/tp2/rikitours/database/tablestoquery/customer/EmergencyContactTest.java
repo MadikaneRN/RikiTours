@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.table.customer.EmergencyContactTable;
+import za.co.whcb.tp2.rikitours.domain.customer.EmergencyContact;
+
 /**
  * Created by Tamonne on 2016-10-10.
  */
@@ -12,8 +14,8 @@ import za.co.whcb.tp2.rikitours.config.database.table.customer.EmergencyContactT
 public class EmergencyContactTest {
     @Test
     public void testEmergencyContactTable() throws Exception {
-        EmergencyContact emergencyContact = new EmergencyContact();
-        String query = Converter.toCreateTableQuery(emergencyContact.getTableName(),emergencyContactTable.getAllAttributes());
+        EmergencyContactTable emergencyContactTable = new EmergencyContactTable();
+        String query = Converter.toCreateTableQuery(emergencyContactTable.getTableName(),emergencyContactTable.getAllAttributes());
         System.out.println(query);
 
     }

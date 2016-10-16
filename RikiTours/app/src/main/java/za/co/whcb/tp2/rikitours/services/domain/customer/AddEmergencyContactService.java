@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.services.domain.customer.EmergencyContact;
+package za.co.whcb.tp2.rikitours.services.domain.customer;
 
 import android.app.Service;
 import android.content.Intent;
