@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.rental;
+package za.co.whcb.tp2.rikitours.factories.rental;
 
 import org.junit.Assert;
 import org.junit.Before;

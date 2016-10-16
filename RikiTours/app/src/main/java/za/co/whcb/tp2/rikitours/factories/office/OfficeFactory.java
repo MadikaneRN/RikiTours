@@ -1,6 +1,6 @@
-package za.co.whcb.tp2.rikitours.factories.rental;
+package za.co.whcb.tp2.rikitours.factories.office;
 
-import za.co.whcb.tp2.rikitours.domain.rental.Office;
+import za.co.whcb.tp2.rikitours.domain.office.Office;
 
 /**
  * Created by kelly on 10/2/2016.

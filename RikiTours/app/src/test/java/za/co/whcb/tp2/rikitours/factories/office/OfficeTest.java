@@ -1,12 +1,11 @@
-package za.co.whcb.tp2.rikitours.rental;
+package za.co.whcb.tp2.rikitours.factories.office;
 
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import za.co.whcb.tp2.rikitours.domain.rental.Office;
-import za.co.whcb.tp2.rikitours.factories.rental.OfficeFactory;
+import za.co.whcb.tp2.rikitours.domain.office.Office;
 
 
 /**

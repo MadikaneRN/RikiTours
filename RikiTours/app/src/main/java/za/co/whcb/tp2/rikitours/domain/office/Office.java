@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.domain.rental;
+package za.co.whcb.tp2.rikitours.domain.office;
 
 import java.io.Serializable;
 

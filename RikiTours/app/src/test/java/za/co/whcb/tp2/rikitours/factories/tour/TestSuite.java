@@ -13,9 +13,9 @@ import za.co.whcb.tp2.rikitours.factories.tour.testcases.EventsTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.TourTest;
-import za.co.whcb.tp2.rikitours.rental.OfficeTest;
-import za.co.whcb.tp2.rikitours.rental.RentalTest;
-import za.co.whcb.tp2.rikitours.rental.ReservationsTest;
+import za.co.whcb.tp2.rikitours.factories.office.OfficeTest;
+import za.co.whcb.tp2.rikitours.factories.rental.RentalTest;
+import za.co.whcb.tp2.rikitours.factories.rental.ReservationsTest;
 
 /**
  * Created by Shaun Mesias on 2016/10/02.
