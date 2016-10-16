@@ -1,4 +1,82 @@
 
+
+
+
+
+
+
+      package com.example.berka.listview;
+
+      import android.app.Activity;
+      import android.view.LayoutInflater;
+      import android.view.View;
+      import android.view.ViewGroup;
+      import android.widget.ArrayAdapter;
+      import android.widget.ImageView;
+      import android.widget.TextView;
+
+      /**
+       * Created by berka on 10/10/2016.
+       */
+      public class MyAdapter extends ArrayAdapter<String>{
+
+          private final Activity context;
+          private final String[] proNames;
+          private final Integer[] imgNames;
+
+          public MyAdapter(Activity context, String[] proNames, Integer[] imgNames) {
+              super(context,R.layout.activity_list,proNames);
+              this.context = context;
+              this.proNames = proNames;
+              this.imgNames = imgNames;
+          }
+
+          @Override
+          public View getView(int position, View convertView, ViewGroup parent) {
+              LayoutInflater inflater = context.getLayoutInflater();
+
+              View rowView = inflater.inflate(R.layout.activity_list,null,true);
+
+              TextView txtName = (TextView) rowView.findViewById(R.id.txtName);
+              ImageView img = (ImageView) rowView.findViewById(R.id.imageView1);
+
+              txtName.setText(proNames[position]);
+              img.setImageResource(imgNames[position]);
+
+              return rowView;
+          }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
        // countryRepo = new CountryRepo(this);
        // Country country = countryRepo.findCountryById(26);
         //Country country = CountryFactory.getCountry((long) 26,"canada","South Africa is a country on the southernmost", "sa.jpg");

@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="za.co.whcb.tp2.rikitours.LoginActivity"
-    android:background="@drawable/bg_second">
+    android:background="#362720">
 
     <LinearLayout
         android:orientation="vertical"
@@ -110,6 +110,26 @@
                 android:textColor="#FFFFFF"
                 android:onClick="register"
                 android:nestedScrollingEnabled="true" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Terms And Conditions"
+                android:id="@+id/textView6"
+                android:textAlignment="center"
+                android:textColor="@color/abc_secondary_text_material_dark"
+                android:paddingBottom="2dp"
+                android:paddingTop="10dp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Visite Our Website"
+                android:id="@+id/textView7"
+                android:textAlignment="center"
+                android:textColor="@color/abc_secondary_text_material_dark"
+                android:paddingBottom="2dp"
+                android:paddingTop="5dp" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

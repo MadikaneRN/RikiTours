@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final String url = "http://tp2.whcb.co.za/customer.php";
+    private String request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.logo_1);
+
     }
 
     public void register(View view) {
