@@ -24,8 +24,8 @@
             android:exported="true" />
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".ListingActivity" />
-        <activity android:name=".TestListActivity"></activity>
+        <activity android:name=".LayoutListingActivity" />
+        <activity android:name=".ListActivity"></activity>
     </application>
 
 </manifest>

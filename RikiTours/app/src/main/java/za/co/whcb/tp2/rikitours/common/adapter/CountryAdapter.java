@@ -1,24 +1,18 @@
 package za.co.whcb.tp2.rikitours.common.adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import za.co.whcb.tp2.rikitours.R;
+import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
 
 /**
@@ -26,32 +20,45 @@ import za.co.whcb.tp2.rikitours.domain.tour.Country;
  */
 public class CountryAdapter extends ArrayAdapter<Country> {
 
-    private Country[] country;
+    private Country[] countries;
     private final Activity context;
 
-    public CountryAdapter(Activity context, Country[] country) {
+    public CountryAdapter(Activity context, Country[] countries) {
 
-        super(context, R.layout.activity_listing, country);
+        super(context, R.layout.activity_layout_listing, countries);
         this.context = context;
-        this.country = country;
+        this.countries = countries;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
 
-        View rowView = inflater.inflate(R.layout.activity_listing,null,true);
+        View rowView = inflater.inflate(R.layout.activity_layout_listing,null,true);
 
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txtTitle);
         TextView txtDescription = (TextView) rowView.findViewById(R.id.txtDescription);
         ImageView countryImage = (ImageView) rowView.findViewById(R.id.imgBox);
+        Button btnReadmore = (Button) rowView.findViewById(R.id.btnReamore);
+        Button btnBooknow = (Button) rowView.findViewById(R.id.btnBooknow);
 
-        txtTitle.setText(country[position].getName());
-        txtDescription.setText(country[position].getDescription());
+        txtTitle.setText(countries[position].getName());
+        txtDescription.setText(countries[position].getDescription());
+        Picasso.with(context).load(countries[position].getImage()).into(countryImage);
 
-        Picasso.with(context).load(country[position].getImage()).into(countryImage);
+        final Country currentCountry = getCurrentCountry(position);
+
+        btnReadmore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Display.toast(currentCountry.getName(),context);
+            }
+        });
 
         return rowView;
     }
 
+    public Country getCurrentCountry(int position) {
+        return countries[position];
+    }
 }
