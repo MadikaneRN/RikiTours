@@ -78,7 +78,7 @@ public class customerRepo  extends SQLiteOpenHelper {
 
         if (data.getCount() != 0) {
             while (data.moveToNext()) {
-                customerFound = CustomerFactory.getCustomer(data.getString(1), data.getString(1),
+                customerFound = CustomerFactory.getCustomer(data.getLong(0),data.getString(1), data.getString(1),
                         data.getString(2));
             }
         }
@@ -95,7 +95,7 @@ public class customerRepo  extends SQLiteOpenHelper {
 
         if (data.getCount() != 0) {
             while (data.moveToNext()) {
-                customerFound = CustomerFactory.getCustomer(data.getString(0), data.getString(1),
+                CustomerFactory.getCustomer(data.getLong(0),data.getString(1), data.getString(1),
                         data.getString(2));
                 customers.add(customerFound);
             }

@@ -14,12 +14,8 @@ import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
-<<<<<<< HEAD
-import za.co.whcb.tp2.rikitours.repository.local.common.CountryRepo;
-import za.co.whcb.tp2.rikitours.repository.local.tour.AttractionsRepo;
-=======
 import za.co.whcb.tp2.rikitours.services.domain.common.country.CountryService;
->>>>>>> c120e1c1ea49ad4f2f34812b40729129910c127a
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,19 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
-        AttractionsRepo attractionsRepo = new AttractionsRepo(this);
-        //Attraction attraction= attractionsRepo.findCountryById(21);
-        Attraction country = AttractionFactory.getAttracion(1L, 1L, 1L);
-
-        //Display.toast(attraction.getCountryId().toString(), this);
-         if (attractionsRepo.addCountry(country)== true) {
-            Display.toast("Country added ", this);
-        }
-        else {
-            Display.toast("failed to  add country" , this);
-        }
-=======
     public ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -59,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             isBound = true;
 
         }
->>>>>>> c120e1c1ea49ad4f2f34812b40729129910c127a
 
         @Override
         public void onServiceDisconnected(ComponentName name) {

@@ -16,7 +16,7 @@ import za.co.whcb.tp2.rikitours.domain.customer.EmergencyContact;
 import za.co.whcb.tp2.rikitours.factories.customer.EmergencyContactFactory;
 
 /**
- * Created by Game330 on 2016-10-15.
+ * Created by Game330 on 2016-10-16.
  */
 public class EmergencyContactRepo extends SQLiteOpenHelper {
 
@@ -25,7 +25,7 @@ public class EmergencyContactRepo extends SQLiteOpenHelper {
     private static EmergencyContactTable emergencyContactTable;
 
 
-    public EmegencyContactRepo(Context context) {
+    public EmergencyContactRepo(Context context) {
         super(context, Database.name, null, Database.version);
         emergencyContactTable = new EmergencyContactTable();
     }

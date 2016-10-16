@@ -26,7 +26,7 @@ public class MaritalStatusTable extends Table {
     }
 
     @Override
-    protected Attribute getPrimaryKey() {
+   public Attribute getPrimaryKey() {
         return id;
     }
 
