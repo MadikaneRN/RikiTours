@@ -6,7 +6,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class RoomTable implements Table {
+public class RoomTable  {
 
 
     public final String tableName = "room";
@@ -16,8 +16,5 @@ public class RoomTable implements Table {
     public static Attribute description = new Attribute("description", "Text");
     public static Attribute hotelId = new Attribute("hotelId", "Text");
 
-    @Override
-    public String getName() {
-        return tableName;
-    }
+
 }
