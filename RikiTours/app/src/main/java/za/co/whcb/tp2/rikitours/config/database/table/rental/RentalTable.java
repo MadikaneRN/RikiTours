@@ -6,7 +6,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class RentalTable implements Table {
+public class RentalTable  {
 
 
     public final String tableName = "rental";
@@ -14,8 +14,4 @@ public class RentalTable implements Table {
     public static Attribute car = new Attribute("car", "Text");
     public static Attribute rentDate = new Attribute("rentDate", "Text");
 
-    @Override
-    public String getName() {
-        return tableName;
-    }
 }
