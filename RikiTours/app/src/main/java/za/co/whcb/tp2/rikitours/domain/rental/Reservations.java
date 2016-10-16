@@ -1,26 +1,29 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
+import java.io.Serializable;
+
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 /**
- * Created by kelly on 10/2/2016.
+ * Created by Lindo on 10/2/2016.
  */
-public class Reservations {
+public class Reservations implements Serializable {
     private long id;
+    private Customer customer;
+    private Vehicle vehicle;
     private String pickUpDate;
     private String returnedDate;
-    private  String location;
-    private String vehicleType; //to be changed into a class (embedded)[connected to Richard's work]
-    private Customer customer;
+    private double amountToPay;
 
 
     public Reservations(Builder builder){
         this.id = builder.id;
+        this.customer = builder.customer;
+        this.vehicle = builder.vehicle;
         this.pickUpDate = builder.pickUpDate;
         this.returnedDate = builder.returnedDate;
-        this.location = builder.location;
-        this.vehicleType = builder.vehicleType;
-        this.customer = builder.customer;
+        this.amountToPay = builder.amountToPay;
+
     }
 
     public long getId() {
@@ -29,6 +32,22 @@ public class Reservations {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public String getPickUpDate() {
@@ -47,40 +66,32 @@ public class Reservations {
         this.returnedDate = returnedDate;
     }
 
-    public String getLocation() {
-        return location;
+    public double getAmountToPay() {
+        return amountToPay;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getVehicleType() {
-        return vehicleType;
-    }
-
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setAmountToPay(double amountToPay) {
+        this.amountToPay = amountToPay;
     }
 
     public static class Builder {
         private long id;
+        private Customer customer;
+        private Vehicle vehicle;
         private String pickUpDate;
         private String returnedDate;
-        private  String location;
-        private String vehicleType;
-        private Customer customer;
+        private  double amountToPay;
 
         public Builder id(long id) {
             this.id = id;
+            return this;
+        }
+        public Builder customer(Customer customer){
+            this.customer = customer;
+            return  this;
+        }
+        public Builder vehicle(Vehicle vehicle) {
+            this.vehicle = vehicle;
             return this;
         }
         public Builder pickUpDate(String pickUpDate) {
@@ -91,26 +102,18 @@ public class Reservations {
             this.returnedDate = returnedDate;
             return this;
         }
-        public Builder location(String location) {
-            this.location = location;
+        public Builder amountToPay(double amountToPay) {
+            this.amountToPay = amountToPay;
             return this;
         }
-        public Builder vehicleType(String vehicleType) {
-            this.vehicleType = vehicleType;
-            return this;
-        }
-       public Builder customer(Customer customer){
-           this.customer = customer;
-           return  this;
-       }
 
         public Builder copy(Reservations reservations){
             this.id = reservations.id;
+            this.customer = reservations.customer;
+            this.vehicle = reservations.vehicle;
             this.pickUpDate = reservations.pickUpDate;
             this.returnedDate = reservations.returnedDate;
-            this.location = reservations.location;
-            this.vehicleType = reservations.vehicleType;
-            this.customer = reservations.customer;
+            this.amountToPay = reservations.amountToPay;
             return this;
         }
         public Reservations build(){return new Reservations(this);}

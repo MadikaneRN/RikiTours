@@ -1,20 +1,18 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
+import java.io.Serializable;
+
 /**
- * Created by berka on 9/17/2016.
+ * Created by Lindo on 9/17/2016.
  */
-public class Rental {
+public class Rental implements Serializable {
     private long id;
-    private String vehicle; //to be changed into a class (embedded)[connected to Richard's work]
-    private String rentDate, returnDate;
-    private double amountToPay;
+    private Reservations reservation;
+    private boolean status;
 
     public Rental(Builder builder){
         this.id = builder.id;
-        this.vehicle = builder.vehicle;
-        this.rentDate = builder.rentDate;
-        this.returnDate = builder.returnDate;
-        this.amountToPay = builder.amountToPay;
+        this.reservation = builder.reservation;
     }
 
     public long getId() {
@@ -25,73 +23,47 @@ public class Rental {
         this.id = id;
     }
 
-    public String getVehicle() {
-        return vehicle;
+    public Reservations getReservation() {
+        return reservation;
     }
 
-    public void setVehicle(String vehicle) {
-        this.vehicle = vehicle;
+    public void setReservation(Reservations reservation) {
+        this.reservation = reservation;
     }
 
-    public String getRentDate() {
-        return rentDate;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setRentDate(String rentDate) {
-        this.rentDate = rentDate;
-    }
-
-    public String getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(String returnDate) {
-        this.returnDate = returnDate;
-    }
-
-    public double getAmountToPay() {
-        return amountToPay;
-    }
-
-    public void setAmountToPay(double amountToPay) {
-        this.amountToPay = amountToPay;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public static class Builder {
         private long id;
-        private String vehicle;
-        private String rentDate, returnDate;
-        private double amountToPay;
+        private Reservations reservation;
+        private boolean status;
 
         public Builder id(long id) {
             this.id = id;
             return this;
         }
-        public Builder vehicle(String vehicle) {
-            this.vehicle = vehicle;
+        public Builder reservation(Reservations reservation) {
+            this.reservation = reservation;
             return this;
         }
-        public Builder rentDate(String rentDate){
-            this.rentDate = rentDate;
+        public Builder status(boolean status){
+            this.status = status;
             return this;
         }
-        public Builder returnDate(String returnDate) {
-            this.returnDate = returnDate;
-            return this;
-        }
-        public Builder amountToPay(double amountToPay) {
-            this.amountToPay = amountToPay;
-            return this;
-        }
+
         public Builder copy(Rental rental){
             this.id = rental.id;
-            this.vehicle = rental.vehicle;
-            this.rentDate = rental.rentDate;
-            this.returnDate = rental.returnDate;
-            this.amountToPay = rental.amountToPay;
-
+            this.reservation = rental.reservation;
+            this.status = rental.status;
             return this;
         }
         public Rental build(){return new Rental(this);}
     }
 }
+

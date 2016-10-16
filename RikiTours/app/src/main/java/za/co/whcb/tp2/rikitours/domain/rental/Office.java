@@ -1,9 +1,11 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
+import java.io.Serializable;
+
 /**
  * Created by kelly on 10/2/2016.
  */
-public class Office {
+public class Office implements Serializable {
     private long id;
     private String city;
     private String location;

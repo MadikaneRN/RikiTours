@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import za.co.whcb.tp2.rikitours.domain.rental.Rental;
+import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
 import za.co.whcb.tp2.rikitours.factories.rental.RentalFactory;
 
 /**
@@ -12,21 +13,22 @@ import za.co.whcb.tp2.rikitours.factories.rental.RentalFactory;
  */
 public class RentalTest {
     private Rental rental;
+    private Reservations reservation;
 
     @Before
     public void setUp() throws Exception {
-        rental = RentalFactory.getRental("Avanza","6/10/2016","10/10/2016",2500);
+        rental = RentalFactory.getRental(reservation, true);
     }
 
     @Test
     public void testRental() throws Exception {
         Assert.assertNotNull(rental);
-        Assert.assertEquals(rental.getVehicle(), "Avanza");
+        Assert.assertEquals(rental.getReservation(), reservation);
     }
 
     @Test
     public void testRentalUpdate() throws Exception {
-        Rental newRental = new Rental.Builder().copy(rental).vehicle("Bus").build();
-        Assert.assertEquals("Bus",newRental.getVehicle());
+        Rental newRental = new Rental.Builder().copy(rental).status(false).build();
+        Assert.assertEquals(false,newRental.isStatus());
     }
 }
