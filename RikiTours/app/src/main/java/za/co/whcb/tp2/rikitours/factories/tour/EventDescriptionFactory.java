@@ -7,9 +7,10 @@ import za.co.whcb.tp2.rikitours.domain.tour.EventsDescription;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class EventDescriptionFactory {
-    public static EventsDescription getEventDescription(String description, String start, String end, City city)
+    public static EventsDescription getEventDescription(Long id,String description, String start, String end, City city)
     {
         return new EventsDescription.Builder()
+                .id(id)
                 .description(description)
                 .start(start)
                 .end(end)
