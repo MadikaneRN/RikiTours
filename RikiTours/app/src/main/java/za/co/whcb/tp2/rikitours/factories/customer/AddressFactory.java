@@ -7,9 +7,10 @@ import za.co.whcb.tp2.rikitours.domain.customer.CustomerAddress;
  */
 public class AddressFactory {
 
-    public static CustomerAddress getAddress(String suburb, String street_no, String house_no, String postalCode)
+    public static CustomerAddress getAddress(Long id, String suburb, String street_no, String house_no, String postalCode)
     {
         CustomerAddress address= new CustomerAddress.Builder()
+                .id(id)
                 .suburb(suburb)
                 .street_no(street_no)
                 .house_no(house_no)

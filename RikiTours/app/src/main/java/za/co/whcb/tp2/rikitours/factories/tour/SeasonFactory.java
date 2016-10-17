@@ -7,9 +7,10 @@ import za.co.whcb.tp2.rikitours.domain.tour.Seasons;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class SeasonFactory {
-    public static Seasons getSeasons(String name, SeasonDescription description)
+    public static Seasons getSeasons(Long id,String name, SeasonDescription description)
     {
         return new Seasons.Builder()
+                .id(id)
                 .name(name)
                 .description(description)
                 .build();

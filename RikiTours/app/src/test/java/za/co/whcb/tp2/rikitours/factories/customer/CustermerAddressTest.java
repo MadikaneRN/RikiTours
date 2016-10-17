@@ -16,7 +16,8 @@ public class CustermerAddressTest {
 
     @Before
     public void setUp()throws Exception {
-        address=AddressFactory.getAddress("Claremont","19","415","7708");
+
+        address=AddressFactory.getAddress(2l, "Claremont","19","415","7708");
 
     }
     @Test

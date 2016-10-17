@@ -99,13 +99,16 @@ public String getPhoneNo() {
             return this;
         }
     public Builder copyObj(EmergencyContact emergencyContact){
+//<<<<<<< HEAD
+	    this.customerId=emergencyContact.getCustomerId();
+	    this.name=emergencyContact.getName();
+//=======
+
 
 
 	    this.customerId=emergencyContact.getCustomerId();
-
-	   // this.customerId=emergencyContact.getCustomeId();
-
-	    this.name=emergencyContact.getName();
+        this.name=emergencyContact.getName();
+//>>>>>>> 9d9dd91cf7ed38b317d4378b53ca2dbb4ff9e09d
         this.relationship=emergencyContact.getRelationship();
         this.phoneNo=emergencyContact.getPhoneNo();
 		this.landlineNo=emergencyContact.getLandlineNo();
