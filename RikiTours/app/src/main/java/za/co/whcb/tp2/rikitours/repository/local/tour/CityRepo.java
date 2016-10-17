@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
@@ -29,6 +31,7 @@ public class CityRepo extends SQLiteOpenHelper {
     public CityRepo(Context context) {
         super(context, Database.name, null, Database.version);
         cityTable = new CityTable();
+        descriptionTable = new CityDescriptionTable();
     }
 
     @Override
@@ -100,5 +103,65 @@ public class CityRepo extends SQLiteOpenHelper {
             }
         }
         return descriptionFound;
+    }
+
+    public ArrayList<City> getAllCities() {
+        ArrayList<City> descriptions = new ArrayList<>();
+        City CityFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(cityTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                CityFound = CityFactory.getCity(data.getLong(0), data.getString(1), findCityDescriptionById(data.getLong(2)));
+                descriptions.add(CityFound);
+            }
+        }
+
+        return descriptions;
+    }
+
+    public boolean updateCity(City updatedCity, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(cityTable.getNameId().name,updatedCity.getName());
+        contentValues.put(cityTable.getDescriptionId().name,updatedCity.getDescription().getId());
+
+        try {
+
+            returned =  localDatabase.update(cityTable.getTableName(),
+                    contentValues, cityTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(cityTable.getTableName(),
+                    cityTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
     }
 }
