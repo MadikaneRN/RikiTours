@@ -4,9 +4,10 @@ import za.co.whcb.tp2.rikitours.domain.customer.Contact;
  * Created by Tamonne on 2016/04/17.
  */
 public class ContactFactory {
-    public static Contact getContact(String phone,String landline)
+    public static Contact getContact(Long id, String phone,String landline)
     {
         Contact contact = new Contact.Builder()
+                .id(id)
                 .phoneNo(phone)
                 .landlineNo(landline)
                 .build();

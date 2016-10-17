@@ -20,11 +20,11 @@ public class ContactTable extends Table{
 
 
     @Override
-    protected String getTableName() {
+    public String getTableName() {
         return tableName;
     }
     @Override
-    protected Attribute getPrimaryKey() {
+    public Attribute getPrimaryKey() {
             return id;
     }
 
@@ -49,7 +49,7 @@ public class ContactTable extends Table{
 
 
     @Override
-    protected ArrayList<Attribute> getAllAttributes() {
+    public ArrayList<Attribute> getAllAttributes() {
 
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(id);

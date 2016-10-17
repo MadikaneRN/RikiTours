@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours;
+package za.co.whcb.tp2.rikitours.repositorytest;
 
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;

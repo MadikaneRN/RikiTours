@@ -22,7 +22,7 @@ public class OccupationalDetailsTable extends Table {
 
 
     @Override
-    protected String getTableName() {
+   public String getTableName() {
         return tableName;
     }
 
@@ -55,7 +55,7 @@ public class OccupationalDetailsTable extends Table {
 
 
     @Override
-    protected ArrayList<Attribute> getAllAttributes() {
+    public ArrayList<Attribute> getAllAttributes() {
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(id);
         attributes.add(jobType);

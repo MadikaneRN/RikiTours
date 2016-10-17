@@ -14,25 +14,25 @@ public class EmergencyContactTable extends Table{
 
     private final String tableName = "emergencyContact";
 
-    private final Attribute id = new Attribute("id", "INTEGER");
+    public final Attribute id = new Attribute("id", "INTEGER");
 
-    private final Attribute name = new Attribute("name", "TEXT");
-    private final Attribute surname = new Attribute("surname", "TEXT");
-    private final Attribute relationship = new Attribute("relationship", "TEXT");
+    public final Attribute name = new Attribute("name", "TEXT");
+    public final Attribute surname = new Attribute("surname", "TEXT");
+    public final Attribute relationship = new Attribute("relationship", "TEXT");
 
-    private final Attribute phoneNo = new Attribute("phoneNo", "TEXT");
-    private final Attribute landLineNo = new Attribute("landlineLineNo", "TEXT");
-    private final Attribute customerId = new Attribute("customerId", "INTEGER");
+    public final Attribute phoneNo = new Attribute("phoneNo", "TEXT");
+    public final Attribute landLineNo = new Attribute("landlineLineNo", "TEXT");
+    public final Attribute customerId = new Attribute("customerId", "INTEGER");
 
 
 
     @Override
-    protected String getTableName() {
+    public String getTableName() {
         return tableName;
     }
 
     @Override
-    protected Attribute getPrimaryKey() {
+    public Attribute getPrimaryKey() {
         return id;
     }
 
@@ -66,7 +66,7 @@ public class EmergencyContactTable extends Table{
 
 
     @Override
-    protected ArrayList<Attribute> getAllAttributes() {
+    public ArrayList<Attribute> getAllAttributes() {
 
 
         ArrayList<Attribute> attributes = new ArrayList<>();
