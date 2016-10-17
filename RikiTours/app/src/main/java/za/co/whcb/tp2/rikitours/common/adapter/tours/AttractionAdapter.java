@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.common.adapter;
+package za.co.whcb.tp2.rikitours.common.adapter.tours;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -15,21 +15,23 @@ import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.Display;
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
 
 /**
- * Created by work on 10/15/2016.
+ * Created by Tamonne on 10/17/2016.
  */
-public class CountryAdapter extends ArrayAdapter<Country> {
+public class AttractionAdapter extends ArrayAdapter <Attraction>{
 
-    private ArrayList<Country> countries;
+    private ArrayList<Attraction> attractions;
     private final Activity context;
 
-    public CountryAdapter(Activity context, ArrayList<Country> countries) {
 
-        super(context, R.layout.activity_layout_listing, countries);
+
+    public AttractionAdapter(Activity context, ArrayList<Attraction> attractions) {
+
+        super(context, R.layout.activity_layout_listing, attractions);
         this.context = context;
-        this.countries = countries;
+        this.attractions = attractions;
     }
 
     @Override
@@ -40,27 +42,28 @@ public class CountryAdapter extends ArrayAdapter<Country> {
 
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txtTitle);
         TextView txtDescription = (TextView) rowView.findViewById(R.id.txtDescription);
-        ImageView countryImage = (ImageView) rowView.findViewById(R.id.imgBox);
+        ImageView attractionImage = (ImageView) rowView.findViewById(R.id.imgBox);
         Button btnReadmore = (Button) rowView.findViewById(R.id.btnReamore);
         Button btnBooknow = (Button) rowView.findViewById(R.id.btnBooknow);
 
-        txtTitle.setText(countries.get(position).getName());
-        txtDescription.setText(countries.get(position).getDescription());
-        Picasso.with(context).load(countries.get(position).getImage()).into(countryImage);
+        txtTitle.setText(attractions.get(position).getCountryId().getName());
+        txtDescription.setText(attractions.get(position).getAttractionDescriptionId().getDescription());
+       //Picasso.with(context).load(attractions.get(position).getImage()).into(countryImage);
 
-        final Country currentCountry = getCurrentCountry(position);
+        final Attraction currentAttraction = getCurrentAttraction(position);
 
         btnReadmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Display.toast(currentCountry.getName(),context);
+                Display.toast(currentAttraction.getCountryId().getName(),context);
             }
         });
 
         return rowView;
     }
-
-    public Country getCurrentCountry(int position) {
-        return countries.get(position);
+    public Attraction getCurrentAttraction(int position) {
+        return attractions.get(position);
     }
+
+
 }
