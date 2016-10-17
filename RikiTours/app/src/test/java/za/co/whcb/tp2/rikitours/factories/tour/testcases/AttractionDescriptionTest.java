@@ -12,7 +12,7 @@ import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
 public class AttractionDescriptionTest {
     @Test
     public void testCreate() throws Exception {
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription("one", "two", "three", "four");
+        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription(12345L, "one", "two", "three", "four");
 
         Assert.assertNotNull(description);
         Assert.assertEquals("three", description.getDescription());

@@ -17,7 +17,7 @@ public class RentalTest {
 
     @Before
     public void setUp() throws Exception {
-        rental = RentalFactory.getRental(reservation, true);
+        rental = RentalFactory.getRental(12345L, reservation, true);
     }
 
     @Test
