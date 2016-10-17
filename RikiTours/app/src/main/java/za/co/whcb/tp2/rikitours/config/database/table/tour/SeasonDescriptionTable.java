@@ -6,14 +6,13 @@ import za.co.whcb.tp2.rikitours.config.database.table.Attribute;
 import za.co.whcb.tp2.rikitours.config.database.table.Table;
 
 /**
- * Created by work on 10/10/2016.
+ * Created by berka on 10/10/2016.
  */
-public class EventsTable extends Table {
-
-    public final String tableName = "Events";
+public class SeasonDescriptionTable extends Table {
+    public final String tableName = "seasonDescription";
     public static Attribute id = new Attribute("id", "INTEGER");
-    public static Attribute descriptionId = new Attribute("descriptionId", "INTEGER");
-    public static Attribute name = new Attribute("name", "TEXT");
+    public static Attribute description=new Attribute("description","TEXT");
+    public static Attribute numberOfSeason=new Attribute("start","INTEGER");
 
     @Override
     public String getTableName() {
@@ -29,22 +28,21 @@ public class EventsTable extends Table {
         return id;
     }
 
-    public Attribute getAttributeName() {
-        return name;
+    public Attribute getAttributeDescription() {
+        return description;
     }
 
-    public Attribute getDescriptionId() {
-        return descriptionId;
+    public Attribute getAttributeNumberOfSeasons() {
+        return numberOfSeason;
     }
-
 
     @Override
     public ArrayList<Attribute> getAllAttributes() {
 
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(id);
-        attributes.add(descriptionId);
-        attributes.add(name);
+        attributes.add(description);
+        attributes.add(numberOfSeason);
 
         return  attributes;
     }
