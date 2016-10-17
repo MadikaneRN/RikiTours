@@ -7,13 +7,15 @@ import za.co.whcb.tp2.rikitours.factories.tour.testcases.AttractionDescriptionTe
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.AttractionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.CityDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.CityTest;
-import za.co.whcb.tp2.rikitours.factories.tour.testcases.CountryDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.CountryTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.EventDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.EventsTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.TourTest;
+import za.co.whcb.tp2.rikitours.factories.office.OfficeTest;
+import za.co.whcb.tp2.rikitours.factories.rental.RentalTest;
+import za.co.whcb.tp2.rikitours.factories.rental.ReservationsTest;
 
 /**
  * Created by Shaun Mesias on 2016/10/02.
@@ -25,13 +27,15 @@ import za.co.whcb.tp2.rikitours.factories.tour.testcases.TourTest;
         AttractionTest.class,
         CityDescriptionTest.class,
         CityTest.class,
-        CountryDescriptionTest.class,
         CountryTest.class,
         EventDescriptionTest.class,
         EventsTest.class,
         SeasonDescriptionTest.class,
         SeasonTest.class,
-        TourTest.class
+        TourTest.class,
+        OfficeTest.class,
+        RentalTest.class,
+        ReservationsTest.class
 })
 
 public class TestSuite {

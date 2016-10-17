@@ -6,7 +6,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class AttractionTable implements Table {
+public class AttractionTable  {
 
     public final String tableName = "attractions";
     public static Attribute id = new Attribute("id", "number");
@@ -14,8 +14,5 @@ public class AttractionTable implements Table {
     public static Attribute description = new Attribute("description", "Text");
     public static Attribute image = new Attribute("image", "Text");
 
-    @Override
-    public String getName() {
-        return tableName;
-    }
+
 }

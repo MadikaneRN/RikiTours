@@ -1,93 +1,69 @@
 package za.co.whcb.tp2.rikitours.domain.rental;
 
-import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+import java.io.Serializable;
 
 /**
- * Created by berka on 9/17/2016.
+ * Created by Lindo on 9/17/2016.
  */
-public class Rental {
-    private String id, status;
-    private Car car;
-    private Customer customer;
-    private String rentDate, returnDate, actualReturnedDate;
-    private double amountToPay, estimatedAmount;
+public class Rental implements Serializable {
+    private long id;
+    private Reservations reservation;
+    private boolean status;
 
-    public Rental(String id, Car car, Customer customer, String rentDate) {
-        this.id = id;
-        this.car = car;
-        this.customer = customer;
-        this.rentDate = rentDate;
+    public Rental(Builder builder){
+        this.id = builder.id;
+        this.reservation = builder.reservation;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getStatus() {
+    public Reservations getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservations reservation) {
+        this.reservation = reservation;
+    }
+
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public Car getCar() {
-        return car;
-    }
+    public static class Builder {
+        private long id;
+        private Reservations reservation;
+        private boolean status;
 
-    public void setCar(Car car) {
-        this.car = car;
-    }
+        public Builder id(long id) {
+            this.id = id;
+            return this;
+        }
+        public Builder reservation(Reservations reservation) {
+            this.reservation = reservation;
+            return this;
+        }
+        public Builder status(boolean status){
+            this.status = status;
+            return this;
+        }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public String getRentDate() {
-        return rentDate;
-    }
-
-    public void setRentDate(String rentDate) {
-        this.rentDate = rentDate;
-    }
-
-    public String getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(String returnDate) {
-        this.returnDate = returnDate;
-    }
-
-    public String getActualReturnedDate() {
-        return actualReturnedDate;
-    }
-
-    public void setActualReturnedDate(String actualReturnedDate) {
-        this.actualReturnedDate = actualReturnedDate;
-    }
-
-    public double getAmountToPay() {
-        return amountToPay;
-    }
-
-    public void setAmountToPay(double amountToPay) {
-        this.amountToPay = amountToPay;
-    }
-
-    public double getEstimatedAmount() {
-        return estimatedAmount;
-    }
-
-    public void setEstimatedAmount(double estimatedAmount) {
-        this.estimatedAmount = estimatedAmount;
+        public Builder copy(Rental rental){
+            this.id = rental.id;
+            this.reservation = rental.reservation;
+            this.status = rental.status;
+            return this;
+        }
+        public Rental build(){return new Rental(this);}
     }
 }
+
