@@ -39,7 +39,7 @@ public class VehicleTest extends AndroidTestCase {
 
     public void findVehicleById() {
         Vehicle vehicle = vehicleRepo.findVehicleById((long)16.0);
-        assertEquals("south-africa", vehicle.getVehicleName());
+        assertEquals("BMW", vehicle.getVehicleName());
     }
 
 

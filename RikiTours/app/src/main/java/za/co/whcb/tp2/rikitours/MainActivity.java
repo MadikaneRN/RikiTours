@@ -1,91 +1,98 @@
 package za.co.whcb.tp2.rikitours;
 
 import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+
 
 import za.co.whcb.tp2.rikitours.common.Display;
-import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
-import za.co.whcb.tp2.rikitours.services.domain.common.country.CountryService;
+import za.co.whcb.tp2.rikitours.domain.rental.Driver;
+import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 
+import za.co.whcb.tp2.rikitours.factories.rental.DriverFactory;
+import za.co.whcb.tp2.rikitours.factories.rental.VehicleFactory;
+
+import za.co.whcb.tp2.rikitours.repository.local.rental.DriverRepo;
+import za.co.whcb.tp2.rikitours.repository.local.rental.VehicleRepo;
 
 public class MainActivity extends AppCompatActivity {
+    private VehicleRepo vehicleRepo;
 
-
-     CountryService countryService;
-     boolean isBound = false;
+    private DriverRepo driverRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent i = new Intent(this.getApplicationContext(), CountryService.class);
-        bindService(i,serviceConnection, Context.BIND_AUTO_CREATE);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.mipmap.logo_1);
 
 
-    }
+        //vehicleRepo = new VehicleRepo(this);
+        //UpdateRepo
+        //Vehicle vehicle = VehicleFactory.getVehicle(12l,"AUDI","M3","2014");
 
-    public ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            CountryService.MyLocalBinder binder = (CountryService.MyLocalBinder) service;
-            countryService = binder.getService();
-            isBound = true;
+        driverRepo = new DriverRepo(this);
 
-        }
+        //Driver driver = DriverFactory.getDriver(10,"Madikane","CA33","yes");
 
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            isBound = false;
+        Driver driver = driverRepo.findDriverById(10);
+        Display.toast(driver.getFname(),this);
 
-        }
-    };
-
-    @Override
-    protected  void onStop()
-    {
-        super.onStop();
-
-        if(isBound)
+        /*if(driverRepo.addDriver(driver) == true)
         {
-            unbindService(serviceConnection);
-            isBound = false;
+            Display.toast(driver.getFname(),this);
         }
-
-    }
-
-
-    //manual testing
-    public void addCountry(View view) {
-
-        Country country = CountryFactory.getCountry((long) 29,"South Africa","South Africa is a country on the southernmost", "sa.jpg");
-
-        if(isBound) {
-            if(countryService.add(country) == true) {
-                Display.toast("Country added" , this);
-            }
-            else {
-                 Display.toast("failed to add country" , this);
-            }
-
+        else
+        {
+            Display.toast("failed to add Driver",this);
         }
+*/
 
+        //vehicleRepo = new VehicleRepo(this);
+        //Vehicle vehicle = VehicleFactory.getVehicle(21,"BMW","M3","2013");
+
+      //Vehicle vehicle = vehicleRepo.findVehicleById(12l);
+
+       // Display.toast(vehicle.getVehicleName(), this);
+
+
+
+       /* if (vehicleRepo.addVehicle(vehicle)== true) {
+            Display.toast("Vehicle added ", this);
+        }
         else {
-            Display.toast("could not bound ", this);
+            Display.toast("failed to  add vehicle" , this);
         }
 
+        //vehicleRepo.addVehicle(vehicle);
+
+    */
+
+    //Comlete service methods.....
+
+
+
+        /* if (vehicleRepo.addVehicle(vehicle)== true) {
+            Display.toast("Vehicle added ", this);
+        }
+        else {
+            Display.toast("failed to  add vehicle" , this);
+        }
+
+        //vehicleRepo.addVehicle(vehicle);
+
+    */
+
+        //Comlete service methods.....
+
+
     }
+
+
+
+
+
+
+
 }
