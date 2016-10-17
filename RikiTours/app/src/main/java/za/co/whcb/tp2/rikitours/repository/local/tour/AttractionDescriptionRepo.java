@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.AttractionDescriptionTable;
@@ -69,7 +71,7 @@ public class AttractionDescriptionRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public AttractionDescription findCountryById(long id) {
+    public AttractionDescription findAttractionDescriptionById(long id) {
         AttractionDescription attractionFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(attractionTable.getTableName(),
@@ -82,5 +84,67 @@ public class AttractionDescriptionRepo extends SQLiteOpenHelper {
             }
         }
         return attractionFound;
+    }
+
+    public ArrayList<AttractionDescription> getAllAttractionDescriptions() {
+        ArrayList<AttractionDescription> descriptions = new ArrayList<>();
+        AttractionDescription descriptionFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(attractionTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                descriptionFound = AttractionDescriptionFactory.getAttracionDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), data.getString(4));
+                descriptions.add(descriptionFound);
+            }
+        }
+
+        return descriptions;
+    }
+
+    public boolean updateAttractionDescription(AttractionDescription updatedAttractionDescription, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(attractionTable.getNameId().name,updatedAttractionDescription.getName());
+        contentValues.put(attractionTable.getCityId().name,updatedAttractionDescription.getCity());
+        contentValues.put(attractionTable.getdescription().name,updatedAttractionDescription.getDescription());
+        contentValues.put(attractionTable.getImageId().name,updatedAttractionDescription.getImage());
+
+        try {
+
+            returned =  localDatabase.update(attractionTable.getTableName(),
+                    contentValues, attractionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(attractionTable.getTableName(),
+                    attractionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
     }
 }
