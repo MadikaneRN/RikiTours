@@ -11,6 +11,7 @@ import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityTable;
+import za.co.whcb.tp2.rikitours.config.database.table.tour.EventDescriptionTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.EventsTable;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
@@ -28,7 +29,7 @@ public class EventsRepo extends SQLiteOpenHelper{
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
     private static EventsTable eventsTable ;
-   // private static EventDescriptionTable eventDescriptionTable;
+    private static EventDescriptionTable eventDescriptionTable;
     private static CityTable cityTable;
     private static CityDescriptionTable descriptionTable;
 
@@ -65,7 +66,7 @@ public class EventsRepo extends SQLiteOpenHelper{
         contentValues = new ContentValues();
 
         contentValues.put(eventsTable.getAttributeId().name, events.getId());
-        contentValues.put(eventsTable.getNameId().name, events.getName());
+        contentValues.put(eventsTable.getAttributeName().name, events.getName());
         contentValues.put(eventsTable.getDescriptionId().name, events.getDescription().getId());
 
         try {
