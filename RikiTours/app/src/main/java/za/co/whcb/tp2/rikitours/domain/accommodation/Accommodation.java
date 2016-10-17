@@ -3,72 +3,115 @@ package za.co.whcb.tp2.rikitours.domain.accommodation;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 /**
- * Created by berka on 9/17/2016.
+ * Created by Kishan on 9/17/2016.
  */
 public class Accommodation {
-    private String id;
-    private Room room;
+    private long id;
+
     private Customer customer;
+    private int noGuests;
     private String bookedInDate;
     private String bookedOutDate;
-    private double amountToPay;
+
+
 
     public Accommodation() {
     }
-
-    public Accommodation(String id, Room room, Customer customer, String bookedInDate, String bookedOutDate) {
-        this.id = id;
-        this.room = room;
-        this.customer = customer;
-        this.bookedInDate = bookedInDate;
-        this.bookedOutDate = bookedOutDate;
+    public Accommodation(Builder builder) {
+        this.id = builder.id;
+        this.customer = builder.customer;
+        this.bookedInDate = builder.bookedInDate;
+        this.bookedOutDate = builder.bookedOutDate;
+        this.noGuests = builder.noGuests;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
-    public Room getRoom() {
-        return room;
-    }
 
-    public void setRoom(Room room) {
-        this.room = room;
-    }
+
+
+
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+
 
     public String getBookedInDate() {
         return bookedInDate;
     }
 
-    public void setBookedInDate(String bookedInDate) {
-        this.bookedInDate = bookedInDate;
-    }
+
 
     public String getBookedOutDate() {
         return bookedOutDate;
     }
 
-    public void setBookedOutDate(String bookedOutDate) {
-        this.bookedOutDate = bookedOutDate;
+
+
+
+
+
+    public int getNoGuests() {
+        return noGuests;
     }
 
-    public double getAmountToPay() {
-        return amountToPay;
+
+    public static class Builder{
+
+        private long id;
+
+        private Customer customer;
+        private int noGuests;
+        private String bookedInDate;
+        private String bookedOutDate;
+
+
+        public Builder id( long id){
+            this.id = id;
+            return this;
+        }
+
+
+        public Builder customer(Customer customer){
+            this.customer = customer;
+            return this;
+        }
+
+        public Builder noGuests(int noGuests){
+            this.noGuests = noGuests;
+            return this;
+        }
+
+        public Builder bookedInDate(String bookedInDate){
+            this.bookedInDate = bookedInDate;
+            return this;
+        }
+        public Builder bookedOutDate(String bookedOutDate){
+            this.bookedOutDate = bookedOutDate;
+            return this;
+        }
+
+
+        public Builder copy(Accommodation accommodation){
+            this.id = accommodation.id;
+
+            this.noGuests = accommodation.noGuests;
+            this.bookedInDate = accommodation.bookedInDate;
+            this.bookedOutDate = accommodation.bookedOutDate;
+
+            return this;
+        }
+
+        public Accommodation build() {
+            return new Accommodation(this);
+        }
     }
 
-    public void setAmountToPay(double amountToPay) {
-        this.amountToPay = amountToPay;
-    }
+
 }
+

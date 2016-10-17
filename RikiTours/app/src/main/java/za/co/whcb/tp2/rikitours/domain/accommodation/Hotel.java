@@ -1,50 +1,99 @@
 package za.co.whcb.tp2.rikitours.domain.accommodation;
 
 /**
- * Created by berka on 9/17/2016.
+ * Created by Kishan on 9/17/2016.
  */
 public class Hotel {
-    private  String id, name, star, description;
-
+    private String  name, star, description, image;
+    private long id;
     public Hotel() {
     }
 
-    public Hotel(String id, String name, String star, String description) {
-        this.id = id;
-        this.name = name;
-        this.star = star;
-        this.description = description;
+
+    public Hotel(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.star = builder.star;
+        this.description = builder.description;
+        this.image = builder.image;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getStar() {
-        return star;
-    }
 
-    public void setStar(String star) {
-        this.star = star;
-    }
+   public String getStar(){return star;}
+
+
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getImage()
+    {
+        return image;
     }
+
+
+
+    public static class Builder {
+        private String name;
+        private String star;
+        private String description;
+        private String image;
+        private long id;
+
+        public Builder id(long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder star(String star) {
+            this.star = star;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder image(String image) {
+            this.image = image;
+            return this;
+        }
+
+
+
+
+
+        public Builder copy(Hotel hotel) {
+            this.id = hotel.id;
+            this.name = hotel.name;
+            this.star = hotel.star;
+            this.description = hotel.description;
+            this.image = hotel.image;
+
+            return this;
+        }
+
+        public Hotel build() {
+            return new Hotel(this);
+        }
+    }
+
 }
