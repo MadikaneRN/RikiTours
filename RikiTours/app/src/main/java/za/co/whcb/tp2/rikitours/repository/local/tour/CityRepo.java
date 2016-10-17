@@ -11,38 +11,30 @@ import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityTable;
-import za.co.whcb.tp2.rikitours.config.database.table.tour.EventsTable;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
-import za.co.whcb.tp2.rikitours.domain.tour.Events;
-import za.co.whcb.tp2.rikitours.domain.tour.EventsDescription;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.EventDescriptionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.EventFactory;
 
 /**
  * Created by Shaun Mesias on 2016/10/17.
  */
-public class EventsRepo extends SQLiteOpenHelper{
+public class CityRepo extends SQLiteOpenHelper {
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
-    private static EventsTable eventsTable ;
-   // private static EventDescriptionTable eventDescriptionTable;
     private static CityTable cityTable;
     private static CityDescriptionTable descriptionTable;
 
 
-    public EventsRepo(Context context) {
-
+    public CityRepo(Context context) {
         super(context, Database.name, null, Database.version);
-        eventsTable = new EventsTable();
+        cityTable = new CityTable();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            final String query = Converter.toCreateTableQuery(eventsTable.getTableName(), eventsTable.getAllAttributes());
+            final String query = Converter.toCreateTableQuery(cityTable.getTableName(), cityTable.getAllAttributes());
             db.execSQL(query);
         }
         catch (Exception ex) {
@@ -54,22 +46,22 @@ public class EventsRepo extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXITS " + eventsTable.getTableName());
+        db.execSQL("DROP TABLE IF EXITS " + cityTable.getTableName());
         onCreate(db);
     }
 
-    public boolean addEvent(Events events ) {
+    public boolean addCity(City city ) {
         long returned ;
         localDatabase = this.getWritableDatabase();
-        eventsTable  = new EventsTable();
+        cityTable  = new CityTable();
         contentValues = new ContentValues();
 
-        contentValues.put(eventsTable.getAttributeId().name, events.getId());
-        contentValues.put(eventsTable.getNameId().name, events.getName());
-        contentValues.put(eventsTable.getDescriptionId().name, events.getDescription().getId());
+        contentValues.put(cityTable.getAttributeId().name, city.getId());
+        contentValues.put(cityTable.getNameId().name, city.getName());
+        contentValues.put(cityTable.getDescriptionId().name, city.getDescription().getId());
 
         try {
-            returned = localDatabase.insert(eventsTable.getTableName(), null, contentValues);
+            returned = localDatabase.insert(cityTable.getTableName(), null, contentValues);
         }catch (Exception ex) {
             returned = 0;
             Log.d("exception ::::",ex.getMessage());
@@ -79,40 +71,7 @@ public class EventsRepo extends SQLiteOpenHelper{
         return (returned != -1) ? true : false;
     }
 
-    public Events findEventById(long id) {
-        Events eventFound = null;
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = Converter.toSelectAllWhere(eventsTable.getTableName(),
-                eventsTable.getAttributeId(), String.valueOf(id));
-        Cursor data = db.rawQuery(query, null);
-
-
-
-        if(data.getCount() != 0) {
-            while (data.moveToNext()) {
-                eventFound = EventFactory.getEvents(data.getLong(0), data.getString(1), findEventDecsriptionById(data.getLong(2)));
-            }
-        }
-        return eventFound;
-    }
-
-    private EventsDescription findEventDecsriptionById(long id) {
-        EventsDescription descriptionFound = null;
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = Converter.toSelectAllWhere(eventDescriptionTable.getTableName(),
-                eventDescriptionTable.getAttributeId(), String.valueOf(id));
-        Cursor data = db.rawQuery(query, null);
-
-        if(data.getCount() != 0) {
-            while (data.moveToNext()) {
-
-                descriptionFound = EventDescriptionFactory.getEventDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), findCityById(data.getLong(4)));
-            }
-        }
-        return descriptionFound;
-    }
-
-    private City findCityById(long id) {
+    public City findCityById(long id) {
         City cityFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(cityTable.getTableName(),
@@ -142,5 +101,4 @@ public class EventsRepo extends SQLiteOpenHelper{
         }
         return descriptionFound;
     }
-
 }
