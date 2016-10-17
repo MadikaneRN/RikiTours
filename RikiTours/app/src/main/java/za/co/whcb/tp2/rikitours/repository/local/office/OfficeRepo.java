@@ -77,7 +77,8 @@ public class OfficeRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                officeFound = OfficeFactory.getOffice(data.getString(0), data.getString(1));
+                officeFound = OfficeFactory.getOffice(data.getLong(0), data.getString(1),
+                        data.getString(2));
             }
         }
         return officeFound;
@@ -92,7 +93,8 @@ public class OfficeRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                officeFound = OfficeFactory.getOffice(data.getString(0), data.getString(1));
+                officeFound = OfficeFactory.getOffice(data.getLong(0), data.getString(1),
+                        data.getString(2));
                 officeArrayList.add(officeFound);
             }
         }
