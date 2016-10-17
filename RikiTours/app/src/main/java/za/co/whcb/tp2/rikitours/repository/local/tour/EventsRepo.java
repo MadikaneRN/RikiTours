@@ -15,10 +15,12 @@ import za.co.whcb.tp2.rikitours.config.database.table.tour.EventDescriptionTable
 import za.co.whcb.tp2.rikitours.config.database.table.tour.EventsTable;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.domain.tour.Events;
 import za.co.whcb.tp2.rikitours.domain.tour.EventsDescription;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
+import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.EventDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.EventFactory;
 
@@ -107,14 +109,14 @@ public class EventsRepo extends SQLiteOpenHelper{
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
 
-                descriptionFound = EventDescriptionFactory.getEventDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), findCityById(data.getLong(4)));
+                descriptionFound = EventDescriptionFactory.getEventDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), findCountryById(data.getLong(4)));
             }
         }
         return descriptionFound;
     }
 
-    private City findCityById(long id) {
-        City cityFound = null;
+    private Country findCountryById(long id) {
+        Country countryFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(cityTable.getTableName(),
                 cityTable.getAttributeId(), String.valueOf(id));
@@ -122,10 +124,10 @@ public class EventsRepo extends SQLiteOpenHelper{
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                cityFound = CityFactory.getCity(data.getLong(0), data.getString(1), findCityDescriptionById(data.getLong(2)));
+                countryFound = CountryFactory.getCountry(data.getLong(0), data.getString(1), data.getString(2), data.getString(3));
             }
         }
-        return cityFound;
+        return countryFound;
     }
 
     private CityDescription findCityDescriptionById(long id) {

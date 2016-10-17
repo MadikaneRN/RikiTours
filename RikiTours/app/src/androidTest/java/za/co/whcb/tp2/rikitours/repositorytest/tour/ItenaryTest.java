@@ -36,8 +36,8 @@ public class ItenaryTest extends AndroidTestCase {
 
     public void addEventsDesciptionTest() {
         Country country= CountryFactory.getCountry(2L,"South Africa","Africa","image.jpa");
-        AttractionDescription attractionDescription= AttractionDescriptionFactory.getAttracionDescription("Name","Cape Town","Table Mountain","cape.jpa");
-        Attraction attraction=AttractionFactory.getAttraction(2L,country,attractionDescription);
+        AttractionDescription attractionDescription= AttractionDescriptionFactory.getAttracionDescription(2L,"Name","Cape Town","Table Mountain","cape.jpa");
+        Attraction attraction=AttractionFactory.getAttracion(2L,country,attractionDescription);
         ArrayList<Attraction> attractions = new ArrayList<>();
         attractions.add(attraction);
 
