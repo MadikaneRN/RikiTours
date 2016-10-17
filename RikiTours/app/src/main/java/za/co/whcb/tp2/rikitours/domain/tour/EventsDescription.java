@@ -6,22 +6,19 @@ package za.co.whcb.tp2.rikitours.domain.tour;
 public class EventsDescription {
     private Long id;
     private String description;
-    private String start;String end;
-    private City city;
+    private String start;
+    private String end;
+    private Country country;
 
     public EventsDescription(Builder builder){
-        this.id = builder.id;
         this.description=builder.description;
         this.start=builder.start;
         this.end=builder.end;
-        this.city=builder.city;
+        this.country=builder.country;
     }
-
-
     public Long getId() {
         return id;
     }
-
     public String getDescription() {
         return description;
     }
@@ -34,20 +31,19 @@ public class EventsDescription {
         return end;
     }
 
-    public City getCity(){
-        return city;
+    public Country getCountry(){
+        return country;
     }
 
     public static class Builder{
-        private Long id;
+        Long id;
         private String description, start, end;
-        private City city;
+        private Country country;
 
-        public Builder id(long id){
+        public Builder id(Long id){
             this.id=id;
             return this;
         }
-
         public Builder description(String description){
             this.description=description;
             return this;
@@ -63,17 +59,17 @@ public class EventsDescription {
             return this;
         }
 
-        public Builder city(City city){
-            this.city=city;
+        public Builder country(Country country){
+            this.country=country;
             return this;
         }
 
         public Builder copy(EventsDescription events){
-            this.id = events.id;
+            this.id=events.id;
             this.description=events.description;
             this.start=events.start;
             this.end=events.end;
-            this.city=events.city;
+            this.country=events.country;
 
             return this;
         }

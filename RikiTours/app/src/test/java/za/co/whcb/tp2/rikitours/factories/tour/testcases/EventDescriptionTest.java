@@ -5,9 +5,11 @@ import org.junit.Test;
 
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.domain.tour.EventsDescription;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
+import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.EventDescriptionFactory;
 
 /**
@@ -17,7 +19,7 @@ public class EventDescriptionTest {
     @Test
     public void testCreate() throws Exception {
         CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
-        City city = CityFactory.getCity("name", cityDescription);
+        Country city = CountryFactory.getCountry(2L,"name", "cityDescription","image");
 
         EventsDescription description = EventDescriptionFactory.getEventDescription("descrip","start","end",city);
 
