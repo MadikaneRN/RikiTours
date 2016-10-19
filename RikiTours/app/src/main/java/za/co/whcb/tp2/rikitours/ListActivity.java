@@ -3,33 +3,112 @@ package za.co.whcb.tp2.rikitours;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.adapter.CountryAdapter;
+import za.co.whcb.tp2.rikitours.controllers.CountryController;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 public class ListActivity extends AppCompatActivity {
+
+    //JsonObjectRequest jsonObjectRequest;
+
+    RequestQueue requestQueue;
+   private  ArrayList<Country> countriesFromServer;
+   private ArrayList<Country> t;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+         t = new ArrayList<>(); ;
+
+        countriesFromServer = new ArrayList<>();
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.logo_1);
 
-        Country country1 = CountryFactory.getCountry((long) 26,"canada","South Africa is a country on the southernmostSouth Africa is a country on the southernmost  South Africa is a country on the southernmostSouth Africa is a country on the southernmostSouth Africa is a country on the southernmost", "http://capetown.hotelguide.co.za/images/1sea-point-beach-summer-cape-town.jpg");
-        Country country2 = CountryFactory.getCountry((long) 27,"congo","République démocratique du Congo (French).South Africa is a country on the southernmostSouth Africa is a country on the southernmost Repubilika ya Kôngo ya DimokalasiSouth Africa is a country on the southernmost", "http://capetown.hotelguide.co.za/images/bantry-bay-luxury-suites-ocean-480.jpg");
-        Country country3 = CountryFactory.getCountry((long) 28,"zambi"," trading as Zambi Wildlife Retreat, its 's mission is to rescue, South Africa is a country on the southernmostSouth Africa is a country on the southernmost rehabilitate South Africa is a country on the southernmost", "http://www.zawebsdata.co.za/image/large/villa_sunshine_guest_house_cape_town_accommodation_01.jpg");
-        Country country4 = CountryFactory.getCountry((long) 29,"south africa","Responsible for the promotion of tourism to South Africa in the United Kingdom South Africa is a country on the southernmost South Africa is a country on the southernmostSouth Africa is a country on the southernmost", "https://www.accommodirect.com/media/thumbnails/pictures/places/5326/5326-2.jpg.1366x768_q75.jpg");
-        Country country5 = CountryFactory.getCountry((long) 30,"tunisia","Tunisia is a North African country bordering the Mediterranean Sea and Sahara Desert. In the capital, Tunis, the Bardo Museum has South Africa is a country on the southernmostSouth Africa is a country on the southernmost",
-                "http://stevenlevourch.smugmug.com/Travelling-throughout-the/Tunisia/IMG1088/1132563780_spFCR-L-2.jpg");
-        Country country6 = CountryFactory.getCountry((long) 31,"zimbabwe","Zimbabwe is a landlocked country in southern Africa known for its dramatic landscape and diverse wildlife, much of it within parks,",
-                "http://img1.tuliu.com//art/2016/04/15/57108a4f34cd1.jpg");
 
-        Country countries[] = {country1,country2,country3,country4, country5, country6};
+       // CountryController countryController = new CountryController(this,"http://tp2.whcb.co.za/customer.php");
+
+
+
+
+        requestQueue = Volley.newRequestQueue(this);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                "http://tp2.whcb.co.za/countries",
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            for (int i = 0; i < response.length(); i++) {
+                                JSONObject jsonObject = response.getJSONObject(i);
+
+                                long id = Long.parseLong(jsonObject.getString("id"));
+                                String name = jsonObject.getString("name");
+                                String description = jsonObject.getString("description");
+                                String image = jsonObject.getString("image");
+
+                                Country country = CountryFactory.getCountry(id,name,description,image);
+                                countriesFromServer.add(country);
+
+                                work(countriesFromServer);
+
+                            }
+
+                            t = countriesFromServer;
+                            //Display.toast(String.valueOf(countriesFromServer.size()),getApplicationContext());
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("VOLLEY", "ERROR");
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+
+
+
+
+        //CountryAdapter adapter = new CountryAdapter(this,countriesFromServer);
+        //ListView l = (ListView) findViewById(R.id.listView2);
+       // l.setAdapter(adapter);
+
+       // Display.toast(String.valueOf(t.size()),this);
+
+    }
+
+    public void work(ArrayList<Country> countries) {
 
         CountryAdapter adapter = new CountryAdapter(this,countries);
         ListView l = (ListView) findViewById(R.id.listView2);

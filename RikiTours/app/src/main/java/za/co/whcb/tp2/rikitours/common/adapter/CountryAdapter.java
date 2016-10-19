@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.ViewActivity;
 import za.co.whcb.tp2.rikitours.common.Display;
@@ -23,10 +25,10 @@ import za.co.whcb.tp2.rikitours.domain.tour.Country;
  */
 public class CountryAdapter extends ArrayAdapter<Country> {
 
-    private Country[] countries;
+    private ArrayList<Country> countries;
     private final Activity context;
 
-    public CountryAdapter(Activity context, Country[] countries) {
+    public CountryAdapter(Activity context, ArrayList<Country> countries) {
 
         super(context, R.layout.activity_layout_listing, countries);
         this.context = context;
@@ -45,9 +47,9 @@ public class CountryAdapter extends ArrayAdapter<Country> {
         Button btnReadmore = (Button) rowView.findViewById(R.id.btnReamore);
         Button btnBooknow = (Button) rowView.findViewById(R.id.btnBooknow);
 
-        txtTitle.setText(countries[position].getName());
+        txtTitle.setText(countries.get(position).getName());
 
-        String description = countries[position].getDescription();
+        String description = countries.get(position).getDescription();
         String shortDescription = null;
 
         if (description.length() > 150) {
@@ -60,7 +62,7 @@ public class CountryAdapter extends ArrayAdapter<Country> {
             txtDescription.setText(description);
         }
 
-        ImageLoader.loadFromUrl(countries[position].getImage(), countryImage, context);
+        ImageLoader.loadFromUrl(countries.get(position).getImage(), countryImage, context);
 
         final Country currentCountry = getCurrentCountry(position);
 
@@ -91,6 +93,6 @@ public class CountryAdapter extends ArrayAdapter<Country> {
     }
 
     public Country getCurrentCountry(int position) {
-        return countries[position];
+        return countries.get(position);
     }
 }

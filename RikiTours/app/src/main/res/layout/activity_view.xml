@@ -116,7 +116,8 @@
                 android:id="@+id/txtDescription1"
                 android:textColor="@color/switch_thumb_normal_material_dark"
                 android:paddingTop="7dp"
-                android:paddingBottom="10dp" />
+                android:paddingBottom="10dp"
+                android:maxLength="5000" />
 
             <TextView
                 android:layout_width="wrap_content"
