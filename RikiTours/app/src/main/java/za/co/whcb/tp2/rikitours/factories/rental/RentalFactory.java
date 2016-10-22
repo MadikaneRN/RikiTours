@@ -4,7 +4,7 @@ import za.co.whcb.tp2.rikitours.domain.rental.Rental;
 import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
 
 /**
- * Created by Lindor on 10/3/2016.
+ * Created by Lindo on 10/3/2016.
  */
 public class RentalFactory {
     public static Rental getRental(long id, Reservations reservation, boolean status){

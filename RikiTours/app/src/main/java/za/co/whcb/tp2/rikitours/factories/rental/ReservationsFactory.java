@@ -5,7 +5,7 @@ import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 
 /**
- * Created by LILO on 2016/10/10.
+ * Created by Lindo on 2016/10/10.
  */
 public class ReservationsFactory {
     public static Reservations getReservations(long id, Customer customer, Vehicle vehicle, String pickUpDate, String returnedDate, double amountToPay){
