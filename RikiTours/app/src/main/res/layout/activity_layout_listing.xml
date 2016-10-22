@@ -15,8 +15,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
-        android:padding="5dp" android:radius="5dp"
-        android:background="@drawable/list_bg">
+        android:radius="5dp"
+        android:background="@drawable/list_bg"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="0dp"
+        android:paddingBottom="10dp"
+        android:dividerPadding="0dp">
 
 
         <LinearLayout
@@ -30,10 +35,9 @@
                 android:id="@+id/imgBox"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/tablem"
                 android:scaleType="fitXY"
                 android:gravity="center"
-                />
+                android:background="@color/bright_foreground_disabled_material_dark" />
 
         </LinearLayout>
 
@@ -90,7 +94,7 @@
                     android:background="@drawable/button_sharp"
                     android:textColor="#FFFFFF"
                     style="@style/button_small"
-                    />
+                    android:layout_weight="1" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -100,7 +104,17 @@
                     android:background="@drawable/button_sharp"
                     android:textColor="#FFFFFF"
                     style="@style/button_small"
-                    />
+                    android:layout_weight="1" />
+
+                <Button
+                    style="@style/button_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gallery"
+                    android:id="@+id/button4"
+                    android:background="@drawable/button_sharp"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
 

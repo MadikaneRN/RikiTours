@@ -75,7 +75,7 @@ public class ViewActivity extends AppCompatActivity {
         for(int i = 0; i< data.length;i++) {
             textViews[i].setText(data[i]);
 
-            if(i == 2 && data[i].length() > 250 && data[i].length() < 350){
+          /*  if(i == 2 && data[i].length() > 250 && data[i].length() < 350){
                 textViews[i].setText(data[i].substring(0, 250));
                 textViews[i+1].setText(data[i+1].substring(250));
             }
@@ -91,7 +91,7 @@ public class ViewActivity extends AppCompatActivity {
                 textViews[i].setText(data[i].substring(0, half));
                 textViews[i+1].setText(data[i+1].substring(half));
 
-            }
+            }*/
 
             ImageLoader.loadFromUrl(imageUrl[i], imageViews[i], this);
         }
