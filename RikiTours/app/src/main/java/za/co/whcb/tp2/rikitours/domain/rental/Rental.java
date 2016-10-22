@@ -8,11 +8,12 @@ import java.io.Serializable;
 public class Rental implements Serializable {
     private long id;
     private Reservations reservation;
-    private boolean status;
+    private String status;
 
     public Rental(Builder builder){
         this.id = builder.id;
         this.reservation = builder.reservation;
+        this.status = builder.status;
     }
 
     public long getId() {
@@ -31,18 +32,18 @@ public class Rental implements Serializable {
         this.reservation = reservation;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
     public static class Builder {
         private long id;
         private Reservations reservation;
-        private boolean status;
+        private String status;
 
         public Builder id(long id) {
             this.id = id;
@@ -52,7 +53,7 @@ public class Rental implements Serializable {
             this.reservation = reservation;
             return this;
         }
-        public Builder status(boolean status){
+        public Builder status(String status){
             this.status = status;
             return this;
         }

@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.customer.CustomerTable;
@@ -123,5 +125,65 @@ public class ReservationRepo extends SQLiteOpenHelper {
             }
         }
         return vehicleFound;
+    }
+
+    public ArrayList<Reservations> getAllReservations() {
+        ArrayList<Reservations> reservationArrayList = new ArrayList<>();
+        Reservations reservationFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(reservationTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                reservationFound = ReservationsFactory.getReservations(data.getLong(0), findCustomerById(data.getLong(1)), findVehicleById(data.getLong(2)), data.getString(3), data.getString(4), data.getDouble(5));
+                reservationArrayList.add(reservationFound);
+            }
+        }
+
+        return reservationArrayList;
+    }
+
+    public boolean updateReservation(Reservations updatedReservation, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(reservationTable.getCustomerID().name, updatedReservation.getCustomer().getId());
+        contentValues.put(reservationTable.getVehicleID().name, updatedReservation.getVehicle().getId());
+
+        try {
+
+            returned =  localDatabase.update(reservationTable.getTableName(),
+                    contentValues,reservationTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(reservationTable.getTableName(),
+                    reservationTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
     }
 }

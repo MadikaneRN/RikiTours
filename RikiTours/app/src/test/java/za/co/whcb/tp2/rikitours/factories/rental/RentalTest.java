@@ -16,7 +16,7 @@ public class RentalTest {
 
     @Before
     public void setUp() throws Exception {
-        rental = RentalFactory.getRental(12345L, reservation, true);
+        rental = RentalFactory.getRental(12345L, reservation, "rented");
     }
 
     @Test
@@ -27,7 +27,7 @@ public class RentalTest {
 
     @Test
     public void testRentalUpdate() throws Exception {
-        Rental newRental = new Rental.Builder().copy(rental).status(false).build();
-        Assert.assertEquals(false,newRental.isStatus());
+        Rental newRental = new Rental.Builder().copy(rental).status("cancelled").build();
+        Assert.assertEquals("cancelled",newRental.getStatus());
     }
 }

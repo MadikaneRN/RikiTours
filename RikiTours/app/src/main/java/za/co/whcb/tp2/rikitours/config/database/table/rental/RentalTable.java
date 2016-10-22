@@ -13,7 +13,7 @@ public class RentalTable extends Table{
     private final String tableName = "rental";
     private final Attribute id = new Attribute("id", "INTEGER");
     private final Attribute reservationID = new Attribute("reservationId", "INTEGER");
-    private final Attribute status = new Attribute("status", "BOOLEAN");
+    private final Attribute status = new Attribute("status", "TEXT");
 
     @Override
     public String getTableName() {
