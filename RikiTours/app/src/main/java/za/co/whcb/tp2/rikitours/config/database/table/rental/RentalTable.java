@@ -10,10 +10,10 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
  */
 public class RentalTable extends Table{
 
-    private final String tableName = "countries";
+    private final String tableName = "rental";
     private final Attribute id = new Attribute("id", "INTEGER");
     private final Attribute reservationID = new Attribute("reservationId", "INTEGER");
-    private final Attribute status = new Attribute("status", "TEXT");
+    private final Attribute status = new Attribute("status", "BOOLEAN");
 
     @Override
     public String getTableName() {

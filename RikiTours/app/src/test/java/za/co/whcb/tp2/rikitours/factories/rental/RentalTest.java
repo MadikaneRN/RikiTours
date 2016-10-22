@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import za.co.whcb.tp2.rikitours.domain.rental.Rental;
 import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
-import za.co.whcb.tp2.rikitours.factories.rental.RentalFactory;
 
 /**
  * Created by LILO on 2016/10/10.
