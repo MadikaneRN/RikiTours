@@ -66,7 +66,7 @@ public class TourRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public Tour findCountryById(long id) {
+    public Tour findSeasonById(long id) {
         Tour tourFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(tourTable.getTableName(),

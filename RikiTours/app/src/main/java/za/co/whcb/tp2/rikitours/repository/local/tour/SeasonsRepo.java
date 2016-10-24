@@ -66,7 +66,7 @@ public class SeasonsRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public Seasons findCountryById(long id) {
+    public Seasons findSeasonById(long id) {
         Seasons seasonFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(seasonTable.getTableName(),

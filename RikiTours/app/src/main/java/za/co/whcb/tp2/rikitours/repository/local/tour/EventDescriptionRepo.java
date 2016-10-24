@@ -45,7 +45,7 @@ public class EventDescriptionRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addCountry(EventsDescription eventsDescription ) {
+    public boolean addEventDescriptiom(EventsDescription eventsDescription ) {
         long returned ;
         localDatabase = this.getWritableDatabase();
         eventDescriptionTable  = new EventDescriptionTable();
@@ -68,7 +68,7 @@ public class EventDescriptionRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public EventsDescription findCountryById(long id) {
+    public EventsDescription findEventDescriptionById(long id) {
         EventsDescription eventsDescriptionFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(eventDescriptionTable.getTableName(),

@@ -65,7 +65,7 @@ public class ItenaryRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public Itenary findCountryById(long id) {
+    public Itenary findItenaryById(long id) {
         Itenary itenaryFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(itenaryTable.getTableName(),
