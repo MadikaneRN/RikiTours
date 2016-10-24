@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Riki Private Tours</string>
+    <string name="app_loading">Loading...</string>
+    <string name="registration"> Registration</string>
 </resources>
