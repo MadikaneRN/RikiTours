@@ -14,6 +14,7 @@ public class EventsTable extends Table {
     public static Attribute id = new Attribute("id", "INTEGER");
     public static Attribute descriptionId = new Attribute("descriptionId", "INTEGER");
     public static Attribute name = new Attribute("name", "TEXT");
+    public static Attribute image = new Attribute("imageName", "TEXT");
 
     @Override
     public String getTableName() {
@@ -37,6 +38,10 @@ public class EventsTable extends Table {
         return descriptionId;
     }
 
+    public Attribute getImageName() {
+        return image;
+    }
+
 
     @Override
     public ArrayList<Attribute> getAllAttributes() {
@@ -45,6 +50,7 @@ public class EventsTable extends Table {
         attributes.add(id);
         attributes.add(descriptionId);
         attributes.add(name);
+        attributes.add(image);
 
         return  attributes;
     }

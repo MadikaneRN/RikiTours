@@ -3,6 +3,7 @@ package za.co.whcb.tp2.rikitours.repositorytest.tours;
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
@@ -39,8 +40,9 @@ public class EventsTest extends AndroidTestCase {
         City city = CityFactory.getCity(1L,"name", cityDescription);*/
         Country country = CountryFactory.getCountry(1L, "Africa", "Cape Town", "image.jpg");
 
-        EventsDescription description = EventDescriptionFactory.getEventDescription(1L,"descrip", "start", "end", country);
-        Events events = EventFactory.getEvents(1L, "one", description);
+        EventsDescription description = EventDescriptionFactory.getEventDescription(1L, "descrip", "start", "end", country);
+        RikiImage image = new RikiImage("a","a");
+        Events events = EventFactory.getEvents(1L, "one", description, image);
         boolean isAdded = eventsRepo.addEvent(events);
         assertNull(description);
         assertTrue(isAdded);

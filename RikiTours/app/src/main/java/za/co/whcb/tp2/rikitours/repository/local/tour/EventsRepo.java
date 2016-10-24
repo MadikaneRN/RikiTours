@@ -13,6 +13,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.EventDescriptionTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.EventsTable;
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
@@ -70,6 +71,7 @@ public class EventsRepo extends SQLiteOpenHelper{
         contentValues.put(eventsTable.getAttributeId().name, events.getId());
         contentValues.put(eventsTable.getAttributeName().name, events.getName());
         contentValues.put(eventsTable.getDescriptionId().name, events.getDescription().getId());
+        contentValues.put(eventsTable.getImageName().name, events.getImage().getName());
 
         try {
             returned = localDatabase.insert(eventsTable.getTableName(), null, contentValues);
@@ -93,7 +95,8 @@ public class EventsRepo extends SQLiteOpenHelper{
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                eventFound = EventFactory.getEvents(data.getLong(0), data.getString(1), findEventDecsriptionById(data.getLong(2)));
+                RikiImage image = new RikiImage(data.getString(3), "");
+                eventFound = EventFactory.getEvents(data.getLong(0), data.getString(1), findEventDecsriptionById(data.getLong(2)), image);
             }
         }
         return eventFound;
