@@ -22,17 +22,13 @@ import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 public class AttractionTest {
     @Test
     public void testCreate() throws Exception {
-       /* CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
-        City city = CityFactory.getCity("name", cityDescription);
+        Country country= CountryFactory.getCountry(1L,"South Africa","Africa","SA.png");
 
-        String string = CountryDescriptionFactory.getCountryDescription(city, "code", "image");
-        Country country = CountryFactory.getCountry("name", string);
+        AttractionDescription attractionDescription = AttractionDescriptionFactory.getAttracionDescription(1L,"Water Front","Cape Town","Sea","waterfront.png");
+        Attraction attraction = AttractionFactory.getAttracion(2L,country, attractionDescription);
 
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription("one", "two", "three", "four");
-        Attraction attraction = AttractionFactory.getAttracion(country, description);
-
-        Assert.assertNotNull(attraction);
-        Assert.assertEquals("image", attraction.getCountry().getString().getFlagImage());*/
+        Assert.assertNotNull(attraction.getId());
+        Assert.assertEquals("SA.png", attraction.getCountryId().getImage());
 
     }
 }

@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
@@ -81,6 +83,66 @@ public class EventsRepo extends SQLiteOpenHelper{
 
         return (returned != -1) ? true : false;
     }
+    public ArrayList<Events> getAllEvents() {
+        ArrayList<Events> events = new ArrayList<>();
+
+        Events eventsFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(eventsTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                eventsFound = EventFactory.getEvents(data.getLong(0), data.getString(1), findEventDescriptionById(data.getLong(2)));
+                events.add(eventsFound);
+            }
+        }
+        return events;
+    }
+
+    public boolean updateEvents(Events updatedEvents, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(eventsTable.getAttributeName().name,updatedEvents.getName());
+        contentValues.put(eventsTable.getAttributeName().name,updatedEvents.getDescription().getId());
+
+        try {
+
+            returned =  localDatabase.update(eventsTable.getTableName(),
+                    contentValues, eventsTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(eventsTable.getTableName(),
+                    eventsTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
+    }
+
 
     public Events findEventById(long id) {
         Events eventFound = null;
@@ -93,13 +155,13 @@ public class EventsRepo extends SQLiteOpenHelper{
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                eventFound = EventFactory.getEvents(data.getLong(0), data.getString(1), findEventDecsriptionById(data.getLong(2)));
+                eventFound = EventFactory.getEvents(data.getLong(0), data.getString(1), findEventDescriptionById(data.getLong(2)));
             }
         }
         return eventFound;
     }
 
-    private EventsDescription findEventDecsriptionById(long id) {
+    private EventsDescription findEventDescriptionById(long id) {
         EventsDescription descriptionFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(eventDescriptionTable.getTableName(),

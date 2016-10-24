@@ -12,10 +12,10 @@ import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
 public class AttractionDescriptionTest {
     @Test
     public void testCreate() throws Exception {
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription("one", "two", "three", "four");
+        AttractionDescription attractionDescription = AttractionDescriptionFactory.getAttracionDescription(1L,"Water Front","Cape Town","Sea","waterfront.png");
 
-        Assert.assertNotNull(description);
-        Assert.assertEquals("three", description.getDescription());
+        Assert.assertNotNull(attractionDescription.getId());
+        Assert.assertEquals("Water Front", attractionDescription.getName());
 
     }
 }

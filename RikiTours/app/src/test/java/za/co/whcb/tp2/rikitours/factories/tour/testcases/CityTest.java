@@ -14,11 +14,11 @@ import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
 public class CityTest {
     @Test
     public void testCreate() throws Exception {
-        CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
-        City city = CityFactory.getCity("name", cityDescription);
+        CityDescription cityDescription = CityDescriptionFactory.getCityDescription(1L,"Bellvile","africa");
+        City city = CityFactory.getCity(2L,"Cape Town",cityDescription);
 
         Assert.assertNotNull(city);
-        Assert.assertEquals("suburb", city.getDescription().getSuburb());
+        Assert.assertEquals("Bellvile", city.getDescription().getSuburb());
 
     }
 }

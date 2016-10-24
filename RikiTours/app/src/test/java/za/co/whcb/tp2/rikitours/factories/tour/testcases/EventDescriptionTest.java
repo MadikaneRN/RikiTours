@@ -18,13 +18,11 @@ import za.co.whcb.tp2.rikitours.factories.tour.EventDescriptionFactory;
 public class EventDescriptionTest {
     @Test
     public void testCreate() throws Exception {
-        CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
-        Country city = CountryFactory.getCountry(2L,"name", "cityDescription","image");
+        Country country = CountryFactory.getCountry(2L,"name", "cityDescription","image");
+        EventsDescription eventsDescription = EventDescriptionFactory.getEventDescription(3L,"Jazz Festival","08:00 am","08:00 pm",country);
 
-        EventsDescription description = EventDescriptionFactory.getEventDescription("descrip","start","end",city);
-
-        Assert.assertNotNull(description);
-        Assert.assertEquals("descrip", description.getDescription());
+        Assert.assertNotNull(eventsDescription);
+        Assert.assertEquals("08:00 pm", eventsDescription.getEnd());
 
     }
 }

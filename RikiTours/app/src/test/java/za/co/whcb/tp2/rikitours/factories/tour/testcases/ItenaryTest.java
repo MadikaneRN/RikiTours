@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
 import za.co.whcb.tp2.rikitours.domain.tour.AttractionDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
@@ -12,6 +13,9 @@ import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
 
 import za.co.whcb.tp2.rikitours.domain.tour.Itenary;
+import za.co.whcb.tp2.rikitours.domain.tour.Tour;
+import za.co.whcb.tp2.rikitours.domain.tourguide.Guide;
+import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
@@ -19,6 +23,8 @@ import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
 
 import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.ItenaryFactory;
+import za.co.whcb.tp2.rikitours.factories.tour.TourFactory;
+import za.co.whcb.tp2.rikitours.factories.tourGuide.TourGuideFactory;
 
 /**
  * Created by Shaun Mesias on 2016/10/02.
@@ -26,33 +32,16 @@ import za.co.whcb.tp2.rikitours.factories.tour.ItenaryFactory;
 public class ItenaryTest {
     @Test
     public void testCreate() throws Exception {
-       /* ArrayList<Attraction> attractions = new ArrayList<>();
-
-        CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
-        City city = CityFactory.getCity("name", cityDescription);
-
-        String string = CountryDescriptionFactory.getCountryDescription(city, "code", "image");
-        Country country = CountryFactory.getCountry("name", string);
-
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription("one", "two", "three", "four");
-        Attraction attraction = AttractionFactory.getAttracion(country, description);
-
-        CityDescription cityDescription2 = CityDescriptionFactory.getCityDescription("suburb", "nation");
-        City city2 = CityFactory.getCity("name", cityDescription2);
-
-        String string2 = CountryDescriptionFactory.getCountryDescription(city2, "code", "image");
-        Country country2 = CountryFactory.getCountry("name", string);
-
-        AttractionDescription description2 = AttractionDescriptionFactory.getAttracionDescription("shaun", "two", "three", "four");
-        Attraction attraction2 = AttractionFactory.getAttracion(country2, description2);
-
-        attractions.add(attraction);
-        attractions.add(attraction2);
-
-        Itenary itenary = ItenaryFactory.getItenary(attractions);
+        Country country= CountryFactory.getCountry(1L,"South Africa","Africa","SA.png");
+        AttractionDescription attractionDescription= AttractionDescriptionFactory.getAttracionDescription(1L,"Description","Cape Town","Table Mountain","table.png");
+        Attraction attraction= AttractionFactory.getAttracion(1L,country,attractionDescription);
+        ArrayList<Attraction> attractionArrayList=new ArrayList<>();
+        attractionArrayList.add(attraction);
+        Guide guide= TourGuideFactory.getGuide(1L,"Tour","Tomson","0736321089","phindaencore@gmail.com");
+        Customer customer= CustomerFactory.getCustomer(2L,"Likhona","Tosmon","214162966");
+        Itenary itenary= ItenaryFactory.getItenary(3L,attractionArrayList);
 
         Assert.assertNotNull(itenary);
-        Assert.assertEquals("shaun", itenary.getAttractions().get(1).getAttractionDescription().getName());*/
-
+        Assert.assertTrue(itenary.getAttractions().size()>0);
     }
 }

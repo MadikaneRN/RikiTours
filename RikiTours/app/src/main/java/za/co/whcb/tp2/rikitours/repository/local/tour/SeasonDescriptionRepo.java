@@ -7,13 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.SeasonDescriptionTable;
 import za.co.whcb.tp2.rikitours.domain.tour.SeasonDescription;
+import za.co.whcb.tp2.rikitours.factories.tour.SeasonDescriptionFactory;
 
 /**
- * Created by work on 10/17/2016.
+ * Created by Encore on 10/17/2016.
  */
 public class SeasonDescriptionRepo extends SQLiteOpenHelper {
     private SQLiteDatabase localDatabase;
@@ -66,16 +69,76 @@ public class SeasonDescriptionRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
+    public ArrayList<SeasonDescription> getAllSeasonDescriptions() {
+        ArrayList<SeasonDescription> seasonDescription = new ArrayList<>();
+
+        SeasonDescription seasonDescriptionFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(seasonDescriptionTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                seasonDescriptionFound = SeasonDescriptionFactory.getSeasonsDescription(data.getLong(0), data.getString(1), data.getInt(2));
+                seasonDescription.add(seasonDescriptionFound);
+            }
+        }
+        return seasonDescription;
+    }
+
+    public boolean updateSeasonDescription(SeasonDescription updatedSeasonDescription, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(seasonDescriptionTable.getAttributeDescription().name,updatedSeasonDescription.getDescription());
+        contentValues.put(seasonDescriptionTable.getAttributeNumberOfSeasons().name,updatedSeasonDescription.getNumberOfSeason());
+
+        try {
+
+            returned =  localDatabase.update(seasonDescriptionTable.getTableName(),
+                    contentValues, seasonDescriptionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(seasonDescriptionTable.getTableName(),
+                    seasonDescriptionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
+    }
+
+
     public SeasonDescription findSeaseonDescriptionById(long id) {
         SeasonDescription seasonDescriptionFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(seasonDescriptionTable.getTableName(),
                 seasonDescriptionTable.getAttributeId(), String.valueOf(id));
         Cursor data = db.rawQuery(query, null);
-
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-               /* attractionFound = AttractionFactory.getAttracion(data.getLong(0), data.getLong(1), data.getLong(2));*/
+                seasonDescriptionFound = SeasonDescriptionFactory.getSeasonsDescription(data.getLong(0), data.getString(1), data.getInt(2));
             }
         }
         return seasonDescriptionFound;

@@ -7,18 +7,25 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
+import za.co.whcb.tp2.rikitours.config.database.table.tour.SeasonDescriptionTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.SeasonTable;
+import za.co.whcb.tp2.rikitours.domain.tour.SeasonDescription;
 import za.co.whcb.tp2.rikitours.domain.tour.Seasons;
+import za.co.whcb.tp2.rikitours.factories.tour.SeasonDescriptionFactory;
+import za.co.whcb.tp2.rikitours.factories.tour.SeasonFactory;
 
 /**
- * Created by work on 10/17/2016.
+ * Created by Encore on 10/17/2016.
  */
 public class SeasonsRepo extends SQLiteOpenHelper {
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
     private static SeasonTable seasonTable;
+    private static SeasonDescriptionTable seasonDescriptionTable;
 
 
     public SeasonsRepo(Context context) {
@@ -66,6 +73,66 @@ public class SeasonsRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
+    public ArrayList<Seasons> getAllSeasons() {
+        ArrayList<Seasons> season = new ArrayList<>();
+
+        Seasons seasonFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(seasonTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                seasonFound = SeasonFactory.getSeasons(data.getLong(0), data.getString(1), findSeasonDescriptionById(data.getLong(2)));
+                season.add(seasonFound);
+            }
+        }
+        return season;
+    }
+
+    public boolean updateSeason(Seasons updatedSeason, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(seasonTable.getAttributeDescriptionId().name,updatedSeason.getDescription().getId());
+        contentValues.put(seasonTable.getAttributeName().name,updatedSeason.getName());
+
+        try {
+
+            returned =  localDatabase.update(seasonDescriptionTable.getTableName(),
+                    contentValues, seasonDescriptionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(seasonDescriptionTable.getTableName(),
+                    seasonDescriptionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
+    }
+
     public Seasons findSeasonById(long id) {
         Seasons seasonFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -75,9 +142,22 @@ public class SeasonsRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-               /* attractionFound = AttractionFactory.getAttracion(data.getLong(0), data.getLong(1), data.getLong(2));*/
+                seasonFound = SeasonFactory.getSeasons(data.getLong(0), data.getString(1), findSeasonDescriptionById(data.getLong(2)));
             }
         }
         return seasonFound;
+    }
+    private SeasonDescription findSeasonDescriptionById(long id){
+        SeasonDescription seasonDescriptionFound = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = Converter.toSelectAllWhere(seasonDescriptionTable.getTableName(),
+                seasonDescriptionTable.getAttributeId(), String.valueOf(id));
+        Cursor data = db.rawQuery(query, null);
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                seasonDescriptionFound = SeasonDescriptionFactory.getSeasonsDescription(data.getLong(0), data.getString(1), data.getInt(2));
+            }
+        }
+        return seasonDescriptionFound;
     }
 }

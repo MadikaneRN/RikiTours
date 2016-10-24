@@ -20,15 +20,11 @@ import za.co.whcb.tp2.rikitours.factories.tour.EventFactory;
 public class EventsTest {
     @Test
     public void testCreate() throws Exception {
-        CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
-       // City city = CityFactory.getCity("name", cityDescription);
-        Country city = CountryFactory.getCountry(2L,"name", "cityDescription","image");
-
-        EventsDescription description = EventDescriptionFactory.getEventDescription("descrip", "start", "end", city);
-        Events events = EventFactory.getEvents("name", description);
+        Country country= CountryFactory.getCountry(1L,"South Africa","Africa","SA.png");
+        EventsDescription eventsDescription=EventDescriptionFactory.getEventDescription(1L,"Fashion","08:00 am","08:00 pm",country);
+        Events events=EventFactory.getEvents(1L,"Durban July",eventsDescription);
 
         Assert.assertNotNull(events);
-        Assert.assertEquals("name", events.getName());
-
+        Assert.assertEquals("08:00 pm", events.getDescription().getEnd());
     }
 }

@@ -18,11 +18,11 @@ import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 public class CountryTest {
     @Test
     public void testCreate() throws Exception {
-        Country country = CountryFactory.getCountry((long) 10.0,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
+        Country country = CountryFactory.getCountry(1L,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
 
 
-        Assert.assertNotNull(country);
-        //Assert.assertEquals("code", country.getString().getCountryCode());
+        Assert.assertNotNull(country.getId());
+        Assert.assertEquals("sa.jpg", country.getImage());
 
     }
 }

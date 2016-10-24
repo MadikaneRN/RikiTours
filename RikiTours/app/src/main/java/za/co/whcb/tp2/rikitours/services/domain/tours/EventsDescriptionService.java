@@ -41,11 +41,11 @@ public class EventsDescriptionService extends Service {
 
     public boolean add(EventsDescription description) {
 
-        return eventDescriptionRepo.addEvent(description);
+        return eventDescriptionRepo.addEventDescription(description);
     }
 
     public EventsDescription findById(long id) {
-        return eventDescriptionRepo.findEventsDescriptionById(id);
+        return eventDescriptionRepo.findEventDescriptionById(id);
     }
 
     public boolean update(EventsDescription updateEventsDescription, long id) {
@@ -57,6 +57,6 @@ public class EventsDescriptionService extends Service {
     }
 
     public ArrayList<EventsDescription> findAll() {
-        return eventDescriptionRepo.getAllEventsDescription();
+        return eventDescriptionRepo.getAllEventDescriptions();
     }
 }

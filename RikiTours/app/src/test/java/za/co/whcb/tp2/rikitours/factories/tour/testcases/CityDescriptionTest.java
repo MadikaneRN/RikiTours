@@ -12,10 +12,10 @@ import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
 public class CityDescriptionTest {
     @Test
     public void testCreate() throws Exception {
-        CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
+        CityDescription cityDescription = CityDescriptionFactory.getCityDescription(1L,"Bellvile","africa");
 
         Assert.assertNotNull(cityDescription);
-        Assert.assertEquals("nation", cityDescription.getNation());
+        Assert.assertEquals("africa", cityDescription.getNation());
 
     }
 }
