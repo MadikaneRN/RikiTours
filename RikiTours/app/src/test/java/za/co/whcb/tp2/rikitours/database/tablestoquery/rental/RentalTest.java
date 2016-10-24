@@ -12,8 +12,8 @@ public class RentalTest {
 
     @Test
     public void testCountryTable() throws Exception {
-        VehicleTable countryTable = new VehicleTable();
-        String query = Converter.toCreateTableQuery(countryTable.getTableName(),countryTable.getAllAttributes());
+        VehicleTable vehicleTable = new VehicleTable();
+        String query = Converter.toCreateTableQuery(vehicleTable.getTableName(),vehicleTable.getAllAttributes());
         System.out.println(query);
 
     }
