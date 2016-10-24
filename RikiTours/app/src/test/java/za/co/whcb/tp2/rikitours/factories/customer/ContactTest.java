@@ -17,7 +17,7 @@ public class ContactTest {
 
     @Before
     public void setUp()throws Exception {
-        contact=ContactFactory.getContact("0834543345","02145544453");
+        contact=ContactFactory.getContact(2L,"0834543345","02145544453");
 
     }
     @Test

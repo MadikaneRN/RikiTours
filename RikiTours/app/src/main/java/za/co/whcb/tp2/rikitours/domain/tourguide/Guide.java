@@ -19,7 +19,7 @@ public class Guide implements Person {
     }
 
     @Override
-    public int getId() {
+    public long getId() {
         return 0;
     }
 

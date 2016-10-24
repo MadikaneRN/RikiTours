@@ -6,15 +6,15 @@ import za.co.whcb.tp2.rikitours.domain.tour.Country;
  */
 public class Attraction {
     private Long id;
-    private AttractionDescription attractionDescription;
-    private Country country;
+    private Country countryId;
+    private AttractionDescription attractionDescriptionId;
 
     public Attraction() {
     }
 
     public Attraction(Builder builder) {
-        this.attractionDescription = builder.attractionDescription;
-        this.country = builder.country;
+        this.attractionDescriptionId = builder.attractionDescriptionId;
+        this.countryId = builder.countryId;
         this.id = builder.id;
     }
 
@@ -23,19 +23,19 @@ public class Attraction {
     }
 
 
-    public Country getCountry() {
-        return country;
+    public Country getCountryId() {
+        return countryId;
     }
 
 
-    public AttractionDescription getAttractionDescription() {
-        return attractionDescription;
+    public AttractionDescription getAttractionDescriptionId() {
+        return attractionDescriptionId;
     }
 
     public static class Builder{
         private Long id;
-        private AttractionDescription attractionDescription;
-        private Country country;
+        private Country countryId;
+        private AttractionDescription attractionDescriptionId;
 
         public Builder id(Long id){
             this.id = id;
@@ -44,19 +44,19 @@ public class Attraction {
 
 
         public Builder country(Country country){
-            this.country = country;
+            this.countryId = country;
             return this;
         }
 
         public Builder attractionDescription(AttractionDescription attractionDescription){
-            this.attractionDescription = attractionDescription;
+            this.attractionDescriptionId = attractionDescription;
             return this;
         }
 
         public Builder copy(Attraction attraction){
             this.id = attraction.id;
-            this.country = attraction.country;
-            this.attractionDescription = attraction.attractionDescription;
+            this.countryId = attraction.countryId;
+            this.attractionDescriptionId = attraction.attractionDescriptionId;
 
             return this;
         }
