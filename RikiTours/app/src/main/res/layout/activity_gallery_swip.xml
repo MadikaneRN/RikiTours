@@ -14,7 +14,7 @@
         android:text="Gallery"
         android:textSize="25dp"
         android:id="@+id/galleryTitle"
-        />
+        android:textColor="@color/abc_background_cache_hint_selector_material_light" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"

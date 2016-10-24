@@ -12,12 +12,15 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import za.co.whcb.tp2.rikitours.GalleryViewActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.ViewActivity;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
+import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
 
 /**
@@ -27,12 +30,19 @@ public class CountryAdapter extends ArrayAdapter<Country> {
 
     private ArrayList<Country> countries;
     private final Activity context;
+    private GalleryContainer galleryContainer;
 
     public CountryAdapter(Activity context, ArrayList<Country> countries) {
-
         super(context, R.layout.activity_layout_listing, countries);
         this.context = context;
         this.countries = countries;
+    }
+
+    public CountryAdapter(Activity context, ArrayList<Country> countries, GalleryContainer galleryContainer) {
+        super(context, R.layout.activity_layout_listing, countries);
+        this.context = context;
+        this.countries = countries;
+        this.galleryContainer = galleryContainer;
     }
 
     @Override
@@ -46,6 +56,7 @@ public class CountryAdapter extends ArrayAdapter<Country> {
         ImageView countryImage = (ImageView) rowView.findViewById(R.id.imgBox);
         Button btnReadmore = (Button) rowView.findViewById(R.id.btnReamore);
         Button btnBooknow = (Button) rowView.findViewById(R.id.btnBooknow);
+        Button btnGallery = (Button) rowView.findViewById(R.id.btnGallery);
 
         txtTitle.setText(countries.get(position).getName());
 
@@ -86,6 +97,22 @@ public class CountryAdapter extends ArrayAdapter<Country> {
             @Override
             public void onClick(View v) {
                 Display.toast("Booking..." + currentCountry.getName(),context);
+            }
+        });
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryViewer = new Intent(context, GalleryViewActivity.class);
+                if(galleryContainer.getSize() > 0) {
+                    galleryViewer.putExtra("title", galleryContainer.getTitle());
+                    galleryViewer.putExtra("image1", galleryContainer.getImage(0).getUrl());
+                    galleryViewer.putExtra("image2", galleryContainer.getImage(1).getUrl());
+                    galleryViewer.putExtra("image3", galleryContainer.getImage(2).getUrl());
+                    galleryViewer.putExtra("image4", galleryContainer.getImage(3).getUrl());
+                    galleryViewer.putExtra("image5", galleryContainer.getImage(4).getUrl());
+                    context.startActivity(galleryViewer);
+                }
             }
         });
 

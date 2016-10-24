@@ -37,7 +37,7 @@
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
                 android:gravity="center"
-                android:background="@color/bright_foreground_disabled_material_dark" />
+                android:background="@drawable/loading" />
 
         </LinearLayout>
 
@@ -111,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Gallery"
-                    android:id="@+id/button4"
+                    android:id="@+id/btnGallery"
                     android:background="@drawable/button_sharp"
                     android:textColor="#FFFFFF"
                     android:layout_weight="1" />

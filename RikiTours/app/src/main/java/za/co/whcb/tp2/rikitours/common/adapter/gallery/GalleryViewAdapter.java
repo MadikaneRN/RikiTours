@@ -14,23 +14,24 @@ import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
+import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 
 /**
  * Created by berka on 10/22/2016.
  */
 public class GalleryViewAdapter extends PagerAdapter {
-    private ArrayList<String> images;
+    private GalleryContainer galleryContainer;
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public GalleryViewAdapter(ArrayList<String> images, Context context) {
-        this.images = images;
+    public GalleryViewAdapter(GalleryContainer galleryContainer, Context context) {
+        this.galleryContainer = galleryContainer;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return images.size();
+        return galleryContainer.getSize();
     }
 
     @Override
@@ -47,7 +48,8 @@ public class GalleryViewAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) viewItems.findViewById(R.id.imageViewGallery);
         TextView textView = (TextView) viewItems.findViewById(R.id.galleryTitle);
         textView.setText("image : "+ position);
-        ImageLoader.loadFromUrl(images.get(position),imageView,context);
+
+        ImageLoader.loadFromUrl(galleryContainer.getImage(position).getUrl(),imageView,context);
 
         container.addView(viewItems);
 

@@ -24,49 +24,42 @@ import java.util.ArrayList;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.adapter.CountryAdapter;
 import za.co.whcb.tp2.rikitours.controllers.CountryController;
+import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import za.co.whcb.tp2.rikitours.error.setup.network.AppNetworkError;
 import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 public class ListActivity extends AppCompatActivity {
 
     //JsonObjectRequest jsonObjectRequest;
 
-    RequestQueue requestQueue;
-   private  ArrayList<Country> countriesFromServer;
-   private ArrayList<Country> t;
-
+    private RequestQueue requestQueue;
+    private  ArrayList<Country> countriesFromServer;
+    private final String url = "http://tp2.whcb.co.za/countries";
+    private GalleryContainer galleryContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-         t = new ArrayList<>(); ;
-
         countriesFromServer = new ArrayList<>();
+        galleryContainer = new GalleryContainer();
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.logo_1);
-
-
-       // CountryController countryController = new CountryController(this,"http://tp2.whcb.co.za/customer.php");
-
-
-
-
         requestQueue = Volley.newRequestQueue(this);
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                "http://tp2.whcb.co.za/countries",
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject jsonObject = response.getJSONObject(i);
-
-                                long id = Long.parseLong(jsonObject.getString("id"));
+                                long id = Long.parseLong(jsonObject.getString("country_id"));
                                 String name = jsonObject.getString("name");
                                 String description = jsonObject.getString("description");
                                 String image = jsonObject.getString("image");
@@ -74,16 +67,32 @@ public class ListActivity extends AppCompatActivity {
                                 Country country = CountryFactory.getCountry(id,name,description,image);
                                 countriesFromServer.add(country);
 
-                                work(countriesFromServer);
+                                galleryContainer.addImage( new RikiImage("",jsonObject.getString("image1")));
+                                galleryContainer.addImage( new RikiImage("",jsonObject.getString("image2")));
+                                galleryContainer.addImage( new RikiImage("",jsonObject.getString("image3")));
+                                galleryContainer.addImage( new RikiImage("",jsonObject.getString("image4")));
+                                galleryContainer.addImage( new RikiImage("",jsonObject.getString("image5")));
 
+
+
+                                for(int y = 0; y < galleryContainer.getSize(); y++){
+                                    if( galleryContainer.getImage(y) == null || galleryContainer.getImage(y).getUrl().equals(""))
+                                    {
+                                        galleryContainer.removeImagee(y);
+                                    }
+                                }
+
+                                if (galleryContainer.getSize() > 0){
+                                    loadList(countriesFromServer, galleryContainer);
+                                }
+                                else {
+                                    loadList(countriesFromServer);
+                                }
                             }
-
-                            t = countriesFromServer;
-                            //Display.toast(String.valueOf(countriesFromServer.size()),getApplicationContext());
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Display.toast("Error "+e.getMessage(), getApplicationContext());
                         }
                     }
                 },
@@ -91,28 +100,27 @@ public class ListActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("VOLLEY", "ERROR");
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        AppNetworkError.check(error);
                     }
                 }
         );
         requestQueue.add(jsonArrayRequest);
 
+    }
 
+    public void loadList(ArrayList<Country> countries , GalleryContainer galleryContainer) {
 
-
-        //CountryAdapter adapter = new CountryAdapter(this,countriesFromServer);
-        //ListView l = (ListView) findViewById(R.id.listView2);
-       // l.setAdapter(adapter);
-
-       // Display.toast(String.valueOf(t.size()),this);
+        CountryAdapter adapter = new CountryAdapter(this,countries,galleryContainer);
+        ListView listView = (ListView) findViewById(R.id.listView2);
+        listView.setAdapter(adapter);
 
     }
 
-    public void work(ArrayList<Country> countries) {
+    public void loadList(ArrayList<Country> countries) {
 
         CountryAdapter adapter = new CountryAdapter(this,countries);
-        ListView l = (ListView) findViewById(R.id.listView2);
-        l.setAdapter(adapter);
+        ListView listView = (ListView) findViewById(R.id.listView2);
+        listView.setAdapter(adapter);
 
     }
 }
