@@ -16,7 +16,7 @@
         android:id="@+id/galleryTitle"
         android:textColor="@color/abc_background_cache_hint_selector_material_light" />
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:src="@drawable/riki_loader"
         android:id="@+id/imageViewGallery"
