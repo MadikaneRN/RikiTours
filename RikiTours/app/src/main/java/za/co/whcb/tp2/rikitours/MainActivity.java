@@ -9,20 +9,23 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import za.co.whcb.tp2.rikitours.common.Display;
-import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 import za.co.whcb.tp2.rikitours.services.domain.common.country.CountryService;
-
 
 public class MainActivity extends AppCompatActivity {
 
 
-     CountryService countryService;
-     boolean isBound = false;
+    CountryService countryService;
+    boolean isBound = false;
+    Button btnTerms;
+    TextView txtViewTerms;
+    boolean termsClick = false;
+    boolean accepted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.logo_1);
+        setTitle(R.string.registration);
+
+        btnTerms = (Button) findViewById(R.id.btnTerms);
+        txtViewTerms = (TextView) findViewById(R.id.txtViewTerms);
+
 
 
     }
@@ -88,4 +96,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    public void terms(View view) {
+        if(termsClick != true) {
+            txtViewTerms.setVisibility(View.VISIBLE);
+            termsClick = true;
+        }
+        else {
+            txtViewTerms.setVisibility(View.GONE);
+            termsClick = false;
+        }
+    }
+
+
 }

@@ -32,7 +32,7 @@ public class AttractionDescriptionTest extends AndroidTestCase {
     }
 
     public void findAttractionDescriptionById() {
-        AttractionDescription description = attractionDescriptionRepo.findCountryById(1L);
+        AttractionDescription description = attractionDescriptionRepo.findAttractionDescriptionById(1L);
         assertNull(description);
         assertEquals("Cape Tow", description.getCity());
     }

@@ -17,7 +17,8 @@ public class LoginActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.mipmap.logo_1);
+        actionBar.hide();
+       // actionBar.setIcon(R.mipmap.logo_1);
 
     }
 

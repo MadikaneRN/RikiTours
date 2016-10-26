@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.rental.VehicleTable;
@@ -93,8 +95,69 @@ public class VehicleRepo extends SQLiteOpenHelper {
     }
 
 
+    public ArrayList<Vehicle> getAllVehicles() {
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        Vehicle vehicleFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(vehicleTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                vehicleFound = VehicleFactory.getVehicle(data.getLong(0), data.getString(1),
+                        data.getString(2), data.getString(3));
+                vehicles.add(vehicleFound);
+            }
+        }
+
+        return vehicles;
+    }
 
 
+    public boolean updateVehicle(Vehicle updatedVehicle, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(vehicleTable.getAttributevehicleName().name,updatedVehicle.getVehicleName());
+        contentValues.put(vehicleTable.getAttributevehicleModel().name,updatedVehicle.getVehicleModel());
+        contentValues.put(vehicleTable.getAttributevehicleYear().name,updatedVehicle.getVehicleYear());
+
+        try {
+
+            returned =  localDatabase.update(vehicleTable.getTableName(),
+                    contentValues,vehicleTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(vehicleTable.getTableName(),
+                    vehicleTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
+    }
 
 //Add Delete, Get All, Update
 
