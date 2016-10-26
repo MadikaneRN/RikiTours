@@ -16,7 +16,7 @@ public class OfficeTest {
 
     @Before
     public void setUp() throws Exception {
-        office = OfficeFactory.getOffice("Cape Town","Gardens");
+        office = OfficeFactory.getOffice(12345L,"Cape Town","Gardens");
     }
 
     @Test

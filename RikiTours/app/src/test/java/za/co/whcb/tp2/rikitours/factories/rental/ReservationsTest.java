@@ -19,7 +19,7 @@ public class ReservationsTest {
 
     @Before
     public void setUp() throws Exception {
-        reservations = ReservationsFactory.getReservations(customer,vehicle,"10/10/2016","15/10/2016",2500);
+        reservations = ReservationsFactory.getReservations(12345L,customer,vehicle,"10/10/2016","15/10/2016",2500);
     }
 
     @Test
