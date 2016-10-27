@@ -32,11 +32,11 @@ public class EventsDescriptionTest extends AndroidTestCase {
         Country country= CountryFactory.getCountry(2L,"South Africa","Africa","image.jpa");
 
         EventsDescription eventsDescription= EventDescriptionFactory.getEventDescription(1L,"Conference","12:00 am","05:00 pm",country);
-        assertEquals(true, eventDescriptionRepo.addCountry(eventsDescription));
+        assertEquals(true, eventDescriptionRepo.addEvent(eventsDescription));
     }
 
     public void findCountryById() {
-        EventsDescription eventsDescription = eventDescriptionRepo.findCountryById(1L);
+        EventsDescription eventsDescription = eventDescriptionRepo.findEventsDescriptionById(1L);
         assertEquals("Conference", eventsDescription.getDescription());
     }
 }

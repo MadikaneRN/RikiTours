@@ -9,9 +9,10 @@ import za.co.whcb.tp2.rikitours.factories.rental.RentalFactory;
 import za.co.whcb.tp2.rikitours.repository.local.rental.RentalRepo;
 
 /**
- * Created by bishop v on 2016-10-22.
+ * Created by berka on 10/27/2016.
  */
-public class RentalTest extends AndroidTestCase {
+public class rentalTest extends AndroidTestCase {
+
     private RentalRepo rentalRepo;
     private static Reservations reservations;
 
