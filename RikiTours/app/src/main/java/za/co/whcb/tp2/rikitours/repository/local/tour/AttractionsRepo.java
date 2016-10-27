@@ -67,7 +67,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
 
         contentValues.put(attractionTable.getAttributeId().name, attraction.getId());
         contentValues.put(attractionTable.getCountryId().name, attraction.getCountryId().getId());
-        contentValues.put(attractionTable.getAttractionDescriptionId().name, attraction.getAttractionDescriptionId().getId());
+        contentValues.put(attractionTable.getAttractionDescriptionId().name, attraction.getAttractionDescription().getId());
 
         try {
             returned = localDatabase.insert(attractionTable.getTableName(), null, contentValues);
@@ -153,7 +153,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         localDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
         contentValues.put(attractionTable.getCountryId().name,updatedAttraction.getCountryId().getId());
-        contentValues.put(attractionTable.getAttractionDescriptionId().name,updatedAttraction.getAttractionDescriptionId().getId());
+        contentValues.put(attractionTable.getAttractionDescriptionId().name,updatedAttraction.getAttractionDescription().getId());
         try {
 
             returned =  localDatabase.update(attractionTable.getTableName(),
