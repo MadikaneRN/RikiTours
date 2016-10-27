@@ -5,10 +5,12 @@ import org.junit.Test;
 
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.domain.tour.Events;
 import za.co.whcb.tp2.rikitours.domain.tour.EventsDescription;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
+import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.EventDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.EventFactory;
 
@@ -18,11 +20,12 @@ import za.co.whcb.tp2.rikitours.factories.tour.EventFactory;
 public class EventsTest {
     @Test
     public void testCreate() throws Exception {
-        CityDescription cityDescription = CityDescriptionFactory.getCityDescription("suburb", "nation");
-        City city = CityFactory.getCity("name", cityDescription);
+        CityDescription cityDescription = CityDescriptionFactory.getCityDescription(1L, "suburb", "nation");
+       // City city = CityFactory.getCity("name", cityDescription);
+        Country city = CountryFactory.getCountry(2L,"name", "cityDescription","image");
 
-        EventsDescription description = EventDescriptionFactory.getEventDescription("descrip", "start", "end", city);
-        Events events = EventFactory.getEvents("name", description);
+        EventsDescription description = EventDescriptionFactory.getEventDescription(1L, "descrip", "start", "end", city);
+        Events events = EventFactory.getEvents(1L, "name", description);
 
         Assert.assertNotNull(events);
         Assert.assertEquals("name", events.getName());

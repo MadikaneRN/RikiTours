@@ -6,8 +6,8 @@ import za.co.whcb.tp2.rikitours.domain.tour.Country;
  */
 public class Attraction {
     private Long id;
-    private Long countryId;
-    private Long attractionDescriptionId;
+    private Country countryId;
+    private AttractionDescription attractionDescriptionId;
 
     public Attraction() {
     }
@@ -23,19 +23,19 @@ public class Attraction {
     }
 
 
-    public Long getCountryId() {
+    public Country getCountryId() {
         return countryId;
     }
 
 
-    public Long getAttractionDescriptionId() {
+    public AttractionDescription getAttractionDescriptionId() {
         return attractionDescriptionId;
     }
 
     public static class Builder{
         private Long id;
-        private Long countryId;
-        private Long attractionDescriptionId;
+        private Country countryId;
+        private AttractionDescription attractionDescriptionId;
 
         public Builder id(Long id){
             this.id = id;
@@ -43,12 +43,12 @@ public class Attraction {
         }
 
 
-        public Builder country(Long country){
+        public Builder country(Country country){
             this.countryId = country;
             return this;
         }
 
-        public Builder attractionDescription(Long attractionDescription){
+        public Builder attractionDescription(AttractionDescription attractionDescription){
             this.attractionDescriptionId = attractionDescription;
             return this;
         }

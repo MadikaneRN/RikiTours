@@ -10,7 +10,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
  */
 public class EventsTable extends Table {
 
-    public final String tableName = "City";
+    public final String tableName = "Events";
     public static Attribute id = new Attribute("id", "INTEGER");
     public static Attribute descriptionId = new Attribute("descriptionId", "INTEGER");
     public static Attribute name = new Attribute("name", "TEXT");
@@ -29,7 +29,7 @@ public class EventsTable extends Table {
         return id;
     }
 
-    public Attribute getNameId() {
+    public Attribute getAttributeName() {
         return name;
     }
 

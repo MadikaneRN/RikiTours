@@ -9,9 +9,10 @@ import za.co.whcb.tp2.rikitours.domain.tourguide.Guide;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class TourFactory {
-    public static Tour getTour(Guide guide, Customer customer, Itenary itenary)
+    public static Tour getTour(Long id,Guide guide, Customer customer, Itenary itenary)
     {
         return new Tour.Builder()
+                .id(id)
                 .guide(guide)
                 .customer(customer)
                 .itenary(itenary)

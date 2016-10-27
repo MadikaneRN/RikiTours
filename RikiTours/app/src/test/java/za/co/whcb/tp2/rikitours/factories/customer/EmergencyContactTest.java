@@ -29,7 +29,7 @@ public class EmergencyContactTest {
     @Test
     public void testUpdate() throws Exception {
         EmergencyContact emergecyContact = new EmergencyContact.Builder().name("thamar").surname("johns").landlineNo("0713456465").build();
-        Assert.assertEquals(emergecyContact.getSurname(),"Mphokeli");
+        Assert.assertEquals(emergecyContact.getSurname(),"johns");
         Assert.assertEquals(emergecyContact.getLandlineNo(),"0713456465");
 
     }

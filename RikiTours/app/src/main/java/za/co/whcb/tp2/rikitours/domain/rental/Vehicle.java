@@ -68,7 +68,10 @@ public class Vehicle implements Serializable{
             return this;
         }
 
-        public Vehicle build(){return new Vehicle(this);}
+        public Vehicle build()
+        {
+            return new Vehicle(this);
+        }
     }
 
     public Vehicle(Builder builder){

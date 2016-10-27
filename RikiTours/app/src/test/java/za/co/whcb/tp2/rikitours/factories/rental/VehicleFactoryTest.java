@@ -13,8 +13,9 @@ public class VehicleFactoryTest extends TestCase {
     public void testGetVehicle() throws Exception
     {
 
-        Vehicle vehicle = VehicleFactory.getVehicle(12,"BMW","M3","2013");
+       Vehicle vehicle = VehicleFactory.getVehicle(12,"BMW","M3","2013");
         Assert.assertEquals("BMW",vehicle.getVehicleName());
+        Assert.assertEquals(12,vehicle.getId());
 
     }
 }

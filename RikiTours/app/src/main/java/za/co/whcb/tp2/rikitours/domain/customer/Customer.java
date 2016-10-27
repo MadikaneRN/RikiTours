@@ -60,8 +60,8 @@ public class Customer implements Person{
             this.id=id;
             return this;
         }
-        public Builder id(String email){
-            this.email =email;
+        public Builder id(long id){
+            this.id =  id;
             return this;
         }
 

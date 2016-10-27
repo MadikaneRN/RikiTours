@@ -4,6 +4,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class SeasonDescription {
+    private Long id;
     private String	description;
     private int numberOfSeason;
 
@@ -12,7 +13,9 @@ public class SeasonDescription {
         this.numberOfSeason = builder.numberOfSeason;
     }
 
-
+    public Long getId(){
+        return id;
+    }
     public String getDescription() {
         return description;
     }
