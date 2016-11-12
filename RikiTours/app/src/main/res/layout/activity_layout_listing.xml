@@ -70,7 +70,14 @@
                     android:id="@+id/txtTtileComment"
                     android:textColor="#f36d2e"
                     android:textSize="20dp" />
+
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageStar"
+                android:src="@drawable/stars_4" />
 
             <TextView
                 android:layout_width="wrap_content"

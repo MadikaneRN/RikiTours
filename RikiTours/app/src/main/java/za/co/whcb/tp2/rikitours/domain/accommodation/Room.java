@@ -1,28 +1,35 @@
 package za.co.whcb.tp2.rikitours.domain.accommodation;
 
+import java.util.ArrayList;
+
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
+
 /**
  * Created by berka on 9/17/2016.
  */
 public class Room {
-    private String id, size, type, description;
-    private String hotelId;
+    private String  size, type, description;
+    private long id;
+    private Hotel hotel;
+    private ArrayList<RikiImage> images;
 
-    public Room() {
+       public Room() {
     }
 
-    public Room(String id, String size, String type, String description, String hotelId) {
+    public Room(long id, String size, String type, String description, Hotel hotel) {
         this.id = id;
         this.size = size;
         this.type = type;
         this.description = description;
-        this.hotelId = hotelId;
+        this.hotel = hotel;
+        images = new ArrayList<>();
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -50,11 +57,26 @@ public class Room {
         this.description = description;
     }
 
-    public String getHotelId() {
-        return hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setHotelId(String hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public void addImage(RikiImage newImage){
+        this.images.add(newImage);
+    }
+
+
+    public RikiImage getImage(int index){
+        if(images.size() > 0 && images.size() > index ||  images.size() == index ){
+            return this.images.get(index);
+        }
+        else{
+            return null;
+        }
+
     }
 }
