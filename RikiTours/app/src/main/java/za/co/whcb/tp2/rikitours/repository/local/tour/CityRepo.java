@@ -11,21 +11,29 @@ import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
+import za.co.whcb.tp2.rikitours.config.database.table.common.CountryTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityTable;
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
+import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 /**
  * Created by Shaun Mesias on 2016/10/17.
  */
+
+
 public class CityRepo extends SQLiteOpenHelper {
+
+
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
     private static CityTable cityTable;
     private static CityDescriptionTable descriptionTable;
+    private static CountryTable countryTable;
 
 
     public CityRepo(Context context) {
@@ -89,6 +97,26 @@ public class CityRepo extends SQLiteOpenHelper {
         return cityFound;
     }
 
+
+
+
+    private Country findCountryById(long id) {
+
+        Country countryFound = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = Converter.toSelectAllWhere(countryTable.getTableName(),
+                countryTable.getAttributeId(), String.valueOf(id));
+        Cursor data = db.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+
+                countryFound = CountryFactory.getCountry(data.getLong(0),data.getString(1),data.getString(2),data.getString(3));
+            }
+        }
+        return countryFound;
+    }
+
     private CityDescription findCityDescriptionById(long id) {
         CityDescription descriptionFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -99,11 +127,15 @@ public class CityRepo extends SQLiteOpenHelper {
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
 
-                descriptionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), data.getString(2));
+                descriptionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), findCountryById(data.getLong(2)));
             }
         }
         return descriptionFound;
     }
+
+
+
+
 
     public ArrayList<City> getAllCities() {
         ArrayList<City> descriptions = new ArrayList<>();
@@ -164,4 +196,7 @@ public class CityRepo extends SQLiteOpenHelper {
         return (returned != 0) ? true : false;
 
     }
+
+
 }
+

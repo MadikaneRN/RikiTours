@@ -4,51 +4,60 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class CityDescription {
-    private Long id;
-    private String suburb, nation;
+    private long id;
+
+    private String description;
+    private Country country;
+
+
 
     public CityDescription(Builder builder){
         this.id = builder.id;
-        this.suburb = builder.suburb;
-        this.nation = builder.nation;
+        this.description = builder.description;
+        this.country = builder.country;
     }
 
-    public Long getId() {
+    public String getDescription() {
+        return description;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+
+    public long getId() {
         return id;
     }
 
-    public String getSuburb(){
-        return suburb;
-    }
-
-    public String getNation() {
-        return nation;
-    }
-
     public static class Builder{
-        private Long id;
-        private String suburb, nation;
+        private long id;
+        private String description;
+        private Country country;
 
-        public Builder id(Long id){
+
+        public Builder id(long id){
             this.id=id;
             return this;
         }
 
-        public Builder suburb(String suburb){
-            this.suburb=suburb;
+
+
+        public Builder description(String description){
+            this.description=description;
             return this;
         }
 
-        public Builder nation(String nation){
-            this.nation=nation;
+        public Builder country(Country country){
+            this.country = country;
             return this;
         }
+
 
         public Builder copy(CityDescription city){
             this.id = city.id;
-            this.suburb=city.suburb;
-            this.nation = city.nation;
-
+           this.country = city.country;
+            this.description = city.description;
             return this;
         }
         public CityDescription build(){
