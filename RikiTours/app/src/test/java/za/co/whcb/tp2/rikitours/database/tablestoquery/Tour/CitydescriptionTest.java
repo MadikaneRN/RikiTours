@@ -14,6 +14,9 @@ public class CitydescriptionTest {
 
         CityDescriptionTable attractionTable = new CityDescriptionTable();
         String query = Converter.toCreateTableQuery(attractionTable.getTableName(),attractionTable.getAllAttributes());
+
+
+
         System.out.println(query);
     }
 }
