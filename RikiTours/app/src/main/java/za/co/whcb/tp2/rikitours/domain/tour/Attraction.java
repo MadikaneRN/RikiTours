@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Attraction implements Serializable {
     private Long id;
-    private Country countryId;
+    private Country country;
     private AttractionDescription attractionDescription;
 
     public Attraction() {
@@ -15,7 +15,7 @@ public class Attraction implements Serializable {
 
     public Attraction(Builder builder) {
         this.attractionDescription = builder.attractionDescriptionId;
-        this.countryId = builder.countryId;
+        this.country = builder.country;
         this.id = builder.id;
     }
 
@@ -24,8 +24,8 @@ public class Attraction implements Serializable {
     }
 
 
-    public Country getCountryId() {
-        return countryId;
+    public Country getCountry() {
+        return country;
     }
 
 
@@ -35,7 +35,7 @@ public class Attraction implements Serializable {
 
     public static class Builder{
         private Long id;
-        private Country countryId;
+        private Country country;
         private AttractionDescription attractionDescriptionId;
 
         public Builder id(Long id){
@@ -45,7 +45,7 @@ public class Attraction implements Serializable {
 
 
         public Builder country(Country country){
-            this.countryId = country;
+            this.country = country;
             return this;
         }
 
@@ -56,7 +56,7 @@ public class Attraction implements Serializable {
 
         public Builder copy(Attraction attraction){
             this.id = attraction.id;
-            this.countryId = attraction.countryId;
+            this.country = attraction.country;
             this.attractionDescriptionId = attraction.attractionDescription;
 
             return this;

@@ -19,9 +19,21 @@ public class MenuActivity extends AppCompatActivity {
     }
 
 
-    public void open(View view) {
+    public void listAccommodations(View view) {
         Intent myIntent = new Intent(this, ListActivity.class);
-        myIntent.putExtra("key", ""); //Optional parameters
+        myIntent.putExtra("open", "Accommodations"); //Optional parameters
         this.startActivity(myIntent);
+    }
+
+    public void listAttractions(View view) {
+        Intent myIntent = new Intent(this, ListActivity.class);
+        myIntent.putExtra("open", "Attractions"); //Optional parameters
+        this.startActivity(myIntent);
+    }
+
+    public void listVehicles(View view) {
+        Intent myIntent = new Intent(this, ListActivity.class);
+        myIntent.putExtra("open", "Vehicles"); //Optional parameters
+        //this.startActivity(myIntent);
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by work on 10/22/2016.
  */
-public class GalleryContainer  {
+public class GalleryContainer implements Serializable{
 
     private ArrayList<RikiImage> images;
     private String title;

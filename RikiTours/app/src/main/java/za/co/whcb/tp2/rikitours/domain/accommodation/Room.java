@@ -1,5 +1,6 @@
 package za.co.whcb.tp2.rikitours.domain.accommodation;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
@@ -7,9 +8,10 @@ import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
 /**
  * Created by berka on 9/17/2016.
  */
-public class Room {
+public class Room implements Serializable {
     private String  size, type, description;
     private long id;
+    private double price ;
     private Hotel hotel;
     private ArrayList<RikiImage> images;
 
@@ -65,6 +67,14 @@ public class Room {
         this.hotel = hotel;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public void addImage(RikiImage newImage){
         this.images.add(newImage);
     }
@@ -78,5 +88,13 @@ public class Room {
             return null;
         }
 
+    }
+
+    public ArrayList<RikiImage> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<RikiImage> images) {
+        this.images = images;
     }
 }

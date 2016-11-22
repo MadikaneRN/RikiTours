@@ -29,7 +29,7 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
 
     private ArrayList<Attraction> attractions;
     private final Activity context;
-    private GalleryContainer galleryContainer;
+    //private GalleryContainer galleryContainer;
 
     public AttractionAdapter(Activity context, ArrayList<Attraction> attractions) {
         super(context, R.layout.activity_layout_listing, attractions);
@@ -41,7 +41,7 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
         super(context, R.layout.activity_layout_listing, attractions);
         this.context = context;
         this.attractions = attractions;
-        this.galleryContainer = galleryContainer;
+        //this.galleryContainer = galleryContainer;
     }
 
     @Override
@@ -51,13 +51,19 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
         View rowView = inflater.inflate(R.layout.activity_layout_listing,null,true);
 
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txtTitle);
+        TextView txtSubTitle = (TextView) rowView.findViewById(R.id.txtSubTitle);
         TextView txtDescription = (TextView) rowView.findViewById(R.id.txtDescription);
         ImageView viewImage = (ImageView) rowView.findViewById(R.id.imgBox);
+        ImageView viewImageFlag = (ImageView) rowView.findViewById(R.id.imgFlag);
         Button btnReadmore = (Button) rowView.findViewById(R.id.btnReamore);
         Button btnBooknow = (Button) rowView.findViewById(R.id.btnBooknow);
         Button btnGallery = (Button) rowView.findViewById(R.id.btnGallery);
 
-        txtTitle.setText(attractions.get(position).getAttractionDescription().getName());
+//        galleryContainer = new GalleryContainer(attractions.get(position).getAttractionDescription().getImages(),
+//                attractions.get(position).getAttractionDescription().getName());
+
+        txtTitle.setText(attractions.get(position).getAttractionDescription().getName().toUpperCase());
+        txtSubTitle.setText(attractions.get(position).getAttractionDescription().getCity()+" / " +attractions.get(position).getCountry().getName());
 
         String description = attractions.get(position).getAttractionDescription().getDescription();
         String shortDescription = null;
@@ -72,7 +78,8 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
             txtDescription.setText(description);
         }
 
-        ImageLoader.loadFromUrl(attractions.get(position).getAttractionDescription().getImage(), viewImage, context);
+        ImageLoader.loadFromUrl(attractions.get(position).getAttractionDescription().getImage(0).getUrl(), viewImage, context);
+        ImageLoader.loadFromUrl(attractions.get(position).getCountry().getImage(), viewImageFlag, context);
 
         final Attraction currentAttraction = getCurrentAttraction(position);
 
@@ -80,6 +87,7 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
             @Override
             public void onClick(View v) {
                 Intent viewDetails = new Intent(context, ViewActivity.class);
+                viewDetails.putExtra("objectType","attraction");
                 viewDetails.putExtra("attraction",currentAttraction);
                 context.startActivity(viewDetails);
             }
@@ -96,13 +104,11 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
             @Override
             public void onClick(View v) {
                 Intent galleryViewer = new Intent(context, GalleryViewActivity.class);
-                if(galleryContainer.getSize() > 0) {
-//                    galleryViewer.putExtra("title", galleryContainer.getTitle());
-//                    galleryViewer.putExtra("image1", galleryContainer.getImage(0).getUrl());
-//                    galleryViewer.putExtra("image2", galleryContainer.getImage(1).getUrl());
-//                    galleryViewer.putExtra("image3", galleryContainer.getImage(2).getUrl());
-//                    galleryViewer.putExtra("image4", galleryContainer.getImage(3).getUrl());
-//                    galleryViewer.putExtra("image5", galleryContainer.getImage(4).getUrl());
+                GalleryContainer galleryContainer = new GalleryContainer(currentAttraction.getAttractionDescription().getImages(),
+                        currentAttraction.getAttractionDescription().getName());;
+                if(galleryContainer.getImages().size() > 0) {
+                    galleryViewer.putExtra("gallery", galleryContainer);
+                    galleryViewer.putExtra("objectType","gallery");
                     context.startActivity(galleryViewer);
                 }
             }
