@@ -8,7 +8,7 @@ import za.co.whcb.tp2.rikitours.domain.tour.Country;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class AttractionFactory {
-    public static Attraction getAttracion(Long id, Country country, AttractionDescription description)
+    public static Attraction getAttraction(Long id, Country country, AttractionDescription description)
     {
         return new Attraction.Builder()
                 .id(id)

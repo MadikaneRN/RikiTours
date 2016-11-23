@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:text="Table Mountain"
                     android:id="@+id/txtTitle"
-                    android:textSize="25dp"
+                    android:textSize="20dp"
                     android:textColor="#ac7942"
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
@@ -66,18 +66,49 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="R 4000.00 /person"
                     android:id="@+id/txtTtileComment"
                     android:textColor="#f36d2e"
                     android:textSize="20dp" />
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageStar"
-                android:src="@drawable/stars_4" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="fill_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageStar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/txtSubTitle"
+                    android:textColor="@color/abc_secondary_text_material_dark"
+                    android:textSize="17dp"
+                    android:paddingLeft="5dp"
+                    android:gravity="fill_vertical" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="fill_vertical|right"
+                    android:paddingRight="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/imgFlag"
+                        android:layout_gravity="right"
+                        android:src="@color/background_floating_material_light" />
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

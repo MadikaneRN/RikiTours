@@ -66,7 +66,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         contentValues = new ContentValues();
 
         contentValues.put(attractionTable.getAttributeId().name, attraction.getId());
-        contentValues.put(attractionTable.getCountryId().name, attraction.getCountryId().getId());
+        contentValues.put(attractionTable.getCountryId().name, attraction.getCountry().getId());
         contentValues.put(attractionTable.getAttractionDescriptionId().name, attraction.getAttractionDescription().getId());
 
         try {
@@ -91,7 +91,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                attractionFound = AttractionFactory.getAttracion(data.getLong(0), findAttractionCountryById(data.getLong(1)), findAttractionDescriptionById(data.getLong(2)));
+                attractionFound = AttractionFactory.getAttraction(data.getLong(0), findAttractionCountryById(data.getLong(1)), findAttractionDescriptionById(data.getLong(2)));
             }
         }
         return attractionFound;
@@ -123,7 +123,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
 
-                attractionDescriptionFound = AttractionDescriptionFactory.getAttracionDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3),data.getString(4));
+                attractionDescriptionFound = AttractionDescriptionFactory.getAttractionDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3),data.getString(4));
             }
         }
         return attractionDescriptionFound;
@@ -139,7 +139,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                attractionFound = AttractionFactory.getAttracion(data.getLong(0), findAttractionCountryById(data.getLong(1)), findAttractionDescriptionById(data.getLong(2)));
+                attractionFound = AttractionFactory.getAttraction(data.getLong(0), findAttractionCountryById(data.getLong(1)), findAttractionDescriptionById(data.getLong(2)));
                 descriptions.add(attractionFound);
             }
         }
@@ -152,7 +152,7 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         long returned ;
         localDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
-        contentValues.put(attractionTable.getCountryId().name,updatedAttraction.getCountryId().getId());
+        contentValues.put(attractionTable.getCountryId().name,updatedAttraction.getCountry().getId());
         contentValues.put(attractionTable.getAttractionDescriptionId().name,updatedAttraction.getAttractionDescription().getId());
         try {
 

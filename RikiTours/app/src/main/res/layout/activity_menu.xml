@@ -36,7 +36,7 @@
                 android:drawableRight="@drawable/logo_2"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:onClick="open" />
+                android:onClick="listAttractions" />
 
             <Button
                 android:layout_width="fill_parent"
@@ -50,7 +50,8 @@
                 android:drawableRight="@drawable/logo_2"
 
                 android:paddingRight="10dp"
-                android:paddingLeft="10dp" />
+                android:paddingLeft="10dp"
+                android:onClick="listVehicles" />
 
             <Button
                 android:layout_width="fill_parent"
@@ -63,7 +64,8 @@
                 android:drawableLeft="@drawable/logo_2"
                 android:drawableRight="@drawable/logo_2"
                 android:paddingRight="10dp"
-                android:paddingLeft="10dp" />
+                android:paddingLeft="10dp"
+                android:onClick="listAccommodations" />
 
             <Button
                 android:layout_width="fill_parent"
