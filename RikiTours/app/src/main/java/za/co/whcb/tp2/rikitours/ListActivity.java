@@ -1,5 +1,6 @@
 package za.co.whcb.tp2.rikitours;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 public class ListActivity extends AppCompatActivity {
 
     //JsonObjectRequest jsonObjectRequest;
+    ProgressDialog progress;
 
     private RequestQueue requestQueue;
     private  ArrayList<Country> countriesFromServer;
@@ -58,6 +60,9 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        progress = new ProgressDialog(this);
+
 
         countriesFromServer = new ArrayList<>();
         attractionsFromServer =  new ArrayList<>();
@@ -88,10 +93,10 @@ public class ListActivity extends AppCompatActivity {
 
 
     public void loadAttractionsList(ArrayList<Attraction> attractions) {
-
         AttractionAdapter adapter = new AttractionAdapter(this,attractions);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
+        progress.hide();
 
     }
 
@@ -108,11 +113,13 @@ public class ListActivity extends AppCompatActivity {
         RoomAdapter adapter = new RoomAdapter(this,rooms);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
+        progress.hide();
 
     }
 
     public void loadRoomsServerData() {
-
+        progress.setMessage("Loading Accommodation... ");
+        progress.show();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlRooms,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -167,7 +174,7 @@ public class ListActivity extends AppCompatActivity {
                             }
 
                             loadRoomsToList(roomsFromServer);
-                            Display.toast("send to adapter", getApplicationContext());
+                            //Display.toast("send to adapter", getApplicationContext());
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -230,7 +237,8 @@ public class ListActivity extends AppCompatActivity {
 
 
     public void loadAttractionData() {
-
+        progress.setMessage("Loading attractions... ");
+        progress.show();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlAttractions,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -300,7 +308,7 @@ public class ListActivity extends AppCompatActivity {
                 }
         );
         requestQueue.add(jsonArrayRequest);
-
+        //progress.hide();
     }
 
 }
