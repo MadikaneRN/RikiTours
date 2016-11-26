@@ -20,7 +20,5 @@ public class RoomTest extends TestCase {
         Assert.assertEquals("SunCity",room.getHotel().getName());
         Assert.assertEquals("Double",room.getSize());
         Assert.assertEquals(100,room.getId());
-
-
     }
 }
