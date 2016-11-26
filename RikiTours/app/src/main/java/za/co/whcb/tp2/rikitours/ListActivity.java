@@ -44,8 +44,6 @@ import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 public class ListActivity extends AppCompatActivity {
 
     //JsonObjectRequest jsonObjectRequest;
-    ProgressDialog progress;
-
     private RequestQueue requestQueue;
     private  ArrayList<Country> countriesFromServer;
     private  ArrayList<Room> roomsFromServer;
@@ -60,9 +58,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-        progress = new ProgressDialog(this);
-
 
         countriesFromServer = new ArrayList<>();
         attractionsFromServer =  new ArrayList<>();
@@ -96,7 +91,7 @@ public class ListActivity extends AppCompatActivity {
         AttractionAdapter adapter = new AttractionAdapter(this,attractions);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
-        progress.hide();
+        Display.endLoading();
 
     }
 
@@ -113,13 +108,12 @@ public class ListActivity extends AppCompatActivity {
         RoomAdapter adapter = new RoomAdapter(this,rooms);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
-        progress.hide();
+        Display.endLoading();
 
     }
 
     public void loadRoomsServerData() {
-        progress.setMessage("Loading Accommodation... ");
-        progress.show();
+        Display.startLoading("Loading Accommodation",this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlRooms,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -130,7 +124,6 @@ public class ListActivity extends AppCompatActivity {
                                 JSONObject jsonObject = data.getJSONObject(i);
                                 long id = Long.parseLong(jsonObject.getString("room_id"));
                                 String room_size = jsonObject.getString("room_size");
-                               // Display.toast(room_size, getApplicationContext());
                                 String room_type = jsonObject.getString("room_type");
                                 String room_city = jsonObject.getString("city_name");
                                 String room_description = jsonObject.getString("room_desc");
@@ -175,7 +168,6 @@ public class ListActivity extends AppCompatActivity {
 
                             loadRoomsToList(roomsFromServer);
                             //Display.toast("send to adapter", getApplicationContext());
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Display.toast("Error "+e.getMessage(), getApplicationContext());
@@ -237,8 +229,7 @@ public class ListActivity extends AppCompatActivity {
 
 
     public void loadAttractionData() {
-        progress.setMessage("Loading attractions... ");
-        progress.show();
+        Display.startLoading("Loading attractions",this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlAttractions,
                 new Response.Listener<JSONArray>() {
                     @Override

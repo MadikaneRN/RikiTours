@@ -1,3 +1,74 @@
+
+
+JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url,
+                new Response.Listener<JSONArray>()
+                {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONArray data = response.getJSONArray(0);
+                            for (int i = 0; i < data.length(); i++) {
+                                JSONObject jsonObject = data.getJSONObject(i);
+                                long id = Long.parseLong(jsonObject.getString("customer_id"));
+                                Display.toast(String.valueOf(id), context);
+//                                String namme = jsonObject.getString("customer_name");
+//                                String surnamme = jsonObject.getString("customer_surname");
+//                                String gender = jsonObject.getString("customer_gender");
+//                                String dob = jsonObject.getString("customer_dob");
+//                                String email = jsonObject.getString("customer_email");
+//                                String phone = jsonObject.getString("customer_phone");
+//
+//                                user = CustomerFactory.getCustomer(id,namme,surnamme, String.valueOf(id));
+                                feedback = true;
+                                //Log.d("Response", response);
+                            }
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                            Display.toast("Error " + e.getMessage(), context);
+                            feedback = false;
+
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.getMessage());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("email", email);
+                params.put("password", password);
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
+            }
+        };
+
+        requestQueue.add(jsonArrayRequest);
+        return feedback;
+    }
+
+
+
+ http://stackoverflow.com/questions/12559461/how-to-show-progress-barcircle-in-an-activity-having-a-listview-before-loading
+
+
+
+
  package com.exampfle.real;
 
 import com.android.volley.RequestQueue;

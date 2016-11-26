@@ -32,6 +32,7 @@ public class SigninController {
     private RequestQueue requestQueue;
     private String email,password;
     private Context context;
+
     private boolean feedback;
 
     public SigninController(String email, String password, Context context) {
@@ -43,7 +44,7 @@ public class SigninController {
 
     public boolean signin() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url,
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(1,url,
                 new Response.Listener<JSONArray>()
                 {
                     @Override
@@ -53,7 +54,7 @@ public class SigninController {
                             for (int i = 0; i < data.length(); i++) {
                                 JSONObject jsonObject = data.getJSONObject(i);
                                 long id = Long.parseLong(jsonObject.getString("customer_id"));
-                                Display.toast(String.valueOf(id), context);
+                               // Display.toast(String.valueOf(id), context);
 //                                String namme = jsonObject.getString("customer_name");
 //                                String surnamme = jsonObject.getString("customer_surname");
 //                                String gender = jsonObject.getString("customer_gender");
@@ -86,20 +87,17 @@ public class SigninController {
             @Override
             protected Map<String, String> getParams()
             {
-                HashMap<String, String>  params = new HashMap<String, String>();
+                Map<String, String>  params = new HashMap<String, String>();
                 params.put("email", email);
                 params.put("password", password);
-
-//                HashMap<String, String> params = new HashMap<String, String>();
-//                params.put("token", "AbCdEfGh123456");
 
                 return params;
             }
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
                 return headers;
             }
         };
