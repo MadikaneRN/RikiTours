@@ -7,6 +7,7 @@ import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
  */
 public class HotelFactory {
 
+
     public static Hotel getHotel(long id, String name, String star , String description)
     {
         return new Hotel.Builder()
