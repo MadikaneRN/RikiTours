@@ -7,7 +7,7 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 
-import za.co.whcb.tp2.rikitours.error.setup.AppErrror;
+import za.co.whcb.tp2.rikitours.common.Display;
 
 /**
  * Created by kelly on 10/2/2016.
@@ -28,6 +28,7 @@ public class AppNetworkError {
       } else if (error instanceof TimeoutError) {
           message = "Connection TimeOut! Please check your internet connection.";
       }
+      Display.endLoading();
       return message;
   }
 }

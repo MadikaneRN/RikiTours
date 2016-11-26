@@ -1,4 +1,4 @@
-
+input.substring(0, 1).toUpperCase() + input.substring(1);
 
 JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST, url,
                 new Response.Listener<JSONArray>()

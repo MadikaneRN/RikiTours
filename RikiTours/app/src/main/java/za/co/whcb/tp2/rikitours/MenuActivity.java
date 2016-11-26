@@ -7,10 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import za.co.whcb.tp2.rikitours.controllers.user.SigninController;
+import za.co.whcb.tp2.rikitours.common.Display;
+import za.co.whcb.tp2.rikitours.controllers.user.UserController;
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 
 public class MenuActivity extends AppCompatActivity {
-    ProgressDialog progress;
+
+    Customer user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +24,14 @@ public class MenuActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.logo_1);
-        progress = new ProgressDialog(this);
-        progress.setMessage("Signing... ");
-//        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//        progress.setIndeterminate(true);
-    }
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            user = (Customer) getIntent().getSerializableExtra("user");
+        }
+        Display.toast("Welcome " + user.getName().toUpperCase(),this);
+
+    }
 
     public void listAccommodations(View view) {
         Intent myIntent = new Intent(this, ListActivity.class);
@@ -43,10 +49,6 @@ public class MenuActivity extends AppCompatActivity {
 //        Intent myIntent = new Intent(this, ListActivity.class);
 //        myIntent.putExtra("open", "Vehicles"); //Optional parameters
         //this.startActivity(myIntent);
-        progress.show();
 
-        SigninController userController = new SigninController("ayowaberka1@gmail.com","123456",getApplicationContext());
-        boolean re = userController.signin();
-        progress.hide();
     }
 }
