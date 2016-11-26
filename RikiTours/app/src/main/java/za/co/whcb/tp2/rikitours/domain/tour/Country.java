@@ -4,7 +4,7 @@ import za.co.whcb.tp2.rikitours.domain.tour.City;
  * Created by Encore on 9/17/2016.
  */
 public class Country{
-    private Long id;
+    private long id;
 	private String name;
     private String description;
     private String image;
@@ -16,7 +16,7 @@ public class Country{
         this.image = builder.image;
     }
 
-    public Long getId(){
+    public long getId(){
         return id;
     }
 
@@ -33,7 +33,7 @@ public class Country{
     }
 
     public static class Builder{
-        private Long id;
+        private long id;
         private String name;
         private String description;
         private String image;
