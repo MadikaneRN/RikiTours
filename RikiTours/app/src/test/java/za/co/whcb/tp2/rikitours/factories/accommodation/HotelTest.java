@@ -16,7 +16,7 @@ public class HotelTest extends TestCase {
         Assert.assertEquals("SunCity",hotel.getName());
         Assert.assertEquals(10,hotel.getId());
 
-      
+
 
     }
 }
