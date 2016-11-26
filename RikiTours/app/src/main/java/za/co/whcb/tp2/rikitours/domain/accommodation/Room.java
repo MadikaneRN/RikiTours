@@ -4,6 +4,7 @@ package za.co.whcb.tp2.rikitours.domain.accommodation;
  * Created by berka on 9/17/2016.
  */
 public class Room {
+    //private long id;
     private String id, size, type, description;
     private String hotelId;
 
