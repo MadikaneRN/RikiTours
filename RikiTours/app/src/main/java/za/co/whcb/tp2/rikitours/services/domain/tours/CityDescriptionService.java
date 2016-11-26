@@ -8,13 +8,14 @@ import android.os.IBinder;
 import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
+import za.co.whcb.tp2.rikitours.repository.local.tour.CityDescriptionRepo;
 //import za.co.whcb.tp2.rikitours.repository.local.tour.CityDescriptionRepo;
 
 
 /**
  * Created by Shaun Mesias on 2016/10/17.
  */
-/*
+
 public class CityDescriptionService extends Service {
     private CityDescriptionRepo cityDescriptionRepo;
 
@@ -62,4 +63,3 @@ public class CityDescriptionService extends Service {
         return cityDescriptionRepo.getAllCityDescriptions();
     }
 }
-*/
