@@ -1,12 +1,14 @@
 package za.co.whcb.tp2.rikitours.config.database.table.accommodation;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.config.database.table.Attribute;
 import za.co.whcb.tp2.rikitours.config.database.table.Table;
 
 /**
  * Created by Tamonne on 9/26/2016.
  */
-public class AccommodationTable  {
+public class AccommodationTable  extends Table{
 
     public final String tableName = "accommodation";
     public static Attribute id = new Attribute("id", "number");
@@ -17,6 +19,21 @@ public class AccommodationTable  {
     public static Attribute roomId = new Attribute("roomId", "number");
 
 
+
+    @Override
+    protected String getTableName() {
+        return tableName;
+    }
+
+    @Override
+    protected Attribute getPrimaryKey() {
+        return null;
+    }
+
+    @Override
+    protected ArrayList<Attribute> getAllAttributes() {
+        return null;
+    }
 
 }
 
