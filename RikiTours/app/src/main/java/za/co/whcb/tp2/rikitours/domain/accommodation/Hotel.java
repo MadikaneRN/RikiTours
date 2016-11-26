@@ -10,9 +10,6 @@ public class Hotel {
     public Hotel() {
     }
 
-
-
-
     public long getId() {
         return id;
     }
@@ -23,7 +20,6 @@ public class Hotel {
         return description;
     }
     public String getStar(){return star;}
-
 
 
     public static class Builder {
@@ -47,7 +43,6 @@ public class Hotel {
             this.description = value;
             return this;
         }
-
 
 
         public Builder copy(Hotel hotel){
