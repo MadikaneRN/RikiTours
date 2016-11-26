@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Encore on 9/17/2016.
  */
 public class Attraction implements Serializable {
-    private Long id;
+    private long id;
     private Country countryId;
     private AttractionDescription attractionDescription;
 
@@ -19,7 +19,7 @@ public class Attraction implements Serializable {
         this.id = builder.id;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -34,7 +34,7 @@ public class Attraction implements Serializable {
     }
 
     public static class Builder{
-        private Long id;
+        private long id;
         private Country countryId;
         private AttractionDescription attractionDescriptionId;
 

@@ -4,7 +4,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Shaun Mesias on 2016/10/02.
  */
 public class AttractionDescription {
-    private Long id;
+    private long id;
     private String name, city,description, image;
 
     public AttractionDescription() {
@@ -18,7 +18,7 @@ public class AttractionDescription {
         this.image = builder.image;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -39,7 +39,7 @@ public class AttractionDescription {
     }
 
     public static class Builder{
-        private Long id;
+        private long id;
         private String name, city,description, image;
 
         public Builder id( Long id){
