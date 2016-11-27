@@ -1,91 +1,82 @@
 package za.co.whcb.tp2.rikitours.domain.accommodation;
 
+import java.util.ArrayList;
+
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
+
 /**
  * Created by berka on 9/17/2016.
  */
 public class Room {
+    private String  size, type, description;
     private long id;
-    private String size;
-    private String type;
-    private String description;
-
     private Hotel hotel;
+    private ArrayList<RikiImage> images;
 
-    public Room() {
+       public Room() {
     }
 
-    public Room(Builder builder){
-        this.id = builder.id;
-        this.hotel = builder.hotel;
-        this.type = builder.type;
-        this.size = builder.size;
-        this.description = builder.description;
+    public Room(long id, String size, String type, String description, Hotel hotel) {
+        this.id = id;
+        this.size = size;
+        this.type = type;
+        this.description = description;
+        this.hotel = hotel;
+        images = new ArrayList<>();
     }
-
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getSize() {
         return size;
     }
 
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     public String getType() {
         return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Hotel getHotel() {
         return hotel;
     }
 
-
-
-    public static class Builder {
-        private long id;
-
-        private Hotel hotel;
-        private String size;
-        private String type;
-        private String description;
-
-        public Builder id(long id) {
-            this.id = id;
-            return this;
-        }
-        public Builder hotel(Hotel hotel) {
-            this.hotel = hotel;
-            return this;
-        }
-        public Builder size(String value){
-            this.size = value;
-            return this;
-        }
-        public Builder type(String value)
-        {
-            this.type = value;
-            return this;
-        }
-        public Builder description (String value)
-        {
-            this.description = value;
-            return this;
-        }
-
-        public Builder copy(Room room){
-            this.id = room.id;
-            this.type = room.type;
-            this.hotel = room.hotel;
-            this.size = room.size;
-            this.description = room.description;
-            return this;
-        }
-
-        public Room build(){return new Room(this);}
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
+    public void addImage(RikiImage newImage){
+        this.images.add(newImage);
+    }
+
+
+    public RikiImage getImage(int index){
+        if(images.size() > 0 && images.size() > index ||  images.size() == index ){
+            return this.images.get(index);
+        }
+        else{
+            return null;
+        }
+
+    }
 }
