@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login (View view){
-        Intent myIntent = new Intent(this, ListActivity.class);
+        Intent myIntent = new Intent(this, MenuActivity.class);
         myIntent.putExtra("key", ""); //Optional parameters
         this.startActivity(myIntent);
     }

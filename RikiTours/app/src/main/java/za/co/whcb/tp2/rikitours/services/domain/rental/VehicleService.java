@@ -34,12 +34,11 @@ public class VehicleService extends Service {
 
     public class MyLocalBinder extends Binder
     {
-        public VehicleService getService()
+        public Service getService()
         {
             return VehicleService.this;
         }
     }
-
 
     public String test()
     {

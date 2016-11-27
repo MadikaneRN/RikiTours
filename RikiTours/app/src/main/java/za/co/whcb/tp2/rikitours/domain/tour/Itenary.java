@@ -7,7 +7,7 @@ import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
  * Created by Encore on 9/17/2016.
  */
 public class Itenary {
-    private Long id;
+    private long id;
     private ArrayList<Attraction> attractions;
 
     public Itenary() {
@@ -18,7 +18,7 @@ public class Itenary {
         this.attractions = builder.attractions;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -30,7 +30,7 @@ public class Itenary {
         this.attractions.add(attraction);
     }
     public static class Builder{
-        private Long id;
+        private long id;
         private ArrayList<Attraction> attractions;
         public Builder id(Long id){
             this.id=id;

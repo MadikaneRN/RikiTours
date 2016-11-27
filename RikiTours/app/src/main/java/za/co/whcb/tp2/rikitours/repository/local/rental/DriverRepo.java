@@ -30,7 +30,6 @@ public class DriverRepo extends SQLiteOpenHelper {
         driverTable = new DriverTable();
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
@@ -49,8 +48,7 @@ public class DriverRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
-        public boolean addDriver(Driver driver ) {
+    public boolean addDriver(Driver driver ) {
             long returned ;
             localDatabase = this.getWritableDatabase();
             driverTable  = new DriverTable();
@@ -73,8 +71,6 @@ public class DriverRepo extends SQLiteOpenHelper {
         }
 
 
-
-
     public Driver findDriverById(long id) {
         Driver vehicleFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -90,8 +86,6 @@ public class DriverRepo extends SQLiteOpenHelper {
         }
         return vehicleFound;
     }
-
-
 
     public ArrayList<Driver> getAllDrivers() {
         ArrayList<Driver> drivers = new ArrayList<>();
@@ -111,8 +105,6 @@ public class DriverRepo extends SQLiteOpenHelper {
 
         return drivers;
     }
-
-
 
     public boolean updateDriver(Driver updatedDriver, long id) {
 
@@ -138,7 +130,6 @@ public class DriverRepo extends SQLiteOpenHelper {
 
         return (returned != 0) ? true : false;
     }
-
 
     public boolean deleteById(long id) {
 

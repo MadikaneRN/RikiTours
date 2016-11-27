@@ -1,24 +1,25 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
 
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import java.io.Serializable;
+
 /**
  * Created by Encore on 9/17/2016.
  */
-public class Attraction {
-    private Long id;
+public class Attraction implements Serializable {
+    private long id;
     private Country countryId;
-    private AttractionDescription attractionDescriptionId;
+    private AttractionDescription attractionDescription;
 
     public Attraction() {
     }
 
     public Attraction(Builder builder) {
-        this.attractionDescriptionId = builder.attractionDescriptionId;
+        this.attractionDescription = builder.attractionDescriptionId;
         this.countryId = builder.countryId;
         this.id = builder.id;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -28,12 +29,12 @@ public class Attraction {
     }
 
 
-    public AttractionDescription getAttractionDescriptionId() {
-        return attractionDescriptionId;
+    public AttractionDescription getAttractionDescription() {
+        return attractionDescription;
     }
 
     public static class Builder{
-        private Long id;
+        private long id;
         private Country countryId;
         private AttractionDescription attractionDescriptionId;
 
@@ -56,7 +57,7 @@ public class Attraction {
         public Builder copy(Attraction attraction){
             this.id = attraction.id;
             this.countryId = attraction.countryId;
-            this.attractionDescriptionId = attraction.attractionDescriptionId;
+            this.attractionDescriptionId = attraction.attractionDescription;
 
             return this;
         }

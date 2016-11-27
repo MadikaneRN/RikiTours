@@ -27,6 +27,8 @@ import za.co.whcb.tp2.rikitours.factories.tour.EventFactory;
 /**
  * Created by Shaun Mesias on 2016/10/17.
  */
+
+
 public class EventsRepo extends SQLiteOpenHelper{
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
@@ -140,7 +142,7 @@ public class EventsRepo extends SQLiteOpenHelper{
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
 
-                descriptionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), data.getString(2));
+                descriptionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), findCountryById(data.getLong(2)));
             }
         }
         return descriptionFound;
