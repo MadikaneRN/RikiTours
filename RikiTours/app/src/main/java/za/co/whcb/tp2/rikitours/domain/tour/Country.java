@@ -1,10 +1,12 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
+import java.io.Serializable;
+
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 /**
  * Created by Encore on 9/17/2016.
  */
-public class Country{
-    private long id;
+public class Country implements Serializable {
+    private Long id;
 	private String name;
     private String description;
     private String image;
@@ -16,7 +18,7 @@ public class Country{
         this.image = builder.image;
     }
 
-    public long getId(){
+    public Long getId(){
         return id;
     }
 
@@ -33,7 +35,7 @@ public class Country{
     }
 
     public static class Builder{
-        private long id;
+        private Long id;
         private String name;
         private String description;
         private String image;

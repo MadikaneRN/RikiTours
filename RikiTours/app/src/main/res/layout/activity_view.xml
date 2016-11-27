@@ -51,16 +51,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:paddingBottom="5dp"
+                android:background="@drawable/textview_style"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Table Mountain"
                     android:id="@+id/txtTitle"
-                    android:textSize="25dp"
+                    android:textSize="20dp"
                     android:textColor="#ac7942"
-                    android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:inputType="textCapWords" />
 
@@ -70,43 +72,7 @@
                     android:text="R 4000.00 /person"
                     android:id="@+id/txtTtileComment"
                     android:textColor="#f36d2e"
-                    android:textSize="20dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="110dp">
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imgSub1"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:gravity="center"
-                    android:background="@drawable/small_image"
-                    android:clickable="true" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imgSub2"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:gravity="center"
-                    android:background="@drawable/small_image"
-                    android:clickable="true" />
-
-                <ImageView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/imgSub3"
-                    android:layout_weight="1"
-                    android:scaleType="fitXY"
-                    android:gravity="center"
-                    android:background="@drawable/small_image"
-                    android:clickable="true" />
+                    android:textSize="17dp" />
             </LinearLayout>
 
             <TextView

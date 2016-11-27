@@ -5,7 +5,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
 public class  City{
     private long id;
     private String name;
-    private CityDescription description;
+    private String description;
 
     public City(Builder builder){
         this.id = builder.id;
@@ -20,14 +20,14 @@ public class  City{
         return name;
     }
 
-    public CityDescription getDescription() {
+    public String getDescription() {
         return description;
     }
 
     public static class Builder{
         private long id;
         private String name;
-        private CityDescription description;
+        private String description;
 
         public Builder id(long id){
             this.id = id;
@@ -39,7 +39,7 @@ public class  City{
             return this;
         }
 
-        public Builder description(CityDescription description){
+        public Builder description(String description){
             this.description = description;
             return this;
         }

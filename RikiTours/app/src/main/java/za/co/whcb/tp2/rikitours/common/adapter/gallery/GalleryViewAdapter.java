@@ -29,6 +29,7 @@ public class GalleryViewAdapter extends PagerAdapter {
         this.context = context;
     }
 
+
     @Override
     public int getCount() {
         return galleryContainer.getSize();
@@ -46,8 +47,8 @@ public class GalleryViewAdapter extends PagerAdapter {
         View viewItems = layoutInflater.inflate(R.layout.activity_gallery_swip, container, false);
 
         ImageView imageView = (ImageView) viewItems.findViewById(R.id.imageViewGallery);
-        TextView textView = (TextView) viewItems.findViewById(R.id.galleryTitle);
-        textView.setText("image : "+ position);
+       // TextView textView = (TextView) viewItems.findViewById(R.id.galleryTitle);
+        //textView.setText("image : "+ position);
 
         ImageLoader.loadFromUrl(galleryContainer.getImage(position).getUrl(),imageView,context);
 

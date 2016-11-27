@@ -1,11 +1,17 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
+
 /**
  * Created by Shaun Mesias on 2016/10/02.
  */
-public class AttractionDescription {
-    private long id;
-    private String name, city,description, image;
+public class AttractionDescription implements Serializable {
+    private Long id;
+    private String name, city,description,image;
+    private ArrayList<RikiImage> images;
 
     public AttractionDescription() {
     }
@@ -16,9 +22,10 @@ public class AttractionDescription {
         this.city = builder.city;
         this.description = builder.description;
         this.image = builder.image;
+        this.images = new ArrayList<>();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -37,9 +44,31 @@ public class AttractionDescription {
     public String getImage() {
         return image;
     }
+    public void addImage(RikiImage newImage){
+        this.images.add(newImage);
+    }
+
+
+    public RikiImage getImage(int index){
+        if(images.size() > 0 && images.size() > index ||  images.size() == index ){
+            return this.images.get(index);
+        }
+        else{
+            return null;
+        }
+
+    }
+
+    public ArrayList<RikiImage> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<RikiImage> images) {
+        this.images = images;
+    }
 
     public static class Builder{
-        private long id;
+        private Long id;
         private String name, city,description, image;
 
         public Builder id( Long id){

@@ -44,7 +44,7 @@ public class Customer implements Person{
         return customer_no;
     }
 
-    public String getCustomer_no() {
+    public String getCustomerNumber() {
         return email;
     }
     private Customer(){}
@@ -85,7 +85,7 @@ public class Customer implements Person{
             this.id=custObj.getId();
             this.name=custObj.getName();
             this.surname=custObj.getSurname();
-            this.customer_no=custObj.getCustomer_no();
+            this.customer_no=custObj.getCustomerNumber();
             this.email = custObj.getEmail();
             return this;
 

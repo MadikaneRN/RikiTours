@@ -1,9 +1,11 @@
 package za.co.whcb.tp2.rikitours.domain.gallery;
 
+import java.io.Serializable;
+
 /**
  * Created by work on 10/22/2016.
  */
-public class RikiImage {
+public class RikiImage implements Serializable {
     private String name;
     private String url;
 
