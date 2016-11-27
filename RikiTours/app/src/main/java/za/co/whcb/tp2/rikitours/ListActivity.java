@@ -1,19 +1,15 @@
 package za.co.whcb.tp2.rikitours;
 
-import android.app.ProgressDialog;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -26,7 +22,6 @@ import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.adapter.CountryAdapter;
 import za.co.whcb.tp2.rikitours.common.adapter.accommodation.RoomAdapter;
 import za.co.whcb.tp2.rikitours.common.adapter.attraction.AttractionAdapter;
-import za.co.whcb.tp2.rikitours.controllers.CountryController;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Room;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;

@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.controllers;
+package za.co.whcb.tp2.rikitours.controllers.country;
 
 import android.content.Context;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.controllers.user;
+package za.co.whcb.tp2.rikitours.controllers.customer;
 
 import android.content.Context;
 import android.util.Log;
@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
-import za.co.whcb.tp2.rikitours.error.log.ErrorLog;
-import za.co.whcb.tp2.rikitours.error.setup.AppError;
 import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 
 /**

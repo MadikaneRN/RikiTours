@@ -37,7 +37,9 @@
                 android:layout_centerHorizontal="true"
                 android:scaleType="fitXY"
                 android:gravity="center"
-                android:background="@drawable/loading" />
+
+                android:background="@drawable/img_item"
+                android:padding="2dp" />
 
         </LinearLayout>
 
@@ -58,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:text="Table Mountain"
                     android:id="@+id/txtTitle"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textColor="#ac7942"
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
@@ -156,7 +158,8 @@
                     android:id="@+id/btnGallery"
                     android:background="@drawable/button_sharp"
                     android:textColor="#FFFFFF"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_marginRight="0dp" />
             </LinearLayout>
         </LinearLayout>
 

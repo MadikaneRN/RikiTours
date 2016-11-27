@@ -2,6 +2,8 @@ package za.co.whcb.tp2.rikitours.domain.rental;
 
 import java.io.Serializable;
 
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
+
 /**
  * Created by Scorpian on 2016-10-03.
  */
@@ -12,6 +14,9 @@ public class Vehicle implements Serializable{
     private String vehicleName;
     private String vehicleModel;
     private String vehicleYear;
+    private String description;
+    private double price;
+    private RikiImage carImage;
 
 
     public Vehicle() {
@@ -33,12 +38,52 @@ public class Vehicle implements Serializable{
         return vehicleYear;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public RikiImage getCarImage() {
+        return carImage;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setVehicleName(String vehicleName) {
+        this.vehicleName = vehicleName;
+    }
+
+    public void setVehicleModel(String vehicleModel) {
+        this.vehicleModel = vehicleModel;
+    }
+
+    public void setVehicleYear(String vehicleYear) {
+        this.vehicleYear = vehicleYear;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setCarImage(RikiImage carImage) {
+        this.carImage = carImage;
+    }
 
     public static class Builder{
         private long id;
         private String vehicleName;
         private String vehicleModel;
         private  String vehicleYear;
+        private String description;
 
         public Builder id(Long value){
             this.id = value;

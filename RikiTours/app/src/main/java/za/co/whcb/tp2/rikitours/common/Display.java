@@ -6,7 +6,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 /**
- * Created by kelly on 9/23/2016.
+ * Created by Berka on 9/23/2016.
  */
 public class Display {
     private static ProgressDialog progress;
@@ -20,14 +20,13 @@ public class Display {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public static void toastError (String value)
+    public static void toastLong (String msg, Context context)
     {
-       // Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
+       Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
     }
 
     public static void startLoading(String message,Context context){
         progress = new ProgressDialog(context);
-       // progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progress.setCancelable(false);
         progress.setMessage(message + "...");
         progress.show();
