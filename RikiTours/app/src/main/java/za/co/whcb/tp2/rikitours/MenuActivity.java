@@ -1,10 +1,8 @@
 package za.co.whcb.tp2.rikitours;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,9 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import za.co.whcb.tp2.rikitours.common.Display;
-import za.co.whcb.tp2.rikitours.controllers.user.UserController;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
-import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -72,9 +68,9 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void listVehicles(View view) {
-//        Intent myIntent = new Intent(this, ListActivity.class);
-//        myIntent.putExtra("open", "Vehicles"); //Optional parameters
-        //this.startActivity(myIntent);
+        Intent myIntent = new Intent(this, ListActivity.class);
+        myIntent.putExtra("open", "Vehicles"); //Optional parameters
+        this.startActivity(myIntent);
 
     }
 

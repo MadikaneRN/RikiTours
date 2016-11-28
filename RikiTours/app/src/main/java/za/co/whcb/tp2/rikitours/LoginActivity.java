@@ -9,9 +9,11 @@ import android.widget.EditText;
 
 import com.android.volley.VolleyError;
 
+import org.json.JSONException;
+
 import za.co.whcb.tp2.rikitours.common.Display;
-import za.co.whcb.tp2.rikitours.controllers.user.UserController;
-import za.co.whcb.tp2.rikitours.controllers.user.RikiApiCallback;
+import za.co.whcb.tp2.rikitours.controllers.customer.UserController;
+import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class LoginActivity extends AppCompatActivity {
@@ -66,6 +68,11 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onParsingError(Exception error) {
                     Display.toast("Invalid Email or Password",getApplicationContext());
+                }
+
+                @Override
+                public void onJSONError(JSONException error) {
+
                 }
             });
 

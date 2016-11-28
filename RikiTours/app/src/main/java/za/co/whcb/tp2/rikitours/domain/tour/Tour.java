@@ -2,7 +2,6 @@ package za.co.whcb.tp2.rikitours.domain.tour;
 
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.tourguide.Guide;
-import za.co.whcb.tp2.rikitours.domain.tour.Itenary;
 
 /**
  * Created by Encore on 9/17/2016.
@@ -11,13 +10,13 @@ public class Tour {
     private Long id;
     private Guide guide;
     private Customer customer;
-    private Itenary itenary;
+    private Itinerary itinerary;
 
     public Tour(Builder builder){
         this.id=builder.id;
         this.guide=builder.guide;
         this.customer=builder.customer;
-        this.itenary=builder.itenary;
+        this.itinerary =builder.itinerary;
     }
 
     public Long getId() {
@@ -32,15 +31,15 @@ public class Tour {
         return customer;
     }
 
-    public Itenary getItenary() {
-        return itenary;
+    public Itinerary getItinerary() {
+        return itinerary;
     }
 
     public static class Builder{
         private Long id;
         private Guide guide;
         private Customer customer;
-        private Itenary itenary;
+        private Itinerary itinerary;
 
         public Builder id(Long id) {
             this.id = id;
@@ -57,8 +56,8 @@ public class Tour {
             return this;
         }
 
-        public Builder itenary(Itenary itenary) {
-            this.itenary = itenary;
+        public Builder itenary(Itinerary itinerary) {
+            this.itinerary = itinerary;
             return this;
         }
 
@@ -66,7 +65,7 @@ public class Tour {
             this.id=tour.id;
             this.guide =tour.guide;
             this.customer = tour.customer;
-            this.itenary = tour.itenary;
+            this.itinerary = tour.itinerary;
 
             return this;
         }

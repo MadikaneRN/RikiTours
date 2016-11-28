@@ -14,6 +14,9 @@ public class Vehicle implements Serializable{
     private String vehicleName;
     private String vehicleModel;
     private String vehicleYear;
+    private String description;
+    private double price;
+    private RikiImage carImage;
 
     private String description;
     private RikiImage rikiImage;
@@ -38,6 +41,45 @@ public class Vehicle implements Serializable{
         return vehicleYear;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public RikiImage getCarImage() {
+        return carImage;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setVehicleName(String vehicleName) {
+        this.vehicleName = vehicleName;
+    }
+
+    public void setVehicleModel(String vehicleModel) {
+        this.vehicleModel = vehicleModel;
+    }
+
+    public void setVehicleYear(String vehicleYear) {
+        this.vehicleYear = vehicleYear;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setCarImage(RikiImage carImage) {
+        this.carImage = carImage;
+    }
 
     public String getDescription()
     {
@@ -58,6 +100,7 @@ public class Vehicle implements Serializable{
         private String vehicleName;
         private String vehicleModel;
         private  String vehicleYear;
+        private String description;
 
         public Builder id(Long value){
             this.id = value;

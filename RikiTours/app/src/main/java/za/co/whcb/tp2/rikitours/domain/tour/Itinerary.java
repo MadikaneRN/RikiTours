@@ -1,24 +1,23 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
 
 import java.util.ArrayList;
-import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
 
 /**
  * Created by Encore on 9/17/2016.
  */
-public class Itenary {
-    private long id;
+public class Itinerary {
+    private Long id;
     private ArrayList<Attraction> attractions;
 
-    public Itenary() {
+    public Itinerary() {
     }
 
-    public Itenary(Builder builder) {
+    public Itinerary(Builder builder) {
         this.id = builder.id;
         this.attractions = builder.attractions;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -30,7 +29,7 @@ public class Itenary {
         this.attractions.add(attraction);
     }
     public static class Builder{
-        private long id;
+        private Long id;
         private ArrayList<Attraction> attractions;
         public Builder id(Long id){
             this.id=id;
@@ -40,14 +39,14 @@ public class Itenary {
             this.attractions = attractions;
             return this;
         }
-        public Builder copy(Itenary itenary){
-            this.id=itenary.id;
-            this.attractions = itenary.attractions;
+        public Builder copy(Itinerary itinerary){
+            this.id= itinerary.id;
+            this.attractions = itinerary.attractions;
 
             return this;
         }
-        public Itenary build(){
-            return new Itenary(this);
+        public Itinerary build(){
+            return new Itinerary(this);
         }
     }
 }

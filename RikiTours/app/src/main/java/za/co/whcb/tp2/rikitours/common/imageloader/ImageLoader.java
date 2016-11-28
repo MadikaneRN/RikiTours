@@ -12,7 +12,7 @@ import za.co.whcb.tp2.rikitours.R;
  */
 public class ImageLoader {
     public static void loadFromUrl(String url, ImageView target, Context context) {
-        Picasso.with(context).load(url).noFade()
+        Picasso.with(context).load(url).placeholder(R.drawable.progress_animation)
                 .into( target);
     }
 }
