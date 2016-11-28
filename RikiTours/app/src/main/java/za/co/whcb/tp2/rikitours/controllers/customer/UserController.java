@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
+import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiSignUpCallBack;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 

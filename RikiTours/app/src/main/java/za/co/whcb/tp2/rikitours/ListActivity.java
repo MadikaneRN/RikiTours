@@ -22,48 +22,34 @@ import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.adapter.CountryAdapter;
 import za.co.whcb.tp2.rikitours.common.adapter.accommodation.RoomAdapter;
 import za.co.whcb.tp2.rikitours.common.adapter.attraction.AttractionAdapter;
+import za.co.whcb.tp2.rikitours.common.adapter.rental.VehicleAdapter;
+import za.co.whcb.tp2.rikitours.controllers.accommodation.AccommodationController;
+import za.co.whcb.tp2.rikitours.controllers.accommodation.callback.RikiApiAccommodationCallBack;
+import za.co.whcb.tp2.rikitours.controllers.rental.VehicleController;
+import za.co.whcb.tp2.rikitours.controllers.rental.callback.RikiApiVehicleCallback;
+import za.co.whcb.tp2.rikitours.controllers.tour.AttractionController;
+import za.co.whcb.tp2.rikitours.controllers.tour.callback.RikiAttractionCallBack;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Room;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
+import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
-import za.co.whcb.tp2.rikitours.domain.tour.AttractionDescription;
-import za.co.whcb.tp2.rikitours.domain.tour.City;
 import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.error.setup.network.AppNetworkError;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 public class ListActivity extends AppCompatActivity {
-
-    //JsonObjectRequest jsonObjectRequest;
-    private RequestQueue requestQueue;
-    private  ArrayList<Country> countriesFromServer;
-    private  ArrayList<Room> roomsFromServer;
-    private  ArrayList<Attraction> attractionsFromServer;
-    private final String url = "http://10.0.0.5:8005/countries/";
-    private final String urlAttractions = "http://tp.sawebdesignhosting.co.za/attractions/";
-    private final String urlRooms = "http://tp.sawebdesignhosting.co.za/rooms/";
-
-    private GalleryContainer galleryContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        countriesFromServer = new ArrayList<>();
-        attractionsFromServer =  new ArrayList<>();
-        roomsFromServer =  new ArrayList<>();
-        galleryContainer = new GalleryContainer();
-
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setIcon(R.mipmap.logo_1);
 
-        requestQueue = Volley.newRequestQueue(this);
         Bundle extras = getIntent().getExtras();
         if (extras.get("open").equals("Accommodations")) {
             loadRoomsServerData();
@@ -72,7 +58,7 @@ public class ListActivity extends AppCompatActivity {
             loadAttractionData();
         }
         else if (extras.get("open").equals("Vehicles")) {
-            //loadAttractionData();
+            loadVehicleData();
         }
         else {
 
@@ -80,7 +66,6 @@ public class ListActivity extends AppCompatActivity {
         setTitle(extras.getString("open"));
 
     }
-
 
     public void loadAttractionsList(ArrayList<Attraction> attractions) {
         AttractionAdapter adapter = new AttractionAdapter(this,attractions);
@@ -90,17 +75,17 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
-    public void loadList(ArrayList<Country> countries) {
-
-        CountryAdapter adapter = new CountryAdapter(this,countries);
-        ListView listView = (ListView) findViewById(R.id.listView2);
-        listView.setAdapter(adapter);
-
-    }
-
     public void loadRoomsToList(ArrayList<Room> rooms) {
 
         RoomAdapter adapter = new RoomAdapter(this,rooms);
+        ListView listView = (ListView) findViewById(R.id.listView2);
+        listView.setAdapter(adapter);
+        Display.endLoading();
+    }
+
+    public void loadVehiclesToList(ArrayList<Vehicle> vehicles) {
+
+        VehicleAdapter adapter = new VehicleAdapter(this,vehicles);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
         Display.endLoading();
@@ -109,192 +94,91 @@ public class ListActivity extends AppCompatActivity {
 
     public void loadRoomsServerData() {
         Display.startLoading("Loading Accommodation",this);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlRooms,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            JSONArray data = response.getJSONArray(0);
-                            for (int i = 0; i < data.length(); i++) {
-                                JSONObject jsonObject = data.getJSONObject(i);
-                                long id = Long.parseLong(jsonObject.getString("room_id"));
-                                String room_size = jsonObject.getString("room_size");
-                                String room_type = jsonObject.getString("room_type");
-                                String room_city = jsonObject.getString("city_name");
-                                String room_description = jsonObject.getString("room_desc");
-                                String imageOne = jsonObject.getString("image_1");
-                                String imageTwo = jsonObject.getString("image_2");
-                                String imageThree = jsonObject.getString("image_3");
-                                String countryName = jsonObject.getString("country_name");
-                                String countryFlag = jsonObject.getString("country_image");
-                                double room_price = Double.parseDouble(jsonObject.getString("room_price"));
+        AccommodationController accommodationController = new AccommodationController(this);
+        accommodationController.getAccommodations(new RikiApiAccommodationCallBack() {
+            @Override
+            public void onSuccess(ArrayList<Room> roomsFromServer) {
+                loadRoomsToList(roomsFromServer);
+            }
 
+            @Override
+            public void onConnectingError(VolleyError error) {
+                Display.endLoading();
+                Display.toast(AppNetworkError.check(error),getApplicationContext());
+            }
 
-                                long hotel_id = Long.parseLong(jsonObject.getString("hotel_id"));
-                                String name = jsonObject.getString("hotel_name");
-                                int star = Integer.parseInt(jsonObject.getString("hotel_star"));
-                                String hotel_description = jsonObject.getString("hotel_desc");
+            @Override
+            public void onParsingError(Exception error) {
+                Display.endLoading();
+                Display.toast("Error on parsing "+ error.getMessage(), getApplicationContext());
+            }
 
-                                Hotel hotel = new Hotel(hotel_id,name,room_city,star,hotel_description);
-//                                //to add builder class and factories [Room class]
-                                Room newRoom = new Room(id,room_size,room_type,room_description, hotel);
-                                newRoom.setPrice(room_price);
-
-                                if (!countryFlag.equals("null")) {
-                                    RikiImage countryImage = new RikiImage(countryName ,countryFlag);
-                                    newRoom.addImage(countryImage);
-                                }
-                                if(!imageOne.equals("null")){
-                                    RikiImage firstImage = new RikiImage(room_type ,imageOne);
-                                    newRoom.addImage(firstImage);
-                                }
-                                if (!imageTwo.equals("null")) {
-                                    RikiImage secondImage = new RikiImage(room_type ,imageTwo);
-                                    newRoom.addImage(secondImage);
-                                }
-                                if (!imageThree.equals("null")) {
-                                    RikiImage thirdImage = new RikiImage(room_type ,imageThree);
-                                    newRoom.addImage(thirdImage);
-                                }
-
-                                roomsFromServer.add(newRoom);
-
-                            }
-
-                            loadRoomsToList(roomsFromServer);
-                            //Display.toast("send to adapter", getApplicationContext());
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Display.toast("Error "+e.getMessage(), getApplicationContext());
-                      }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("VOLLEY", "ERROR");
-                        Display.toast(AppNetworkError.check(error), getApplicationContext());
-                    }
-                }
-        );
-        requestQueue.add(jsonArrayRequest);
+            @Override
+            public void onJSONError(JSONException error) {
+                Display.endLoading();
+                Display.toast("Error "+ error.getMessage(), getApplicationContext());
+            }
+        });
 
     }
-
-    public void loadCountryServerData() {
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            JSONArray data = response.getJSONArray(0);
-                            for (int i = 0; i < data.length(); i++) {
-                                JSONObject jsonObject = data.getJSONObject(i);
-                                long id = Long.parseLong(jsonObject.getString("country_id"));
-                                String name = jsonObject.getString("country_name");
-                                String description = jsonObject.getString("country_description");
-                                String image = jsonObject.getString("country_image");
-
-                                Country country = CountryFactory.getCountry(id,name,description,image);
-                                countriesFromServer.add(country);
-                                //loadList(countriesFromServer);
-                            }
-                            loadList(countriesFromServer);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Display.toast("Error "+e.getMessage(), getApplicationContext());
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("VOLLEY", "ERROR");
-                        Display.toast(AppNetworkError.check(error), getApplicationContext());
-                    }
-                }
-        );
-        requestQueue.add(jsonArrayRequest);
-
-    }
-
-
 
     public void loadAttractionData() {
         Display.startLoading("Loading attractions",this);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlAttractions,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            JSONArray data = response.getJSONArray(0);
-                            for (int i = 0; i < data.length(); i++) {
-                                JSONObject jsonObject = data.getJSONObject(i);
-                                long attractionId = Long.parseLong(jsonObject.getString("attraction_id"));
-                                String name = jsonObject.getString("name");
-                                String description = jsonObject.getString("attraction_desc");
-                                String image = "" ;
+        AttractionController attractionController = new AttractionController(this);
+        attractionController.getAttractions(new RikiAttractionCallBack() {
+            @Override
+            public void onSuccess(ArrayList<Attraction> attractions) {
+                loadAttractionsList(attractions);
+            }
 
-                                String imageOne = jsonObject.getString("image_1");
-                                String imageTwo = jsonObject.getString("image_2");
-                                String imageThree = jsonObject.getString("image_3");
+            @Override
+            public void onConnectingError(VolleyError error) {
+                Display.endLoading();
+                Display.toast(AppNetworkError.check(error),getApplicationContext());
+            }
 
-                                String countryName = jsonObject.getString("country_name");
-                                String countryFlag = jsonObject.getString("country_image");
+            @Override
+            public void onParsingError(Exception error) {
+                Display.endLoading();
+                Display.toast("Error on parsing "+ error.getMessage(), getApplicationContext());
+            }
 
-                                long cityId = Long.parseLong(jsonObject.getString("city_id"));
-                                String cityName = jsonObject.getString("city_name");
-                                String cityDescription = jsonObject.getString("city_desc");
+            @Override
+            public void onJSONError(JSONException error) {
+                Display.endLoading();
+                Display.toast("Error "+ error.getMessage(), getApplicationContext());
+            }
+        });
 
-                                City city = CityFactory.getCity(cityId, cityName, cityDescription);
+    }
 
-                                long countryId = Long.parseLong(jsonObject.getString("country_id"));
-                                String countryDescription = jsonObject.getString("country_description");
+    public void loadVehicleData(){
+        Display.startLoading("Loading Vehicles",this);
+        VehicleController vehicleController = new VehicleController(this);
+        vehicleController.getVehicles(new RikiApiVehicleCallback() {
+            @Override
+            public void onSuccess(ArrayList<Vehicle> vehicles) {
+                loadVehiclesToList(vehicles);
+            }
 
-                               // Display.toast(countryFlag, getApplicationContext());
+            @Override
+            public void onConnectingError(VolleyError error) {
+                Display.endLoading();
+                Display.toast(AppNetworkError.check(error),getApplicationContext());
+            }
 
-                                Country country = CountryFactory.getCountry(countryId,countryName,countryDescription,countryFlag);
+            @Override
+            public void onParsingError(Exception error) {
+                Display.endLoading();
+                Display.toast("Error on parsing "+ error.getMessage(), getApplicationContext());
+            }
 
-                                AttractionDescription attractionDescription = AttractionDescriptionFactory
-                                                                            .getAttractionDescription(attractionId,name,city.getName(),description,image);
-
-                                if(!imageOne.equals("null")){
-                                    RikiImage firstImage = new RikiImage(name ,imageOne);
-                                    attractionDescription.addImage(firstImage);
-                                }
-                                if (!imageTwo.equals("null")) {
-                                    RikiImage secondImage = new RikiImage(name ,imageTwo);
-                                    attractionDescription.addImage(secondImage);
-                                }
-                                if (!imageThree.equals("null")) {
-                                    RikiImage thirdImage = new RikiImage(name ,imageThree);
-                                    attractionDescription.addImage(thirdImage);
-                                }
-
-                                Attraction attraction = AttractionFactory.getAttraction(attractionId,country,attractionDescription);
-                                attractionsFromServer.add(attraction);
-                            }
-                            loadAttractionsList(attractionsFromServer);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Display.toast("Error "+e.getMessage(), getApplicationContext());
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("VOLLEY", "ERROR");
-                        Display.toast(AppNetworkError.check(error), getApplicationContext());
-                    }
-                }
-        );
-        requestQueue.add(jsonArrayRequest);
-        //progress.hide();
+            @Override
+            public void onJSONError(JSONException error) {
+                Display.endLoading();
+                Display.toast("Error "+ error.getMessage(), getApplicationContext());
+            }
+        });
     }
 
 }

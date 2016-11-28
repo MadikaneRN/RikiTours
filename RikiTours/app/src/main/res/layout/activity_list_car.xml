@@ -2,17 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    >
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp">
+        android:background="@color/background_floating_material_light"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="3dp">
 
         <ImageView
             android:layout_width="160dp"
@@ -25,7 +26,9 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_marginLeft="5dp">
+            android:layout_marginLeft="5dp"
+            android:background="@color/colorPrimary"
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -35,8 +38,8 @@
                 android:layout_weight="0"
                 android:paddingBottom="0dp"
                 android:layout_marginBottom="5dp"
-                android:textSize="16dp"
-                android:textColor="@color/abc_search_url_text_pressed"
+                android:textSize="13dp"
+                android:textColor="#ac7942"
                 android:textStyle="bold" />
 
             <TextView
@@ -45,27 +48,33 @@
                 android:text="3 Door,Central Locking,Power Steering,Air Conditioning,Automatic"
                 android:id="@+id/txtCarDiscription"
                 android:layout_weight="0"
-                android:textColor="@color/background_floating_material_dark" />
+                android:textColor="@color/bright_foreground_disabled_material_dark" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:text="R700 / Day"
                     android:id="@+id/txtPrice"
-                    android:textSize="15dp"
+                    android:textSize="10dp"
                     android:textColor="@color/switch_thumb_normal_material_light"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:padding="5dp"
-                    android:background="#ac1c24"
-                    android:textStyle="bold" />
+                    android:background="@drawable/textview_style"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textAlignment="center"
+                    android:singleLine="false"
+                    android:gravity="fill_vertical" />
 
                 <Button
                     android:layout_width="wrap_content"
@@ -76,7 +85,11 @@
                     android:layout_weight="1"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
-                    android:nestedScrollingEnabled="false" />
+                    android:nestedScrollingEnabled="false"
+                    style="@style/button_small"
+                    android:background="@drawable/button_sharp"
+                    android:textColor="@color/abc_secondary_text_material_dark"
+                    android:layout_marginRight="0dp" />
             </LinearLayout>
 
         </LinearLayout>

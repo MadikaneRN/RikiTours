@@ -58,7 +58,7 @@
                     android:id="@+id/edtEmail"
                     android:hint="  Email Address"
                     android:background="@drawable/text_box_sharp"
-                    android:drawableLeft="@drawable/user"
+                    android:drawableLeft="@drawable/user_profile"
                     />
 
                 <EditText

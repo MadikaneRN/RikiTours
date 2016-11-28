@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.controllers.customer;
+package za.co.whcb.tp2.rikitours.controllers.customer.callback;
 
 import za.co.whcb.tp2.rikitours.controllers.AppControllerCallBack;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;

@@ -18,7 +18,7 @@ import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 
 /**
- * Created by gaming on 11/27/2016.
+ * Created by Berka on 11/27/2016.
  */
 public class VehicleAdapter extends ArrayAdapter<Vehicle> {
     private ArrayList<Vehicle> vehicles;
