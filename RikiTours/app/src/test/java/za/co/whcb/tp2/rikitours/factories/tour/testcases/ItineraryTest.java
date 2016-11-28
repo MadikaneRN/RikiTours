@@ -1,29 +1,11 @@
 package za.co.whcb.tp2.rikitours.factories.tour.testcases;
 
-import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.ArrayList;
-
-import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
-import za.co.whcb.tp2.rikitours.domain.tour.AttractionDescription;
-import za.co.whcb.tp2.rikitours.domain.tour.City;
-import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
-
-import za.co.whcb.tp2.rikitours.domain.tour.Itenary;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.CityFactory;
-
-import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.ItenaryFactory;
 
 /**
  * Created by Shaun Mesias on 2016/10/02.
  */
-public class ItenaryTest {
+public class ItineraryTest {
     @Test
     public void testCreate() throws Exception {
        /* ArrayList<Attraction> attractions = new ArrayList<>();
@@ -49,7 +31,7 @@ public class ItenaryTest {
         attractions.add(attraction);
         attractions.add(attraction2);
 
-        Itenary itenary = ItenaryFactory.getItenary(attractions);
+        Itinerary itenary = ItenaryFactory.getItinerary(attractions);
 
         Assert.assertNotNull(itenary);
         Assert.assertEquals("shaun", itenary.getAttractions().get(1).getAttractionDescription().getName());*/
