@@ -4,25 +4,22 @@ package za.co.whcb.tp2.rikitours.domain.accommodation;
  * Created by berka on 9/17/2016.
  */
 public class Room {
-    private String id, size, type, description;
-    private String hotelId;
+    private long id;
+    private String size, type, description;
+    private Hotel hotel;
 
-    public Room() {
+    public Room(Builder builder) {
+        this.id = builder.id;
+        this.size = builder.size;
+        this.type = builder.type;
+        this.description = builder.description;
     }
 
-    public Room(String id, String size, String type, String description, String hotelId) {
-        this.id = id;
-        this.size = size;
-        this.type = type;
-        this.description = description;
-        this.hotelId = hotelId;
-    }
-
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -50,11 +47,11 @@ public class Room {
         this.description = description;
     }
 
-    public String getHotelId() {
-        return hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
-    public void setHotelId(String hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 }
