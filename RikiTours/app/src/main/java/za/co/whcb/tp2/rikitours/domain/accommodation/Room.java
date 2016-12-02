@@ -54,4 +54,34 @@ public class Room {
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
+
+    public static class Builder {
+        private long id;
+        private String size, type, description;
+        private Hotel hotel;
+
+        public Builder id(long id){
+            this.id = id;
+            return this;
+        }
+
+        public Builder size(String size){
+            this.size = size;
+            return this;
+        }
+        public Builder type(String type){
+            this.type = type;
+            return this;
+        }
+        public Builder description(String description){
+            this.description = description;
+            return this;
+        }
+        public Builder hotel(Hotel hotel){
+            this.hotel = hotel;
+            return this;
+        }
+        public Room build(){return new Room(this);}
+
+    }
 }
