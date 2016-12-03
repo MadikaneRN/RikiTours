@@ -3,7 +3,7 @@ package za.co.whcb.tp2.rikitours.domain.office;
 import java.io.Serializable;
 
 /**
- * Created by kelly on 10/2/2016.
+ * Created by Lindo on 10/2/2016.
  */
 public class Office implements Serializable {
     private long id;

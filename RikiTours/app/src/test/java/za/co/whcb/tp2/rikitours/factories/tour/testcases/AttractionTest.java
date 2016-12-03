@@ -28,8 +28,8 @@ public class AttractionTest {
         String string = CountryDescriptionFactory.getCountryDescription(city, "code", "image");
         Country country = CountryFactory.getCountry("name", string);
 
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription("one", "two", "three", "four");
-        Attraction attraction = AttractionFactory.getAttracion(country, description);
+        AttractionDescription description = AttractionDescriptionFactory.getAttractionDescription("one", "two", "three", "four");
+        Attraction attraction = AttractionFactory.getAttraction(country, description);
 
         Assert.assertNotNull(attraction);
         Assert.assertEquals("image", attraction.getCountry().getString().getFlagImage());*/

@@ -1,20 +1,21 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
 
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import java.io.Serializable;
+
 /**
  * Created by Encore on 9/17/2016.
  */
-public class Attraction {
+public class Attraction implements Serializable {
     private Long id;
-    private Long countryId;
-    private Long attractionDescriptionId;
+    private Country country;
+    private AttractionDescription attractionDescription;
 
     public Attraction() {
     }
 
     public Attraction(Builder builder) {
-        this.attractionDescriptionId = builder.attractionDescriptionId;
-        this.countryId = builder.countryId;
+        this.attractionDescription = builder.attractionDescriptionId;
+        this.country = builder.country;
         this.id = builder.id;
     }
 
@@ -23,19 +24,19 @@ public class Attraction {
     }
 
 
-    public Long getCountryId() {
-        return countryId;
+    public Country getCountry() {
+        return country;
     }
 
 
-    public Long getAttractionDescriptionId() {
-        return attractionDescriptionId;
+    public AttractionDescription getAttractionDescription() {
+        return attractionDescription;
     }
 
     public static class Builder{
         private Long id;
-        private Long countryId;
-        private Long attractionDescriptionId;
+        private Country country;
+        private AttractionDescription attractionDescriptionId;
 
         public Builder id(Long id){
             this.id = id;
@@ -43,20 +44,20 @@ public class Attraction {
         }
 
 
-        public Builder country(Long country){
-            this.countryId = country;
+        public Builder country(Country country){
+            this.country = country;
             return this;
         }
 
-        public Builder attractionDescription(Long attractionDescription){
+        public Builder attractionDescription(AttractionDescription attractionDescription){
             this.attractionDescriptionId = attractionDescription;
             return this;
         }
 
         public Builder copy(Attraction attraction){
             this.id = attraction.id;
-            this.countryId = attraction.countryId;
-            this.attractionDescriptionId = attraction.attractionDescriptionId;
+            this.country = attraction.country;
+            this.attractionDescriptionId = attraction.attractionDescription;
 
             return this;
         }

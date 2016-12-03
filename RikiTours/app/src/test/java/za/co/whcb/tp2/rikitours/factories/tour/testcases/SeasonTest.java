@@ -14,8 +14,8 @@ import za.co.whcb.tp2.rikitours.factories.tour.SeasonFactory;
 public class SeasonTest {
     @Test
     public void testCreate() throws Exception {
-        SeasonDescription description = SeasonDescriptionFactory.getSeasonsDescription("descrip", 4);
-        Seasons seasons = SeasonFactory.getSeasons("summer", description);
+        SeasonDescription description = SeasonDescriptionFactory.getSeasonsDescription(1L,"descrip", 4);
+        Seasons seasons = SeasonFactory.getSeasons(1L,"summer", description);
 
         Assert.assertNotNull(seasons);
         Assert.assertEquals(4, seasons.getDescription().getNumberOfSeason());

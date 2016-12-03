@@ -29,12 +29,12 @@ public class CountryTest extends AndroidTestCase {
     }
 
     public void addCountryTest() {
-        Country country = CountryFactory.getCountry((long) 16.0,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
+        Country country = CountryFactory.getCountry(1,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
         assertEquals(true, countryRepo.addCountry(country));
     }
 
     public void findCountryById() {
-        Country country = countryRepo.findCountryById((long)16.0);
+        Country country = countryRepo.findCountryById(12);
         assertEquals("south-africa", country.getName());
     }
 

@@ -16,9 +16,6 @@ public class CountryTable extends Table {
     private final Attribute description = new Attribute("description", "TEXT");
     private final Attribute image = new Attribute("image", "TEXT");
 
-
-
-
     @Override
     public String getTableName() {
         return tableName;
