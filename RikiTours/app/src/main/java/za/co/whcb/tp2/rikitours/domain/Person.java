@@ -7,6 +7,6 @@ public interface Person {
     long getId();
     String getName();
     String getSurname();
-    String getEmail();
+
 
 }

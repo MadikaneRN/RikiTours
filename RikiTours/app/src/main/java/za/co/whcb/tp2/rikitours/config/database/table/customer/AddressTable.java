@@ -22,6 +22,7 @@ public class AddressTable extends Table {
 
 
 
+
     @Override
     public String getTableName() {
         return tableName;
@@ -30,6 +31,8 @@ public class AddressTable extends Table {
     public Attribute getPrimaryKey() {
         return id;
     }
+
+
 
 
     public Attribute getAttributeId() {
