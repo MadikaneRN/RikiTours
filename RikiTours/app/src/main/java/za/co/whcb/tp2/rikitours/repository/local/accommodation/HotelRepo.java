@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.accommodation.HotelTable;
@@ -82,5 +84,67 @@ public class HotelRepo extends SQLiteOpenHelper {
             }
         }
         return hotelFound;
+    }
+
+    public ArrayList<Hotel> getAllHotels() {
+        ArrayList<Hotel> hotels = new ArrayList<>();
+        Hotel hotelFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(hotelTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                hotelFound = HotelFactory.getHotel(data.getLong(0), data.getString(1),
+                        data.getString(2), data.getString(3));
+                hotels.add(hotelFound);
+            }
+        }
+
+        return hotels;
+    }
+
+    public boolean updateHotel(Hotel updatedHotel, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(hotelTable.getAttributeName().name,updatedHotel.getName());
+        contentValues.put(hotelTable.getAttributeStar().name,updatedHotel.getStar());
+        contentValues.put(hotelTable.getAttributeDescription().name,updatedHotel.getDescription());
+
+        try {
+
+            returned =  localDatabase.update(hotelTable.getTableName(),
+                    contentValues,hotelTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(hotelTable.getTableName(),
+                    hotelTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
     }
 }
