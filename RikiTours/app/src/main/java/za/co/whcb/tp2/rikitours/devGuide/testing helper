@@ -3,6 +3,9 @@ package za.co.whcb.tp2.rikitours.controllers;
 
 import android.content.Context;
 
+tools:context="com.cput.berka.restaurantsystem.ListActivity"
+
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;

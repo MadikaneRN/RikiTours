@@ -80,7 +80,7 @@ public class AttractionDescriptionRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                attractionFound = AttractionDescriptionFactory.getAttracionDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), data.getString(4));
+                attractionFound = AttractionDescriptionFactory.getAttractionDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), data.getString(4));
             }
         }
         return attractionFound;
@@ -96,7 +96,7 @@ public class AttractionDescriptionRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                descriptionFound = AttractionDescriptionFactory.getAttracionDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), data.getString(4));
+                descriptionFound = AttractionDescriptionFactory.getAttractionDescription(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), data.getString(4));
                 descriptions.add(descriptionFound);
             }
         }

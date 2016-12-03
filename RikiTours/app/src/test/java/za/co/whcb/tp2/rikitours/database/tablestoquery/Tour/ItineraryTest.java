@@ -8,7 +8,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.tour.ItenaryTable;
 /**
  * Created by Encore on 10/10/2016.
  */
-public class ItenaryTest {
+public class ItineraryTest {
     @Test
     public void testAttractionDescriptionTable() throws Exception {
 

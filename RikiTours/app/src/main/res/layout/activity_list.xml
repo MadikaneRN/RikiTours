@@ -8,7 +8,8 @@
     android:paddingRight="0dp"
     android:paddingTop="2dp"
     tools:context=".ListActivity"
-    android:background="#362720">
+    android:background="#362720"
+    android:id="@+id/listMainLayout">
 
     <ListView
         android:layout_width="fill_parent"

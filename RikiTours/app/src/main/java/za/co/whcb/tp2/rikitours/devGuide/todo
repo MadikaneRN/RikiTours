@@ -1,0 +1,22 @@
+Subtile to capitalized
+https://guides.codepath.com/android/Fragment-Navigation-Drawer
+
+https://developer.android.com/training/implementing-navigation/nav-drawer.html
+
+http://blog.teamtreehouse.com/add-navigation-drawer-android
+
+//Create your Toast with whatever params you need
+Toast toast = Toast.makeText(getActivity(), "Refreshing...", Toast.LENGTH_SHORT);
+
+//Set the background for the toast using android's default toast_frame.
+//Optionally you can set the background color to #646464 which is the
+//color of the frame
+View view = toast.getView();
+view.setBackgroundResource(android.R.drawable.toast_frame);
+
+//Get the TextView for the toast message so you can customize
+TextView toastMessage = (TextView) view.findViewById(android.R.id.message);
+
+//Set background color for the text.
+toastMessage.setBackgroundColor((Color.parseColor("#646464")));
+toast.show();

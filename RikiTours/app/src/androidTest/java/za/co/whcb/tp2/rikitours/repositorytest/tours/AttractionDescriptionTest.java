@@ -27,7 +27,7 @@ public class AttractionDescriptionTest extends AndroidTestCase {
     }
 
     public void addAttractionDescriptionTest() {
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription(1L, "Table Mountain", "Cape Town","mountain", "sa.jpg");
+        AttractionDescription description = AttractionDescriptionFactory.getAttractionDescription(1L, "Table Mountain", "Cape Town","mountain", "sa.jpg");
         assertNull(description);
     }
 

@@ -1,0 +1,49 @@
+
+    public void loadList(ArrayList<Country> countries) {
+
+        CountryAdapter adapter = new CountryAdapter(this,countries);
+        ListView listView = (ListView) findViewById(R.id.listView2);
+        listView.setAdapter(adapter);
+
+    }
+
+
+ public void loadCountryServerData() {
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONArray data = response.getJSONArray(0);
+                            for (int i = 0; i < data.length(); i++) {
+                                JSONObject jsonObject = data.getJSONObject(i);
+                                long id = Long.parseLong(jsonObject.getString("country_id"));
+                                String name = jsonObject.getString("country_name");
+                                String description = jsonObject.getString("country_description");
+                                String image = jsonObject.getString("country_image");
+
+                                Country country = CountryFactory.getCountry(id,name,description,image);
+                                countriesFromServer.add(country);
+                                //loadList(countriesFromServer);
+                            }
+                            loadList(countriesFromServer);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Display.toast("Error "+e.getMessage(), getApplicationContext());
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("VOLLEY", "ERROR");
+                        Display.toast(AppNetworkError.check(error), getApplicationContext());
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+
+    }
