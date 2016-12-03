@@ -1,7 +1,11 @@
 package za.co.whcb.tp2.rikitours.common.adapter.attraction;
 
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +23,10 @@ import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import za.co.whcb.tp2.rikitours.repository.local.tour.AttractionDescriptionRepo;
+import za.co.whcb.tp2.rikitours.repository.local.tour.AttractionsRepo;
+import za.co.whcb.tp2.rikitours.services.domain.tours.AttractionService;
+import za.co.whcb.tp2.rikitours.services.domain.tours.CountryService;
 
 /**
  * Created by work on 10/27/2016.
@@ -30,11 +37,22 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
     private ArrayList<Attraction> attractions;
     private final Activity context;
     //private GalleryContainer galleryContainer;
+    private CountryService attractionService;
+    private boolean isBound;
+    private Context app;
+    private AttractionsRepo attractionsRepo;
 
-    public AttractionAdapter(Activity context, ArrayList<Attraction> attractions) {
+    public AttractionAdapter(Activity context, ArrayList<Attraction> attractions, Context app) {
         super(context, R.layout.activity_layout_listing, attractions);
         this.context = context;
         this.attractions = attractions;
+        this.isBound = false;
+        this.app = app;
+        this.attractionsRepo = new AttractionsRepo(context);
+
+//        Intent i = new Intent(app, CountryService.class);
+//        app.bindService(i,serviceConnection, app.BIND_AUTO_CREATE);
+
     }
 
     @Override
@@ -52,9 +70,7 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
         Button btnBooknow = (Button) rowView.findViewById(R.id.btnBooknow);
         Button btnGallery = (Button) rowView.findViewById(R.id.btnGallery);
 
-//        galleryContainer = new GalleryContainer(attractions.get(position).getAttractionDescription().getImages(),
-//                attractions.get(position).getAttractionDescription().getName());
-
+        btnBooknow.setText("Add To List");
         txtTitle.setText(attractions.get(position).getAttractionDescription().getName().toUpperCase());
         txtSubTitle.setText(attractions.get(position).getAttractionDescription().getCity()+" / " +attractions.get(position).getCountry().getName());
 
@@ -89,7 +105,15 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
         btnBooknow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Display.toast("Booking...",context);
+                Display.toast("Adding...",context);
+               if(attractionsRepo.addAttraction(currentAttraction) == true) {
+                   Display.toastLong("Successfully added "+currentAttraction.getAttractionDescription().getName()+" to your list ",context);
+               }
+                else {
+                   Display.toast("Failed to add in your list",context);
+               }
+
+
             }
         });
 
@@ -113,4 +137,24 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
     public Attraction getCurrentAttraction(int position) {
         return attractions.get(position);
     }
+
+//    public  ServiceConnection serviceConnection = new ServiceConnection() {
+//        @Override
+//        public void onServiceConnected(ComponentName name, IBinder service) {
+//            CountryService.MyLocalBinder binder = (CountryService.MyLocalBinder) service;
+//            attractionService = binder.getService();
+//            isBound = true;
+//            // Display.toast(attractionService.test(),context);
+//
+//        }
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName name) {
+//            isBound = false;
+//
+//        }
+//    };
+
+
+
 }
