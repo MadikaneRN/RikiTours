@@ -107,22 +107,66 @@ public class RoomRepo extends SQLiteOpenHelper {
         return hotelFound;
     }
 
-    public ArrayList<Country> getAllCountries() {
-        ArrayList<Country> countries = new ArrayList<>();
-        Country countryFound = null;
+    public ArrayList<Room> getAllRooms() {
+        ArrayList<Room> rooms = new ArrayList<>();
+        Room roomFound = null;
         localDatabase = this.getReadableDatabase();
-        String query = Converter.toSelectAll(countryTable.getTableName());
+        String query = Converter.toSelectAll(roomTable.getTableName());
 
         Cursor data = localDatabase.rawQuery(query, null);
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                countryFound = CountryFactory.getCountry(data.getLong(0), data.getString(1),
-                        data.getString(2), data.getString(3));
-                countries.add(countryFound);
+                roomFound = RoomFactory.getRoom(data.getLong(0), data.getString(1),
+                        data.getString(2), data.getString(3), findHotelById(data.getLong(1)));
+                rooms.add(roomFound);
             }
         }
 
-        return countries;
+        return rooms;
+    }
+
+    public boolean updateRoom(Room updatedRoom, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(roomTable.getAttributeSize().name, updatedRoom.getSize());
+        contentValues.put(roomTable.getAttributeType().name, updatedRoom.getType());
+        contentValues.put(roomTable.getAttributeDescription().name, updatedRoom.getDescription());
+        contentValues.put(roomTable.getAttributeHoteID().name, updatedRoom.getHotel().getId());;
+
+        try {
+
+            returned =  localDatabase.update(roomTable.getTableName(),
+                    contentValues,roomTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(roomTable.getTableName(),
+                    roomTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
     }
 }
