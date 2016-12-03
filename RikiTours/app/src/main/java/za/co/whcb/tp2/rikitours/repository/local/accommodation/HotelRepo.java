@@ -16,7 +16,7 @@ import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
 import za.co.whcb.tp2.rikitours.factories.accommodation.HotelFactory;
 
 /**
- * Created by bishop v on 2016-12-03.
+ * Created by lindo on 2016-12-03.
  */
 public class HotelRepo extends SQLiteOpenHelper {
 
