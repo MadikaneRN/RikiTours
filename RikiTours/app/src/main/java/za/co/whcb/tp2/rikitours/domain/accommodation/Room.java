@@ -81,6 +81,17 @@ public class Room {
             this.hotel = hotel;
             return this;
         }
+
+        public Builder copy(Room room){
+            this.id = room.id;
+            this.size = room.size;
+            this.type = room.type;
+            this.description = room.description;
+            this.hotel = room.hotel;
+
+
+            return this;
+        }
         public Room build(){return new Room(this);}
 
     }
