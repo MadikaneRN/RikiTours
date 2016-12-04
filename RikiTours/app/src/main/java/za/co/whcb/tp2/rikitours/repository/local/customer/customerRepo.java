@@ -122,7 +122,7 @@ public class customerRepo  extends SQLiteOpenHelper {
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
 
-                AddressFound = AddressFactory.getAddress(data.getLong(0), data.getString(1), data.getString(2), data.getString(3), data.getString(4));
+                AddressFound = AddressFactory.getAddress(data.getLong(0), data.getString(1), data.getString(2), data.getString(3));
             }
         }
         return  AddressFound ;

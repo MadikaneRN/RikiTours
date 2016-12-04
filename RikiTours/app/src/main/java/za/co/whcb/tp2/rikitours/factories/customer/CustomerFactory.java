@@ -11,13 +11,14 @@ import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class CustomerFactory {
 
-  public static Customer getCustomer(long id, String name, String surname, String customer_no, Contacts contacDetails)
+  public static Customer getCustomer(long id, String name, String surname, String email,Contacts contacDetails)
     {
         Customer customer = new Customer.Builder()
                 .contactDetails(contacDetails)
                 .id(id)
                 .name(name)
                 .surname(surname)
+                .email(email)
                 .build();
         return customer;
 

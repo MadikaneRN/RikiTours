@@ -8,12 +8,8 @@ public class Address{
     private String flatNo;
     private String streetNumber;
     private String streetName;
-
-    //I changed the city type from 'City to String' because as I see it, I don't have to form a relationship
-    // between  address class and the city class. Because the city class defines cities that customers may
-    //want to visit. therefore, A city that I might want to visit as a customer is not necessarily the city that
-    // I live in.
-    private String city;
+    private String postalCode;
+    private City city;
 
     public Address(Builder builder){
         this.id=builder.id;
@@ -21,7 +17,15 @@ public class Address{
         this.streetName=builder.streetName;
         this.city=builder.city;
         this.flatNo = builder.flatNo;
+
     }
+    public Address(Long id,String flatNo, String streetName,String postalCode,City city){
+        this.id = id;
+        this.flatNo = flatNo;
+        this.streetName = streetName;
+        this.postalCode = postalCode;
+        this.city = city;
+            }
     public Long getId(){
         return id;
     }
@@ -38,8 +42,21 @@ public class Address{
         return streetNumber;
     }
 
-    public String getCity(){
+    public City getCity(){
         return city;
+    }
+
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public static class Builder{
@@ -47,7 +64,8 @@ public class Address{
         private String flatNo;
         private String streetNumber;
         private String streetName;
-        private String city;
+        private City city;
+
 
         public Builder id(Long id){
             this.id=id;
@@ -68,7 +86,8 @@ public class Address{
             return this;
         }
 
-        public Builder city(String city){
+
+        public Builder city(City city){
             this.city=city;
             return this;
         }
