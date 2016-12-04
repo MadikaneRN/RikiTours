@@ -34,6 +34,7 @@ public class ItenaryTest extends AndroidTestCase {
         super.tearDown();
     }
 
+
     public void addEventsDesciptionTest() {
         Country country= CountryFactory.getCountry(2L,"South Africa","Africa","image.jpa");
         AttractionDescription attractionDescription= AttractionDescriptionFactory.getAttracionDescription(2L,"Name","Cape Town","Table Mountain","cape.jpa");
@@ -46,7 +47,7 @@ public class ItenaryTest extends AndroidTestCase {
     }
 
     public void findCountryById() {
-        Itenary itenary = itenaryRepo.findCountryById(2L);
+        Itenary itenary = itenaryRepo.findItenaryAttractionById(2L);
         assertEquals("Conference", itenary.getId());
     }
 }
