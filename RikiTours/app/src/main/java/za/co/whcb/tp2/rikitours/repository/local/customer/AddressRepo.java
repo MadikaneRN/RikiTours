@@ -55,12 +55,13 @@ public class AddressRepo extends SQLiteOpenHelper {
         addressTable  = new AddressTable();
         contentValues = new ContentValues();
 
-        contentValues.put(addressTable.getAttributeId().name, address.getId());
+
         contentValues.put(addressTable.getAttributeStreetNo().name, address.getFlatNo());
-        contentValues.put(addressTable.getAttributeSurbub().name, address.getStreetName());
-        contentValues.put(addressTable.getAttributeHouseNo().name, address.getCity());
-
-
+        contentValues.put(addressTable.getAttributeStreetName().name, address.getStreetName());
+        contentValues.put(addressTable.getAttributeHouseNo().name, address.getFlatNo());
+        contentValues.put(addressTable.getAttributePostalCode().name,address.getPostalCode());
+        //contentValues.put(addressTable.getAttributeSurbub().name,updatedCustomerAddress.ge)
+        contentValues.put(addressTable.getAttributeCityId().name, address.getCity().getId());
         try {
             returned = localDatabase.insert(addressTable.getTableName(), null, contentValues);
         }catch (Exception ex) {
@@ -82,15 +83,14 @@ public class AddressRepo extends SQLiteOpenHelper {
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
 
-
                 addressFound = AddressFactory.getAddress(data.getLong(0), data.getString(1),
-                        data.getString(2), data.getString(3),data.getString(3));
+                        data.getString(2), data.getString(3));
             }
         }
         return addressFound;
     }
 
-    public ArrayList<Address> getAllCountries() {
+    public ArrayList<Address> getAllAddresses() {
         ArrayList<Address> addresses = new ArrayList<>();
         Address addressFound = null;
         localDatabase = this.getReadableDatabase();
@@ -101,7 +101,7 @@ public class AddressRepo extends SQLiteOpenHelper {
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
                 addressFound = AddressFactory.getAddress(data.getLong(0), data.getString(1),
-                        data.getString(2), data.getString(3),data.getString(3));
+                        data.getString(2), data.getString(3));
                 addresses.add(addressFound);
             }
         }
@@ -116,8 +116,11 @@ public class AddressRepo extends SQLiteOpenHelper {
         contentValues = new ContentValues();
 
         contentValues.put(addressTable.getAttributeStreetNo().name, updatedCustomerAddress.getFlatNo());
-        contentValues.put(addressTable.getAttributeSurbub().name, updatedCustomerAddress.getStreetName());
-        contentValues.put(addressTable.getAttributeHouseNo().name, updatedCustomerAddress.getCity());
+        contentValues.put(addressTable.getAttributeStreetName().name, updatedCustomerAddress.getStreetName());
+        contentValues.put(addressTable.getAttributeHouseNo().name, updatedCustomerAddress.getFlatNo());
+        contentValues.put(addressTable.getAttributePostalCode().name,updatedCustomerAddress.getPostalCode());
+        //contentValues.put(addressTable.getAttributeSurbub().name,updatedCustomerAddress.ge)
+        contentValues.put(addressTable.getAttributeCityId().name, updatedCustomerAddress.getCity().getId());
 
         try {
 

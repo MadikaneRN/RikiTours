@@ -13,9 +13,13 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiSignUpCallBack;
+import za.co.whcb.tp2.rikitours.domain.Address;
+import za.co.whcb.tp2.rikitours.domain.Contacts;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+import za.co.whcb.tp2.rikitours.factories.customer.ContactFactory;
 import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 
 /**
@@ -24,6 +28,7 @@ import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 
 public class UserController {
     private final String url = "http://tp.sawebdesignhosting.co.za/login/";
+    private final String signUpUrl = "http://tp.sawebdesignhosting.co.za/signup/";
     private RequestQueue requestQueue;
     private String email,password;
     private Context context;
@@ -32,6 +37,12 @@ public class UserController {
         this.email = email;
         this.password = password;
         this.context = context;
+        this.requestQueue = Volley.newRequestQueue(context);
+    }
+
+    public UserController(Context context, String password) {
+        this.context = context;
+        this.password = password;
         this.requestQueue = Volley.newRequestQueue(context);
     }
 
@@ -50,8 +61,12 @@ public class UserController {
                             String gender = userInfo[3];
                             String dob = userInfo[4];
                             String email = userInfo[5];
+                            String cellphone = userInfo[6];
 
-                            Customer userFromServer = CustomerFactory.getCustomer(id,name,surname, String.valueOf(id));
+                            Address address = null;
+                            Contacts contacts = ContactFactory.getContact(id,cellphone,"",address);
+
+                            Customer userFromServer = CustomerFactory.getCustomer(id,name,surname,email, contacts);
                             callback.onSuccess(userFromServer);
                         }
                         catch (Exception e) {
@@ -91,14 +106,15 @@ public class UserController {
         requestQueue.add(request);
     }
 
-    public void signUp(final Customer user, String UserPassword, final RikiApiSignUpCallBack callback ) {
-        StringRequest request = new StringRequest(1,url,
+    public void signUp(final Customer user, final RikiApiSignUpCallBack callback ) {
+        StringRequest request = new StringRequest(1,signUpUrl,
                 new Response.Listener<String>()
                 {
                     @Override
                     public void onResponse(String response) {
                         try {
                             callback.onSuccess(response);
+                            Display.toast(user.getName(),context);
                         }
                         catch (Exception e) {
                             e.printStackTrace();
@@ -120,11 +136,16 @@ public class UserController {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("id", String.valueOf(user.getId()));
-                params.put("name", user.getName());
-                params.put("surname", user.getSurname());
-                params.put("email", user.getEmail());
-                params.put("password", password);
+//                params.put("id", String.valueOf(user.getId()));
+//                params.put("customer_name", user.getName());
+//                params.put("customer_surname", user.getSurname());
+//                params.put("customer_dob", user.getDob());
+//
+//                params.put("customer_email", user.getEmail());
+//                params.put("customer_password",password);
+//                params.put("city_id",String.valueOf(user.getContactDetails().getAddress().getCity().getId()));
+//                params.put("customer_phone",user.getContactDetails().getCellNumber());
+                //Display.toast(user.getName(),context);
 
                 return params;
             }

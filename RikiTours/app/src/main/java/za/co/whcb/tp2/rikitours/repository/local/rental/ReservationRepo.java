@@ -14,6 +14,7 @@ import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.customer.CustomerTable;
 import za.co.whcb.tp2.rikitours.config.database.table.rental.ReservationTable;
 import za.co.whcb.tp2.rikitours.config.database.table.rental.VehicleTable;
+import za.co.whcb.tp2.rikitours.domain.Contacts;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
@@ -104,8 +105,8 @@ public class ReservationRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-
-                customerFound = CustomerFactory.getCustomer(data.getLong(0), data.getString(1), data.getString(2), data.getString(3));
+                Contacts contacts = null;
+                customerFound = CustomerFactory.getCustomer(data.getLong(0), data.getString(1), data.getString(2), data.getString(3),contacts);
             }
         }
         return customerFound;
