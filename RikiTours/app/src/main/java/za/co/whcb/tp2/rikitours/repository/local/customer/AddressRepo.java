@@ -11,11 +11,9 @@ import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
-import za.co.whcb.tp2.rikitours.config.database.table.common.CountryTable;
 import za.co.whcb.tp2.rikitours.config.database.table.customer.AddressTable;
-import za.co.whcb.tp2.rikitours.domain.customer.CustomerAddress;
+import za.co.whcb.tp2.rikitours.domain.Address;
 import za.co.whcb.tp2.rikitours.factories.customer.AddressFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 /**
  * Created by Game330 on 2016-10-14.
@@ -51,17 +49,17 @@ public class AddressRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addCustomerAddress(CustomerAddress address ) {
+    public boolean addCustomerAddress(Address address ) {
         long returned ;
         localDatabase = this.getWritableDatabase();
         addressTable  = new AddressTable();
         contentValues = new ContentValues();
 
         contentValues.put(addressTable.getAttributeId().name, address.getId());
-        contentValues.put(addressTable.getAttributeStreetNo().name, address.getStreet_no());
-        contentValues.put(addressTable.getAttributeSurbub().name, address.getSuburb());
-        contentValues.put(addressTable.getAttributeHouseNo().name, address.getHouse_no());
-        contentValues.put(addressTable.getAttributePostalCode().name, address.getPostalCode());
+        contentValues.put(addressTable.getAttributeStreetNo().name, address.getFlatNo());
+        contentValues.put(addressTable.getAttributeSurbub().name, address.getStreetName());
+        contentValues.put(addressTable.getAttributeHouseNo().name, address.getCity());
+
 
         try {
             returned = localDatabase.insert(addressTable.getTableName(), null, contentValues);
@@ -74,8 +72,8 @@ public class AddressRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public CustomerAddress findAddressById(long id) {
-        CustomerAddress addressFound = null;
+    public Address findAddressById(long id) {
+        Address addressFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(addressTable.getTableName(),
                 addressTable.getAttributeId(), String.valueOf(id));
@@ -83,6 +81,8 @@ public class AddressRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
+
+
                 addressFound = AddressFactory.getAddress(data.getLong(0), data.getString(1),
                         data.getString(2), data.getString(3),data.getString(3));
             }
@@ -90,9 +90,9 @@ public class AddressRepo extends SQLiteOpenHelper {
         return addressFound;
     }
 
-    public ArrayList<CustomerAddress> getAllCountries() {
-        ArrayList<CustomerAddress> addresses = new ArrayList<>();
-        CustomerAddress addressFound = null;
+    public ArrayList<Address> getAllCountries() {
+        ArrayList<Address> addresses = new ArrayList<>();
+        Address addressFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAll(addressTable.getTableName());
 
@@ -109,17 +109,15 @@ public class AddressRepo extends SQLiteOpenHelper {
         return addresses;
     }
 
-    public boolean updateAddress(CustomerAddress updatedCustomerAddress, long id) {
+    public boolean updateAddress(Address updatedCustomerAddress, long id) {
 
         long returned ;
         localDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
 
-        contentValues.put(addressTable.getAttributeId().name, updatedCustomerAddress.getId());
-        contentValues.put(addressTable.getAttributeStreetNo().name, updatedCustomerAddress.getStreet_no());
-        contentValues.put(addressTable.getAttributeSurbub().name, updatedCustomerAddress.getSuburb());
-        contentValues.put(addressTable.getAttributeHouseNo().name, updatedCustomerAddress.getHouse_no());
-        contentValues.put(addressTable.getAttributePostalCode().name, updatedCustomerAddress.getPostalCode());
+        contentValues.put(addressTable.getAttributeStreetNo().name, updatedCustomerAddress.getFlatNo());
+        contentValues.put(addressTable.getAttributeSurbub().name, updatedCustomerAddress.getStreetName());
+        contentValues.put(addressTable.getAttributeHouseNo().name, updatedCustomerAddress.getCity());
 
         try {
 
