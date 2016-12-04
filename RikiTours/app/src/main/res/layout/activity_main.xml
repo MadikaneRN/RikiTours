@@ -67,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText"
+                    android:id="@+id/edtCustomerName"
                     android:hint="First Name"
                     android:background="@drawable/text_box_sharp"
                     style="@style/edit_text_default"
@@ -78,17 +78,27 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
-                    android:id="@+id/editText2"
+                    android:id="@+id/edtCustomerSurname"
                     android:hint="Last Name"
                     android:background="@drawable/text_box_sharp"
                     style="@style/edit_text_default"/>
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:entries="@array/cities"
+                    android:prompt="@string/city_prompt"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Email Address"
+                    />
 
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:ems="10"
-                    android:id="@+id/editText3"
+                    android:id="@+id/edtCustomerEmail"
                     android:hint="Email Address"
                     android:background="@drawable/text_box_sharp"
                     style="@style/edit_text_default"/>
@@ -98,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
-                    android:id="@+id/editText4"
+                    android:id="@+id/edtCustomerPassword"
                     android:hint="Password"
                     android:background="@drawable/text_box_sharp"
                     style="@style/edit_text_default"/>
@@ -108,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
-                    android:id="@+id/editText5"
+                    android:id="@+id/edtCustomerPasswordConfimed"
                     android:hint="Confirm Password"
                     android:background="@drawable/text_box_sharp"
                     style="@style/edit_text_default"/>
@@ -126,7 +136,8 @@
                         android:background="@drawable/button_sharp"
                         android:textColor="#FFFFFF"
                         style="@style/button_default"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:onClick="signup" />
 
                     <Button
                         style="@style/button_default"

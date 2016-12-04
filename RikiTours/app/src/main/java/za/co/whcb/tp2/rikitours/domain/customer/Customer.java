@@ -10,6 +10,8 @@ public class Customer implements Person{
     private long id;
     private String name;
     private String surname;
+    private String email;
+    private String dob;
     private Contacts contactDetails;
 
 
@@ -18,13 +20,17 @@ public class Customer implements Person{
         name=builderObj.name;
         surname=builderObj.surname;
         id=builderObj.id;
+        email = builderObj.email;
+       // dob = builderObj.dob;
     }
 
-    public Customer(long id, String name, String surname, String customer_no, String email, Contacts contactDetails) {
+    public Customer(long id, String name, String surname,String email,Contacts contactDetails) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.email = email;
         this.contactDetails = contactDetails;
+
     }
 
     public long getId() {
@@ -35,10 +41,25 @@ public class Customer implements Person{
         return name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getSurname() {
         return surname;
     }
 
+    public String getDob(){
+        return dob;
+    }
+
+    public Contacts getContactDetails() {
+        return contactDetails;
+    }
+
+    public void setContactDetails(Contacts contactDetails) {
+        this.contactDetails = contactDetails;
+    }
 
     private Customer(){}
 
@@ -46,6 +67,8 @@ public class Customer implements Person{
         private long id;
         private String name;
         private String surname;
+        private String email;
+        //private String dob;
         Contacts contactDetails;
 
         public Builder id(int id){
@@ -54,6 +77,11 @@ public class Customer implements Person{
         }
         public Builder id(long id){
             this.id =  id;
+            return this;
+        }
+
+        public Builder email(String email){
+            this.email = email;
             return this;
         }
 
@@ -74,10 +102,17 @@ public class Customer implements Person{
             return this;
         }
 
+//        public Builder dob(String dob){
+//            this.dob = dob;
+//            return this;
+//        }
+
         public Builder copyObj(Customer custObj){
             this.id=custObj.getId();
             this.name=custObj.getName();
             this.surname=custObj.getSurname();
+            this.email = custObj.getEmail();
+          //  this.dob = custObj.dob;
             return this;
 
         }

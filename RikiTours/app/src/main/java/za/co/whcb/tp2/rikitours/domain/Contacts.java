@@ -11,6 +11,13 @@ public class Contacts{
 
 
 
+    public Contacts(Long id, String cellNumber,String workNumber,Address address){
+        this.id = id;
+        this.cellNumber = cellNumber;
+        this.workNumber = workNumber;
+        this.address = address;
+    }
+
     public Contacts(Builder builder){
         this.id=builder.id;
         this.cellNumber=builder.cellNumber;
@@ -34,7 +41,21 @@ public class Contacts{
         return address;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public void setCellNumber(String cellNumber) {
+        this.cellNumber = cellNumber;
+    }
+
+    public void setWorkNumber(String workNumber) {
+        this.workNumber = workNumber;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public static class Builder {
 
