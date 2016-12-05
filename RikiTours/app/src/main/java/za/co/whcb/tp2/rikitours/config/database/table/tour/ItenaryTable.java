@@ -13,6 +13,7 @@ public class ItenaryTable extends Table {
     public static Attribute id = new Attribute("id", "INTEGER");
     public static Attribute groupAttractionId=new Attribute("groupAttractionId","INTEGER");
 
+
     @Override
     public String getTableName() {
         return tableName;

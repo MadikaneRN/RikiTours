@@ -17,7 +17,6 @@ import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final String url = "http://tp2.whcb.co.za/customer.php";
     EditText txtEmail;
     EditText txtPassword;
 
@@ -43,11 +42,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login (View view){
 
-        String email = "ayowaberka1@gmail.com";//txtEmail.getText().toString();
-        String password = "123456" ;//txtPassword.getText().toString();
+        String email = txtEmail.getText().toString();
+        String password = txtPassword.getText().toString();
         if(!email.equals("") && !password.equals(""))
         {
-            Display.startLoading("Signing..",this);
+            Display.startLoading("Signing",this);
             UserController userController = new UserController(email,password,this);
             userController.signIn(new RikiApiCallback() {
                 @Override
@@ -67,15 +66,19 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onParsingError(Exception error) {
+                    Display.endLoading();
                     Display.toast("Invalid Email or Password",getApplicationContext());
                 }
 
                 @Override
                 public void onJSONError(JSONException error) {
-
+                    Display.endLoading();
                 }
             });
-
+        }
+        else
+        {
+            Display.toast("Invalid login details",this);
         }
 
 

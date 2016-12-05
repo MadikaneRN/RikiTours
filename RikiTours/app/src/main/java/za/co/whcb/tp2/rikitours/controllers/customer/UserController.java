@@ -13,6 +13,7 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
+import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiSignUpCallBack;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
@@ -24,15 +25,27 @@ import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 
 public class UserController {
     private final String url = "http://tp.sawebdesignhosting.co.za/login/";
+    private final String signUpUrl = "http://tp.sawebdesignhosting.co.za/signup/";
     private RequestQueue requestQueue;
     private String email,password;
     private Context context;
+    private Customer user;
+    private String gender;
 
     public UserController(String email, String password, Context context) {
         this.email = email;
         this.password = password;
         this.context = context;
         this.requestQueue = Volley.newRequestQueue(context);
+    }
+
+    public UserController(String email,String password, Context context, Customer user, String gender) {
+        this.password = password;
+        this.email = email;
+        this.context = context;
+        this.user = user;
+        this.requestQueue = Volley.newRequestQueue(context);
+        this.gender = gender;
     }
 
     public void signIn(final RikiApiCallback callback ) {
@@ -91,51 +104,56 @@ public class UserController {
         requestQueue.add(request);
     }
 
-    public void signUp(final Customer user, String UserPassword, final RikiApiSignUpCallBack callback ) {
-        StringRequest request = new StringRequest(1,url,
+    public void signUp(final RikiApiSignUpCallBack callback ) {
+        StringRequest request = new StringRequest(1,signUpUrl,
                 new Response.Listener<String>()
-                {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            callback.onSuccess(response);
+                    {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                callback.onSuccess(response);
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                                Log.d("Error--> : ", e.getMessage());
+                                callback.onParsingError(e);
+                            }
                         }
-                        catch (Exception e) {
-                            e.printStackTrace();
-                            Log.d("Error--> : ", e.getMessage());
-                            callback.onParsingError(e);
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            callback.onConnectingError(error);
+                            Log.d("Error.Response", error.getMessage());
                         }
                     }
-                },
-                new Response.ErrorListener()
+            ) {
+                @Override
+                protected Map<String, String> getParams()
                 {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        callback.onConnectingError(error);
-                        Log.d("Error.Response", error.getMessage());
-                    }
+                    Map<String, String>  params = new HashMap<String, String>();
+                     params.put("id", String.valueOf(user.getId()));
+                     params.put("customer_name", user.getName());
+                     params.put("customer_surname", user.getSurname());
+                     params.put("customer_gender",gender);
+                     params.put("customer_dob","10/20/201");
+
+                     params.put("customer_email", email);
+                     params.put("customer_password",password);
+                     params.put("city_id","100");
+                     params.put("customer_phone","0");
+
+                     return params;
                 }
-        ) {
-            @Override
-            protected Map<String, String> getParams()
-            {
-                Map<String, String>  params = new HashMap<String, String>();
-                params.put("id", String.valueOf(user.getId()));
-                params.put("name", user.getName());
-                params.put("surname", user.getSurname());
-                params.put("email", user.getEmail());
-                params.put("password", password);
 
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/x-www-form-urlencoded");
-                return headers;
-            }
-        };
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<String, String>();
+                    headers.put("Content-Type", "application/x-www-form-urlencoded");
+                    return headers;
+                }
+            };
 
         requestQueue.add(request);
     }

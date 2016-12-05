@@ -20,11 +20,11 @@ public class Customer implements Person{
         id=builderObj.id;
     }
 
-    public Customer(long id, String name, String surname, String customer_no, String email) {
+    public Customer(long id, String name, String surname, String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.customer_no = customer_no;
+        this.customer_no = "";
         this.email = email;
     }
 
@@ -47,7 +47,26 @@ public class Customer implements Person{
     public String getCustomerNumber() {
         return email;
     }
-    private Customer(){}
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setCustomer_no(String customer_no) {
+        this.customer_no = customer_no;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public static class Builder{
         private long id;
