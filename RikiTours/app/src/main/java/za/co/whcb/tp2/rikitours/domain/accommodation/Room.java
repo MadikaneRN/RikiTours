@@ -1,7 +1,7 @@
 package za.co.whcb.tp2.rikitours.domain.accommodation;
 
 /**
- * Created by berka on 9/17/2016.
+ * Created by lindo on 9/17/2016.
  */
 public class Room {
     private long id;
@@ -13,6 +13,7 @@ public class Room {
         this.size = builder.size;
         this.type = builder.type;
         this.description = builder.description;
+        this.hotel = builder.hotel;
     }
 
     public long getId() {
@@ -88,7 +89,6 @@ public class Room {
             this.type = room.type;
             this.description = room.description;
             this.hotel = room.hotel;
-
 
             return this;
         }
