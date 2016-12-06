@@ -12,7 +12,7 @@ public class CustomerTest {
 
     @Test
     public void testCustomerTable() throws Exception {
-        
+
         CustomerTable customerTable = new CustomerTable();
         String query = Converter.toCreateTableQuery(customerTable.getTableName(),customerTable.getAllAttributes());
         System.out.println(query);
