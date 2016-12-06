@@ -9,8 +9,10 @@ import za.co.whcb.tp2.rikitours.config.database.table.customer.OccupationalDetai
  * Created by Game330 on 2016-10-10.
  */
 public class OccupationalDetailsTableTest {
+
     @Test
     public void testOccupationalDetailsTable() throws Exception {
+
         OccupationalDetailsTable occupationalDetails= new OccupationalDetailsTable();
         String query = Converter.toCreateTableQuery(occupationalDetails.getTableName(),occupationalDetails.getAllAttributes());
         System.out.println(query);
