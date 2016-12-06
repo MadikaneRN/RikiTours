@@ -3,6 +3,10 @@ package za.co.whcb.tp2.rikitours.repositorytest.accommodation;
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
+import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
+import za.co.whcb.tp2.rikitours.domain.accommodation.Room;
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import za.co.whcb.tp2.rikitours.factories.accommodation.RoomFactory;
 import za.co.whcb.tp2.rikitours.repository.local.accommodation.RoomRepo;
 
 /**
@@ -10,6 +14,7 @@ import za.co.whcb.tp2.rikitours.repository.local.accommodation.RoomRepo;
  */
 public class RoomTest extends AndroidTestCase {
     private RoomRepo roomRepo;
+    private static Hotel hotel;
 
     @Override
     public void setUp() throws Exception {
@@ -24,5 +29,13 @@ public class RoomTest extends AndroidTestCase {
         super.tearDown();
     }
 
+    public void addRoomTest() {
+        Room room = RoomFactory.getRoom(1L,"8000*2000","double","cabin",hotel);
+        assertEquals(true, roomRepo.addRoom(room));
+    }
 
+    public void findRoomById() {
+        Room room = roomRepo.findRoomById(1);
+        assertEquals("double", room.getType());
+    }
 }

@@ -31,7 +31,7 @@ public class HotelTest extends AndroidTestCase {
         assertEquals(true, hotelRepo.addHotel(hotel));
     }
 
-    public void findCountryById() {
+    public void findHotelById() {
         Hotel hotel = hotelRepo.findHotelById(1);
         assertEquals("Sun1", hotel.getName());
     }
