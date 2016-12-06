@@ -3,6 +3,8 @@ package za.co.whcb.tp2.rikitours.repositorytest.accommodation;
 import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
+import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
+import za.co.whcb.tp2.rikitours.factories.accommodation.HotelFactory;
 import za.co.whcb.tp2.rikitours.repository.local.accommodation.HotelRepo;
 
 /**
@@ -24,5 +26,13 @@ public class HotelTest extends AndroidTestCase {
         super.tearDown();
     }
 
-    
+    public void addHotelTest() {
+        Hotel hotel = HotelFactory.getHotel(1L,"Sun1","5","self catering");
+        assertEquals(true, hotelRepo.addHotel(hotel));
+    }
+
+    public void findCountryById() {
+        Hotel hotel = hotelRepo.findHotelById(1);
+        assertEquals("Sun1", hotel.getName());
+    }
 }
