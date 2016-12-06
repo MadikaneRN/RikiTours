@@ -54,7 +54,7 @@ public class TourRepo extends SQLiteOpenHelper {
         contentValues.put(tourTable.getAttributeId().name, tour.getId());
         contentValues.put(tourTable.getAttributeCustomerId().name, tour.getCustomer().getId());
         contentValues.put(tourTable.getAttributeGuideId().name, tour.getGuide().getId());
-        contentValues.put(tourTable.getAttributeItenryId().name, tour.getItenary().getId());
+        contentValues.put(tourTable.getAttributeItenryId().name, tour.getItinerary().getId());
         try {
             returned = localDatabase.insert(tourTable.getTableName(), null, contentValues);
         }catch (Exception ex) {

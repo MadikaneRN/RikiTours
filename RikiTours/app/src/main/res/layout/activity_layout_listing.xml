@@ -8,7 +8,7 @@
     android:paddingRight="9dp"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LayoutListingActivity"
-    android:background="@drawable/newbg">
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:orientation="vertical"
@@ -31,13 +31,14 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="230dp"
                 android:id="@+id/imgBox"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:scaleType="fitXY"
                 android:gravity="center"
-                android:background="@drawable/loading" />
+
+                android:padding="2dp"
+                android:background="@color/background_floating_material_light" />
 
         </LinearLayout>
 
@@ -50,14 +51,15 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Table Mountain"
                     android:id="@+id/txtTitle"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textColor="#ac7942"
                     android:paddingTop="5dp"
                     android:paddingRight="10dp"
@@ -76,8 +78,10 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimaryDark"
-                android:gravity="fill_vertical">
+                android:gravity="center_vertical|fill_vertical"
+                android:background="@drawable/textview_style"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="5dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -90,15 +94,16 @@
                     android:id="@+id/txtSubTitle"
                     android:textColor="@color/abc_secondary_text_material_dark"
                     android:textSize="17dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
+
                     android:gravity="fill_vertical" />
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="fill_vertical|right"
-                    android:paddingRight="10dp">
+                    android:gravity="center_vertical|fill_vertical|right"
+                    android:paddingRight="2dp">
 
                     <ImageView
                         android:layout_width="50dp"
@@ -152,7 +157,8 @@
                     android:id="@+id/btnGallery"
                     android:background="@drawable/button_sharp"
                     android:textColor="#FFFFFF"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_marginRight="0dp" />
             </LinearLayout>
         </LinearLayout>
 

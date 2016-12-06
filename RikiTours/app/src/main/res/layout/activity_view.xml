@@ -51,7 +51,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="5dp"
-                android:paddingBottom="5dp">
+                android:paddingBottom="5dp"
+                android:background="@drawable/textview_style"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,7 +63,6 @@
                     android:id="@+id/txtTitle"
                     android:textSize="20dp"
                     android:textColor="#ac7942"
-                    android:paddingTop="5dp"
                     android:paddingRight="10dp"
                     android:inputType="textCapWords" />
 

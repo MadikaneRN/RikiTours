@@ -33,7 +33,6 @@ public class AttractionsRepo extends SQLiteOpenHelper {
 
 
     public AttractionsRepo(Context context) {
-
         super(context, Database.name, null, Database.version);
         attractionTable = new AttractionTable();
         countryTable = new CountryTable();
@@ -48,7 +47,6 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         }
         catch (Exception ex) {
             Log.d("SQL ERROR", ex.getMessage());
-
         }
 
     }
@@ -74,7 +72,6 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         }catch (Exception ex) {
             returned = 0;
             Log.d("exception ::::",ex.getMessage());
-
         }
 
         return (returned != -1) ? true : false;
@@ -86,8 +83,6 @@ public class AttractionsRepo extends SQLiteOpenHelper {
         String query = Converter.toSelectAllWhere(attractionTable.getTableName(),
                 attractionTable.getAttributeId(), String.valueOf(id));
         Cursor data = db.rawQuery(query, null);
-
-
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {

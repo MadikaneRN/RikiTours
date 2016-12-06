@@ -11,7 +11,7 @@
                 android:centerColor="#362720"
                 android:endColor="#362720"
                 />
-            <corners android:radius="1dp" />
+            <corners android:radius="5dp" />
             <stroke android:width="1px" android:color="#a9978f" />
         </shape>
     </item>
@@ -24,7 +24,7 @@
                 android:startColor="#56443b"
                 android:endColor="#56443b"
                 />
-            <corners android:radius="2dp" />
+            <corners android:radius="5dp" />
             <stroke android:width="1px" android:color="#56443b" />
 
         </shape>
