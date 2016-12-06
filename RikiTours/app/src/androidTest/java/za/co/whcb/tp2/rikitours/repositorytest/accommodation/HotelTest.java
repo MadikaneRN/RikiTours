@@ -8,7 +8,7 @@ import za.co.whcb.tp2.rikitours.factories.accommodation.HotelFactory;
 import za.co.whcb.tp2.rikitours.repository.local.accommodation.HotelRepo;
 
 /**
- * Created by bishop v on 2016-12-06.
+ * Created by lindo on 2016-12-06.
  */
 public class HotelTest extends AndroidTestCase {
     private HotelRepo hotelRepo;
