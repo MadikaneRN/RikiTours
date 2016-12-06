@@ -14,7 +14,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Display;
+import za.co.whcb.tp2.rikitours.common.NavigatorItem;
+import za.co.whcb.tp2.rikitours.common.adapter.MenuAdapter;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class MenuActivity extends AppCompatActivity {
@@ -22,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
     Customer user;
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
-    private ArrayAdapter<String> mAdapter;
+    private MenuAdapter mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private String mActivityTitle;
 
@@ -75,8 +79,18 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
+        ArrayList<NavigatorItem> menuItems = new ArrayList<>();
+        menuItems.add(new NavigatorItem("My Profile"));
+        menuItems.add(new NavigatorItem("My list"));
+        menuItems.add(new NavigatorItem("My Notifications"));
+       // menuItems.add(new NavigatorItem("Promotions"));
+        menuItems.add(new NavigatorItem("Tours "));
+        menuItems.add(new NavigatorItem("Car Rental"));
+        menuItems.add(new NavigatorItem("Accommodations"));
+        //menuItems.add(new NavigatorItem("Options"));
+        menuItems.add(new NavigatorItem("Sign Out"));
+
+        mAdapter = new MenuAdapter(this,menuItems);
         mDrawerList.setAdapter(mAdapter);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
