@@ -27,12 +27,12 @@ public class AttractionDescriptionTest extends AndroidTestCase {
     }
 
     public void addAttractionDescriptionTest() {
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription(1L, "Table Mountain", "Cape Town","mountain", "sa.jpg");
+        AttractionDescription description = AttractionDescriptionFactory.getAttractionDescription(1L, "Table Mountain", "Cape Town","mountain", "sa.jpg");
         assertNull(description);
     }
 
     public void findAttractionDescriptionById() {
-        AttractionDescription description = attractionDescriptionRepo.findCountryById(1L);
+        AttractionDescription description = attractionDescriptionRepo.findAttractionDescriptionById(1L);
         assertNull(description);
         assertEquals("Cape Tow", description.getCity());
     }

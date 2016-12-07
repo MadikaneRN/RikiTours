@@ -8,129 +8,176 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="za.co.whcb.tp2.rikitours.MainActivity"
-    android:background="@drawable/bg_second">
+    android:background="#362720"
+    android:gravity="center_vertical"
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:weightSum="1"
-        android:textAlignment="textEnd">
+    >
 
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="100dp"
-            android:id="@+id/imageView"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo2"
-            android:layout_weight="1"
-            android:paddingBottom="15dp" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
 
         <LinearLayout
+            android:animateLayoutChanges="true"
             android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="370dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:paddingTop="10dp">
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/editText"
-                android:hint="First Name"
-                android:background="@drawable/text_box_sharp"
-                style="@style/edit_text_default"
-                />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/editText2"
-                android:hint="Last Name"
-                android:background="@drawable/text_box_sharp"
-                style="@style/edit_text_default"/>
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="10"
-                android:id="@+id/editText3"
-                android:hint="Email Address"
-                android:background="@drawable/text_box_sharp"
-                style="@style/edit_text_default"/>
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/editText4"
-                android:hint="Password"
-                android:background="@drawable/text_box_sharp"
-                style="@style/edit_text_default"/>
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:ems="10"
-                android:id="@+id/editText5"
-                android:hint="Confirm Password"
-                android:background="@drawable/text_box_sharp"
-                style="@style/edit_text_default"/>
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:id="@+id/button"
-                android:background="@drawable/button_sharp"
-                android:textColor="#FFFFFF"
-                style="@style/button_default"
-                />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:weightSum="1"
+            android:textAlignment="textEnd">
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:paddingTop="10dp"
+                android:background="#362720">
 
-                <CheckBox
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox" />
+                    android:animateLayoutChanges="false"
+                    android:background="#362720">
 
-                <TextView
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="140dp"
+                        android:text="Welcome to the registration to Riki Tours App and its related services You may only  access features of this app if you complete your registration For your first signin use the pin sent to you email as password to activate you account  and after activating your account you can use your normal password to signin"
+                        android:id="@+id/txtViewTerms"
+                        android:textAlignment="center"
+                        android:textColor="@color/bright_foreground_disabled_material_dark"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="10dp"
+                        android:textSize="14dp"
+                        android:background="@drawable/list_bg"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:enabled="false"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="I accept RikiTours terms and Conditions and"
-                    android:id="@+id/textView"
-                    android:textAlignment="center"
-                    android:textColor="@color/bright_foreground_disabled_material_dark"
-                    android:paddingBottom="6dp"
-                    android:paddingTop="10dp" />
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/edtCustomerName"
+                    android:hint="First Name"
+                    android:background="@drawable/text_box_sharp"
+                    style="@style/edit_text_default"
+                    />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/edtCustomerSurname"
+                    android:hint="Last Name"
+                    android:background="@drawable/text_box_sharp"
+                    style="@style/edit_text_default"/>
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:entries="@array/cities"
+                    android:prompt="@string/city_prompt"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Email Address"
+                    />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/edtCustomerEmail"
+                    android:hint="Email Address"
+                    android:background="@drawable/text_box_sharp"
+                    style="@style/edit_text_default"/>
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/edtCustomerPassword"
+                    android:hint="Password"
+                    android:background="@drawable/text_box_sharp"
+                    style="@style/edit_text_default"/>
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/edtCustomerPasswordConfimed"
+                    android:hint="Confirm Password"
+                    android:background="@drawable/text_box_sharp"
+                    style="@style/edit_text_default"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Register"
+                        android:id="@+id/button"
+                        android:background="@drawable/button_sharp"
+                        android:textColor="#FFFFFF"
+                        style="@style/button_default"
+                        android:layout_weight="1"
+                        android:onClick="signup" />
+
+                    <Button
+                        style="@style/button_default"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Terms and Cond"
+                        android:id="@+id/btnTerms"
+                        android:background="@drawable/button_sharp"
+                        android:textColor="#FFFFFF"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="5dp"
+                        android:onClick="terms"
+                        android:nestedScrollingEnabled="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/checkBox" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="I accept RikiTours terms and Conditions"
+                        android:id="@+id/textView"
+                        android:textAlignment="center"
+                        android:textColor="@color/bright_foreground_disabled_material_dark"
+                        android:paddingBottom="6dp"
+                        android:paddingTop="10dp"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" informed Consent"
-                android:id="@+id/textView2"
-                android:layout_gravity="center_horizontal"
-                android:textAlignment="center"
-                android:textColor="@color/bright_foreground_disabled_material_dark"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

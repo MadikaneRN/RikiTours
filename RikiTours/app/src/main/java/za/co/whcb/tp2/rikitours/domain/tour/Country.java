@@ -1,9 +1,11 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
+import java.io.Serializable;
+
 import za.co.whcb.tp2.rikitours.domain.tour.City;
 /**
  * Created by Encore on 9/17/2016.
  */
-public class Country{
+public class Country implements Serializable {
     private Long id;
 	private String name;
     private String description;

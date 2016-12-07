@@ -31,9 +31,9 @@ public class AttractionTest extends AndroidTestCase {
     }
 
     public void addAttractionDescriptionTest() {
-        AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription(1L,"one", "two", "three", "four");
+        AttractionDescription description = AttractionDescriptionFactory.getAttractionDescription(1L,"one", "two", "three", "four");
         Country country = CountryFactory.getCountry(1L, "south-africa", "South Africa is a country on the southernmost", "sa.jpg");
-        Attraction attraction = AttractionFactory.getAttracion(1L, country, description);
+        Attraction attraction = AttractionFactory.getAttraction(1L, country, description);
         boolean isAdded = attractionRepo.addAttraction(attraction);
         assertNull(description);
         assertTrue(isAdded);

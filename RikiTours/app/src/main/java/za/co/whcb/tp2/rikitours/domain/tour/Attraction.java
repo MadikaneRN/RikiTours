@@ -1,20 +1,21 @@
 package za.co.whcb.tp2.rikitours.domain.tour;
 
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
+import java.io.Serializable;
+
 /**
  * Created by Encore on 9/17/2016.
  */
-public class Attraction {
+public class Attraction implements Serializable {
     private Long id;
-    private Country countryId;
-    private AttractionDescription attractionDescriptionId;
+    private Country country;
+    private AttractionDescription attractionDescription;
 
     public Attraction() {
     }
 
     public Attraction(Builder builder) {
-        this.attractionDescriptionId = builder.attractionDescriptionId;
-        this.countryId = builder.countryId;
+        this.attractionDescription = builder.attractionDescriptionId;
+        this.country = builder.country;
         this.id = builder.id;
     }
 
@@ -23,18 +24,18 @@ public class Attraction {
     }
 
 
-    public Country getCountryId() {
-        return countryId;
+    public Country getCountry() {
+        return country;
     }
 
 
-    public AttractionDescription getAttractionDescriptionId() {
-        return attractionDescriptionId;
+    public AttractionDescription getAttractionDescription() {
+        return attractionDescription;
     }
 
     public static class Builder{
         private Long id;
-        private Country countryId;
+        private Country country;
         private AttractionDescription attractionDescriptionId;
 
         public Builder id(Long id){
@@ -44,7 +45,7 @@ public class Attraction {
 
 
         public Builder country(Country country){
-            this.countryId = country;
+            this.country = country;
             return this;
         }
 
@@ -55,8 +56,8 @@ public class Attraction {
 
         public Builder copy(Attraction attraction){
             this.id = attraction.id;
-            this.countryId = attraction.countryId;
-            this.attractionDescriptionId = attraction.attractionDescriptionId;
+            this.country = attraction.country;
+            this.attractionDescriptionId = attraction.attractionDescription;
 
             return this;
         }

@@ -75,7 +75,7 @@ public class SeasonDescriptionRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-               /* attractionFound = AttractionFactory.getAttracion(data.getLong(0), data.getLong(1), data.getLong(2));*/
+               /* attractionFound = AttractionFactory.getAttraction(data.getLong(0), data.getLong(1), data.getLong(2));*/
             }
         }
         return seasonDescriptionFound;

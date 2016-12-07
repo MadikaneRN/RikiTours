@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="za.co.whcb.tp2.rikitours.ViewActivity"
+    android:background="#362720">
+
+
+    <ScrollView android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+        <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:padding="5dp" android:radius="5dp"
+        android:background="@drawable/list_bg">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/imgMain"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/tablem"
+                android:scaleType="fitXY"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:background="@drawable/textview_style"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Table Mountain"
+                    android:id="@+id/txtTitle"
+                    android:textSize="20dp"
+                    android:textColor="#ac7942"
+                    android:paddingRight="10dp"
+                    android:inputType="textCapWords" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="R 4000.00 /person"
+                    android:id="@+id/txtTtileComment"
+                    android:textColor="#f36d2e"
+                    android:textSize="17dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Cableway has provided more than 24-million visitors  with an unforgettable experience, taking them to the  top of Table Mountain in Cape Town.The Cableway has provided more than 24-million visitors  with an unforgettable experience, taking them to the  top of Table Mountain in Cape Town."
+                android:id="@+id/txtDescription1"
+                android:textColor="@color/switch_thumb_normal_material_dark"
+                android:paddingTop="7dp"
+                android:paddingBottom="10dp"
+                android:maxLength="5000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Cableway has provided more than 24-million visitors  with an unforgettable experience, taking them to the  top of Table Mountain in Cape Town.The Cableway has provided more than 24-million visitors  with an unforgettable experience, taking them to the  top of Table Mountain in Cape Town."
+                android:id="@+id/txtDescription"
+                android:textColor="@color/switch_thumb_normal_material_dark"
+                android:paddingTop="7dp"
+                android:paddingBottom="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add to your list"
+                    android:id="@+id/btnReamore"
+                    android:background="@drawable/button_sharp"
+                    android:textColor="#FFFFFF"
+                    style="@style/button_small"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Book now"
+                    android:id="@+id/btnBooknow"
+                    android:background="@drawable/button_sharp"
+                    android:textColor="#FFFFFF"
+                    style="@style/button_small"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></LinearLayout>
+
+    </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -5,10 +5,21 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+
+import com.android.volley.VolleyError;
+
+import org.json.JSONException;
+
+import za.co.whcb.tp2.rikitours.common.Display;
+import za.co.whcb.tp2.rikitours.controllers.customer.UserController;
+import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String url = "http://tp2.whcb.co.za/customer.php";
-    private String request;
+    EditText txtEmail;
+    EditText txtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +28,10 @@ public class LoginActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
-        actionBar.setIcon(R.mipmap.logo_1);
+        actionBar.hide();
+
+        txtEmail = (EditText) findViewById(R.id.edtEmail);
+        txtPassword = (EditText) findViewById(R.id.edtPassword);
 
     }
 
@@ -28,8 +42,43 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login (View view){
-        Intent myIntent = new Intent(this, ListActivity.class);
-        myIntent.putExtra("key", ""); //Optional parameters
-        this.startActivity(myIntent);
+
+        String email = "ayowaberka1@gmail.com";//txtEmail.getText().toString();
+        String password = "123456" ;//txtPassword.getText().toString();
+        if(!email.equals("") && !password.equals(""))
+        {
+            Display.startLoading("Signing..",this);
+            UserController userController = new UserController(email,password,this);
+            userController.signIn(new RikiApiCallback() {
+                @Override
+                public void onSuccess(Customer user) {
+                    Intent myIntent = new Intent(getApplicationContext(), MenuActivity.class);
+                    myIntent.putExtra("user", user);
+                    myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Display.endLoading();
+                    getApplicationContext().startActivity(myIntent);
+                }
+
+                @Override
+                public void onConnectingError(VolleyError error) {
+                    Display.endLoading();
+                    Display.toast("Could not connect to the server",getApplicationContext());
+                }
+
+                @Override
+                public void onParsingError(Exception error) {
+                    Display.toast("Invalid Email or Password",getApplicationContext());
+                }
+
+                @Override
+                public void onJSONError(JSONException error) {
+
+                }
+            });
+
+        }
+
+
+
     }
 }

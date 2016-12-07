@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
@@ -80,5 +82,65 @@ public class CityDescriptionRepo extends SQLiteOpenHelper {
             }
         }
         return attractionFound;
+    }
+
+    public ArrayList<CityDescription> getAllCityDescriptions() {
+        ArrayList<CityDescription> descriptions = new ArrayList<>();
+        CityDescription descriptionFound = null;
+        localDatabase = this.getReadableDatabase();
+        String query = Converter.toSelectAll(descriptionTable.getTableName());
+
+        Cursor data = localDatabase.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+                descriptionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), data.getString(2));
+                descriptions.add(descriptionFound);
+            }
+        }
+
+        return descriptions;
+    }
+
+    public boolean updateCityDescription(CityDescription updatedCityDescription, long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+        contentValues = new ContentValues();
+        contentValues.put(descriptionTable.getSuburbId().name,updatedCityDescription.getSuburb());
+        contentValues.put(descriptionTable.getNationId().name,updatedCityDescription.getNation());
+
+        try {
+
+            returned =  localDatabase.update(descriptionTable.getTableName(),
+                    contentValues, descriptionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+    }
+
+    public boolean deleteById(long id) {
+
+        long returned ;
+        localDatabase = this.getWritableDatabase();
+
+        try {
+
+            returned =  localDatabase.delete(descriptionTable.getTableName(),
+                    descriptionTable.getPrimaryKey().name + " = ?",
+                    new String[]{String.valueOf(id)});
+
+        } catch (Exception ex) {
+            returned = 0;
+
+        }
+
+        return (returned != 0) ? true : false;
+
     }
 }
