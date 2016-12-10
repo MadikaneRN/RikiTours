@@ -54,7 +54,7 @@ public class Office implements Serializable {
             this.city = city;
             return this;
         }
-        public Builder location(String id){
+        public Builder location(String location){
             this.location = location;
             return this;
         }
