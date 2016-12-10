@@ -7,7 +7,7 @@
     android:paddingLeft="9dp"
     android:paddingRight="9dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LayoutListingActivity"
+    tools:context=".views.LayoutListingActivity"
     android:background="@color/colorPrimary">
 
     <LinearLayout

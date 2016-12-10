@@ -9,7 +9,7 @@
     android:paddingTop="0dp"
     tools:context="za.co.whcb.tp2.rikitours.LoginActivity"
     android:background="#362720"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical|fill_vertical|clip_vertical|center_horizontal">
 
     <ScrollView
         android:layout_width="fill_parent"

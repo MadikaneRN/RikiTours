@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="za.co.whcb.tp2.rikitours.MenuActivity"
+        tools:context=".views.MenuActivity"
         android:gravity="center_vertical"
         android:background="@drawable/menubg2">
 
@@ -137,5 +137,7 @@
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
-        android:background="#ffeeeeee"/>
+        android:background="#ffeeeeee"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp" />
 </android.support.v4.widget.DrawerLayout>

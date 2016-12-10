@@ -7,7 +7,7 @@
     android:paddingLeft="2dp"
     android:paddingRight="2dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="za.co.whcb.tp2.rikitours.ViewActivity"
+    tools:context=".views.ViewActivity"
     android:background="#362720">
 
 

@@ -1,26 +1,18 @@
 package za.co.whcb.tp2.rikitours.common.adapter;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.GalleryViewActivity;
 import za.co.whcb.tp2.rikitours.R;
-import za.co.whcb.tp2.rikitours.ViewActivity;
-import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.NavigatorItem;
-import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
 
 /**
  * Created by gaming on 12/7/2016.
@@ -41,13 +33,11 @@ public class MenuAdapter extends ArrayAdapter<NavigatorItem> {
         View rowView = inflater.inflate(R.layout.left_menu_layout,null,true);
 
         TextView txtIconName = (TextView) rowView.findViewById(R.id.txtIconeName);
-//        TextView txtNew = (TextView) rowView.findViewById(R.id.txtNew);
-//        TextView txtHeading = (TextView) rowView.findViewById(R.id.txtHeading);
         ImageView iconImage = (ImageView) rowView.findViewById(R.id.imgIcon);
 
-       // txtHeading.setVisibility(View.GONE);
+        LinearLayout layout = (LinearLayout) rowView.findViewById(R.id.menuLayout);
+
         txtIconName.setVisibility(View.GONE);
-      //  txtHeading.setVisibility(View.GONE);
         iconImage.setVisibility(View.GONE);
 
         final NavigatorItem currentItem = getCurrentItem(position);
@@ -55,13 +45,12 @@ public class MenuAdapter extends ArrayAdapter<NavigatorItem> {
         if(currentItem.getName().equalsIgnoreCase("my profile")) {
             txtIconName.setText(currentItem.getName());
             iconImage.setImageResource(R.drawable.user);
-            //txtHeading.setVisibility(View.VISIBLE);
             txtIconName.setVisibility(View.VISIBLE);
             iconImage.setVisibility(View.VISIBLE);
         }
         else if(currentItem.getName().equalsIgnoreCase("my list")){
             txtIconName.setText(currentItem.getName());
-            iconImage.setImageResource(R.drawable.user);
+            iconImage.setImageResource(R.drawable.cart_1);
             //txtIconName.setVisibility(View.VISIBLE);
             txtIconName.setVisibility(View.VISIBLE);
             iconImage.setVisibility(View.VISIBLE);
@@ -74,27 +63,12 @@ public class MenuAdapter extends ArrayAdapter<NavigatorItem> {
            // txtNew.setText("2* new");
            //txtNew.setVisibility(View.VISIBLE);
         }
-        else if(currentItem.getName().equalsIgnoreCase("tours ")){
-            txtIconName.setText(currentItem.getName());
-            iconImage.setImageResource(R.drawable.user_profile);
-            iconImage.setVisibility(View.VISIBLE);
-            txtIconName.setVisibility(View.VISIBLE);
-        }
-        else if(currentItem.getName().equalsIgnoreCase("car rental")){
-            txtIconName.setText(currentItem.getName());
-            iconImage.setImageResource(R.drawable.user_profile);
-            iconImage.setVisibility(View.VISIBLE);
-            txtIconName.setVisibility(View.VISIBLE);
-        }
-        else if(currentItem.getName().equalsIgnoreCase("accommodations")){
-            txtIconName.setText(currentItem.getName());
-            txtIconName.setVisibility(View.VISIBLE);
-            iconImage.setImageResource(R.drawable.user_profile);
-            iconImage.setVisibility(View.VISIBLE);
-        }
+
         else if(currentItem.getName().equalsIgnoreCase("Sign Out")){
             txtIconName.setText(currentItem.getName());
-            iconImage.setImageResource(R.drawable.user_profile);
+            layout.setPadding(10,60,0,0);
+            //iconImage.setPadding(0,50,0,0);
+            iconImage.setImageResource(R.drawable.logout_1);
             iconImage.setVisibility(View.VISIBLE);
             txtIconName.setVisibility(View.VISIBLE);
         }

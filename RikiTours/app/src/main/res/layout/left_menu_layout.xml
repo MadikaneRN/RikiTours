@@ -16,7 +16,9 @@
             android:gravity="center_vertical"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:paddingLeft="10dp">
+            android:paddingLeft="10dp"
+            android:id="@+id/menuLayout"
+            android:focusableInTouchMode="false">
 
             <ImageView
                 android:layout_width="35dp"
@@ -29,7 +31,7 @@
                 android:id="@+id/txtIconeName"
                 android:textSize="15dp"
                 android:layout_marginLeft="20dp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
