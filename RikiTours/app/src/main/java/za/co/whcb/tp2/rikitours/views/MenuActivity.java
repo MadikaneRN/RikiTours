@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours;
+package za.co.whcb.tp2.rikitours.views;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -10,11 +10,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import za.co.whcb.tp2.rikitours.R;
+import za.co.whcb.tp2.rikitours.UserProfile;
 import za.co.whcb.tp2.rikitours.common.Display;
+import za.co.whcb.tp2.rikitours.common.NavigatorItem;
+import za.co.whcb.tp2.rikitours.common.adapter.MenuAdapter;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class MenuActivity extends AppCompatActivity {
@@ -22,7 +27,7 @@ public class MenuActivity extends AppCompatActivity {
     Customer user;
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
-    private ArrayAdapter<String> mAdapter;
+    private MenuAdapter mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private String mActivityTitle;
 
@@ -30,8 +35,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
-        //initializing menu
 
         mDrawerList = (ListView)findViewById(R.id.navList);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -75,14 +78,28 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        String[] osArray = { "Android", "iOS", "Windows", "OS X", "Linux" };
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
+        ArrayList<NavigatorItem> menuItems = new ArrayList<>();
+        menuItems.add(new NavigatorItem("My Profile"));
+        menuItems.add(new NavigatorItem("My list"));
+        menuItems.add(new NavigatorItem("My Notifications"));
+        menuItems.add(new NavigatorItem("Sign Out"));
+
+        mAdapter = new MenuAdapter(this,menuItems);
         mDrawerList.setAdapter(mAdapter);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+
+               if(position == 0) {
+                   //mDrawerList.
+                   Intent myIntent = new Intent(getApplicationContext(), UserProfile.class);
+                   myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                   myIntent.putExtra("key", ""); //Optional parameters
+                   getApplicationContext().startActivity(myIntent);
+               }
+
             }
         });
     }

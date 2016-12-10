@@ -7,7 +7,7 @@
     android:paddingLeft="9dp"
     android:paddingRight="9dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LayoutListingActivity"
+    tools:context=".views.LayoutListingActivity"
     android:background="@color/colorPrimary">
 
     <LinearLayout
@@ -110,7 +110,7 @@
                         android:layout_height="35dp"
                         android:id="@+id/imgFlag"
                         android:layout_gravity="right"
-                        android:src="@color/background_floating_material_light" />
+                        android:background="@color/background_floating_material_light" />
                 </LinearLayout>
 
             </LinearLayout>

@@ -5,7 +5,7 @@ package za.co.whcb.tp2.rikitours.common;
  */
 public class StrHelper {
 
-    public static String FirstLetterCapitalise(String word)
+    public static String firstLetterCapitalise(String word)
     {
         String firstLetter = null;
 

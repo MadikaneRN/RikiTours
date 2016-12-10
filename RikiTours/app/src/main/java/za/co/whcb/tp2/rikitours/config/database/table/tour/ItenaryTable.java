@@ -16,6 +16,7 @@ public class ItenaryTable extends Table {
     public static Attribute attractionName = new Attribute("attractionName", "TEXT");
     public static Attribute attractionDescription = new Attribute("attractionDescription", "TEXT");
 
+
     @Override
     public String getTableName() {
         return tableName;

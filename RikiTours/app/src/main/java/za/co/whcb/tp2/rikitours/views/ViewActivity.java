@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours;
+package za.co.whcb.tp2.rikitours.views;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Room;
 import za.co.whcb.tp2.rikitours.domain.tour.Attraction;

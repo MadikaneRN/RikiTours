@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours;
+package za.co.whcb.tp2.rikitours.views;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -12,12 +12,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 
 import org.json.JSONException;
 
+import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.customer.UserController;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiSignUpCallBack;
@@ -37,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
     boolean isBound = false;
     Button btnTerms;
     TextView txtViewTerms;
+    boolean termsClick = false;
+    boolean accepted = false;
+
     EditText edtCustomerName;
     EditText edtCustomerEmail;
     EditText edtCustomerSurname;
     EditText edtCustomerPassword;
     EditText edtCustomerPasswordConfimed;
-    boolean termsClick = false;
-    boolean accepted = false;
+    Spinner gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,60 +61,82 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setIcon(R.mipmap.logo_1);
         setTitle(R.string.registration);
 
+        btnTerms = (Button) findViewById(R.id.btnTerms);
+        txtViewTerms = (TextView) findViewById(R.id.txtViewTerms);
+
         edtCustomerName = (EditText) findViewById(R.id.edtCustomerName);
         edtCustomerSurname = (EditText) findViewById(R.id.edtCustomerSurname);
         edtCustomerEmail = (EditText) findViewById(R.id.edtCustomerEmail);
         edtCustomerPassword = (EditText) findViewById(R.id.edtCustomerPassword);
         edtCustomerPasswordConfimed = (EditText) findViewById(R.id.edtCustomerPasswordConfimed);
 
-        btnTerms = (Button) findViewById(R.id.btnTerms);
-        txtViewTerms = (TextView) findViewById(R.id.txtViewTerms);
+        gender = (Spinner) findViewById(R.id.spinner1);
 
     }
 
     public void signup(View view) {
 
+        String customerName =   edtCustomerName.getText().toString();
+        String customerSurname = edtCustomerSurname.getText().toString();
+        String customerEmail = edtCustomerEmail.getText().toString();
+        String customerPassword = edtCustomerPassword.getText().toString();
+        String confirmedPassword =  edtCustomerPasswordConfimed.getText().toString();
+        String customerGender = gender.getSelectedItem().toString();
 
+        if(!customerName.isEmpty() && !customerSurname.isEmpty() && !customerEmail.isEmpty() && !customerPassword.equals(""))
+        {
+            if(!customerGender.equals("Gender"))
+            {
+                if(customerPassword.equals(confirmedPassword)){
+                    Customer newCustomer = CustomerFactory.getCustomer(Long.parseLong("0"),customerName,customerSurname,"");
+                    UserController userController = new UserController(customerEmail,customerPassword,getApplicationContext(),newCustomer,customerGender);
+                    Display.startLoading("Registering",this);
+                    userController.signUp(new RikiApiSignUpCallBack() {
+                                              @Override
+                                              public void onSuccess(String feedback) {
+                                                  Display.endLoading();
+                                                  Display.toast(feedback, getApplicationContext());
+                                                  onBackPressed();
+                                              }
 
-        City city = new City(Long.parseLong("1"), "Cape Town", "Cape Town is the second largest city in South Africa blah blah");
-        Address address = new Address(Long.parseLong("20"), "287", "Watergang", "7600",city);
+                                              @Override
+                                              public void onConnectingError(VolleyError error) {
+                                                  Display.endLoading();
+                                                  Display.toast(error.getMessage(), getApplicationContext());
+                                                  Log.e("ERROR ON connecting -> ",error.getMessage());
+                                              }
 
+                                              @Override
+                                              public void onParsingError(Exception error) {
+                                                  Display.endLoading();
+                                                  Display.toast(error.getMessage(), getApplicationContext());
+                                                  Log.e("ERROR ON parsing -> ",error.getMessage());
+                                              }
 
-
-        Contacts contacts = new Contacts(Long.parseLong("10"),"0833445567","0215689985",address);
-
-
-        contacts.setAddress(address);
-
-        Customer customer = CustomerFactory.getCustomer(0,edtCustomerName.getText().toString(),
-                edtCustomerSurname.getText().toString(),edtCustomerEmail.getText().toString(),contacts);
-
-        UserController userController = new UserController(getApplicationContext(),edtCustomerPassword.getText().toString());
-
-        userController.signUp(customer, new RikiApiSignUpCallBack() {
-            @Override
-            public void onSuccess(String feedback) {
-                Display.toast(feedback, getApplicationContext());
+                                              @Override
+                                              public void onJSONError(JSONException error) {
+                                                  Display.endLoading();
+                                                  Display.toast(error.getMessage(), getApplicationContext());
+                                                  //Log.e("ERROR ON json -> ",error.getMessage());
+                                              }
+                                          }
+                    );
+                }
+                else {
+                    Display.errorToast("! Passwords Don't match",this);
+                }
+            }
+            else {
+                Display.errorToast("Select Your Gender!",this);
             }
 
-            @Override
-            public void onConnectingError(VolleyError error) {
-                Display.toast(error.getMessage(), getApplicationContext());
-                Log.e("ERROR ON connecting -> ",error.getMessage());
-            }
+        }
 
-            @Override
-            public void onParsingError(Exception error) {
-                Display.toast(error.getMessage(), getApplicationContext());
-                Log.e("ERROR ON parsing -> ",error.getMessage());
-            }
+        else {
+            Display.errorToast("Fill all fields",this);
+        }
 
-            @Override
-            public void onJSONError(JSONException error) {
-                Display.toast(error.getMessage(), getApplicationContext());
-                Log.e("ERROR ON json -> ",error.getMessage());
-            }
-        });
+
 
     }
 
