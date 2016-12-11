@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import za.co.whcb.tp2.rikitours.AboutActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.UserProfile;
 import za.co.whcb.tp2.rikitours.common.Display;
@@ -75,6 +76,12 @@ public class MenuActivity extends AppCompatActivity {
         myIntent.putExtra("open", "Vehicles"); //Optional parameters
         this.startActivity(myIntent);
 
+    }
+
+    public void aboutRikiTours(View view) {
+        Intent myIntent = new Intent(this, AboutActivity.class);
+        myIntent.putExtra("key", ""); //Optional parameters
+        this.startActivity(myIntent);
     }
 
     private void addDrawerItems() {

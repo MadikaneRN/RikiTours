@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login (View view){
 
-        String email = txtEmail.getText().toString();
-        String password = txtPassword.getText().toString();
+        String email = "altia@gmail.com";//txtEmail.getText().toString();
+        String password = "1234";//txtPassword.getText().toString();
         if(!email.equals("") && !password.equals(""))
         {
             Display.startLoading("Signing",this);
