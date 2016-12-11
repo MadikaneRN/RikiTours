@@ -10,14 +10,7 @@ import android.util.Log;
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.ItenaryTable;
-import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
-import za.co.whcb.tp2.rikitours.domain.tour.AttractionDescription;
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
-import za.co.whcb.tp2.rikitours.domain.tour.Itenary;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
-import za.co.whcb.tp2.rikitours.factories.tour.ItenaryFactory;
+import za.co.whcb.tp2.rikitours.domain.tour.Itinerary;
 
 /**
  * Created by work on 10/17/2016.
@@ -52,17 +45,14 @@ public class ItenaryRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addItenary(Itenary itenary ) {
+    public boolean addItenary(Itinerary itinerary) {
         long returned ;
         localDatabase = this.getWritableDatabase();
         itenaryTable  = new ItenaryTable();
         contentValues = new ContentValues();
 
-        contentValues.put(itenaryTable.getAttributeId().name, itenary.getId());
-        contentValues.put(itenaryTable.getAttributeGroupAttractionId().name, itenary.getAttractions().toString());
-        contentValues.put(itenaryTable.getCountryName().name, itenary.getId());
-        contentValues.put(itenaryTable.getAttractionName().name, itenary.getId());
-        contentValues.put(itenaryTable.getAttractionDescription().name, itenary.getId());
+        contentValues.put(itenaryTable.getAttributeId().name, itinerary.getId());
+        contentValues.put(itenaryTable.getAttributeGroupAttractionId().name, itinerary.getAttractions().toString());
 
         try {
             returned = localDatabase.insert(itenaryTable.getTableName(), null, contentValues);
@@ -75,8 +65,8 @@ public class ItenaryRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public Itenary findItenaryAttractionById(long id) {
-        Itenary itenaryFound = null;
+    public Itinerary findCountryById(long id) {
+        Itinerary itineraryFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(itenaryTable.getTableName(),
                 itenaryTable.getAttributeId(), String.valueOf(id));
@@ -84,12 +74,9 @@ public class ItenaryRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                Country country = CountryFactory.getCountry(0, data.getString(2), "description", "image");
-                AttractionDescription description = AttractionDescriptionFactory.getAttracionDescription(0l, data.getString(3), "city", data.getString(4), "image");
-                Attraction attractionFound = AttractionFactory.getAttracion(data.getLong(0), country, description);
-                itenaryFound.AddAttraction(attractionFound);
+               /* attractionFound = AttractionFactory.getAttraction(data.getLong(0), data.getLong(1), data.getLong(2));*/
             }
         }
-        return itenaryFound;
+        return itineraryFound;
     }
 }

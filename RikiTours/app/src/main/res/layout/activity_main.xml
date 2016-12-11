@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".views.MainActivity"
+    tools:context="za.co.whcb.tp2.rikitours.MainActivity"
     android:background="#362720"
     android:gravity="center_vertical"
 
@@ -67,12 +67,11 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:ems="10"
+                    android:id="@+id/edtCustomerName"
                     android:hint="First Name"
                     android:background="@drawable/text_box_sharp"
                     style="@style/edit_text_default"
-                    android:id="@+id/edtCustomerName"
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp" />
+                    />
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -82,22 +81,17 @@
                     android:id="@+id/edtCustomerSurname"
                     android:hint="Last Name"
                     android:background="@drawable/text_box_sharp"
-                    style="@style/edit_text_default"
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp" />
+                    style="@style/edit_text_default"/>
 
                 <Spinner
                     android:id="@+id/spinner1"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:entries="@array/gender"
-                    android:prompt="@string/gender_prompt"
+                    android:entries="@array/cities"
+                    android:prompt="@string/city_prompt"
                     android:background="@drawable/text_box_sharp"
                     android:hint="Email Address"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="2dp"
-                    android:spinnerMode="dropdown"
-                    android:dropDownWidth="fill_parent" />
+                    />
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -107,9 +101,7 @@
                     android:id="@+id/edtCustomerEmail"
                     android:hint="Email Address"
                     android:background="@drawable/text_box_sharp"
-                    style="@style/edit_text_default"
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp" />
+                    style="@style/edit_text_default"/>
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -119,9 +111,7 @@
                     android:id="@+id/edtCustomerPassword"
                     android:hint="Password"
                     android:background="@drawable/text_box_sharp"
-                    style="@style/edit_text_default"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp" />
+                    style="@style/edit_text_default"/>
 
                 <EditText
                     android:layout_width="fill_parent"
@@ -131,9 +121,7 @@
                     android:id="@+id/edtCustomerPasswordConfimed"
                     android:hint="Confirm Password"
                     android:background="@drawable/text_box_sharp"
-                    style="@style/edit_text_default"
-                    android:paddingRight="10dp"
-                    android:paddingLeft="10dp" />
+                    style="@style/edit_text_default"/>
 
                 <LinearLayout
                     android:orientation="horizontal"

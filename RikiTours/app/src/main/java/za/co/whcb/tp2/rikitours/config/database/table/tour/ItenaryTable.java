@@ -12,10 +12,6 @@ public class ItenaryTable extends Table {
     public final String tableName = "itenary";
     public static Attribute id = new Attribute("id", "INTEGER");
     public static Attribute groupAttractionId=new Attribute("groupAttractionId","INTEGER");
-    public static Attribute countryName = new Attribute("countryName", "TEXT");
-    public static Attribute attractionName = new Attribute("attractionName", "TEXT");
-    public static Attribute attractionDescription = new Attribute("attractionDescription", "TEXT");
-
 
     @Override
     public String getTableName() {
@@ -33,18 +29,6 @@ public class ItenaryTable extends Table {
 
     public Attribute getAttributeGroupAttractionId() {
         return groupAttractionId;
-    }
-
-    public Attribute getCountryName() {
-        return countryName;
-    }
-
-    public Attribute getAttractionName() {
-        return attractionName;
-    }
-
-    public Attribute getAttractionDescription() {
-        return attractionDescription;
     }
 
     @Override

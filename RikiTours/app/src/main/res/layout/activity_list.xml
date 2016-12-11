@@ -7,7 +7,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="2dp"
-    tools:context=".views.ListActivity"
+    tools:context=".ListActivity"
     android:background="#362720"
     android:id="@+id/listMainLayout">
 

@@ -16,7 +16,10 @@ import java.util.Map;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiSignUpCallBack;
+import za.co.whcb.tp2.rikitours.domain.Address;
+import za.co.whcb.tp2.rikitours.domain.Contacts;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+import za.co.whcb.tp2.rikitours.factories.customer.ContactFactory;
 import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 
 /**
@@ -29,8 +32,6 @@ public class UserController {
     private RequestQueue requestQueue;
     private String email,password;
     private Context context;
-    private Customer user;
-    private String gender;
 
     public UserController(String email, String password, Context context) {
         this.email = email;
@@ -39,13 +40,10 @@ public class UserController {
         this.requestQueue = Volley.newRequestQueue(context);
     }
 
-    public UserController(String email,String password, Context context, Customer user, String gender) {
-        this.password = password;
-        this.email = email;
+    public UserController(Context context, String password) {
         this.context = context;
-        this.user = user;
+        this.password = password;
         this.requestQueue = Volley.newRequestQueue(context);
-        this.gender = gender;
     }
 
     public void signIn(final RikiApiCallback callback ) {
@@ -63,8 +61,12 @@ public class UserController {
                             String gender = userInfo[3];
                             String dob = userInfo[4];
                             String email = userInfo[5];
+                            String cellphone = userInfo[6];
 
-                            Customer userFromServer = CustomerFactory.getCustomer(id,name,surname, String.valueOf(id));
+                            Address address = null;
+                            Contacts contacts = ContactFactory.getContact(id,cellphone,"",address);
+
+                            Customer userFromServer = CustomerFactory.getCustomer(id,name,surname,email, contacts);
                             callback.onSuccess(userFromServer);
                         }
                         catch (Exception e) {
@@ -104,56 +106,57 @@ public class UserController {
         requestQueue.add(request);
     }
 
-    public void signUp(final RikiApiSignUpCallBack callback ) {
+    public void signUp(final Customer user, final RikiApiSignUpCallBack callback ) {
         StringRequest request = new StringRequest(1,signUpUrl,
                 new Response.Listener<String>()
-                    {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                callback.onSuccess(response);
-                            }
-                            catch (Exception e) {
-                                e.printStackTrace();
-                                Log.d("Error--> : ", e.getMessage());
-                                callback.onParsingError(e);
-                            }
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            callback.onSuccess(response);
+                            Display.toast(user.getName(),context);
                         }
-                    },
-                    new Response.ErrorListener()
-                    {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            callback.onConnectingError(error);
-                            Log.d("Error.Response", error.getMessage());
+                        catch (Exception e) {
+                            e.printStackTrace();
+                            Log.d("Error--> : ", e.getMessage());
+                            callback.onParsingError(e);
                         }
                     }
-            ) {
-                @Override
-                protected Map<String, String> getParams()
+                },
+                new Response.ErrorListener()
                 {
-                    Map<String, String>  params = new HashMap<String, String>();
-                     params.put("id", String.valueOf(user.getId()));
-                     params.put("customer_name", user.getName());
-                     params.put("customer_surname", user.getSurname());
-                     params.put("customer_gender",gender);
-                     params.put("customer_dob","10/20/201");
-
-                     params.put("customer_email", email);
-                     params.put("customer_password",password);
-                     params.put("city_id","100");
-                     params.put("customer_phone","0");
-
-                     return params;
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.onConnectingError(error);
+                        Log.d("Error.Response", error.getMessage());
+                    }
                 }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+//                params.put("id", String.valueOf(user.getId()));
+//                params.put("customer_name", user.getName());
+//                params.put("customer_surname", user.getSurname());
+//                params.put("customer_dob", user.getDob());
+//
+//                params.put("customer_email", user.getEmail());
+//                params.put("customer_password",password);
+//                params.put("city_id",String.valueOf(user.getContactDetails().getAddress().getCity().getId()));
+//                params.put("customer_phone",user.getContactDetails().getCellNumber());
+                //Display.toast(user.getName(),context);
 
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> headers = new HashMap<String, String>();
-                    headers.put("Content-Type", "application/x-www-form-urlencoded");
-                    return headers;
-                }
-            };
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
+            }
+        };
 
         requestQueue.add(request);
     }

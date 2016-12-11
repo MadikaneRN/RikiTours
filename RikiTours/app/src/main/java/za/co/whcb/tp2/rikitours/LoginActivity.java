@@ -5,7 +5,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 
 import com.android.volley.VolleyError;
@@ -16,10 +15,9 @@ import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.customer.UserController;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
-import za.co.whcb.tp2.rikitours.views.MainActivity;
-import za.co.whcb.tp2.rikitours.views.MenuActivity;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final String url = "http://tp2.whcb.co.za/customer.php";
     EditText txtEmail;
     EditText txtPassword;
 
@@ -27,10 +25,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setElevation(0);
         actionBar.setDisplayShowHomeEnabled(true);
-        setTitle(" ");
+        actionBar.hide();
 
         txtEmail = (EditText) findViewById(R.id.edtEmail);
         txtPassword = (EditText) findViewById(R.id.edtPassword);
@@ -45,11 +43,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login (View view){
 
-        String email = txtEmail.getText().toString();
-        String password = txtPassword.getText().toString();
+        String email = "ayowaberka1@gmail.com";//txtEmail.getText().toString();
+        String password = "123456" ;//txtPassword.getText().toString();
         if(!email.equals("") && !password.equals(""))
         {
-            Display.startLoading("Signing",this);
+            Display.startLoading("Signing..",this);
             UserController userController = new UserController(email,password,this);
             userController.signIn(new RikiApiCallback() {
                 @Override
@@ -69,19 +67,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 @Override
                 public void onParsingError(Exception error) {
-                    Display.endLoading();
                     Display.toast("Invalid Email or Password",getApplicationContext());
                 }
 
                 @Override
                 public void onJSONError(JSONException error) {
-                    Display.endLoading();
+
                 }
             });
-        }
-        else
-        {
-            Display.toast("Invalid login details",this);
+
         }
 
 

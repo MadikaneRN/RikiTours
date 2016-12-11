@@ -10,11 +10,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.views.GalleryViewActivity;
+import za.co.whcb.tp2.rikitours.GalleryViewActivity;
 import za.co.whcb.tp2.rikitours.R;
-import za.co.whcb.tp2.rikitours.views.ViewActivity;
+import za.co.whcb.tp2.rikitours.ViewActivity;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;

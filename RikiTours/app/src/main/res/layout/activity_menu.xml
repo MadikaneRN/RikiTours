@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".views.MenuActivity"
+        tools:context="za.co.whcb.tp2.rikitours.MenuActivity"
         android:gravity="center_vertical"
         android:background="@drawable/menubg2">
 
@@ -39,7 +39,7 @@
                     android:background="@drawable/menu_button"
                     android:textColor="@color/abc_primary_text_material_dark"
                     android:layout_marginBottom="5dp"
-                    android:drawableLeft="@drawable/point_icon"
+                    android:drawableLeft="@drawable/point"
                     android:drawableRight="@drawable/logo_2"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
@@ -55,7 +55,7 @@
                     android:background="@drawable/menu_button"
                     android:textColor="@color/abc_primary_text_material_dark"
                     android:layout_marginBottom="5dp"
-                    android:drawableLeft="@drawable/car_icon"
+                    android:drawableLeft="@drawable/car"
                     android:drawableRight="@drawable/logo_2"
 
                     android:paddingRight="10dp"
@@ -72,7 +72,7 @@
                     android:background="@drawable/menu_button"
                     android:textColor="@color/abc_primary_text_material_dark"
                     android:layout_marginBottom="5dp"
-                    android:drawableLeft="@drawable/bed_icon"
+                    android:drawableLeft="@drawable/bed_1"
                     android:drawableRight="@drawable/logo_2"
                     android:paddingRight="10dp"
                     android:paddingLeft="10dp"
@@ -88,7 +88,7 @@
                     android:background="@drawable/menu_button"
                     android:textColor="@color/abc_primary_text_material_dark"
                     android:layout_marginBottom="5dp"
-                    android:drawableLeft="@drawable/help_icon"
+                    android:drawableLeft="@drawable/help"
                     android:drawableRight="@drawable/logo_2"
                     android:paddingRight="10dp"
                     android:paddingLeft="10dp"
@@ -137,7 +137,5 @@
         android:layout_width="200dp"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
-        android:background="#ffeeeeee"
-        android:paddingBottom="10dp"
-        android:paddingRight="10dp" />
+        android:background="#ffeeeeee"/>
 </android.support.v4.widget.DrawerLayout>

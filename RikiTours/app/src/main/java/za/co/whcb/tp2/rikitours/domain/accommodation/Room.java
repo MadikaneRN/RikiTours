@@ -1,19 +1,30 @@
 package za.co.whcb.tp2.rikitours.domain.accommodation;
 
-/**
- * Created by lindo on 9/17/2016.
- */
-public class Room {
-    private long id;
-    private String size, type, description;
-    private Hotel hotel;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-    public Room(Builder builder) {
-        this.id = builder.id;
-        this.size = builder.size;
-        this.type = builder.type;
-        this.description = builder.description;
-        this.hotel = builder.hotel;
+import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
+
+/**
+ * Created by berka on 9/17/2016.
+ */
+public class Room implements Serializable {
+    private String  size, type, description;
+    private long id;
+    private double price ;
+    private Hotel hotel;
+    private ArrayList<RikiImage> images;
+
+       public Room() {
+    }
+
+    public Room(long id, String size, String type, String description, Hotel hotel) {
+        this.id = id;
+        this.size = size;
+        this.type = type;
+        this.description = description;
+        this.hotel = hotel;
+        images = new ArrayList<>();
     }
 
     public long getId() {
@@ -56,43 +67,34 @@ public class Room {
         this.hotel = hotel;
     }
 
-    public static class Builder {
-        private long id;
-        private String size, type, description;
-        private Hotel hotel;
+    public double getPrice() {
+        return price;
+    }
 
-        public Builder id(long id){
-            this.id = id;
-            return this;
-        }
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-        public Builder size(String size){
-            this.size = size;
-            return this;
+    public void addImage(RikiImage newImage){
+        this.images.add(newImage);
+    }
+
+
+    public RikiImage getImage(int index){
+        if(images.size() > 0 && images.size() > index ||  images.size() == index ){
+            return this.images.get(index);
         }
-        public Builder type(String type){
-            this.type = type;
-            return this;
-        }
-        public Builder description(String description){
-            this.description = description;
-            return this;
-        }
-        public Builder hotel(Hotel hotel){
-            this.hotel = hotel;
-            return this;
+        else{
+            return null;
         }
 
-        public Builder copy(Room room){
-            this.id = room.id;
-            this.size = room.size;
-            this.type = room.type;
-            this.description = room.description;
-            this.hotel = room.hotel;
+    }
 
-            return this;
-        }
-        public Room build(){return new Room(this);}
+    public ArrayList<RikiImage> getImages() {
+        return images;
+    }
 
+    public void setImages(ArrayList<RikiImage> images) {
+        this.images = images;
     }
 }

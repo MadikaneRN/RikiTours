@@ -1,5 +1,6 @@
 package za.co.whcb.tp2.rikitours.domain.customer;
 
+import za.co.whcb.tp2.rikitours.domain.Contacts;
 import za.co.whcb.tp2.rikitours.domain.Person;
 
 /**
@@ -9,23 +10,27 @@ public class Customer implements Person{
     private long id;
     private String name;
     private String surname;
-    private String customer_no;
     private String email;
+    private String dob;
+    private Contacts contactDetails;
+
 
     public Customer(Builder builderObj)
     {
         name=builderObj.name;
         surname=builderObj.surname;
-        customer_no=builderObj.customer_no;
         id=builderObj.id;
+        email = builderObj.email;
+       // dob = builderObj.dob;
     }
 
-    public Customer(long id, String name, String surname, String email) {
+    public Customer(long id, String name, String surname,String email,Contacts contactDetails) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.customer_no = "";
         this.email = email;
+        this.contactDetails = contactDetails;
+
     }
 
     public long getId() {
@@ -36,44 +41,35 @@ public class Customer implements Person{
         return name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getSurname() {
         return surname;
     }
 
-    public String getEmail() {
-        return customer_no;
+    public String getDob(){
+        return dob;
     }
 
-    public String getCustomerNumber() {
-        return email;
+    public Contacts getContactDetails() {
+        return contactDetails;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setContactDetails(Contacts contactDetails) {
+        this.contactDetails = contactDetails;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setCustomer_no(String customer_no) {
-        this.customer_no = customer_no;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    private Customer(){}
 
     public static class Builder{
         private long id;
         private String name;
         private String surname;
-        private String customer_no;
         private String email;
+        //private String dob;
+        Contacts contactDetails;
 
         public Builder id(int id){
             this.id=id;
@@ -81,6 +77,16 @@ public class Customer implements Person{
         }
         public Builder id(long id){
             this.id =  id;
+            return this;
+        }
+
+        public Builder email(String email){
+            this.email = email;
+            return this;
+        }
+
+        public Builder contactDetails(Contacts contactDetails){
+            this.contactDetails = contactDetails;
             return this;
         }
 
@@ -96,16 +102,17 @@ public class Customer implements Person{
             return this;
         }
 
-        public Builder customer_no(String customer_no){
-            this.customer_no=customer_no;
-            return this;
-        }
+//        public Builder dob(String dob){
+//            this.dob = dob;
+//            return this;
+//        }
+
         public Builder copyObj(Customer custObj){
             this.id=custObj.getId();
             this.name=custObj.getName();
             this.surname=custObj.getSurname();
-            this.customer_no=custObj.getCustomerNumber();
             this.email = custObj.getEmail();
+          //  this.dob = custObj.dob;
             return this;
 
         }

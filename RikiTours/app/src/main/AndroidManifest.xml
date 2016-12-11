@@ -24,13 +24,12 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".views.MainActivity" />
-        <activity android:name=".views.LayoutListingActivity" />
-        <activity android:name=".views.ListActivity" />
-        <activity android:name=".views.ViewActivity" />
-        <activity android:name=".views.GalleryViewActivity" />
-        <activity android:name=".views.MenuActivity" />
-        <activity android:name=".UserProfile"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LayoutListingActivity" />
+        <activity android:name=".ListActivity" />
+        <activity android:name=".ViewActivity" />
+        <activity android:name=".GalleryViewActivity" />
+        <activity android:name=".MenuActivity"></activity>
     </application>
 
 </manifest>
