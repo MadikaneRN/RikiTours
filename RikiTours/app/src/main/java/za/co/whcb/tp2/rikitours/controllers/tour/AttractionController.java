@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -185,6 +186,9 @@ public class AttractionController {
             }
         };
 
+        request.setRetryPolicy(new DefaultRetryPolicy(50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(request);
     }
 }

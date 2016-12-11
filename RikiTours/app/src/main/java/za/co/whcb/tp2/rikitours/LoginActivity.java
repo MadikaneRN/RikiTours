@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.setDisplayShowHomeEnabled(true);
         setTitle(" ");
 
-        txtEmail = (EditText) findViewById(R.id.edtEmail);
-        txtPassword = (EditText) findViewById(R.id.edtPassword);
+        txtEmail = (EditText) findViewById(R.id.edtLoginEmail);
+        txtPassword = (EditText) findViewById(R.id.edtLoginPassword);
 
     }
 

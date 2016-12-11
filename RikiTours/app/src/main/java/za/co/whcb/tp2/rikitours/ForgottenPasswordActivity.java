@@ -1,5 +1,6 @@
 package za.co.whcb.tp2.rikitours;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,11 @@ public class ForgottenPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotten_password);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.mipmap.logo_1);
+        setTitle(" Forgotten Password");
+
         txtSuccessfully = (TextView) findViewById(R.id.txtPasswordFeedBack);
         imgSuccessfully = (ImageView) findViewById(R.id.imgPassword);
         edtEmail = (EditText) findViewById(R.id.edtForgottenEmail);
@@ -43,8 +49,13 @@ public class ForgottenPasswordActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(String feedback) {
                     Display.endLoading();
-                    txtSuccessfully.setVisibility(View.VISIBLE);
-                    imgSuccessfully.setVisibility(View.VISIBLE);
+
+                    if(feedback.startsWith("We"))
+                    {
+                        txtSuccessfully.setVisibility(View.VISIBLE);
+                        imgSuccessfully.setVisibility(View.VISIBLE);
+                    }
+
                     Display.toast(feedback,getApplicationContext());
                 }
 
