@@ -30,7 +30,8 @@
         <activity android:name=".views.ViewActivity" />
         <activity android:name=".views.GalleryViewActivity" />
         <activity android:name=".views.MenuActivity" />
-        <activity android:name=".UserProfile"></activity>
+        <activity android:name=".UserProfile" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>
