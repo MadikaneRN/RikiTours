@@ -28,6 +28,9 @@ public class AppNetworkError {
       } else if (error instanceof TimeoutError) {
           message = "Connection TimeOut! Please check your internet connection.";
       }
+      else {
+          message = "Error Please try again after some time!!";
+      }
       Display.endLoading();
       return message;
   }

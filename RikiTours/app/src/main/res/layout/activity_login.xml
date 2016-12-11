@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="0dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="0dp"
     tools:context="za.co.whcb.tp2.rikitours.LoginActivity"
     android:background="#362720"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical|fill_vertical|clip_vertical|center_horizontal">
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:id="@+id/scrollView2"
         android:padding="0dp"
         android:scrollIndicators="none"
@@ -29,7 +29,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:weightSum="1"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:gravity="center_vertical">
 
             <ImageView
@@ -47,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:gravity="center_horizontal">
 
                 <EditText
                     style="@style/edit_text_default"
@@ -55,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:ems="10"
-                    android:id="@+id/edtEmail"
+                    android:id="@+id/edtLoginEmail"
                     android:hint="  Email Address"
                     android:background="@drawable/text_box_sharp"
                     android:drawableLeft="@drawable/user_profile"
@@ -67,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
-                    android:id="@+id/edtPassword"
+                    android:id="@+id/edtLoginPassword"
                     android:hint=" Password"
                     android:background="@drawable/text_box_sharp"
                     android:drawableLeft="@drawable/password"
@@ -84,17 +85,6 @@
                     android:paddingTop="5dp"
                     android:textSize="12dp" />
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="if you don&apos;t have"
-                    android:id="@+id/textView5"
-                    android:textAlignment="center"
-                    android:textColor="@color/bright_foreground_disabled_material_dark"
-                    android:paddingBottom="6dp"
-                    android:paddingTop="2dp"
-                    android:textSize="12dp" />
-
                 <Button
                     style="@style/button_default"
                     android:layout_width="fill_parent"
@@ -104,7 +94,9 @@
                     android:background="@drawable/button_sharp"
                     android:textColor="#FFFFFF"
                     android:onClick="login"
-                    android:nestedScrollingEnabled="false" />
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginBottom="0dp"
+                    android:paddingBottom="0dp" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -113,9 +105,12 @@
                     android:id="@+id/textView3"
                     android:textAlignment="center"
                     android:textColor="@color/bright_foreground_disabled_material_dark"
-                    android:paddingBottom="0.6dp"
-                    android:paddingTop="0.6dp"
-                    android:textSize="20dp" />
+                    android:textSize="19dp"
+                    android:paddingBottom="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:paddingTop="0dp"
+                    android:layout_marginTop="0dp"
+                    android:gravity="fill_horizontal|center_vertical|center_horizontal" />
 
                 <Button
                     style="@style/button_default"
@@ -126,30 +121,21 @@
                     android:background="@drawable/button_sharp"
                     android:textColor="#FFFFFF"
                     android:onClick="register"
-                    android:nestedScrollingEnabled="true" />
+                    android:nestedScrollingEnabled="true"
+                    android:layout_marginTop="0dp" />
 
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Terms And Conditions"
-                    android:id="@+id/textView6"
+                    android:text="Forgotten Password"
+                    android:id="@+id/textView31"
                     android:textAlignment="center"
-                    android:textColor="@color/bright_foreground_disabled_material_dark"
-                    android:paddingBottom="2dp"
-                    android:paddingTop="10dp"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Visite Our Website"
-                    android:id="@+id/textView7"
-                    android:textAlignment="center"
-                    android:textColor="@color/bright_foreground_disabled_material_dark"
-                    android:paddingBottom="2dp"
+                    android:textColor="#ac7942"
+                    android:paddingBottom="5dp"
                     android:paddingTop="5dp"
                     android:textSize="12dp"
-                    android:autoLink="web" />
+                    android:onClick="forgottenPassword" />
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

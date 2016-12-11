@@ -31,6 +31,7 @@ import za.co.whcb.tp2.rikitours.controllers.tour.AttractionController;
 import za.co.whcb.tp2.rikitours.controllers.tour.callback.RikiAttractionCallBack;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Room;
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
@@ -41,6 +42,7 @@ import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 public class ListActivity extends AppCompatActivity {
 
+    private Customer user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +54,16 @@ public class ListActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras.get("open").equals("Accommodations")) {
+            user = (Customer) getIntent().getSerializableExtra("user");
             loadRoomsServerData();
         }
         else if (extras.get("open").equals("Attractions")) {
+            user = (Customer) getIntent().getSerializableExtra("user");
             loadAttractionData();
+
         }
         else if (extras.get("open").equals("Vehicles")) {
+            user = (Customer) getIntent().getSerializableExtra("user");
             loadVehicleData();
         }
         else {
@@ -68,7 +74,8 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void loadAttractionsList(ArrayList<Attraction> attractions) {
-        AttractionAdapter adapter = new AttractionAdapter(this,attractions,getApplicationContext());
+
+        AttractionAdapter adapter = new AttractionAdapter(this,attractions,user);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
         Display.endLoading();
@@ -85,7 +92,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void loadVehiclesToList(ArrayList<Vehicle> vehicles) {
 
-        VehicleAdapter adapter = new VehicleAdapter(this,vehicles);
+        VehicleAdapter adapter = new VehicleAdapter(this,vehicles,user);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
         Display.endLoading();

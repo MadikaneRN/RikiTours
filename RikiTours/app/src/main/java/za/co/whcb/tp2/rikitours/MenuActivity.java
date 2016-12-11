@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.AboutActivity;
+import za.co.whcb.tp2.rikitours.AboutAppActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.UserProfile;
 import za.co.whcb.tp2.rikitours.common.Display;
@@ -67,13 +68,17 @@ public class MenuActivity extends AppCompatActivity {
 
     public void listAttractions(View view) {
         Intent myIntent = new Intent(this, ListActivity.class);
-        myIntent.putExtra("open", "Attractions"); //Optional parameters
+        myIntent.putExtra("open", "Attractions");
+        myIntent.putExtra("user", user);
+
+        //Optional parameters
         this.startActivity(myIntent);
     }
 
     public void listVehicles(View view) {
         Intent myIntent = new Intent(this, ListActivity.class);
-        myIntent.putExtra("open", "Vehicles"); //Optional parameters
+        myIntent.putExtra("open", "Vehicles");
+        myIntent.putExtra("user", user);//Optional parameters
         this.startActivity(myIntent);
 
     }
@@ -81,6 +86,11 @@ public class MenuActivity extends AppCompatActivity {
     public void aboutRikiTours(View view) {
         Intent myIntent = new Intent(this, AboutActivity.class);
         myIntent.putExtra("key", ""); //Optional parameters
+        this.startActivity(myIntent);
+    }
+
+    public void aboutApp(View view) {
+        Intent myIntent = new Intent(this, AboutAppActivity.class);
         this.startActivity(myIntent);
     }
 

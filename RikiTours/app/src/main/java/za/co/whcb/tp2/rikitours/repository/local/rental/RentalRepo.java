@@ -18,7 +18,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.rental.VehicleTable;
 import za.co.whcb.tp2.rikitours.domain.Contacts;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.rental.Rental;
-import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
+import za.co.whcb.tp2.rikitours.domain.rental.Reservation;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 import za.co.whcb.tp2.rikitours.factories.rental.RentalFactory;
@@ -97,8 +97,8 @@ public class RentalRepo extends SQLiteOpenHelper {
         return rentalFound;
     }
 
-    public Reservations findReservationById(long id) {
-        Reservations reservationFound = null;
+    public Reservation findReservationById(long id) {
+        Reservation reservationFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(reservationTable.getTableName(),
                 reservationTable.getAttributeId(), String.valueOf(id));

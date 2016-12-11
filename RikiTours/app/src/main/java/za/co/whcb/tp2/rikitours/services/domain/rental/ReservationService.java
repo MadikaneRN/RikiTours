@@ -7,7 +7,7 @@ import android.os.IBinder;
 
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
+import za.co.whcb.tp2.rikitours.domain.rental.Reservation;
 import za.co.whcb.tp2.rikitours.repository.local.rental.ReservationRepo;
 
 /**
@@ -40,16 +40,16 @@ public class ReservationService extends Service{
         return "works";
     }
 
-    public boolean add(Reservations reservations) {
+    public boolean add(Reservation reservation) {
 
-        return reservationRepo.addReservation(reservations);
+        return reservationRepo.addReservation(reservation);
     }
 
-    public Reservations findById(long id) {
+    public Reservation findById(long id) {
         return reservationRepo.findReservationById(id);
     }
 
-    public boolean update(Reservations updateReservation, long id) {
+    public boolean update(Reservation updateReservation, long id) {
         return reservationRepo.updateReservation(updateReservation,id);
     }
 
@@ -57,7 +57,7 @@ public class ReservationService extends Service{
         return reservationRepo.deleteById(id);
     }
 
-    public ArrayList<Reservations> findAll() {
+    public ArrayList<Reservation> findAll() {
         return reservationRepo.getAllReservations();
     }
 }

@@ -7,16 +7,18 @@ import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 /**
  * Created by Lindo on 10/2/2016.
  */
-public class Reservations implements Serializable {
+public class Reservation implements Serializable {
     private long id;
     private Customer customer;
     private Vehicle vehicle;
     private String pickUpDate;
+    private String pickupTime;
     private String returnedDate;
     private double amountToPay;
+    private String comment;
 
 
-    public Reservations(Builder builder){
+    public Reservation(Builder builder){
         this.id = builder.id;
         this.customer = builder.customer;
         this.vehicle = builder.vehicle;
@@ -74,6 +76,22 @@ public class Reservations implements Serializable {
         this.amountToPay = amountToPay;
     }
 
+    public String getPickupTime() {
+        return pickupTime;
+    }
+
+    public void setPickupTime(String pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public static class Builder {
         private long id;
         private Customer customer;
@@ -107,15 +125,15 @@ public class Reservations implements Serializable {
             return this;
         }
 
-        public Builder copy(Reservations reservations){
-            this.id = reservations.id;
-            this.customer = reservations.customer;
-            this.vehicle = reservations.vehicle;
-            this.pickUpDate = reservations.pickUpDate;
-            this.returnedDate = reservations.returnedDate;
-            this.amountToPay = reservations.amountToPay;
+        public Builder copy(Reservation reservation){
+            this.id = reservation.id;
+            this.customer = reservation.customer;
+            this.vehicle = reservation.vehicle;
+            this.pickUpDate = reservation.pickUpDate;
+            this.returnedDate = reservation.returnedDate;
+            this.amountToPay = reservation.amountToPay;
             return this;
         }
-        public Reservations build(){return new Reservations(this);}
+        public Reservation build(){return new Reservation(this);}
     }
 }

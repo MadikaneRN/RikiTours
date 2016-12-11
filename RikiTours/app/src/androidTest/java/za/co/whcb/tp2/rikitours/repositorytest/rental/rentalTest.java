@@ -4,7 +4,7 @@ import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
 import za.co.whcb.tp2.rikitours.domain.rental.Rental;
-import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
+import za.co.whcb.tp2.rikitours.domain.rental.Reservation;
 import za.co.whcb.tp2.rikitours.factories.rental.RentalFactory;
 import za.co.whcb.tp2.rikitours.repository.local.rental.RentalRepo;
 
@@ -14,7 +14,7 @@ import za.co.whcb.tp2.rikitours.repository.local.rental.RentalRepo;
 public class rentalTest extends AndroidTestCase {
 
     private RentalRepo rentalRepo;
-    private static Reservations reservations;
+    private static Reservation reservation;
 
     @Override
     public void setUp() throws Exception {
@@ -30,7 +30,7 @@ public class rentalTest extends AndroidTestCase {
     }
 
     public void addRentalTest() {
-        Rental rental = RentalFactory.getRental((long) 16.0, reservations, "rented");
+        Rental rental = RentalFactory.getRental((long) 16.0, reservation, "rented");
         assertEquals(true, rentalRepo.addRenatl(rental));
     }
 

@@ -3,10 +3,13 @@ package za.co.whcb.tp2.rikitours.controllers.tour;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -14,9 +17,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.tour.callback.RikiAttractionCallBack;
+import za.co.whcb.tp2.rikitours.controllers.tour.callback.RikiAttractionQuoteCallBack;
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
 import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
 import za.co.whcb.tp2.rikitours.domain.tour.AttractionDescription;
@@ -33,15 +40,34 @@ import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
  */
 public class AttractionController {
     private final String urlAttractions = "http://tp.sawebdesignhosting.co.za/attractions/";
+    private final String requestQuoteUrl = "http://tp.sawebdesignhosting.co.za/sendquote/";
+
     private RequestQueue requestQueue;
-    private Context context;
     private ArrayList<Attraction> attractionsFromServer;
 
+    private Attraction attraction;
+    private Customer user;
+    private String message;
+
     public AttractionController(Context context) {
-        this.context = context;
         this.attractionsFromServer = new ArrayList<>();
         this.requestQueue = Volley.newRequestQueue(context);
     }
+
+    public AttractionController(Attraction attraction, Customer user, String message ,Context context) {
+        this.user = user;
+        this.attraction = attraction;
+        this.message = message;
+        this.requestQueue = Volley.newRequestQueue(context);
+    }
+
+    public AttractionController(Attraction attraction, Customer user,Context context) {
+        this.user = user;
+        this.attraction = attraction;
+        this.message = " ";
+        this.requestQueue = Volley.newRequestQueue(context);
+    }
+
 
     public void getAttractions(final RikiAttractionCallBack rikiAttractionCallBack) {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(urlAttractions,
@@ -114,5 +140,55 @@ public class AttractionController {
         );
         requestQueue.add(jsonArrayRequest);
 
+    }
+
+    public void requestQuote(final RikiAttractionQuoteCallBack callBack) {
+        StringRequest request = new StringRequest(1,requestQuoteUrl,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            callBack.onSuccess(response);
+                        }
+                        catch (Exception e) {
+                            e.printStackTrace();
+                            Log.d("Error--> : ", e.getMessage());
+                            callBack.onParsingError(e);
+                        }
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callBack.onConnectingError(error);
+                        Log.d("Error.Response", error.getMessage());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("customer_id", String.valueOf(user.getId()));
+                params.put("attraction_id", String.valueOf(attraction.getId()));
+                params.put("customer_msg", message);
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                return headers;
+            }
+        };
+
+        request.setRetryPolicy(new DefaultRetryPolicy(50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(request);
     }
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Rental implements Serializable {
     private long id;
-    private Reservations reservation;
+    private Reservation reservation;
     private String status;
 
     public Rental(Builder builder){
@@ -24,11 +24,11 @@ public class Rental implements Serializable {
         this.id = id;
     }
 
-    public Reservations getReservation() {
+    public Reservation getReservation() {
         return reservation;
     }
 
-    public void setReservation(Reservations reservation) {
+    public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
 
@@ -42,14 +42,14 @@ public class Rental implements Serializable {
 
     public static class Builder {
         private long id;
-        private Reservations reservation;
+        private Reservation reservation;
         private String status;
 
         public Builder id(long id) {
             this.id = id;
             return this;
         }
-        public Builder reservation(Reservations reservation) {
+        public Builder reservation(Reservation reservation) {
             this.reservation = reservation;
             return this;
         }
