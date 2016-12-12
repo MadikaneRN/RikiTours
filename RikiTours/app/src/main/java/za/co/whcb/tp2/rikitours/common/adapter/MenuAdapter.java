@@ -44,7 +44,7 @@ public class MenuAdapter extends ArrayAdapter<NavigatorItem> {
 
         if(currentItem.getName().equalsIgnoreCase("my profile")) {
             txtIconName.setText(currentItem.getName());
-            iconImage.setImageResource(R.drawable.user);
+            iconImage.setImageResource(R.drawable.profile_pic);
             txtIconName.setVisibility(View.VISIBLE);
             iconImage.setVisibility(View.VISIBLE);
         }
@@ -68,7 +68,7 @@ public class MenuAdapter extends ArrayAdapter<NavigatorItem> {
             txtIconName.setText(currentItem.getName());
             layout.setPadding(10,60,0,0);
             //iconImage.setPadding(0,50,0,0);
-            //iconImage.setImageResource(R.drawable.logout_1);
+            iconImage.setImageResource(R.drawable.exit_icon);
             iconImage.setVisibility(View.VISIBLE);
             txtIconName.setVisibility(View.VISIBLE);
         }
