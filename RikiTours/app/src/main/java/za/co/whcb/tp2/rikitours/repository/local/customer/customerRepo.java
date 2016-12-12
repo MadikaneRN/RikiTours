@@ -11,22 +11,30 @@ import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
+import za.co.whcb.tp2.rikitours.config.database.table.customer.AddressTable;
+import za.co.whcb.tp2.rikitours.config.database.table.customer.ContactTable;
 import za.co.whcb.tp2.rikitours.config.database.table.customer.CustomerTable;
+import za.co.whcb.tp2.rikitours.domain.Address;
+import za.co.whcb.tp2.rikitours.domain.Contacts;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+import za.co.whcb.tp2.rikitours.factories.customer.AddressFactory;
+import za.co.whcb.tp2.rikitours.factories.customer.ContactFactory;
 import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 
 
 /**
  * Created by Game330 on 2016-10-10.
  */
-public class CustomerRepo extends SQLiteOpenHelper {
+public class customerRepo  extends SQLiteOpenHelper {
 
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
     private static CustomerTable customerTable;
+    public static ContactTable contactTable;
+    public static AddressTable addressTable;
 
 
-    public CustomerRepo(Context context) {
+    public customerRepo(Context context) {
         super(context, Database.name, null, Database.version);
         customerTable = new CustomerTable();
     }
@@ -54,6 +62,8 @@ public class CustomerRepo extends SQLiteOpenHelper {
         localDatabase = this.getWritableDatabase();
         customerTable = new CustomerTable();
         contentValues = new ContentValues();
+        contactTable = new ContactTable();
+        addressTable = new AddressTable();
 
         contentValues.put(customerTable.getAttributeId().name, customer.getId());
         contentValues.put(customerTable.getAttributeName().name, customer.getName());
@@ -69,7 +79,7 @@ public class CustomerRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public Customer findCountryById(long id) {
+    public Customer findCustomerById(long id) {
         Customer customerFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(customerTable.getTableName(),
@@ -79,13 +89,46 @@ public class CustomerRepo extends SQLiteOpenHelper {
         if (data.getCount() != 0) {
             while (data.moveToNext()) {
                 customerFound = CustomerFactory.getCustomer(data.getLong(0),data.getString(1), data.getString(1),
-                        data.getString(2));
+                        data.getString(2),findContactDetailsById(id));
             }
         }
         return customerFound;
     }
 
-    public ArrayList<Customer> getAllCountries() {
+
+    private Contacts findContactDetailsById(long id) {
+        Contacts contactDetailsFound = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = Converter.toSelectAllWhere(contactTable.getTableName(),
+                contactTable.getAttributeId(), String.valueOf(id));
+        Cursor data = db.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+
+                contactDetailsFound = ContactFactory.getContact(data.getLong(0), data.getString(1), data.getString(2),findAddressById(id));
+            }
+        }
+        return  contactDetailsFound ;
+    }
+
+    private Address findAddressById(long id){
+        Address AddressFound = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = Converter.toSelectAllWhere(addressTable.getTableName(),
+                addressTable.getAttributeId(), String.valueOf(id));
+        Cursor data = db.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+
+                AddressFound = AddressFactory.getAddress(data.getLong(0), data.getString(1), data.getString(2), data.getString(3));
+            }
+        }
+        return  AddressFound ;
+    }
+
+    public ArrayList<Customer> getAllCustomers() {
         ArrayList<Customer> customers = new ArrayList<>();
         Customer customerFound = null;
         localDatabase = this.getReadableDatabase();
@@ -96,8 +139,7 @@ public class CustomerRepo extends SQLiteOpenHelper {
         if (data.getCount() != 0) {
             while (data.moveToNext()) {
                 CustomerFactory.getCustomer(data.getLong(0),data.getString(1), data.getString(1),
-                        data.getString(2));
-                customerFound.setStatus(data.getString(3));
+                        data.getString(2),findContactDetailsById(data.getLong(1)));
                 customers.add(customerFound);
             }
         }
@@ -105,15 +147,14 @@ public class CustomerRepo extends SQLiteOpenHelper {
         return customers;
     }
 
-    public boolean updateCustomer(Customer updatedCustomer, long id) {
+    public boolean updateCustomer(Customer updatedCountry, long id) {
 
         long returned;
         localDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
-        contentValues.put(customerTable.getAttributeId().name, updatedCustomer.getName());
-        contentValues.put(customerTable.getAttributeSurname().name, updatedCustomer.getName());
-        contentValues.put(customerTable.getAttributeSurname().name, updatedCustomer.getName());
-        contentValues.put(customerTable.getAttributeStatus().name, updatedCustomer.getStatus());
+        contentValues.put(customerTable.getAttributeId().name, updatedCountry.getName());
+        contentValues.put(customerTable.getAttributeSurname().name, updatedCountry.getName());
+        contentValues.put(customerTable.getAttributeSurname().name, updatedCountry.getName());
 
         try {
 
