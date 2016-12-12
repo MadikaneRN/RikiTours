@@ -16,7 +16,17 @@ public class CarTable extends Table {
     private final Attribute carType = new Attribute("car_type", "TEXT");
 
 
+    public Attribute getId() {
+        return id;
+    }
 
+    public Attribute getRegNumber() {
+        return regNumber;
+    }
+
+    public Attribute getCarType() {
+        return carType;
+    }
 
     @Override
     public String getTableName() {
