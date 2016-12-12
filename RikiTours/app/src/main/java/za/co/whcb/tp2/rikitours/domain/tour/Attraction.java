@@ -9,6 +9,7 @@ public class Attraction implements Serializable {
     private Long id;
     private Country country;
     private AttractionDescription attractionDescription;
+    private String status;
 
     public Attraction() {
     }
@@ -33,10 +34,27 @@ public class Attraction implements Serializable {
         return attractionDescription;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public void setAttractionDescription(AttractionDescription attractionDescription) {
+        this.attractionDescription = attractionDescription;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public static class Builder{
         private Long id;
         private Country country;
         private AttractionDescription attractionDescriptionId;
+        private String status;
 
         public Builder id(Long id){
             this.id = id;
@@ -62,8 +80,8 @@ public class Attraction implements Serializable {
             return this;
         }
         public Attraction build() {
+            this.status = "listed";
             return new Attraction(this);
-
 
         }
     }

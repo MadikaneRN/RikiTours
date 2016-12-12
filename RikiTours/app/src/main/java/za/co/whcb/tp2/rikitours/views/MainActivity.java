@@ -76,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void signup(View view) {
 
-        String customerName =   edtCustomerName.getText().toString();
+        String customerName = edtCustomerName.getText().toString();
         String customerSurname = edtCustomerSurname.getText().toString();
         String customerEmail = edtCustomerEmail.getText().toString();
         String customerPassword = edtCustomerPassword.getText().toString();
-        String confirmedPassword =  edtCustomerPasswordConfimed.getText().toString();
+        String confirmedPassword = edtCustomerPasswordConfimed.getText().toString();
         String customerGender = gender.getSelectedItem().toString();
 
         if(!customerName.isEmpty() && !customerSurname.isEmpty() && !customerEmail.isEmpty() && !customerPassword.equals(""))

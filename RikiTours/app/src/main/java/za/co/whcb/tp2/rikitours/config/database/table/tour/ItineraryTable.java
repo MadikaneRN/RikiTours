@@ -8,8 +8,8 @@ import za.co.whcb.tp2.rikitours.config.database.table.Table;
 /**
  * Created by berka on 10/10/2016.
  */
-public class ItenaryTable extends Table {
-    public final String tableName = "itenary";
+public class ItineraryTable extends Table {
+    public final String tableName = "Itinerary   ";
     public static Attribute id = new Attribute("id", "INTEGER");
     public static Attribute groupAttractionId=new Attribute("groupAttractionId","INTEGER");
 
