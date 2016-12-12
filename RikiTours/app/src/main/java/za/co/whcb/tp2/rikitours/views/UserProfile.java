@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours;
+package za.co.whcb.tp2.rikitours.views;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,12 +11,13 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONException;
 
+import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.customer.UserController;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiSignUpCallBack;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.error.setup.network.AppNetworkError;
-import za.co.whcb.tp2.rikitours.repository.local.customer.CustomerRepo;
+
 
 public class UserProfile extends AppCompatActivity {
 

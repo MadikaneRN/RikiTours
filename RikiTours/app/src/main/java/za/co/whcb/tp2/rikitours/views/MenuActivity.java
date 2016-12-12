@@ -11,14 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.AboutActivity;
-import za.co.whcb.tp2.rikitours.AboutAppActivity;
 import za.co.whcb.tp2.rikitours.R;
-import za.co.whcb.tp2.rikitours.UserProfile;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.NavigatorItem;
 import za.co.whcb.tp2.rikitours.common.adapter.MenuAdapter;

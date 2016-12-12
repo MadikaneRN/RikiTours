@@ -106,7 +106,8 @@ public class ReservationRepo extends SQLiteOpenHelper {
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
                 Contacts contacts = null;
-                customerFound = CustomerFactory.getCustomer(data.getLong(0), data.getString(1), data.getString(2), data.getString(3),contacts);
+                customerFound = CustomerFactory.getCustomer(data.getLong(0), data.getString(1), data.getString(2), data.getString(3));
+                //,contacts
             }
         }
         return customerFound;
