@@ -14,7 +14,7 @@ public class CarFactoryTest {
     public void testGetCar() throws Exception
     {
 
-        Car car = CarFactory.getCar("CA-7889","SUV");
+        Car car = CarFactory.getCar(10,"CA-7889","SUV");
         Assert.assertNotNull(car);
         Assert.assertEquals(car.getCarType(),"SUV");
     }
