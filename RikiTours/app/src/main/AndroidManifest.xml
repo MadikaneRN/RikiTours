@@ -30,11 +30,11 @@
         <activity android:name=".views.ViewActivity" />
         <activity android:name=".views.GalleryViewActivity" />
         <activity android:name=".views.MenuActivity" />
-        <activity android:name=".UserProfile" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".CarRentalActivity" />
-        <activity android:name=".AboutAppActivity" />
-        <activity android:name=".ForgottenPasswordActivity"></activity>
+        <activity android:name=".views.UserProfile" />
+        <activity android:name=".views.AboutActivity" />
+        <activity android:name=".views.CarRentalActivity" />
+        <activity android:name=".views.AboutAppActivity" />
+        <activity android:name=".views.ForgottenPasswordActivity"></activity>
     </application>
 
 </manifest>

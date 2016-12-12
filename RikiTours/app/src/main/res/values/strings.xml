@@ -9,6 +9,7 @@
     </string-array>
 
     <string name="city_prompt">Choose a city</string>
+    <string name="gender_prompt">Choose a city</string>
 
     <string-array name="cities">
         <item>Cape Town</item>

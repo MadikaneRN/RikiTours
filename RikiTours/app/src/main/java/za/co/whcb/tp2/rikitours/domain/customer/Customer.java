@@ -21,6 +21,7 @@ public class Customer implements Person{
         name=builderObj.name;
         surname=builderObj.surname;
         customer_no=builderObj.customer_no;
+        email = builderObj.email;
         id=builderObj.id;
 
         status = "offline";

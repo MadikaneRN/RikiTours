@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.CarRentalActivity;
+import za.co.whcb.tp2.rikitours.views.CarRentalActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;

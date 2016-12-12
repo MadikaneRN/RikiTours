@@ -12,14 +12,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.GalleryViewActivity;
+import za.co.whcb.tp2.rikitours.views.GalleryViewActivity;
 import za.co.whcb.tp2.rikitours.R;
-import za.co.whcb.tp2.rikitours.ViewActivity;
-import za.co.whcb.tp2.rikitours.common.Display;
+import za.co.whcb.tp2.rikitours.views.ViewActivity;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Room;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
-import za.co.whcb.tp2.rikitours.domain.tour.Country;
 
 /**
  * Created by gaming on 11/12/2016.

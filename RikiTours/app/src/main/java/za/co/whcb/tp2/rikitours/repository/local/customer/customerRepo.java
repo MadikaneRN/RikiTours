@@ -89,7 +89,9 @@ public class customerRepo  extends SQLiteOpenHelper {
         if (data.getCount() != 0) {
             while (data.moveToNext()) {
                 customerFound = CustomerFactory.getCustomer(data.getLong(0),data.getString(1), data.getString(1),
-                        data.getString(2),findContactDetailsById(id));
+                        data.getString(2));
+
+                //,findContactDetailsById(id)
             }
         }
         return customerFound;
@@ -139,8 +141,10 @@ public class customerRepo  extends SQLiteOpenHelper {
         if (data.getCount() != 0) {
             while (data.moveToNext()) {
                 CustomerFactory.getCustomer(data.getLong(0),data.getString(1), data.getString(1),
-                        data.getString(2),findContactDetailsById(data.getLong(1)));
+                        data.getString(2));
                 customers.add(customerFound);
+
+                //,findContactDetailsById(data.getLong(1))
             }
         }
 
