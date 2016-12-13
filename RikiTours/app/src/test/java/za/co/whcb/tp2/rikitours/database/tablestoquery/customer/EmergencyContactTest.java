@@ -12,8 +12,10 @@ import za.co.whcb.tp2.rikitours.domain.customer.EmergencyContact;
 
 
 public class EmergencyContactTest {
+
     @Test
     public void testEmergencyContactTable() throws Exception {
+
         EmergencyContactTable emergencyContactTable = new EmergencyContactTable();
         String query = Converter.toCreateTableQuery(emergencyContactTable.getTableName(),emergencyContactTable.getAllAttributes());
         System.out.println(query);

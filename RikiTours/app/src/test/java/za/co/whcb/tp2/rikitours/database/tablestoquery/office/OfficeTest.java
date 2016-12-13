@@ -9,6 +9,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.office.OfficeTable;
  * Created by Lindo on 10/16/2016.
  */
 public class OfficeTest {
+
     @Test
     public void testOfficeTable() throws Exception {
         OfficeTable officeTable = new OfficeTable();
