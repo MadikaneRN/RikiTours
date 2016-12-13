@@ -37,13 +37,6 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
         this.attractions = attractions;
     }
 
-    public AttractionAdapter(Activity context, ArrayList<Attraction> attractions, GalleryContainer galleryContainer) {
-        super(context, R.layout.activity_layout_listing, attractions);
-        this.context = context;
-        this.attractions = attractions;
-        //this.galleryContainer = galleryContainer;
-    }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();

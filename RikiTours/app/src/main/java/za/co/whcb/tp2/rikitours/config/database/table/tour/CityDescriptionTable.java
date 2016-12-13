@@ -12,8 +12,10 @@ public class CityDescriptionTable extends Table {
 
     public final String tableName = "CityDescription";
     public static Attribute id = new Attribute("id", "INTEGER");
-    public static Attribute suburbId = new Attribute("suburb", "TEXT");
-    public static Attribute nationId = new Attribute("nation", "TEXT");
+    private final Attribute countryId = new Attribute("countryId", "INTEGER");
+    public static Attribute description = new Attribute("description", "TEXT");
+
+
 
     @Override
     public String getTableName() {
@@ -29,12 +31,11 @@ public class CityDescriptionTable extends Table {
         return id;
     }
 
-    public Attribute getSuburbId() {
-        return suburbId;
+    public Attribute getCountryId() {
+        return countryId;
     }
-
-    public Attribute getNationId() {
-        return nationId;
+    public Attribute getDescription() {
+        return description;
     }
 
 
@@ -43,8 +44,10 @@ public class CityDescriptionTable extends Table {
 
         ArrayList<Attribute> attributes = new ArrayList<>();
         attributes.add(id);
-        attributes.add(suburbId);
-        attributes.add(nationId);
+        attributes.add(countryId);
+        attributes.add(description);
+
+
 
         return  attributes;
     }

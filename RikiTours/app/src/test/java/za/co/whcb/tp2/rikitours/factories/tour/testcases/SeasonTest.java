@@ -21,4 +21,5 @@ public class SeasonTest {
         Assert.assertEquals(4, seasons.getDescription().getNumberOfSeason());
 
     }
+
 }
