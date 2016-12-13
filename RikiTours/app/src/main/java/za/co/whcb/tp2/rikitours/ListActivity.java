@@ -68,7 +68,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void loadAttractionsList(ArrayList<Attraction> attractions) {
-        AttractionAdapter adapter = new AttractionAdapter(this,attractions);
+        AttractionAdapter adapter = new AttractionAdapter(this,attractions,getApplicationContext());
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
         Display.endLoading();

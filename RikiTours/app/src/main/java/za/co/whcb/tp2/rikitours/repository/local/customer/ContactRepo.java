@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
 import za.co.whcb.tp2.rikitours.config.database.table.customer.ContactTable;
-import za.co.whcb.tp2.rikitours.domain.customer.Contact;
+import za.co.whcb.tp2.rikitours.domain.Address;
+import za.co.whcb.tp2.rikitours.domain.Contacts;
+import za.co.whcb.tp2.rikitours.factories.customer.AddressFactory;
 import za.co.whcb.tp2.rikitours.factories.customer.ContactFactory;
 
 /**
@@ -49,15 +51,16 @@ public class ContactRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addContact(Contact contact ) {
+    public boolean addContact(Contacts contact ) {
         long returned ;
         localDatabase = this.getWritableDatabase();
         contactTable  = new ContactTable();
         contentValues = new ContentValues();
 
         contentValues.put(contactTable.getAttributeId().name, contact.getId());
-        contentValues.put(contactTable.getAttributeLandlineNo().name, contact.getLandlineNo());
-        contentValues.put(contactTable.getAttributePhoneNo().name, contact.getPhoneNo());
+        contentValues.put(contactTable.getAttributeLandlineNo().name, contact.getCellNumber());
+        contentValues.put(contactTable.getAttributePhoneNo().name, contact.getWorkNumber());
+        contentValues.put(contactTable.getAddressId().name, contact.getAddress().getId());
 
 
         try {
@@ -71,25 +74,11 @@ public class ContactRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public Contact findContactById(long id) {
-        Contact contactFound = null;
-        localDatabase = this.getReadableDatabase();
-        String query = Converter.toSelectAllWhere(contactTable.getTableName(),
-                contactTable.getAttributeId(), String.valueOf(id));
-        Cursor data = localDatabase.rawQuery(query, null);
 
-        if(data.getCount() != 0) {
-            while (data.moveToNext()) {
-                contactFound = ContactFactory.getContact(data.getLong(0), data.getString(1),
-                        data.getString(2));
-            }
-        }
-        return contactFound;
-    }
 
-    public ArrayList<Contact> getAllContacts() {
-        ArrayList<Contact> contacts= new ArrayList<>();
-        Contact contactFound = null;
+   /* public ArrayList<Contacts> getAllContacts() {
+        ArrayList<Contacts> contacts= new ArrayList<>();
+        Contacts contactFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAll(contactTable.getTableName());
 
@@ -97,23 +86,29 @@ public class ContactRepo extends SQLiteOpenHelper {
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
+
+                (long id, String cellNo, String workNu, Address address, Long userID)
+
+
                 contactFound = ContactFactory.getContact(data.getLong(0), data.getString(1),
-                        data.getString(2));
+                        data.getString(2),data.getClass(3),data.getLong(4));
                 contacts.add(contactFound);
             }
         }
 
         return contacts;
-    }
+    }*/
 
-    public boolean updateContact(Contact updatedContact, long id) {
+    public boolean updateContact(Contacts updatedContact, long id) {
 
         long returned ;
         localDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
         contentValues.put(contactTable.getAttributeId().name,updatedContact.getId());
-        contentValues.put(contactTable.getAttributePhoneNo().name,updatedContact.getLandlineNo());
-        contentValues.put(contactTable.getAttributeLandlineNo().name,updatedContact.getLandlineNo());
+        contentValues.put(contactTable.getAttributePhoneNo().name,updatedContact.getWorkNumber());
+        contentValues.put(contactTable.getAttributeLandlineNo().name,updatedContact.getCellNumber());
+        contentValues.put(contactTable.getAddressId().name, updatedContact.getAddress().getId());
+
 
         try {
 

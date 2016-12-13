@@ -11,14 +11,13 @@ public class MaritalStatus implements Serializable {
     private String  customerId;
     private String single;
     private String married;
-    private String divorced;
+
 
 
     public MaritalStatus(Builder buildObj){
 	    customerId=buildObj.customerId;
         single=buildObj.single;
         married=buildObj.married;
-        divorced=buildObj.divorced;
         id=buildObj.id;
     }
 
@@ -37,11 +36,6 @@ public class MaritalStatus implements Serializable {
 	public String getCustomerId() {
         return customerId;
     }
-
-    public String getIsDivorced() {
-        return divorced;
-    }
-
 
     private MaritalStatus(){}
 
@@ -80,7 +74,6 @@ public class MaritalStatus implements Serializable {
     public Builder copyObj(MaritalStatus maritalStatus){
         this.customerId=maritalStatus.getCustomerId();
         this.married=maritalStatus.getIsMarried();
-        this.divorced=maritalStatus.getIsDivorced();
         this.single=maritalStatus.getIsSingle();
         this.id=maritalStatus.getId();
         return this;

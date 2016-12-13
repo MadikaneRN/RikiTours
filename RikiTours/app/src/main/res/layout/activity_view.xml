@@ -19,7 +19,10 @@
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:padding="5dp" android:radius="5dp"
-        android:background="@drawable/list_bg">
+        android:background="@drawable/list_bg"
+            android:scrollbarThumbVertical="@drawable/scroll"
+            android:scrollbarSize="2dp"
+            >
 
 
         <LinearLayout

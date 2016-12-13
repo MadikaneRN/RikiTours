@@ -9,6 +9,6 @@ public interface Person extends Serializable {
     long getId();
     String getName();
     String getSurname();
-    String getEmail();
+
 
 }
