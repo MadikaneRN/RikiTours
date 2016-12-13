@@ -13,7 +13,7 @@ import za.co.whcb.tp2.rikitours.repository.local.rental.ReservationRepo;
  * Created by Lindo on 2016-10-22.
  */
 public class ReservationTest extends AndroidTestCase {
-    
+
     private ReservationRepo reservationRepo;
     private static Customer customer;
     private static Vehicle vehicle;
