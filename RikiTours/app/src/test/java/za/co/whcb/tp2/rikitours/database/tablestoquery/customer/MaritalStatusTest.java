@@ -9,8 +9,10 @@ import za.co.whcb.tp2.rikitours.config.database.table.customer.MaritalStatusTabl
  * Created by Game330 on 2016-10-10.
  */
 public class MaritalStatusTest {
+
     @Test
     public void testMariatalStatusTable() throws Exception {
+
         MaritalStatusTable maritalStatusTable = new MaritalStatusTable();
         String query = Converter.toCreateTableQuery(maritalStatusTable.getTableName(),maritalStatusTable.getAllAttributes());
         System.out.println(query);

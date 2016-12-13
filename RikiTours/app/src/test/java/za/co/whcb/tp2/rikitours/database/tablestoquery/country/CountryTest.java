@@ -9,6 +9,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.common.CountryTable;
  * Created by work on 10/8/2016.
  */
 public class CountryTest {
+
     @Test
     public void testCountryTable() throws Exception {
         CountryTable countryTable = new CountryTable();

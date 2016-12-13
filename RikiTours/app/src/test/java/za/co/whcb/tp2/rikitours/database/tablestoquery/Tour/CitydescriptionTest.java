@@ -9,6 +9,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
  * Created by work on 10/10/2016.
  */
 public class CitydescriptionTest {
+
     @Test
     public void testCitydescription() throws Exception {
 

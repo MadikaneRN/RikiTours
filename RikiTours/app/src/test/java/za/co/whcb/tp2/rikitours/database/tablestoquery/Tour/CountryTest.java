@@ -10,6 +10,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.tour.AttractionTable;
  * Created by work on 10/10/2016.
  */
 public class CountryTest {
+
     @Test
     public void testCountry() throws Exception {
 

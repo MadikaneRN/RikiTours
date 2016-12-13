@@ -10,6 +10,7 @@ public class CityFactory {
     public static City getCity(long id, String name, String descriptionId)
     {
         return new City.Builder()
+                .id(id)
                 .name(name)
                 .description(descriptionId)
                 .build();
