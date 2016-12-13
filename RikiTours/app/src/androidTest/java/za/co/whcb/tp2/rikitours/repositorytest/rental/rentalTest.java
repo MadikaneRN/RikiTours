@@ -38,7 +38,7 @@ public class rentalTest extends AndroidTestCase {
     }
 
     public void findRentalById() {
-        
+
         Rental rental = rentalRepo.findRentalById((long) 16.0);
         assertEquals("rented", rental.getStatus());
 
