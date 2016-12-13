@@ -6,10 +6,10 @@ import org.junit.runners.Suite;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.AttractionDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.AttractionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.CityDescriptionTest;
-import za.co.whcb.tp2.rikitours.factories.tour.testcases.CityTest;
+//import za.co.whcb.tp2.rikitours.factories.tour.testcases.CityTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.CountryTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.EventDescriptionTest;
-import za.co.whcb.tp2.rikitours.factories.tour.testcases.EventsTest;
+//import za.co.whcb.tp2.rikitours.factories.tour.testcases.EventsTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonDescriptionTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.SeasonTest;
 import za.co.whcb.tp2.rikitours.factories.tour.testcases.TourTest;
@@ -26,10 +26,10 @@ import za.co.whcb.tp2.rikitours.factories.rental.ReservationsTest;
         AttractionDescriptionTest.class,
         AttractionTest.class,
         CityDescriptionTest.class,
-        CityTest.class,
+      //  CityTest.class,
         CountryTest.class,
         EventDescriptionTest.class,
-        EventsTest.class,
+       // EventsTest.class,
         SeasonDescriptionTest.class,
         SeasonTest.class,
         TourTest.class,

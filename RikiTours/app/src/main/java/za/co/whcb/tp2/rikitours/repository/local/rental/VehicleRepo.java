@@ -25,12 +25,10 @@ public class VehicleRepo extends SQLiteOpenHelper {
     private static VehicleTable vehicleTable;
 
 
-
     public VehicleRepo(Context context) {
         super(context, Database.name, null, Database.version);
         vehicleTable = new VehicleTable();
     }
-
 
 
     @Override
@@ -45,7 +43,6 @@ public class VehicleRepo extends SQLiteOpenHelper {
         }
 
     }
-
 
     public boolean addVehicle(Vehicle vehicle ) {
         long returned ;
@@ -70,13 +67,11 @@ public class VehicleRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXITS " + vehicleTable.getTableName());
         onCreate(db);
     }
-
 
     public Vehicle findVehicleById(long id) {
         Vehicle vehicleFound = null;
@@ -93,7 +88,6 @@ public class VehicleRepo extends SQLiteOpenHelper {
         }
         return vehicleFound;
     }
-
 
     public ArrayList<Vehicle> getAllVehicles() {
         ArrayList<Vehicle> vehicles = new ArrayList<>();

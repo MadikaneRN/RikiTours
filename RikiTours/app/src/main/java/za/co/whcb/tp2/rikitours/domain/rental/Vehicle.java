@@ -18,6 +18,9 @@ public class Vehicle implements Serializable{
     private double price;
     private RikiImage carImage;
 
+    private String description;
+    private RikiImage rikiImage;
+
 
     public Vehicle() {
     }
@@ -76,6 +79,20 @@ public class Vehicle implements Serializable{
 
     public void setCarImage(RikiImage carImage) {
         this.carImage = carImage;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+    public void setDescription(String desc) {description = desc; }
+
+    public RikiImage getRikiImage() {
+        return rikiImage;
+    }
+
+    public void setRikiImage(RikiImage rikiImage) {
+        this.rikiImage = rikiImage;
     }
 
     public static class Builder{

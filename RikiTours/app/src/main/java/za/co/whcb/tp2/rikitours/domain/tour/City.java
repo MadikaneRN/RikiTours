@@ -3,7 +3,7 @@ package za.co.whcb.tp2.rikitours.domain.tour;
  * Created by Encore on 9/17/2016.
  */
 public class  City{
-    private Long id;
+    private long id;
     private String name;
     private String description;
 
@@ -18,7 +18,7 @@ public class  City{
         this.name = builder.name;
         this.description = builder.description;
     }
-    public Long getId(){
+    public long getId(){
         return id;
     }
 
@@ -43,11 +43,11 @@ public class  City{
     }
 
     public static class Builder{
-        private Long id;
+        private long id;
         private String name;
         private String description;
 
-        public Builder id(Long id){
+        public Builder id(long id){
             this.id = id;
             return this;
         }

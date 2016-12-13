@@ -10,6 +10,7 @@ import za.co.whcb.tp2.rikitours.domain.tour.SeasonDescription;
  * Created by Encore on 10/10/2016.
  */
 public class SeasonDescriptionTest {
+
     @Test
     public void testAttractionDescriptionTable() throws Exception {
 

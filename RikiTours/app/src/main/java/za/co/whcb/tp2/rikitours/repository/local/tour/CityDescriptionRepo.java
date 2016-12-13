@@ -11,17 +11,23 @@ import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
+import za.co.whcb.tp2.rikitours.config.database.table.common.CountryTable;
 import za.co.whcb.tp2.rikitours.config.database.table.tour.CityDescriptionTable;
 import za.co.whcb.tp2.rikitours.domain.tour.CityDescription;
+import za.co.whcb.tp2.rikitours.domain.tour.Country;
 import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
+import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 /**
  * Created by Shaun Mesias on 2016/10/17.
  */
+
+
 public class CityDescriptionRepo extends SQLiteOpenHelper {
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
     private static CityDescriptionTable descriptionTable ;
+    private static CountryTable countryTable;
 
 
     public CityDescriptionRepo(Context context) {
@@ -55,8 +61,9 @@ public class CityDescriptionRepo extends SQLiteOpenHelper {
         contentValues = new ContentValues();
 
         contentValues.put(descriptionTable.getAttributeId().name, description.getId());
-        contentValues.put(descriptionTable.getSuburbId().name, description.getSuburb());
-        contentValues.put(descriptionTable.getNationId().name, description.getNation());
+        contentValues.put(descriptionTable.getCountryId().name, description.getCountry().getId());
+        contentValues.put(descriptionTable.getDescription().name, description.getDescription());
+
 
         try {
             returned = localDatabase.insert(descriptionTable.getTableName(), null, contentValues);
@@ -76,10 +83,12 @@ public class CityDescriptionRepo extends SQLiteOpenHelper {
                 descriptionTable.getAttributeId(), String.valueOf(id));
         Cursor data = db.rawQuery(query, null);
 
-        if(data.getCount() != 0) {
+        if (data.getCount() != 0) {
             while (data.moveToNext()) {
-                attractionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), data.getString(2));
+                attractionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), findCountryById(data.getLong(2)));
+
             }
+
         }
         return attractionFound;
     }
@@ -89,12 +98,11 @@ public class CityDescriptionRepo extends SQLiteOpenHelper {
         CityDescription descriptionFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAll(descriptionTable.getTableName());
-
         Cursor data = localDatabase.rawQuery(query, null);
 
         if(data.getCount() != 0) {
             while (data.moveToNext()) {
-                descriptionFound = CityDescriptionFactory.getCityDescription(data.getLong(0), data.getString(1), data.getString(2));
+                descriptionFound = CityDescriptionFactory.getCityDescription(data.getLong(0),data.getString(1),findCountryById(data.getLong(2)));
                 descriptions.add(descriptionFound);
             }
         }
@@ -102,13 +110,31 @@ public class CityDescriptionRepo extends SQLiteOpenHelper {
         return descriptions;
     }
 
+    private Country findCountryById(long id) {
+
+        Country countryFound = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = Converter.toSelectAllWhere(countryTable.getTableName(),
+                countryTable.getAttributeId(), String.valueOf(id));
+        Cursor data = db.rawQuery(query, null);
+
+        if(data.getCount() != 0) {
+            while (data.moveToNext()) {
+
+                countryFound = CountryFactory.getCountry(data.getLong(0),data.getString(1),data.getString(2),data.getString(3));
+            }
+        }
+        return countryFound;
+    }
+
     public boolean updateCityDescription(CityDescription updatedCityDescription, long id) {
 
         long returned ;
         localDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
-        contentValues.put(descriptionTable.getSuburbId().name,updatedCityDescription.getSuburb());
-        contentValues.put(descriptionTable.getNationId().name,updatedCityDescription.getNation());
+
+        contentValues.put(descriptionTable.getCountryId().name,updatedCityDescription.getCountry().getId());
+        contentValues.put(descriptionTable.getDescription().name,updatedCityDescription.getDescription());
 
         try {
 
@@ -143,4 +169,7 @@ public class CityDescriptionRepo extends SQLiteOpenHelper {
         return (returned != 0) ? true : false;
 
     }
+
+
+
 }
