@@ -18,6 +18,7 @@ public class rentalTest extends AndroidTestCase {
 
     @Override
     public void setUp() throws Exception {
+
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
         rentalRepo = new RentalRepo(context);
@@ -25,16 +26,19 @@ public class rentalTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
+
         rentalRepo.close();
         super.tearDown();
     }
 
     public void addRentalTest() {
+
         Rental rental = RentalFactory.getRental((long) 16.0, reservations, "rented");
         assertEquals(true, rentalRepo.addRenatl(rental));
     }
 
     public void findRentalById() {
+        
         Rental rental = rentalRepo.findRentalById((long) 16.0);
         assertEquals("rented", rental.getStatus());
 
