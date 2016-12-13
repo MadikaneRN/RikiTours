@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="10dp"
+    tools:context="za.co.whcb.tp2.rikitours.AboutActivity"
+    android:background="@color/colorPrimary">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView3"
+        android:paddingRight="0dp"
+        android:paddingLeft="0dp"
+        android:scrollIndicators="none"
+        android:scrollbarThumbVertical="@drawable/scroll"
+        android:scrollbarSize="2dp"
+
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+
+            >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="ABOUT US"
+                android:id="@+id/textView13"
+                android:background="@drawable/textview_style"
+                android:textSize="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/abc_primary_text_material_dark"
+                android:layout_marginBottom="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Riki private tour, a subdivision of Riki Tours (Pty) Ltd who was established in the early year of 2014, by Mr. Ricardo Joao D.A and Mrs. Visa G. Lutomawa 100% owned. As a private tour company, we pride ourselves by offering to our esteemed clients a world first class personalized and professional services. We are based in Cape Town, Western Cape Province"
+                android:id="@+id/textView14"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textview_light"
+                android:padding="10dp"
+                android:textColor="@color/abc_secondary_text_material_dark" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:background="@drawable/textview_light"
+                android:layout_marginTop="10dp"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
+                    android:id="@+id/imageView10"
+                    android:src="@drawable/ricardo" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mr. Ricardo Lutomawa"
+                        android:id="@+id/textView18"
+                        android:textColor="#ac7942"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:paddingBottom="5dp"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Managing Director &amp; Tour Operator"
+                        android:id="@+id/textView19"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:background="@drawable/textview_light"
+                android:layout_marginTop="10dp"
+                android:padding="5dp" >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:gravity="center"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mr. Marc Trefois"
+                        android:id="@+id/textView20"
+                        android:textColor="#ac7942"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:paddingBottom="5dp"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Public Relation"
+                        android:id="@+id/textView21"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
+                    android:id="@+id/imageView11"
+                    android:src="@drawable/marc_trefois" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="With more than 7 years of experience as qualified and professional freelancer in the tourism sector, Mr. Ricardo Joao D.A has strived for excellence in every aspect of touring and guiding issues with integrity. He has gained the trust from international clients coming from all over the planet to Cape Town South Africa and has established a high profile as well as very good standing relationship and reputation in the related industry"
+                android:id="@+id/textView15"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textview_light"
+                android:padding="10dp"
+                android:textColor="@color/abc_secondary_text_material_dark" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:background="@drawable/textview_light"
+                android:layout_marginTop="10dp"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
+                    android:id="@+id/imageView12"
+                    android:src="@drawable/kelly" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mr. Ndaye Kelly"
+                        android:id="@+id/textView22"
+                        android:textColor="#ac7942"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:paddingBottom="5dp"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Executive Administrator"
+                        android:id="@+id/textView23"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textAlignment="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The primary key services of Riki private tours is to deliver a full travel service to people locally and from abroad, both corporate and individuals. Our services includes, but not limited to airport transfers cape town, chauffeur drive services, pre-arranged tours packages that includes cape point tour, cape town city tour, garden route tour, gorilla tour, safari private day tour, shark cage diving tour, cape township tour, cape whale watching tour, cape winelands tour, air ticketing sales, car rental service assistance, accommodation services, and so much more."
+                android:id="@+id/textView16"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textview_light"
+                android:padding="10dp"
+                android:textColor="@color/abc_secondary_text_material_dark" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

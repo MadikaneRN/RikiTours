@@ -5,5 +5,5 @@ package za.co.whcb.tp2.rikitours.config.database;
  */
 public class Database {
     public static final String name = "riki_tours.db";
-    public static final int version = 1;
+    public static final int version = 2;
 }

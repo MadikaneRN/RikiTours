@@ -13,24 +13,24 @@ import za.co.whcb.tp2.rikitours.factories.tour.AttractionDescriptionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.AttractionFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.ItenaryFactory;
-import za.co.whcb.tp2.rikitours.repository.local.tour.ItenaryRepo;
+import za.co.whcb.tp2.rikitours.repository.local.tour.ItineraryRepo;
 
 /**
  * Created by work on 10/17/2016.
  */
 public class ItineraryTest extends AndroidTestCase {
-    private ItenaryRepo itenaryRepo ;
+    private ItineraryRepo itineraryRepo;
 
     @Override
     public void setUp() throws Exception {
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
-        itenaryRepo = new ItenaryRepo(context);
+        itineraryRepo = new ItineraryRepo(context);
     }
 
     @Override
     public void tearDown() throws Exception {
-        itenaryRepo.close();
+        itineraryRepo.close();
         super.tearDown();
     }
 
@@ -42,11 +42,11 @@ public class ItineraryTest extends AndroidTestCase {
         attractions.add(attraction);
 
         Itinerary itinerary = ItenaryFactory.getItenary(2L,attractions);
-        assertEquals(true, itenaryRepo.addItenary(itinerary));
+        assertEquals(true, itineraryRepo.addItenary(itinerary));
     }
 
     public void findCountryById() {
-        Itinerary itinerary = itenaryRepo.findCountryById(2L);
+        Itinerary itinerary = itineraryRepo.findCountryById(2L);
         assertEquals("Conference", itinerary.getId());
     }
 }

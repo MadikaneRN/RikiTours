@@ -9,27 +9,27 @@ import android.util.Log;
 
 import za.co.whcb.tp2.rikitours.common.Converter;
 import za.co.whcb.tp2.rikitours.config.database.Database;
-import za.co.whcb.tp2.rikitours.config.database.table.tour.ItenaryTable;
+import za.co.whcb.tp2.rikitours.config.database.table.tour.ItineraryTable;
 import za.co.whcb.tp2.rikitours.domain.tour.Itinerary;
 
 /**
  * Created by work on 10/17/2016.
  */
-public class ItenaryRepo extends SQLiteOpenHelper {
+public class ItineraryRepo extends SQLiteOpenHelper {
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
-    private static ItenaryTable itenaryTable;
+    private static ItineraryTable itineraryTable;
 
 
-    public ItenaryRepo(Context context) {
+    public ItineraryRepo(Context context) {
         super(context, Database.name, null, Database.version);
-        itenaryTable = new ItenaryTable();
+        itineraryTable = new ItineraryTable();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            final String query = Converter.toCreateTableQuery(itenaryTable.getTableName(),itenaryTable.getAllAttributes());
+            final String query = Converter.toCreateTableQuery(itineraryTable.getTableName(), itineraryTable.getAllAttributes());
             db.execSQL(query);
         }
         catch (Exception ex) {
@@ -41,21 +41,21 @@ public class ItenaryRepo extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXITS " + itenaryTable.getTableName());
+        db.execSQL("DROP TABLE IF EXITS " + itineraryTable.getTableName());
         onCreate(db);
     }
 
     public boolean addItenary(Itinerary itinerary) {
         long returned ;
         localDatabase = this.getWritableDatabase();
-        itenaryTable  = new ItenaryTable();
+        itineraryTable = new ItineraryTable();
         contentValues = new ContentValues();
 
-        contentValues.put(itenaryTable.getAttributeId().name, itinerary.getId());
-        contentValues.put(itenaryTable.getAttributeGroupAttractionId().name, itinerary.getAttractions().toString());
+        contentValues.put(itineraryTable.getAttributeId().name, itinerary.getId());
+        contentValues.put(itineraryTable.getAttributeGroupAttractionId().name, itinerary.getAttractions().toString());
 
         try {
-            returned = localDatabase.insert(itenaryTable.getTableName(), null, contentValues);
+            returned = localDatabase.insert(itineraryTable.getTableName(), null, contentValues);
         }catch (Exception ex) {
             returned = 0;
             Log.d("exception ::::",ex.getMessage());
@@ -68,8 +68,8 @@ public class ItenaryRepo extends SQLiteOpenHelper {
     public Itinerary findCountryById(long id) {
         Itinerary itineraryFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = Converter.toSelectAllWhere(itenaryTable.getTableName(),
-                itenaryTable.getAttributeId(), String.valueOf(id));
+        String query = Converter.toSelectAllWhere(itineraryTable.getTableName(),
+                itineraryTable.getAttributeId(), String.valueOf(id));
         Cursor data = db.rawQuery(query, null);
 
         if(data.getCount() != 0) {
