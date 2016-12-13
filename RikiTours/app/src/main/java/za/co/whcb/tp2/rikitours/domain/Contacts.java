@@ -9,6 +9,15 @@ public class Contacts{
     private String workNumber;
     private Address address;
 
+
+
+    public Contacts(Long id, String cellNumber,String workNumber,Address address){
+        this.id = id;
+        this.cellNumber = cellNumber;
+        this.workNumber = workNumber;
+        this.address = address;
+    }
+
     public Contacts(Builder builder){
         this.id=builder.id;
         this.cellNumber=builder.cellNumber;
@@ -20,6 +29,10 @@ public class Contacts{
         return cellNumber;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getWorkNumber(){
         return workNumber;
     }
@@ -28,39 +41,56 @@ public class Contacts{
         return address;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setCellNumber(String cellNumber) {
+        this.cellNumber = cellNumber;
+    }
+
+    public void setWorkNumber(String workNumber) {
+        this.workNumber = workNumber;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public static class Builder {
-        //Long id, String cellNumber,String workNumber,Address address;
+
         private Long id;
         private String cellNumber;
         private String workNumber;
         private Address address;
+
 
         public Builder id(Long id){
             this.id=id;
             return this;
         }
 
-        public Builder number(String cellNumber){
+        public Builder cellNumber(String cellNumber){
             this.cellNumber=cellNumber;
             return this;
         }
 
-        public Builder name(String workNumber){
-            this.workNumber=workNumber;
+        public Builder workNo(String workNumber){
+            this.workNumber =workNumber;
             return this;
         }
 
-        public Builder name(Address address){
+        public Builder address(Address address){
             this.address=address;
             return this;
         }
+
 
         public Builder copy(Contacts contacts){
             this.id=contacts.id;
             this.cellNumber=contacts.cellNumber;
             this.workNumber=contacts.workNumber;
             this.address=contacts.address;
-
             return this;
         }
         public Contacts build(){

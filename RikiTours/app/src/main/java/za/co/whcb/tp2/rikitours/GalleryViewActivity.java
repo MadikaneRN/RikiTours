@@ -1,4 +1,4 @@
-package za.co.whcb.tp2.rikitours.views;
+package za.co.whcb.tp2.rikitours;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.adapter.gallery.GalleryViewAdapter;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Room;

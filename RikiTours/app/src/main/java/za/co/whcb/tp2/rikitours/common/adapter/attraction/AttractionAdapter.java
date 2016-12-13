@@ -1,8 +1,11 @@
 package za.co.whcb.tp2.rikitours.common.adapter.attraction;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +16,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import za.co.whcb.tp2.rikitours.views.GalleryViewActivity;
+import za.co.whcb.tp2.rikitours.GalleryViewActivity;
 import za.co.whcb.tp2.rikitours.R;
-import za.co.whcb.tp2.rikitours.views.ViewActivity;
+import za.co.whcb.tp2.rikitours.ViewActivity;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 import za.co.whcb.tp2.rikitours.domain.tour.Attraction;
+import za.co.whcb.tp2.rikitours.repository.local.tour.AttractionDescriptionRepo;
 import za.co.whcb.tp2.rikitours.repository.local.tour.AttractionsRepo;
+import za.co.whcb.tp2.rikitours.services.domain.tours.AttractionService;
 import za.co.whcb.tp2.rikitours.services.domain.tours.CountryService;
 
 /**

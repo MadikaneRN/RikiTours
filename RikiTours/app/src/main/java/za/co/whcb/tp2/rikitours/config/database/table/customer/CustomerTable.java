@@ -15,6 +15,7 @@ public class CustomerTable extends Table {
     public static Attribute id = new Attribute("id", "number");
     public static Attribute name = new Attribute("name", "Text");
     public static Attribute surname = new Attribute("surname", "Text");
+    public static Attribute contactId = new Attribute("contactId", "INTEGER");
 
 
 
@@ -40,6 +41,10 @@ public class CustomerTable extends Table {
         return surname;
     }
 
+    public Attribute getAttributeContactId() {
+        return contactId;
+    }
+
 
      @Override
     public ArrayList<Attribute> getAllAttributes() {
@@ -48,6 +53,7 @@ public class CustomerTable extends Table {
         attributes.add(id);
         attributes.add(name);
         attributes.add(surname);
+         attributes.add(contactId);
         return  attributes;
     }
 

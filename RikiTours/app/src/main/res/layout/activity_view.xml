@@ -7,7 +7,7 @@
     android:paddingLeft="2dp"
     android:paddingRight="2dp"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".views.ViewActivity"
+    tools:context="za.co.whcb.tp2.rikitours.ViewActivity"
     android:background="#362720">
 
 
@@ -28,8 +28,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background_floating_material_light">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -38,8 +37,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/tablem"
+                android:scaleType="fitXY"
                 android:gravity="center"
-                android:background="@color/background_floating_material_light" />
+                />
 
         </LinearLayout>
 
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:text="Table Mountain"
                     android:id="@+id/txtTitle"
-                    android:textSize="16dp"
+                    android:textSize="20dp"
                     android:textColor="#ac7942"
                     android:paddingRight="10dp"
                     android:inputType="textCapWords" />
@@ -75,7 +75,7 @@
                     android:text="R 4000.00 /person"
                     android:id="@+id/txtTtileComment"
                     android:textColor="#f36d2e"
-                    android:textSize="15dp" />
+                    android:textSize="17dp" />
             </LinearLayout>
 
             <TextView

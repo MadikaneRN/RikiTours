@@ -15,6 +15,8 @@ public class ContactTable extends Table{
     private final Attribute phoneNo = new Attribute("phoneNo", "TEXT");
     private final Attribute landLineNo = new Attribute("landlineLineNo", "TEXT");
     private final Attribute customerId = new Attribute("customerId", "INTEGER");
+    private final Attribute addressId = new Attribute("addressId","TEXT");
+
 
 
 
@@ -28,6 +30,8 @@ public class ContactTable extends Table{
             return id;
     }
 
+
+    public Attribute getAddressId(){return addressId;}
 
     public Attribute getAttributeId() {
         return id;
@@ -56,6 +60,7 @@ public class ContactTable extends Table{
         attributes.add(phoneNo);
         attributes.add(landLineNo);
         attributes.add(customerId);
+        attributes.add(addressId);
 
         return  attributes;
     }

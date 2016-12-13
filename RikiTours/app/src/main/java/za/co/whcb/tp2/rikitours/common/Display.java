@@ -25,11 +25,6 @@ public class Display {
        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
     }
 
-    public static  void errorToast(String msg, Context context)
-    {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-    }
-
     public static void startLoading(String message,Context context){
         progress = new ProgressDialog(context);
         progress.setCancelable(false);
