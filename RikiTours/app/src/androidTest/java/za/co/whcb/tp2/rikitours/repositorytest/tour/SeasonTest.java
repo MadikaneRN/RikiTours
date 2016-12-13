@@ -26,7 +26,7 @@ public class SeasonTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
-        
+
         seasonsRepo.close();
         super.tearDown();
     }
