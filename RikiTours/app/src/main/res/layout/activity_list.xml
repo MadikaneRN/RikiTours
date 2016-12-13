@@ -24,6 +24,9 @@
         android:scrollbarStyle="outsideInset"
         android:transitionGroup="false"
         android:paddingLeft="-10dp"
-        android:paddingRight="-20dp"
-        android:background="@android:color/transparent" />
+        android:paddingRight="-12dp"
+        android:background="@android:color/transparent"
+        android:scrollbarThumbVertical="@drawable/scroll"
+        android:scrollbarSize="2dp"
+        />
 </RelativeLayout>
