@@ -45,7 +45,7 @@ public class HotelRepoTest extends AndroidTestCase {
 
         //complete Test Cases to fail and pass
     public void findHotelById() {
-        
+
         Hotel hotel = hotelRepo.findHotelById(10);
         Assert.assertEquals("SunCity",hotel.getName());
 
