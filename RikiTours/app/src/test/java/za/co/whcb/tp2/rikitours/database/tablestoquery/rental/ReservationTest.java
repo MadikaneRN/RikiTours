@@ -9,7 +9,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.rental.ReservationTable;
  * Created by bishop v on 2016-10-22.
  */
 public class ReservationTest {
-    
+
     @Test
     public void testReservationTable() throws Exception {
         ReservationTable reservationTable = new ReservationTable();
