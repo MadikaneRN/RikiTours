@@ -22,6 +22,7 @@ public class VehicleServiceTest extends AndroidTestCase {
 
     @Override
     public void setUp() throws Exception {
+
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
         vehicleRepo = new VehicleRepo(context);
@@ -30,12 +31,14 @@ public class VehicleServiceTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
+
         vehicleRepo.close();
         super.tearDown();
     }
 
 
     public void testAdd() {
+
         Vehicle vehicle = VehicleFactory.getVehicle((long) 16.0,"BMW","M3","2016");
         Assert.assertEquals(true,vehicleRepo.addVehicle(vehicle));
     }

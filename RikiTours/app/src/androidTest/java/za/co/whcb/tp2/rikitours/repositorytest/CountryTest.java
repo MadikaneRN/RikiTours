@@ -25,7 +25,7 @@ public class CountryTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
-        
+
         countryRepo.close();
         super.tearDown();
     }
