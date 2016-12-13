@@ -11,7 +11,7 @@ import za.co.whcb.tp2.rikitours.repository.local.tour.AttractionDescriptionRepo;
  * Created by Shaun Mesias on 2016/10/17.
  */
 public class AttractionDescriptionTest extends AndroidTestCase {
-    
+
     private AttractionDescriptionRepo attractionDescriptionRepo ;
 
     @Override
