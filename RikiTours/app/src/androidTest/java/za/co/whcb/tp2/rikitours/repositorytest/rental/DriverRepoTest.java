@@ -20,6 +20,7 @@ public class DriverRepoTest extends AndroidTestCase {
 
     @Override
     public void setUp() throws Exception {
+
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
         driverRepo = new DriverRepo(context);
@@ -28,19 +29,21 @@ public class DriverRepoTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
+
         driverRepo.close();
         super.tearDown();
     }
 
 
     public void addDriverTest() {
-        Driver driver = DriverFactory.getDriver((long) 16.0,"madikane","yes","CM33");
 
+        Driver driver = DriverFactory.getDriver((long) 16.0,"madikane","yes","CM33");
         Assert.assertEquals(true,driverRepo.addDriver(driver));
     }
 
 
     public void findDriverById() {
+
         Driver driver = driverRepo.findDriverById((long)16.0);
         Assert.assertEquals("madikane",driver.getFname());
 

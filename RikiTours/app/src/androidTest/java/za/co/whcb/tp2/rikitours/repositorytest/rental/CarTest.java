@@ -41,7 +41,7 @@ public class CarTest extends AndroidTestCase {
 
 
     public void findVehicleById() {
-        
+
        Car car = carRepo.findCarById((long)16.0);
         assertEquals("SUV", car.getCarType());
     }
