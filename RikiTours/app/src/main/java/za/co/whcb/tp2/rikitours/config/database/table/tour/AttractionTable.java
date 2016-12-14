@@ -13,6 +13,7 @@ public class AttractionTable extends Table{
     public static Attribute id = new Attribute("id", "INTEGER");
     public static Attribute countryId = new Attribute("countryId", "INTEGER");
     public static Attribute attractionDescriptionId = new Attribute("attractionDescriptionId", "INTEGER");
+    public static Attribute status = new Attribute("status", "TEXT");
 
     @Override
     public String getTableName() {
@@ -36,6 +37,10 @@ public class AttractionTable extends Table{
         return attractionDescriptionId;
     }
 
+    public static Attribute getStatus() {
+        return status;
+    }
+
     @Override
     public ArrayList<Attribute> getAllAttributes() {
 
@@ -43,6 +48,7 @@ public class AttractionTable extends Table{
         attributes.add(id);
         attributes.add(countryId);
         attributes.add(attractionDescriptionId);
+        attributes.add(status);
 
         return  attributes;
     }
