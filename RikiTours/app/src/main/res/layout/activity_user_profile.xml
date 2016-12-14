@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="za.co.whcb.tp2.rikitours.UserProfile"
+    android:background="#362720"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/textview_light"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtUserName"
+                style="@style/edit_text_default"
+                android:background="@drawable/text_box_sharp"
+                android:hint="First name"
+                android:enabled="false"
+                android:visibility="visible"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtUserSurnam"
+                style="@style/edit_text_default"
+                android:background="@drawable/text_box_sharp"
+                android:hint="Surname"
+                android:enabled="false"
+                android:visibility="visible"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtUserEmail"
+                style="@style/edit_text_default"
+                android:background="@drawable/text_box_sharp"
+                android:hint="Email"
+                android:enabled="false"
+                android:visibility="visible"
+                android:paddingLeft="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/textview_light"
+            android:padding="15dp">
+
+            <Spinner
+                android:id="@+id/spnUserGender"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:entries="@array/gender"
+                android:prompt="@string/gender_prompt"
+                android:background="@drawable/text_box_sharp"
+                android:hint="Email Address"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:spinnerMode="dropdown"
+                android:dropDownWidth="fill_parent" />
+
+
+            <EditText
+                style="@style/edit_text_default"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtDob"
+                android:background="@drawable/text_box_sharp"
+                android:hint="Date of birth"
+                android:enabled="false"
+                android:visibility="visible"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtCurrentPassword"
+                style="@style/edit_text_default"
+                android:background="@drawable/text_box_sharp"
+                android:hint="Current password"
+                android:enabled="false"
+                android:visibility="visible"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtNewPassword"
+                style="@style/edit_text_default"
+                android:background="@drawable/text_box_sharp"
+                android:hint="New password"
+                android:enabled="false"
+                android:visibility="visible"
+                android:paddingLeft="10dp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/spnCountries"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:entries="@array/gender"
+                    android:prompt="@string/gender_prompt"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Email Address"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:spinnerMode="dropdown"
+                    android:dropDownWidth="fill_parent"
+                    android:layout_weight="1"
+                    android:layout_marginRight="7dp" />
+
+                <Spinner
+                    android:id="@+id/spnCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:entries="@array/gender"
+                    android:prompt="@string/gender_prompt"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Email Address"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:spinnerMode="dropdown"
+                    android:dropDownWidth="fill_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Update"
+                    android:id="@+id/btnUpdate"
+                    android:background="@drawable/button_sharp"
+                    android:textColor="#FFFFFF"
+                    style="@style/button_default"
+                    android:layout_weight="1"
+                    android:onClick="updateEnable"
+                    android:layout_marginRight="10dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Save"
+                    android:id="@+id/btnSave"
+                    android:background="@drawable/button_sharp"
+                    android:textColor="#FFFFFF"
+                    style="@style/button_default"
+                    android:layout_weight="1"
+                    android:onClick="saveUser" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
