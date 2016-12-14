@@ -65,6 +65,12 @@ public class UserController {
                             String email = userInfo[5];
 
                             Customer userFromServer = CustomerFactory.getCustomer(id,name,surname, String.valueOf(id));
+                            userFromServer.setDob(dob);
+                            userFromServer.setGender(gender);
+                            userFromServer.setEmail(email);
+
+                            Log.e("FROM SERVERR ::::",response);
+                            Log.e("FROM SERVERR ::::",email);
                             callback.onSuccess(userFromServer);
                         }
                         catch (Exception e) {

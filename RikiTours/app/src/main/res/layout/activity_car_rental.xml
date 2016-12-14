@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="za.co.whcb.tp2.rikitours.CarRentalActivity"
+    android:background="@color/colorPrimary"
+    android:gravity="center_vertical|center|center_horizontal">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView5"
+        android:paddingRight="0dp"
+        android:paddingLeft="5dp"
+        android:scrollbarThumbVertical="@drawable/scroll"
+        android:scrollbarSize="2dp"
+        >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="6dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_light"
+                android:layout_marginBottom="10dp"
+                android:padding="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Hyundai i20 / 2016"
+                    android:id="@+id/txtCarTitleReservation"
+                    android:textSize="15dp"
+                    android:textColor="@color/switch_thumb_normal_material_light"
+                    android:layout_marginRight="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_style"
+                    android:textStyle="bold"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textAlignment="center"
+                    android:singleLine="false"
+                    android:gravity="fill_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textview_light"
+                android:layout_marginBottom="10dp"
+                android:padding="15dp" >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:id="@+id/imgReservation"
+                        android:src="@drawable/pure"
+                        android:background="@color/background_floating_material_light"
+                        android:layout_marginBottom="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 Door,Central Locking,Power Steering,Air Conditioning,Automatic"
+                        android:id="@+id/txtCarDescriptionRese"
+                        android:layout_weight="1"
+                        android:textColor="@color/bright_foreground_disabled_material_dark" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:text="R700 / Day"
+                        android:id="@+id/txtPriceReservation"
+                        android:textSize="17dp"
+                        android:textColor="@color/switch_thumb_normal_material_light"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:background="@drawable/textview_style"
+                        android:textStyle="bold"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textAlignment="center"
+                        android:singleLine="false"
+                        android:gravity="fill_vertical"
+                        android:layout_marginTop="10dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/textview_light"
+                android:padding="15dp" >
+
+                <EditText
+                    style="@style/edit_text_default"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edtPickUpTime"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Pick-up time"
+                    android:enabled="true"
+                    android:visibility="visible"
+                    android:paddingLeft="10dp" />
+
+                <EditText
+                    style="@style/edit_text_default"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/edtPickUpAddress"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Pick-up address"
+                    android:enabled="true"
+                    android:visibility="visible"
+                    android:paddingLeft="10dp"
+                    android:minHeight="100dp"
+                    android:minLines="4"
+                    android:gravity="top"
+                    android:paddingRight="10dp" />
+
+                <EditText
+                    style="@style/edit_text_default"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:id="@+id/edtComments"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Comments"
+                    android:enabled="true"
+                    android:visibility="visible"
+                    android:paddingLeft="10dp"
+                    android:minHeight="100dp"
+                    android:minLines="4"
+                    android:gravity="top"
+                    android:paddingRight="10dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        style="@style/button_default"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Make Reservation"
+                        android:id="@+id/btnMakeReservation"
+                        android:background="@drawable/button_sharp"
+                        android:textColor="#FFFFFF"
+                        android:layout_weight="1"
+                        android:onClick="updateEnable" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -11,6 +11,8 @@ public class Customer implements Person{
     private String surname;
     private String customer_no;
     private String email;
+    private String gender;
+    private String dob;
 
     public Customer(Builder builderObj)
     {
@@ -41,7 +43,7 @@ public class Customer implements Person{
     }
 
     public String getEmail() {
-        return customer_no;
+        return email;
     }
 
     public String getCustomerNumber() {
@@ -66,6 +68,22 @@ public class Customer implements Person{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public static class Builder{
