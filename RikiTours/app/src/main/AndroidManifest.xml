@@ -31,7 +31,8 @@
         <activity android:name=".views.GalleryViewActivity" />
         <activity android:name=".views.MenuActivity" />
         <activity android:name=".UserProfile" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".CarRentalActivity"></activity>
     </application>
 
 </manifest>

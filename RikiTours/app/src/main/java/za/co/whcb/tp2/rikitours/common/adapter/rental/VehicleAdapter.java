@@ -1,6 +1,7 @@
 package za.co.whcb.tp2.rikitours.common.adapter.rental;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import za.co.whcb.tp2.rikitours.CarRentalActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
+import za.co.whcb.tp2.rikitours.views.MainActivity;
 
 /**
  * Created by Berka on 11/27/2016.
@@ -57,21 +60,15 @@ public class VehicleAdapter extends ArrayAdapter<Vehicle> {
 
         ImageLoader.loadFromUrl(vehicles.get(position).getCarImage().getUrl(), itemImg, context);
 
-        final Vehicle item = getCurrentVehicle(position);
+        final Vehicle currentVehicle = getCurrentVehicle(position);
 
         btnCartBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                OrderDetailsDB orderDetailsDB = new OrderDetailsDB(context);
-//                Display.toast("Adding...",context);
-//
-//                if(orderDetailsDB.insertData(item)) {
-//                    Display.toast(item.getName() +" Added To Your List",context);
-//                }
-//                else {
-//                    Display.toast("Error Failed to Add",context);
-//                }
 
+                Intent myIntent = new Intent(context, CarRentalActivity.class);
+                myIntent.putExtra("vehicle",currentVehicle ); //Optional parameters
+                context.startActivity(myIntent);
 
             }
         });

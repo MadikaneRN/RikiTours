@@ -25,7 +25,7 @@ import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Customer user;
+    private  Customer user;
     private ListView mDrawerList;
     private DrawerLayout mDrawerLayout;
     private MenuAdapter mAdapter;
@@ -87,8 +87,8 @@ public class MenuActivity extends AppCompatActivity {
     private void addDrawerItems() {
         ArrayList<NavigatorItem> menuItems = new ArrayList<>();
         menuItems.add(new NavigatorItem("My Profile"));
-        menuItems.add(new NavigatorItem("My list"));
-        menuItems.add(new NavigatorItem("My Notifications"));
+//        menuItems.add(new NavigatorItem("My list"));
+//        menuItems.add(new NavigatorItem("My Notifications"));
         menuItems.add(new NavigatorItem("Sign Out"));
 
         mAdapter = new MenuAdapter(this,menuItems);
@@ -103,7 +103,7 @@ public class MenuActivity extends AppCompatActivity {
                    //mDrawerList.
                    Intent myIntent = new Intent(getApplicationContext(), UserProfile.class);
                    myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                   myIntent.putExtra("key", ""); //Optional parameters
+                   myIntent.putExtra("user", user); //Optional parameters
                    getApplicationContext().startActivity(myIntent);
                }
 
