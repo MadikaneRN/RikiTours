@@ -12,6 +12,7 @@ public class HotelTabelTest {
 
     @Test
     public void testHotelTable() throws Exception {
+
         HotelTable hotelTable = new HotelTable();
         String query = Converter.toCreateTableQuery(hotelTable.getTableName(),hotelTable.getAllAttributes());
         System.out.println(query);

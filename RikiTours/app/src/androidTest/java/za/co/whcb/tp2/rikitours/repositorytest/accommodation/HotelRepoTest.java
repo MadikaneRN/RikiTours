@@ -18,6 +18,7 @@ public class HotelRepoTest extends AndroidTestCase {
 
     @Override
     public void setUp() throws Exception {
+
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
         hotelRepo = new HotelRepo(context);
@@ -26,6 +27,7 @@ public class HotelRepoTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
+
         hotelRepo.close();
         super.tearDown();
     }
@@ -33,6 +35,7 @@ public class HotelRepoTest extends AndroidTestCase {
 
 
     public void addCountryTest() {
+
         Hotel hotel = HotelFactory.getHotel(10,"SunCity","4","Nice");
         Assert.assertEquals(true,hotelRepo.addHotel(hotel));
 
@@ -42,6 +45,7 @@ public class HotelRepoTest extends AndroidTestCase {
 
         //complete Test Cases to fail and pass
     public void findHotelById() {
+
         Hotel hotel = hotelRepo.findHotelById(10);
         Assert.assertEquals("SunCity",hotel.getName());
 

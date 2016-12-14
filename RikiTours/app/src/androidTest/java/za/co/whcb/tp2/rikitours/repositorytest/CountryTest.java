@@ -17,6 +17,7 @@ public class CountryTest extends AndroidTestCase {
 
     @Override
     public void setUp() throws Exception {
+
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
         countryRepo = new CountryRepo(context);
@@ -24,16 +25,19 @@ public class CountryTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
+
         countryRepo.close();
         super.tearDown();
     }
 
     public void addCountryTest() {
+
         Country country = CountryFactory.getCountry(1,"south-africa","South Africa is a country on the southernmost", "sa.jpg");
         assertEquals(true, countryRepo.addCountry(country));
     }
 
     public void findCountryById() {
+
         Country country = countryRepo.findCountryById(12);
         assertEquals("south-africa", country.getName());
     }

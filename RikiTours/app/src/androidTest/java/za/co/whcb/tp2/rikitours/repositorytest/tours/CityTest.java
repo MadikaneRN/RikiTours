@@ -16,11 +16,13 @@ import za.co.whcb.tp2.rikitours.repository.local.tour.CityRepo;
  */
 
 public class CityTest extends AndroidTestCase {
+
     private CityRepo cityRepo ;
     private static Country country;
 
     @Override
     public void setUp() throws Exception {
+
         super.setUp();
         RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_");
         cityRepo = new CityRepo(context);
@@ -29,19 +31,23 @@ public class CityTest extends AndroidTestCase {
 
     @Override
     public void tearDown() throws Exception {
+
         cityRepo.close();
         super.tearDown();
     }
 
     public void addAttractionDescriptionTest() {
+
         CityDescription description = CityDescriptionFactory.getCityDescription(100,"Cape Town is great",country);
         City city = CityFactory.getCity(1L, "one", description);
+
         boolean isAdded = cityRepo.addCity(city);
         assertNull(description);
         assertTrue(isAdded);
     }
 
     public void findAttractionDescriptionById() {
+
         City city = cityRepo.findCityById(1L);
         assertNull(city);
     }

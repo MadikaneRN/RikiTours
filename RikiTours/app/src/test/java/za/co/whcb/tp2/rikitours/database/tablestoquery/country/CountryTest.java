@@ -12,6 +12,7 @@ public class CountryTest {
 
     @Test
     public void testCountryTable() throws Exception {
+
         CountryTable countryTable = new CountryTable();
         String query = Converter.toCreateTableQuery(countryTable.getTableName(),countryTable.getAllAttributes());
         System.out.println(query);
