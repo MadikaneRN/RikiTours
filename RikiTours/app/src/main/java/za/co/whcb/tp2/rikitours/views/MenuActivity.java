@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import za.co.whcb.tp2.rikitours.AboutActivity;
+import za.co.whcb.tp2.rikitours.AboutAppActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.UserProfile;
 import za.co.whcb.tp2.rikitours.common.Display;
@@ -81,6 +82,11 @@ public class MenuActivity extends AppCompatActivity {
     public void aboutRikiTours(View view) {
         Intent myIntent = new Intent(this, AboutActivity.class);
         myIntent.putExtra("key", ""); //Optional parameters
+        this.startActivity(myIntent);
+    }
+
+    public void aboutApp(View view) {
+        Intent myIntent = new Intent(this, AboutAppActivity.class);
         this.startActivity(myIntent);
     }
 

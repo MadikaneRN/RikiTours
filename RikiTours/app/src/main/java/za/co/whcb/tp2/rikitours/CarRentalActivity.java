@@ -45,6 +45,7 @@ public class CarRentalActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            
             vehicle = (Vehicle) getIntent().getSerializableExtra("vehicle");
 
             vehicleTitle.setText(

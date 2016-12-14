@@ -1,9 +1,13 @@
 package za.co.whcb.tp2.rikitours;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -16,6 +20,8 @@ import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.controllers.customer.UserController;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiCallback;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+import za.co.whcb.tp2.rikitours.error.setup.AppError;
+import za.co.whcb.tp2.rikitours.error.setup.network.AppNetworkError;
 import za.co.whcb.tp2.rikitours.views.MainActivity;
 import za.co.whcb.tp2.rikitours.views.MenuActivity;
 
@@ -47,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         String email = "altia@gmail.com";//txtEmail.getText().toString();
         String password = "1234";//txtPassword.getText().toString();
-        if(!email.equals("") && !password.equals(""))
+        if(!email.trim().equals("") && !password.trim().equals(""))
         {
             Display.startLoading("Signing",this);
             UserController userController = new UserController(email,password,this);
@@ -64,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onConnectingError(VolleyError error) {
                     Display.endLoading();
-                    Display.toast("Could not connect to the server",getApplicationContext());
+                    Display.toast(AppNetworkError.check(error),getApplicationContext());
                 }
 
                 @Override
@@ -81,10 +87,29 @@ public class LoginActivity extends AppCompatActivity {
         }
         else
         {
-            Display.toast("Invalid login details",this);
+            Display.toast("Plz Fill all your login details",this);
         }
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new AlertDialog.Builder(this)
+                .setIcon(R.drawable.logout_1)
+                .setTitle("Exiting Riki Tours App")
+                .setMessage("Do you really want to close this application ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }
