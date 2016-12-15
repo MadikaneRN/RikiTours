@@ -114,18 +114,21 @@ public class UserProfile extends AppCompatActivity {
                 public void onConnectingError(VolleyError error) {
                     Display.endLoading();
                     Display.toast(AppNetworkError.check(error),getApplicationContext());
+                    enableUserFields();
                 }
 
                 @Override
                 public void onParsingError(Exception error) {
                     Display.endLoading();
                     Display.toast("Parsing Error ! " + error.getMessage() ,getApplicationContext());
+                    enableUserFields();
                 }
 
                 @Override
                 public void onJSONError(JSONException error) {
                     Display.endLoading();
                     Display.toast("Json Error ! " + error.getMessage() ,getApplicationContext());
+                    enableUserFields();
                 }
             });
 

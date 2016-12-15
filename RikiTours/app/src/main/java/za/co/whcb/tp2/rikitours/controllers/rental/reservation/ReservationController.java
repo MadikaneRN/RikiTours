@@ -67,7 +67,7 @@ public class ReservationController {
             {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("customer_id", String.valueOf(reservation.getCustomer().getId()));
-                params.put("vehicle_id", String.valueOf(reservation.getVehicle().getId()));
+                params.put("vehecle_id", String.valueOf(reservation.getVehicle().getId()));
                 params.put("reservation_pickupdate", reservation.getPickUpDate());
                 params.put("reservation_pickuptime", reservation.getPickupTime());
                 params.put("reservation_amount_to_pay", String.valueOf(reservation.getAmountToPay()));

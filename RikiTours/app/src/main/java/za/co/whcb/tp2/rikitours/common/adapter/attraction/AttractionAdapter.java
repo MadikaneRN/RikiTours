@@ -1,7 +1,6 @@
 package za.co.whcb.tp2.rikitours.common.adapter.attraction;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +10,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+
+import org.json.JSONException;
+
 import java.util.ArrayList;
 
+import za.co.whcb.tp2.rikitours.controllers.tour.AttractionController;
+import za.co.whcb.tp2.rikitours.controllers.tour.callback.RikiAttractionQuoteCallBack;
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
+import za.co.whcb.tp2.rikitours.error.setup.network.AppNetworkError;
 import za.co.whcb.tp2.rikitours.views.GalleryViewActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.views.ViewActivity;
@@ -34,19 +41,15 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
     //private GalleryContainer galleryContainer;
     private CountryService attractionService;
     private boolean isBound;
-    private Context app;
+    private Customer user;
     private AttractionsRepo attractionsRepo;
 
-    public AttractionAdapter(Activity context, ArrayList<Attraction> attractions, Context app) {
+    public AttractionAdapter(Activity context, ArrayList<Attraction> attractions, Customer user) {
         super(context, R.layout.activity_layout_listing, attractions);
         this.context = context;
         this.attractions = attractions;
-        this.isBound = false;
-        this.app = app;
+        this.user = user;
         this.attractionsRepo = new AttractionsRepo(context);
-
-//        Intent i = new Intent(app, CountryService.class);
-//        app.bindService(i,serviceConnection, app.BIND_AUTO_CREATE);
 
     }
 
@@ -65,7 +68,7 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
         Button btnBooknow = (Button) rowView.findViewById(R.id.btnBooknow);
         Button btnGallery = (Button) rowView.findViewById(R.id.btnGallery);
 
-        btnBooknow.setText("Add To List");
+        btnBooknow.setText("Get a Quote");
         txtTitle.setText(attractions.get(position).getAttractionDescription().getName().toUpperCase());
         txtSubTitle.setText(attractions.get(position).getAttractionDescription().getCity()+" / " +attractions.get(position).getCountry().getName());
 
@@ -100,13 +103,32 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
         btnBooknow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Display.toast("Adding...",context);
-               if(attractionsRepo.addAttraction(currentAttraction) == true) {
-                   Display.toastLong("Successfully added "+currentAttraction.getAttractionDescription().getName()+" to your list ",context);
-               }
-                else {
-                   Display.toast("Failed to add in your list",context);
-               }
+                Display.startLoading("Requesting a quote",context);
+                AttractionController attractionController = new AttractionController(currentAttraction,user,context);
+                attractionController.requestQuote(new RikiAttractionQuoteCallBack() {
+                    @Override
+                    public void onSuccess(String feedback) {
+                        Display.endLoading();
+                        Display.toast(feedback,context);
+                    }
+
+                    @Override
+                    public void onConnectingError(VolleyError error) {
+                        Display.endLoading();
+                        Display.toast(AppNetworkError.check(error),context);
+                    }
+
+                    @Override
+                    public void onParsingError(Exception error) {
+                        Display.endLoading();
+                        Display.toast(error.getMessage(),context);
+                    }
+
+                    @Override
+                    public void onJSONError(JSONException error) {
+
+                    }
+                });
 
 
             }
@@ -132,24 +154,5 @@ public class AttractionAdapter extends ArrayAdapter<Attraction> {
     public Attraction getCurrentAttraction(int position) {
         return attractions.get(position);
     }
-
-//    public  ServiceConnection serviceConnection = new ServiceConnection() {
-//        @Override
-//        public void onServiceConnected(ComponentName name, IBinder service) {
-//            CountryService.MyLocalBinder binder = (CountryService.MyLocalBinder) service;
-//            attractionService = binder.getService();
-//            isBound = true;
-//            // Display.toast(attractionService.test(),context);
-//
-//        }
-//
-//        @Override
-//        public void onServiceDisconnected(ComponentName name) {
-//            isBound = false;
-//
-//        }
-//    };
-
-
 
 }

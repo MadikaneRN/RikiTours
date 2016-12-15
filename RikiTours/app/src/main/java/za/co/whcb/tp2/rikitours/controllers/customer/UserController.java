@@ -204,10 +204,11 @@ public class UserController {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("id", String.valueOf(user.getId()));
+                Log.e("ERROR CUST ID --->",String.valueOf(user.getId()));
+                params.put("customer_id", String.valueOf(user.getId()));
                 params.put("customer_name", user.getName());
                 params.put("customer_surname", user.getSurname());
-                params.put("customer_gender",gender);
+                 params.put("customer_gender","");
                 params.put("customer_dob",user.getDob());
 
                 params.put("customer_email",user.getEmail());

@@ -55,14 +55,17 @@ public class ListActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras.get("open").equals("Accommodations")) {
+            user = (Customer) getIntent().getSerializableExtra("user");
             loadRoomsServerData();
         }
         else if (extras.get("open").equals("Attractions")) {
+            user = (Customer) getIntent().getSerializableExtra("user");
             loadAttractionData();
+
         }
         else if (extras.get("open").equals("Vehicles")) {
-            loadVehicleData();
             user = (Customer) getIntent().getSerializableExtra("user");
+            loadVehicleData();
         }
         else {
 
@@ -72,7 +75,8 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void loadAttractionsList(ArrayList<Attraction> attractions) {
-        AttractionAdapter adapter = new AttractionAdapter(this,attractions,getApplicationContext());
+
+        AttractionAdapter adapter = new AttractionAdapter(this,attractions,user);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
         Display.endLoading();
