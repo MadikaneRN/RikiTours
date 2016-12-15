@@ -51,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void login (View view){
 
-        String email = "altia@gmail.com";//txtEmail.getText().toString();
-        String password = "1234";//txtPassword.getText().toString();
+        String email = txtEmail.getText().toString();//"altia@gmail.com";//
+        String password = txtPassword.getText().toString();//"1234";//
         if(!email.trim().equals("") && !password.trim().equals(""))
         {
             Display.startLoading("Signing",this);
@@ -111,5 +111,11 @@ public class LoginActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("No", null)
                 .show();
+    }
+
+    public void forgottenPassword(View view) {
+        Intent myIntent = new Intent(this, ForgottenPasswordActivity.class);
+        myIntent.putExtra("key", ""); //Optional parameters
+        this.startActivity(myIntent);
     }
 }

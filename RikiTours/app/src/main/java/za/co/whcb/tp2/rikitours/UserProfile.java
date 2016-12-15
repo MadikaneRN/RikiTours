@@ -16,7 +16,7 @@ import za.co.whcb.tp2.rikitours.controllers.customer.UserController;
 import za.co.whcb.tp2.rikitours.controllers.customer.callback.RikiApiSignUpCallBack;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.error.setup.network.AppNetworkError;
-import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
+import za.co.whcb.tp2.rikitours.repository.local.customer.CustomerRepo;
 
 public class UserProfile extends AppCompatActivity {
 
@@ -99,7 +99,7 @@ public class UserProfile extends AppCompatActivity {
             user.setDob(userDob.getText().toString());
             user.setEmail(userEmail.getText().toString());
             user.setGender(userGender.getSelectedItem().toString());
-
+            
             UserController userController = new UserController(user,userCurrentPassword.getText().toString(),
                     userNewPassword.getText().toString(),this);
 

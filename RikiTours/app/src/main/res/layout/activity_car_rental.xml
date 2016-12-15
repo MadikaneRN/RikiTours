@@ -129,6 +129,17 @@
                 <EditText
                     style="@style/edit_text_default"
                     android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edtPickupDate"
+                    android:background="@drawable/text_box_sharp"
+                    android:hint="Pick-up date"
+                    android:enabled="true"
+                    android:visibility="visible"
+                    android:paddingLeft="10dp" />
+
+                <EditText
+                    style="@style/edit_text_default"
+                    android:layout_width="fill_parent"
                     android:layout_height="60dp"
                     android:id="@+id/edtPickUpAddress"
                     android:background="@drawable/text_box_sharp"
@@ -170,7 +181,7 @@
                         android:background="@drawable/button_sharp"
                         android:textColor="#FFFFFF"
                         android:layout_weight="1"
-                        android:onClick="updateEnable" />
+                        android:onClick="makeReservaton" />
 
                 </LinearLayout>
             </LinearLayout>

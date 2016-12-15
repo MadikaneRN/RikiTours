@@ -17,6 +17,7 @@ import za.co.whcb.tp2.rikitours.CarRentalActivity;
 import za.co.whcb.tp2.rikitours.R;
 import za.co.whcb.tp2.rikitours.common.Display;
 import za.co.whcb.tp2.rikitours.common.imageloader.ImageLoader;
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 import za.co.whcb.tp2.rikitours.views.MainActivity;
 
@@ -26,11 +27,19 @@ import za.co.whcb.tp2.rikitours.views.MainActivity;
 public class VehicleAdapter extends ArrayAdapter<Vehicle> {
     private ArrayList<Vehicle> vehicles;
     private final Activity context;
+    private Customer user;
 
     public VehicleAdapter(Activity context, ArrayList<Vehicle> vehicles) {
         super(context, R.layout.activity_list_car, vehicles);
         this.context = context;
         this.vehicles = vehicles;
+    }
+
+    public VehicleAdapter(Activity context, ArrayList<Vehicle> vehicles, Customer user) {
+        super(context, R.layout.activity_list_car, vehicles);
+        this.context = context;
+        this.vehicles = vehicles;
+        this.user = user;
     }
 
     @Override
@@ -68,6 +77,7 @@ public class VehicleAdapter extends ArrayAdapter<Vehicle> {
 
                 Intent myIntent = new Intent(context, CarRentalActivity.class);
                 myIntent.putExtra("vehicle",currentVehicle ); //Optional parameters
+                myIntent.putExtra("user",user );
                 context.startActivity(myIntent);
 
             }

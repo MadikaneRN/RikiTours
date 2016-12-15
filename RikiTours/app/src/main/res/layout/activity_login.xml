@@ -47,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:paddingTop="10dp">
+                android:paddingTop="10dp"
+                android:gravity="center_horizontal">
 
                 <EditText
                     style="@style/edit_text_default"
@@ -122,6 +123,18 @@
                     android:onClick="register"
                     android:nestedScrollingEnabled="true"
                     android:layout_marginTop="0dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forgotten Password"
+                    android:id="@+id/textView31"
+                    android:textAlignment="center"
+                    android:textColor="#ac7942"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:textSize="12dp"
+                    android:onClick="forgottenPassword" />
 
             </LinearLayout>
         </LinearLayout>

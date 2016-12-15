@@ -19,14 +19,14 @@ import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 /**
  * Created by Game330 on 2016-10-10.
  */
-public class customerRepo  extends SQLiteOpenHelper {
+public class CustomerRepo extends SQLiteOpenHelper {
 
     private SQLiteDatabase localDatabase;
     private ContentValues contentValues;
     private static CustomerTable customerTable;
 
 
-    public customerRepo(Context context) {
+    public CustomerRepo(Context context) {
         super(context, Database.name, null, Database.version);
         customerTable = new CustomerTable();
     }
@@ -97,6 +97,7 @@ public class customerRepo  extends SQLiteOpenHelper {
             while (data.moveToNext()) {
                 CustomerFactory.getCustomer(data.getLong(0),data.getString(1), data.getString(1),
                         data.getString(2));
+                customerFound.setStatus(data.getString(3));
                 customers.add(customerFound);
             }
         }
@@ -104,14 +105,15 @@ public class customerRepo  extends SQLiteOpenHelper {
         return customers;
     }
 
-    public boolean updateCustomer(Customer updatedCountry, long id) {
+    public boolean updateCustomer(Customer updatedCustomer, long id) {
 
         long returned;
         localDatabase = this.getWritableDatabase();
         contentValues = new ContentValues();
-        contentValues.put(customerTable.getAttributeId().name, updatedCountry.getName());
-        contentValues.put(customerTable.getAttributeSurname().name, updatedCountry.getName());
-        contentValues.put(customerTable.getAttributeSurname().name, updatedCountry.getName());
+        contentValues.put(customerTable.getAttributeId().name, updatedCustomer.getName());
+        contentValues.put(customerTable.getAttributeSurname().name, updatedCustomer.getName());
+        contentValues.put(customerTable.getAttributeSurname().name, updatedCustomer.getName());
+        contentValues.put(customerTable.getAttributeStatus().name, updatedCustomer.getStatus());
 
         try {
 

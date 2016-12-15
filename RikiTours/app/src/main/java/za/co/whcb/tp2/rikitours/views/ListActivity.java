@@ -32,6 +32,7 @@ import za.co.whcb.tp2.rikitours.controllers.tour.AttractionController;
 import za.co.whcb.tp2.rikitours.controllers.tour.callback.RikiAttractionCallBack;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Hotel;
 import za.co.whcb.tp2.rikitours.domain.accommodation.Room;
+import za.co.whcb.tp2.rikitours.domain.customer.Customer;
 import za.co.whcb.tp2.rikitours.domain.gallery.GalleryContainer;
 import za.co.whcb.tp2.rikitours.domain.gallery.RikiImage;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
@@ -42,6 +43,7 @@ import za.co.whcb.tp2.rikitours.factories.tour.CountryFactory;
 
 public class ListActivity extends AppCompatActivity {
 
+    private Customer user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +62,7 @@ public class ListActivity extends AppCompatActivity {
         }
         else if (extras.get("open").equals("Vehicles")) {
             loadVehicleData();
+            user = (Customer) getIntent().getSerializableExtra("user");
         }
         else {
 
@@ -86,7 +89,7 @@ public class ListActivity extends AppCompatActivity {
 
     public void loadVehiclesToList(ArrayList<Vehicle> vehicles) {
 
-        VehicleAdapter adapter = new VehicleAdapter(this,vehicles);
+        VehicleAdapter adapter = new VehicleAdapter(this,vehicles,user);
         ListView listView = (ListView) findViewById(R.id.listView2);
         listView.setAdapter(adapter);
         Display.endLoading();

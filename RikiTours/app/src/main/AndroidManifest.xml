@@ -33,7 +33,8 @@
         <activity android:name=".UserProfile" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".CarRentalActivity" />
-        <activity android:name=".AboutAppActivity"></activity>
+        <activity android:name=".AboutAppActivity" />
+        <activity android:name=".ForgottenPasswordActivity"></activity>
     </application>
 
 </manifest>

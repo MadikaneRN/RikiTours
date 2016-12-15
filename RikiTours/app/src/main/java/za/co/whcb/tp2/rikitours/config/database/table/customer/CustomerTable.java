@@ -15,6 +15,7 @@ public class CustomerTable extends Table {
     public static Attribute id = new Attribute("id", "number");
     public static Attribute name = new Attribute("name", "Text");
     public static Attribute surname = new Attribute("surname", "Text");
+    public static Attribute status = new Attribute("status", "Text default 'offline'");
 
 
 
@@ -26,7 +27,6 @@ public class CustomerTable extends Table {
     public Attribute getPrimaryKey() {
         return id;
     }
-
 
     public Attribute getAttributeId() {
         return id;
@@ -40,6 +40,10 @@ public class CustomerTable extends Table {
         return surname;
     }
 
+    public Attribute getAttributeStatus() {
+        return status;
+    }
+
 
      @Override
     public ArrayList<Attribute> getAllAttributes() {
@@ -48,6 +52,8 @@ public class CustomerTable extends Table {
         attributes.add(id);
         attributes.add(name);
         attributes.add(surname);
+
+         attributes.add(status);
         return  attributes;
     }
 

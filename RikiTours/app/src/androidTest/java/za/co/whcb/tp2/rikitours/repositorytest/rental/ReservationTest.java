@@ -4,7 +4,7 @@ import android.test.AndroidTestCase;
 import android.test.RenamingDelegatingContext;
 
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
-import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
+import za.co.whcb.tp2.rikitours.domain.rental.Reservation;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 import za.co.whcb.tp2.rikitours.factories.rental.ReservationsFactory;
 import za.co.whcb.tp2.rikitours.repository.local.rental.ReservationRepo;
@@ -31,12 +31,12 @@ public class ReservationTest extends AndroidTestCase {
     }
 
     public void addReservationTest() {
-        Reservations reservations = ReservationsFactory.getReservations((long) 16.0,customer, vehicle, "10/10/2016","16/10/2016",2000);
-        assertEquals(true, reservationRepo.addReservation(reservations));
+        Reservation reservation = ReservationsFactory.getReservations((long) 16.0,customer, vehicle, "10/10/2016","16/10/2016",2000);
+        assertEquals(true, reservationRepo.addReservation(reservation));
     }
 
     public void findResrvationById() {
-        Reservations reservations = reservationRepo.findReservationById((long)16.0);
-        assertEquals("10/10/2016", reservations.getPickUpDate());
+        Reservation reservation = reservationRepo.findReservationById((long)16.0);
+        assertEquals("10/10/2016", reservation.getPickUpDate());
     }
 }

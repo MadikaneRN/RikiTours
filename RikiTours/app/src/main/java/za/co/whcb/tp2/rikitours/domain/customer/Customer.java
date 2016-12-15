@@ -14,12 +14,16 @@ public class Customer implements Person{
     private String gender;
     private String dob;
 
+    private String status;
+
     public Customer(Builder builderObj)
     {
         name=builderObj.name;
         surname=builderObj.surname;
         customer_no=builderObj.customer_no;
         id=builderObj.id;
+
+        status = "offline";
     }
 
     public Customer(long id, String name, String surname, String email) {
@@ -28,6 +32,7 @@ public class Customer implements Person{
         this.surname = surname;
         this.customer_no = "";
         this.email = email;
+        this.status = "offline";
     }
 
     public long getId() {
@@ -86,12 +91,21 @@ public class Customer implements Person{
         this.dob = dob;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public static class Builder{
         private long id;
         private String name;
         private String surname;
         private String customer_no;
         private String email;
+        private String status;
 
         public Builder id(int id){
             this.id=id;
@@ -124,6 +138,7 @@ public class Customer implements Person{
             this.surname=custObj.getSurname();
             this.customer_no=custObj.getCustomerNumber();
             this.email = custObj.getEmail();
+            this.status = "offline";
             return this;
 
         }

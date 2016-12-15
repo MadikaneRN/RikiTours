@@ -74,7 +74,8 @@ public class MenuActivity extends AppCompatActivity {
 
     public void listVehicles(View view) {
         Intent myIntent = new Intent(this, ListActivity.class);
-        myIntent.putExtra("open", "Vehicles"); //Optional parameters
+        myIntent.putExtra("open", "Vehicles");
+        myIntent.putExtra("user", user);//Optional parameters
         this.startActivity(myIntent);
 
     }

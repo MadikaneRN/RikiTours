@@ -15,7 +15,7 @@ import za.co.whcb.tp2.rikitours.config.database.table.customer.CustomerTable;
 import za.co.whcb.tp2.rikitours.config.database.table.rental.ReservationTable;
 import za.co.whcb.tp2.rikitours.config.database.table.rental.VehicleTable;
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
-import za.co.whcb.tp2.rikitours.domain.rental.Reservations;
+import za.co.whcb.tp2.rikitours.domain.rental.Reservation;
 import za.co.whcb.tp2.rikitours.domain.rental.Vehicle;
 import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 import za.co.whcb.tp2.rikitours.factories.rental.ReservationsFactory;
@@ -57,15 +57,15 @@ public class ReservationRepo extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addReservation(Reservations reservations ) {
+    public boolean addReservation(Reservation reservation) {
         long returned ;
         localDatabase = this.getWritableDatabase();
         reservationTable  = new ReservationTable();
         contentValues = new ContentValues();
 
-        contentValues.put(reservationTable.getAttributeId().name, reservations.getId());
-        contentValues.put(reservationTable.getCustomerID().name, reservations.getCustomer().getId());
-        contentValues.put(reservationTable.getVehicleID().name, reservations.getVehicle().getId());
+        contentValues.put(reservationTable.getAttributeId().name, reservation.getId());
+        contentValues.put(reservationTable.getCustomerID().name, reservation.getCustomer().getId());
+        contentValues.put(reservationTable.getVehicleID().name, reservation.getVehicle().getId());
 
         try {
             returned = localDatabase.insert(reservationTable.getTableName(), null, contentValues);
@@ -78,8 +78,8 @@ public class ReservationRepo extends SQLiteOpenHelper {
         return (returned != -1) ? true : false;
     }
 
-    public Reservations findReservationById(long id) {
-        Reservations reservationFound = null;
+    public Reservation findReservationById(long id) {
+        Reservation reservationFound = null;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = Converter.toSelectAllWhere(reservationTable.getTableName(),
                 reservationTable.getAttributeId(), String.valueOf(id));
@@ -127,9 +127,9 @@ public class ReservationRepo extends SQLiteOpenHelper {
         return vehicleFound;
     }
 
-    public ArrayList<Reservations> getAllReservations() {
-        ArrayList<Reservations> reservationArrayList = new ArrayList<>();
-        Reservations reservationFound = null;
+    public ArrayList<Reservation> getAllReservations() {
+        ArrayList<Reservation> reservationArrayList = new ArrayList<>();
+        Reservation reservationFound = null;
         localDatabase = this.getReadableDatabase();
         String query = Converter.toSelectAll(reservationTable.getTableName());
 
@@ -145,7 +145,7 @@ public class ReservationRepo extends SQLiteOpenHelper {
         return reservationArrayList;
     }
 
-    public boolean updateReservation(Reservations updatedReservation, long id) {
+    public boolean updateReservation(Reservation updatedReservation, long id) {
 
         long returned ;
         localDatabase = this.getWritableDatabase();
