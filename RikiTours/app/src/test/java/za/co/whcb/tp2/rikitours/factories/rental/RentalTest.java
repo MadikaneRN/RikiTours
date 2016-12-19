@@ -23,7 +23,7 @@ public class RentalTest {
 
     @Test
     public void testRental() throws Exception {
-        
+
         Assert.assertNotNull(rental);
         Assert.assertEquals(rental.getReservation(), reservation);
     }
