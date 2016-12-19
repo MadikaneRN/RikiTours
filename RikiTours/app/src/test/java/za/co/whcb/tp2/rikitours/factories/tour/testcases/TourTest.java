@@ -1,5 +1,6 @@
 package za.co.whcb.tp2.rikitours.factories.tour.testcases;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import za.co.whcb.tp2.rikitours.domain.customer.Customer;
@@ -20,6 +21,9 @@ public class TourTest {
         Guide myGuide= new Guide("Nathan","Sleek","1234","ns@mail.com");
         Itinerary itenary=new Itinerary();
         Tour tour= TourFactory.getTour(1L,myGuide,myCust,itenary);
+        
+        Assert.assertNotNull(tour);
+        Assert.assertEquals("Tam",tour.getCustomer().getName());
 
 
 
