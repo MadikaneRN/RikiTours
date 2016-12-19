@@ -12,7 +12,11 @@ public class MaritalStatusTest {
     @Test
     public void testCreate() throws Exception {
 
-      
+        MaritalStatus maritalStatus= MaritalStatusFactory.getMaritalStatus("2","yes","No");
+        Assert.assertNotNull(maritalStatus);
+        Assert.assertEquals("2",maritalStatus.getCustomerId());
+        Assert.assertEquals("yes",maritalStatus.getIsSingle());
+
 
 
     }
