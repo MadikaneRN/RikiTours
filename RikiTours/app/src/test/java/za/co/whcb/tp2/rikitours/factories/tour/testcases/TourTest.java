@@ -11,7 +11,7 @@ import za.co.whcb.tp2.rikitours.factories.customer.CustomerFactory;
 import za.co.whcb.tp2.rikitours.factories.tour.TourFactory;
 
 /**
- * Created by Shaun Mesias on 2016/10/02.
+ * Created by Tamonne 2016/10/02.
  */
 public class TourTest {
     @Test
@@ -21,7 +21,7 @@ public class TourTest {
         Guide myGuide= new Guide("Nathan","Sleek","1234","ns@mail.com");
         Itinerary itenary=new Itinerary();
         Tour tour= TourFactory.getTour(1L,myGuide,myCust,itenary);
-        
+
         Assert.assertNotNull(tour);
         Assert.assertEquals("Tam",tour.getCustomer().getName());
 
