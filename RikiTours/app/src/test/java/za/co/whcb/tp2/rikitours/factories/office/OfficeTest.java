@@ -12,10 +12,12 @@ import za.co.whcb.tp2.rikitours.domain.office.Office;
  * Created by LILO on 2016/10/10.
  */
 public class OfficeTest {
+
     private Office office;
 
     @Before
     public void setUp() throws Exception {
+
         office = OfficeFactory.getOffice(12345L,"Cape Town","Gardens");
     }
 
@@ -27,6 +29,7 @@ public class OfficeTest {
 
     @Test
     public void testOfficeUpdate() throws Exception {
+
         Office newOffice  = new Office.Builder().copy(office).city("Durban") .build();
         Assert.assertEquals("Durban", newOffice.getCity());
     }
