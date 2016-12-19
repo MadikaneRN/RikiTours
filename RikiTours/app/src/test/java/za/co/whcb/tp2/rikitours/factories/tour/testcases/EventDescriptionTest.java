@@ -18,6 +18,7 @@ import za.co.whcb.tp2.rikitours.factories.tour.EventDescriptionFactory;
 public class EventDescriptionTest {
     @Test
     public void testCreate() throws Exception {
+
         CityDescription cityDescription = CityDescriptionFactory.getCityDescription(12345L, "suburb", "nation");
         Country city = CountryFactory.getCountry(2L,"name", "cityDescription","image");
 
