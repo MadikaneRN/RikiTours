@@ -29,7 +29,7 @@ public class OfficeTest {
 
     @Test
     public void testOfficeUpdate() throws Exception {
-        
+
         Office newOffice  = new Office.Builder().copy(office).city("Durban") .build();
         Assert.assertEquals("Durban", newOffice.getCity());
     }
