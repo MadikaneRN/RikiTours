@@ -32,7 +32,7 @@ public class ReservationTest {
 
     @Test
     public void testReservationsUpdate() throws Exception {
-        
+
         Reservation newReservation = new Reservation.Builder().copy(reservation).pickUpDate("09/10/2016").build();
         Assert.assertEquals("09/10/2016", newReservation.getPickUpDate());
     }

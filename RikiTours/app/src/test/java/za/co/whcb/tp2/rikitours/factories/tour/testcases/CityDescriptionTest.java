@@ -12,6 +12,7 @@ import za.co.whcb.tp2.rikitours.factories.tour.CityDescriptionFactory;
 public class CityDescriptionTest {
     @Test
     public void testCreate() throws Exception {
+        
         CityDescription cityDescription = CityDescriptionFactory.getCityDescription(12345L,"suburb", "nation");
 
         Assert.assertNotNull(cityDescription);
